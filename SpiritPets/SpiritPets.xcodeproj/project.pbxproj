@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		979A618C1DEDA59200F8604B /* PetSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */; };
 		979A618E1DEDA9DA00F8604B /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618D1DEDA9DA00F8604B /* AKPickerView.swift */; };
+		97EF4D071DEDF46600446053 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EF4D061DEDF46600446053 /* Pet.swift */; };
 		CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */; };
 		CE3B2B5B1DEC631A0096C3D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */; };
 		CE3B2B5E1DEC631A0096C3D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3B2B5C1DEC631A0096C3D8 /* Main.storyboard */; };
@@ -86,6 +87,7 @@
 /* Begin PBXFileReference section */
 		979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetSelectionViewController.swift; sourceTree = "<group>"; };
 		979A618D1DEDA9DA00F8604B /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
+		97EF4D061DEDF46600446053 /* Pet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		CE3B2B551DEC631A0096C3D8 /* SpiritPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpiritPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		97EF4D051DEDF43200446053 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				97EF4D061DEDF46600446053 /* Pet.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		CE3B2B4C1DEC63190096C3D8 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +182,7 @@
 		CE3B2B571DEC631A0096C3D8 /* SpiritPets */ = {
 			isa = PBXGroup;
 			children = (
+				97EF4D051DEDF43200446053 /* Model */,
 				CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */,
 				CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */,
 				CE3B2B5C1DEC631A0096C3D8 /* Main.storyboard */,
@@ -436,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97EF4D071DEDF46600446053 /* Pet.swift in Sources */,
 				CE3B2B5B1DEC631A0096C3D8 /* ViewController.swift in Sources */,
 				CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */,
 				979A618E1DEDA9DA00F8604B /* AKPickerView.swift in Sources */,
