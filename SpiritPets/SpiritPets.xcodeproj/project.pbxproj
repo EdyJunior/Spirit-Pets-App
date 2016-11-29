@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		979A618C1DEDA59200F8604B /* PetSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */; };
+		979A618E1DEDA9DA00F8604B /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618D1DEDA9DA00F8604B /* AKPickerView.swift */; };
 		CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */; };
 		CE3B2B5B1DEC631A0096C3D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */; };
 		CE3B2B5E1DEC631A0096C3D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3B2B5C1DEC631A0096C3D8 /* Main.storyboard */; };
@@ -82,6 +84,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetSelectionViewController.swift; sourceTree = "<group>"; };
+		979A618D1DEDA9DA00F8604B /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
 		CE3B2B551DEC631A0096C3D8 /* SpiritPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpiritPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 				CE3B2B5F1DEC631A0096C3D8 /* Assets.xcassets */,
 				CE3B2B611DEC631A0096C3D8 /* LaunchScreen.storyboard */,
 				CE3B2B641DEC631A0096C3D8 /* Info.plist */,
+				979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */,
+				979A618D1DEDA9DA00F8604B /* AKPickerView.swift */,
 			);
 			path = SpiritPets;
 			sourceTree = "<group>";
@@ -332,7 +338,7 @@
 				TargetAttributes = {
 					CE3B2B541DEC631A0096C3D8 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = CWK5G6U242;
+						DevelopmentTeam = 4XRA82V6CB;
 						ProvisioningStyle = Automatic;
 					};
 					CE3B2B681DEC631A0096C3D8 = {
@@ -432,6 +438,8 @@
 			files = (
 				CE3B2B5B1DEC631A0096C3D8 /* ViewController.swift in Sources */,
 				CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */,
+				979A618E1DEDA9DA00F8604B /* AKPickerView.swift in Sources */,
+				979A618C1DEDA59200F8604B /* PetSelectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,7 +688,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = CWK5G6U242;
+				DEVELOPMENT_TEAM = 4XRA82V6CB;
 				INFOPLIST_FILE = SpiritPets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPets";
@@ -693,7 +701,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = CWK5G6U242;
+				DEVELOPMENT_TEAM = 4XRA82V6CB;
 				INFOPLIST_FILE = SpiritPets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPets";
@@ -779,6 +787,7 @@
 				CE3B2BA21DEC631A0096C3D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE3B2BA41DEC631A0096C3D8 /* Build configuration list for PBXNativeTarget "SpiritPets WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -787,6 +796,7 @@
 				CE3B2BA61DEC631A0096C3D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE3B2BA81DEC631A0096C3D8 /* Build configuration list for PBXNativeTarget "SpiritPets" */ = {
 			isa = XCConfigurationList;
@@ -795,6 +805,7 @@
 				CE3B2BAA1DEC631A0096C3D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE3B2BAB1DEC631A0096C3D8 /* Build configuration list for PBXNativeTarget "SpiritPetsTests" */ = {
 			isa = XCConfigurationList;
@@ -803,6 +814,7 @@
 				CE3B2BAD1DEC631A0096C3D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE3B2BAE1DEC631A0096C3D8 /* Build configuration list for PBXNativeTarget "SpiritPetsUITests" */ = {
 			isa = XCConfigurationList;
@@ -811,6 +823,7 @@
 				CE3B2BB01DEC631A0096C3D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
