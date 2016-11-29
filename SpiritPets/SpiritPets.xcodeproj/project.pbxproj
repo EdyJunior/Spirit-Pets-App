@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5167E0A1DEC72E900DDAD8C /* MiniGame01Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E091DEC72E900DDAD8C /* MiniGame01Scene.swift */; };
+		B5167E0D1DEC736F00DDAD8C /* PetNodeMiniGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E0C1DEC736F00DDAD8C /* PetNodeMiniGame.swift */; };
+		B5167E0F1DEDBD0A00DDAD8C /* MiniGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E0E1DEDBD0A00DDAD8C /* MiniGameViewController.swift */; };
 		CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */; };
 		CE3B2B5B1DEC631A0096C3D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */; };
 		CE3B2B5E1DEC631A0096C3D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3B2B5C1DEC631A0096C3D8 /* Main.storyboard */; };
@@ -82,6 +85,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B5167E091DEC72E900DDAD8C /* MiniGame01Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame01Scene.swift; sourceTree = "<group>"; };
+		B5167E0C1DEC736F00DDAD8C /* PetNodeMiniGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetNodeMiniGame.swift; sourceTree = "<group>"; };
+		B5167E0E1DEDBD0A00DDAD8C /* MiniGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGameViewController.swift; sourceTree = "<group>"; };
 		CE3B2B551DEC631A0096C3D8 /* SpiritPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpiritPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +147,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B5167E081DEC72C800DDAD8C /* MiniGames */ = {
+			isa = PBXGroup;
+			children = (
+				B5167E0C1DEC736F00DDAD8C /* PetNodeMiniGame.swift */,
+				B5167E0E1DEDBD0A00DDAD8C /* MiniGameViewController.swift */,
+				B5167E0B1DEC730A00DDAD8C /* MiniGame01 */,
+			);
+			name = MiniGames;
+			sourceTree = "<group>";
+		};
+		B5167E0B1DEC730A00DDAD8C /* MiniGame01 */ = {
+			isa = PBXGroup;
+			children = (
+				B5167E091DEC72E900DDAD8C /* MiniGame01Scene.swift */,
+			);
+			name = MiniGame01;
+			sourceTree = "<group>";
+		};
 		CE3B2B4C1DEC63190096C3D8 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +192,7 @@
 		CE3B2B571DEC631A0096C3D8 /* SpiritPets */ = {
 			isa = PBXGroup;
 			children = (
+				B5167E081DEC72C800DDAD8C /* MiniGames */,
 				CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */,
 				CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */,
 				CE3B2B5C1DEC631A0096C3D8 /* Main.storyboard */,
@@ -430,7 +455,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5167E0A1DEC72E900DDAD8C /* MiniGame01Scene.swift in Sources */,
 				CE3B2B5B1DEC631A0096C3D8 /* ViewController.swift in Sources */,
+				B5167E0F1DEDBD0A00DDAD8C /* MiniGameViewController.swift in Sources */,
+				B5167E0D1DEC736F00DDAD8C /* PetNodeMiniGame.swift in Sources */,
 				CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -779,6 +807,7 @@
 				CE3B2BA21DEC631A0096C3D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE3B2BA41DEC631A0096C3D8 /* Build configuration list for PBXNativeTarget "SpiritPets WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -787,6 +816,7 @@
 				CE3B2BA61DEC631A0096C3D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE3B2BA81DEC631A0096C3D8 /* Build configuration list for PBXNativeTarget "SpiritPets" */ = {
 			isa = XCConfigurationList;
@@ -795,6 +825,7 @@
 				CE3B2BAA1DEC631A0096C3D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE3B2BAB1DEC631A0096C3D8 /* Build configuration list for PBXNativeTarget "SpiritPetsTests" */ = {
 			isa = XCConfigurationList;
@@ -803,6 +834,7 @@
 				CE3B2BAD1DEC631A0096C3D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE3B2BAE1DEC631A0096C3D8 /* Build configuration list for PBXNativeTarget "SpiritPetsUITests" */ = {
 			isa = XCConfigurationList;
@@ -811,6 +843,7 @@
 				CE3B2BB01DEC631A0096C3D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
