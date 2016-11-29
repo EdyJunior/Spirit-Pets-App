@@ -20,6 +20,8 @@ class PetSelectionViewController: UIViewController {
     
     let images = [UIImage.init(named: "pet0"), UIImage.init(named: "pet1"),UIImage.init(named: "pet0"), UIImage.init(named: "pet1")]
     
+    var selectedPet: Pet!
+    
     let pett0 = PetStatus(hp: 100, atk: 80, dfs: 60)
     let pett1 = PetStatus(hp: 100, atk: 70, dfs: 70)
     let pets = [ PetStatus(hp: 200, atk: 180, dfs: 60), PetStatus(hp: 150, atk: 70, dfs: 170),PetStatus(hp: 200, atk: 180, dfs: 60), PetStatus(hp: 150, atk: 70, dfs: 170)]
@@ -32,17 +34,25 @@ class PetSelectionViewController: UIViewController {
         self.pickerView.frame.size.height = view.frame.height / 3
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
-        self.pickerView.selectItem(0)
-        
+        self.pickerView.interitemSpacing = CGFloat(20)
         self.view.addSubview(pickerView)
-        self.pickerView.reloadData()
         
         self.setUpLabels()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let selectedIndex = 1
+        self.pickerView.selectItem(selectedIndex)
+        self.pickerView.reloadData()
+        self.updateStatusLabels(status: [pets[selectedIndex].hp, pets[selectedIndex].atk, pets[selectedIndex].dfs])
+        
     }
     
     @IBAction func letsgoTap(_ sender: UIButton) {
         //TODO: perform segue
     }
+    
+    
     //call this to round the status labels.
     func setUpLabels(){
         for label in statusLabels{
@@ -77,7 +87,7 @@ extension PetSelectionViewController: AKPickerViewDelegate{
     
     func pickerView(_ pickerView: AKPickerView, didSelectItem item: Int) {
         print("selecionou \(images[item])")
-        self.updateStatusLabels(status: [pets[item].atk, pets[item].dfs, pets[item].dfs])
+        self.updateStatusLabels(status: [pets[item].hp, pets[item].atk, pets[item].dfs])
     }
 }
 

@@ -6,9 +6,13 @@
 //  Copyright © 2016 Edvaldo Junior. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Pet{
 
+    var hp:  Int
+    var atk: Int
+    var dfs: Int
+    var image: UIImage
 
 }
