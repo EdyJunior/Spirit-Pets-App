@@ -1,91 +1,243 @@
-//
-//  MiniGame01.swift
-//  SpiritPets
-//
-//  Created by Augusto Falcão on 11/28/16.
-//  Copyright © 2016 Edvaldo Junior. All rights reserved.
-//
-
 import SpriteKit
 import GameplayKit
 
-enum PokemonType {
-    case fire
-    case water
-    case electric
-}
-
-protocol PokemonNodeDelegate {
-    func didTapPokemonNode(pokemonNode: PokemonNode)
-}
-
-class PokemonNode : SKNode {
+class MiniGame01Scene: SKScene {
     
-    var type: PokemonType
+    private var lastUpdateTime : TimeInterval = 0
+    var actualTime: TimeInterval = 0
+    var counter: SKLabelNode?
     
-    var sprite: SKSpriteNode
+    var blocked = false
     
-    var delegate: PokemonNodeDelegate?
+    let displaySize = UIScreen.main.bounds.size
     
-    init(withType type: PokemonType, andTexture texture: SKTexture) {
+    var typePet: PetType?
+    var lightPets: Int?
+    var darkPets: Int?
+    
+    var score: Int?
+    
+    override func sceneDidLoad() {
+        self.lastUpdateTime = 0
         
-        self.type = type
+        self.isUserInteractionEnabled = false
         
-        self.sprite = SKSpriteNode(texture: PokemonNode.randomPokemonTextureOfType(type: type))
+        self.isPaused = false
         
-        super.init()
+        self.score = 0
         
-        self.isUserInteractionEnabled = true
-        self.sprite.zPosition = -1
-        self.addChild(self.sprite)
+        self.resetPets()
+        self.createGrid()
+        self.createCounter()
+    }
+    
+    
+    func touchDown(atPoint pos : CGPoint) {
+        
+        if (self.isPaused == true) {
+            self.backToMenu()
+            //self.restart()
+        }
+    }
+    
+    func touchMoved(toPoint pos : CGPoint) {
+        
+    }
+    
+    func touchUp(atPoint pos : CGPoint) {
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.delegate?.didTapPokemonNode(pokemonNode: self)
+        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+    }
+    
+    func randomTypeNumber() -> PetType {
+        let number = arc4random() % 2
+        var type: PetType = .light
+        switch number {
+        case 0:
+            type = .light
+            lightPets = lightPets! + 1
+            break
+        case 1:
+            type = .dark
+            darkPets = darkPets! + 1
+            break
+        default:
+            break
+        }
+        return type
+    }
+    
+    func resetPets() {
+        lightPets = 0
+        darkPets = 0
+    }
+    
+    func createGrid() {
+        var i = 0
+        while(i < 4) {
+            
+            let a = Double((i % 4) + 1)
+            let c = a / 5.0
+            let x = CGFloat(Double(self.displaySize.width) * c)
+            
+            var j = 0
+            while(j < 6) {
+                let side = self.displaySize.width * 0.22
+                let pet = PetNodeMiniGame.randomPetOfType(type: self.randomTypeNumber())
+                pet.sprite.size = CGSize(width: side, height: side)
+                pet.delegate = self
+                
+                let b = Double((j % 6) + 1)
+                let d = b / 8.0
+                let y = CGFloat(Double(self.displaySize.height) * d)
+                let position = CGPoint(x: x, y: y)
+                
+                pet.position = position
+                self.addChild(pet)
+                
+                j += 1
+            }
+            
+            i += 1
+        }
+        self.isUserInteractionEnabled = true
+    }
+    
+    func createCounter() {
+        self.counter = SKLabelNode(text: "0.00")
+        self.counter!.name = "congrats"
+        self.counter!.fontColor = SKColor.white
+        self.counter!.fontSize = 40
+        self.counter!.position = CGPoint(x: self.displaySize.width * 0.5, y: self.displaySize.height * 0.9)
+        self.addChild(self.counter!)
+    }
+    
+    
+    func increaseScore() {
+        self.score = self.score! + 1
+        
+        var max = 0
+        
+        if self.typePet == PetType.light {
+            max = lightPets!
+        }
+        
+        if self.typePet == PetType.dark {
+            max = self.darkPets!
+        }
+        
+        if self.score! >= max - 1 {
+            self.finishVictory()
+        }
+    }
+    
+    func finishLose() {
+        self.removeAllChildren()
+        
+        typePet = nil
+        
+        let congrats = SKLabelNode(text: "Errou!")
+        congrats.name = "congrats"
+        congrats.fontColor = SKColor.white
+        congrats.fontSize = 40
+        congrats.position = CGPoint(x: self.displaySize.width * 0.5, y: self.displaySize.height * 0.5)
+        self.addChild(congrats)
+        
+        self.isPaused = true
+        
+    }
+    
+    func finishVictory() {
+        self.removeAllChildren()
+        
+        typePet = nil
+        
+        let seconds = lround(self.actualTime)
+        let str = String(format: "%.2d", seconds)
+        
+        let congrats = SKLabelNode(text: "Voce ganhou em \(str)s!")
+        congrats.name = "congrats"
+        congrats.fontColor = SKColor.white
+        congrats.fontSize = 40
+        congrats.position = CGPoint(x: self.displaySize.width * 0.5, y: self.displaySize.height * 0.5)
+        self.addChild(congrats)
+        
+        guard var previousTime: Int? = UserDefaults.standard.integer(forKey: "time") else {return}
+        
+        if previousTime == 0 {
+            previousTime = 666
+        }
+        
+        if seconds < previousTime! {
+            UserDefaults.standard.set(seconds, forKey: "time")
+        }
+        
+        
+        self.isPaused = true
+    }
+    
+    func restart() {
+        self.lastUpdateTime = 0
+        self.blocked = true
+        self.removeAllActions()
+        self.removeAllChildren()
+        self.sceneDidLoad()
+    }
+    
+    func backToMenu() {
+        // fazer de novo
+        //let scene = GameScene(size: self.displaySize)
+        
+        let transition = SKTransition.fade(withDuration: 0.5)
+        
+        //self.view?.presentScene(scene, transition: transition)
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        // Called before each frame is rendered
+        
+        // Initialize _lastUpdateTime if it has not already been
+        if self.lastUpdateTime == 0 {
+            self.lastUpdateTime = currentTime
+        }
+        
+        self.actualTime = currentTime - self.lastUpdateTime
+        let str = String(format: "%.2d", lround(self.actualTime))
+        self.counter?.text = str
     }
 }
 
-extension PokemonNode {
-    
-    static let textures = (fire: [#imageLiteral(resourceName: "charmander"), #imageLiteral(resourceName: "charmeleon"), #imageLiteral(resourceName: "charizard"),
-                                  #imageLiteral(resourceName: "arcanine"), #imageLiteral(resourceName: "flareon"), #imageLiteral(resourceName: "growlithe"),
-                                  #imageLiteral(resourceName: "magmar"), #imageLiteral(resourceName: "moltres"), #imageLiteral(resourceName: "ninetails"),
-                                  #imageLiteral(resourceName: "ponyta"), #imageLiteral(resourceName: "rapidash")],
-                           
-                           water: [#imageLiteral(resourceName: "squirtle"), #imageLiteral(resourceName: "wartortle"), #imageLiteral(resourceName: "blastoise"),
-                                   #imageLiteral(resourceName: "shellder"), #imageLiteral(resourceName: "cloyster"), #imageLiteral(resourceName: "lapras"),
-                                   #imageLiteral(resourceName: "articuno"), #imageLiteral(resourceName: "psyduck"), #imageLiteral(resourceName: "golduck"),
-                                   #imageLiteral(resourceName: "krabby"), #imageLiteral(resourceName: "kingler"), #imageLiteral(resourceName: "magikarp"),
-                                   #imageLiteral(resourceName: "gyarados"), #imageLiteral(resourceName: "seel"), #imageLiteral(resourceName: "dewgong"),
-                                   #imageLiteral(resourceName: "vaporeon"), #imageLiteral(resourceName: "horsea"), #imageLiteral(resourceName: "seadra"),
-                                   #imageLiteral(resourceName: "poliwag"), #imageLiteral(resourceName: "poliwhirl"), #imageLiteral(resourceName: "poliwrath"),
-                                   #imageLiteral(resourceName: "slowpoke"), #imageLiteral(resourceName: "slowbro"), #imageLiteral(resourceName: "staryu"),
-                                   #imageLiteral(resourceName: "starmie"), #imageLiteral(resourceName: "tentacool"), #imageLiteral(resourceName: "tentacruel"),
-                                   #imageLiteral(resourceName: "goldeen"), #imageLiteral(resourceName: "seaking")],
-                           
-                           electric: [#imageLiteral(resourceName: "pikachu"), #imageLiteral(resourceName: "raichu"), #imageLiteral(resourceName: "voltorb"),
-                                      #imageLiteral(resourceName: "electrode"), #imageLiteral(resourceName: "jolteon"), #imageLiteral(resourceName: "magnemite"),
-                                      #imageLiteral(resourceName: "magneton"), #imageLiteral(resourceName: "zapdos"), #imageLiteral(resourceName: "electabuzz")])
-    
-    static func randomPokemonOfType(type: PokemonType) -> PokemonNode {
-        return PokemonNode(withType: type, andTexture: self.randomPokemonTextureOfType(type: type))
-        
-    }
-    
-    static func randomPokemonTextureOfType(type: PokemonType) -> SKTexture {
-        let random = GKRandomSource()
-        
-        switch type {
-        case .fire:
-            return SKTexture(image: self.textures.fire[random.nextInt(upperBound: self.textures.fire.count)])
-        case .water:
-            return SKTexture(image: self.textures.water[random.nextInt(upperBound: self.textures.water.count)])
-        case .electric:
-            return SKTexture(image: self.textures.electric[random.nextInt(upperBound: self.textures.electric.count)])
+extension MiniGame01Scene: PetNodeMiniGameDelegate {
+    func didTapPetNode(petNode: PetNodeMiniGame) {
+        if self.blocked == false {
+            if self.typePet == nil {
+                self.typePet = petNode.type
+            }
+            else if petNode.type == self.typePet {
+                self.increaseScore()
+            }
+            else {
+                self.finishLose()
+            }
+            petNode.removeFromParent()
+        }
+        else {
+            self.blocked = false
         }
     }
 }
