@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		970FEA3E1DEF009900F86DDF /* MiniGame01Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970FEA3D1DEF009900F86DDF /* MiniGame01Scene.swift */; };
+		970FEA401DEF00A400F86DDF /* MiniGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970FEA3F1DEF00A400F86DDF /* MiniGameViewController.swift */; };
+		970FEA421DEF00B400F86DDF /* PetNodeMiniGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970FEA411DEF00B400F86DDF /* PetNodeMiniGame.swift */; };
 		979A618C1DEDA59200F8604B /* PetSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */; };
 		979A618E1DEDA9DA00F8604B /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618D1DEDA9DA00F8604B /* AKPickerView.swift */; };
 		97EF4D071DEDF46600446053 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EF4D061DEDF46600446053 /* Pet.swift */; };
@@ -85,6 +88,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		970FEA3D1DEF009900F86DDF /* MiniGame01Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame01Scene.swift; sourceTree = "<group>"; };
+		970FEA3F1DEF00A400F86DDF /* MiniGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGameViewController.swift; sourceTree = "<group>"; };
+		970FEA411DEF00B400F86DDF /* PetNodeMiniGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetNodeMiniGame.swift; sourceTree = "<group>"; };
 		979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetSelectionViewController.swift; sourceTree = "<group>"; };
 		979A618D1DEDA9DA00F8604B /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
 		97EF4D061DEDF46600446053 /* Pet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
@@ -147,6 +153,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		970FEA431DEF00CB00F86DDF /* MiniGames */ = {
+			isa = PBXGroup;
+			children = (
+				970FEA411DEF00B400F86DDF /* PetNodeMiniGame.swift */,
+				970FEA3F1DEF00A400F86DDF /* MiniGameViewController.swift */,
+				970FEA441DEF00EE00F86DDF /* MiniGame01 */,
+			);
+			name = MiniGames;
+			sourceTree = "<group>";
+		};
+		970FEA441DEF00EE00F86DDF /* MiniGame01 */ = {
+			isa = PBXGroup;
+			children = (
+				970FEA3D1DEF009900F86DDF /* MiniGame01Scene.swift */,
+			);
+			name = MiniGame01;
+			sourceTree = "<group>";
+		};
 		97EF4D051DEDF43200446053 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +206,7 @@
 		CE3B2B571DEC631A0096C3D8 /* SpiritPets */ = {
 			isa = PBXGroup;
 			children = (
+				970FEA431DEF00CB00F86DDF /* MiniGames */,
 				97EF4D051DEDF43200446053 /* Model */,
 				CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */,
 				CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */,
@@ -447,10 +472,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				970FEA3E1DEF009900F86DDF /* MiniGame01Scene.swift in Sources */,
 				97EF4D071DEDF46600446053 /* Pet.swift in Sources */,
 				CE3B2B5B1DEC631A0096C3D8 /* ViewController.swift in Sources */,
+				970FEA401DEF00A400F86DDF /* MiniGameViewController.swift in Sources */,
 				CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */,
 				979A618E1DEDA9DA00F8604B /* AKPickerView.swift in Sources */,
+				970FEA421DEF00B400F86DDF /* PetNodeMiniGame.swift in Sources */,
 				979A618C1DEDA59200F8604B /* PetSelectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
