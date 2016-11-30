@@ -12,7 +12,6 @@ class PetSelectionViewController: UIViewController {
 
     
     let pickerView = AKPickerView(frame: CGRect(origin: CGPoint.init(x: 0, y: 20), size: CGSize(width:200, height: 200)))
-    
     @IBOutlet var statusLabels: [UILabel]!
     @IBOutlet weak var hpLabel: UILabel!
     @IBOutlet weak var atkLabel: UILabel!
@@ -32,6 +31,7 @@ class PetSelectionViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.pickerView.frame.size.width = view.frame.width
         self.pickerView.frame.size.height = view.frame.height / 3
+        
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
         self.pickerView.interitemSpacing = CGFloat(20)
