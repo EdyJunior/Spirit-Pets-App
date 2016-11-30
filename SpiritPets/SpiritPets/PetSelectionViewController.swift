@@ -19,7 +19,6 @@ class PetSelectionViewController: UIViewController {
     
     let images = [UIImage.init(named: "pet0"), UIImage.init(named: "pet1"),UIImage.init(named: "pet0"), UIImage.init(named: "pet1")]
     
-    var selectedPet: Pet!
     
     let pett0 = PetStatus(hp: 100, atk: 80, dfs: 60)
     let pett1 = PetStatus(hp: 100, atk: 70, dfs: 70)
