@@ -12,6 +12,7 @@
 		970FEA421DEF00B400F86DDF /* PetNodeMiniGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970FEA411DEF00B400F86DDF /* PetNodeMiniGame.swift */; };
 		979A618C1DEDA59200F8604B /* PetSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */; };
 		979A618E1DEDA9DA00F8604B /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618D1DEDA9DA00F8604B /* AKPickerView.swift */; };
+		97F1FD271DF04B9F00264340 /* BergStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97F1FD261DF04B9F00264340 /* BergStoryboard.storyboard */; };
 		CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */; };
 		CE3B2B5B1DEC631A0096C3D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */; };
 		CE3B2B5E1DEC631A0096C3D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3B2B5C1DEC631A0096C3D8 /* Main.storyboard */; };
@@ -92,6 +93,7 @@
 		970FEA411DEF00B400F86DDF /* PetNodeMiniGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetNodeMiniGame.swift; sourceTree = "<group>"; };
 		979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetSelectionViewController.swift; sourceTree = "<group>"; };
 		979A618D1DEDA9DA00F8604B /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
+		97F1FD261DF04B9F00264340 /* BergStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BergStoryboard.storyboard; sourceTree = "<group>"; };
 		CE3B2B551DEC631A0096C3D8 /* SpiritPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpiritPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				CE3B2B641DEC631A0096C3D8 /* Info.plist */,
 				979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */,
 				979A618D1DEDA9DA00F8604B /* AKPickerView.swift */,
+				97F1FD261DF04B9F00264340 /* BergStoryboard.storyboard */,
 			);
 			path = SpiritPets;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE3B2B631DEC631A0096C3D8 /* LaunchScreen.storyboard in Resources */,
+				97F1FD271DF04B9F00264340 /* BergStoryboard.storyboard in Resources */,
 				CE3B2B601DEC631A0096C3D8 /* Assets.xcassets in Resources */,
 				CE3B2B5E1DEC631A0096C3D8 /* Main.storyboard in Resources */,
 			);
