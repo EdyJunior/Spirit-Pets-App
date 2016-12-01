@@ -604,3 +604,7 @@ public class AKPickerView: UIView, UICollectionViewDataSource, UICollectionViewD
     }
     
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 41d8da3d2ae56536b5f7566c83648defc34b2919
