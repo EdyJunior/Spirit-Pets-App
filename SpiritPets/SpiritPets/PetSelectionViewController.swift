@@ -9,11 +9,6 @@
 import UIKit
 
 class PetSelectionViewController: UIViewController {
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 41d8da3d2ae56536b5f7566c83648defc34b2919
     
     let pickerView = AKPickerView(frame: CGRect(origin: CGPoint.init(x: 0, y: 20), size: CGSize(width:200, height: 200)))
     @IBOutlet var statusLabels: [UILabel]!
@@ -30,11 +25,7 @@ class PetSelectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> 41d8da3d2ae56536b5f7566c83648defc34b2919
         // Do any additional setup after loading the view.
         self.pickerView.frame.size.width = view.frame.width
         self.pickerView.frame.size.height = view.frame.height / 3

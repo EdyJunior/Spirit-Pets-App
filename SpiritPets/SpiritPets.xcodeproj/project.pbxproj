@@ -7,38 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-<<<<<<< HEAD
-		B50C212B1DF05E3200779435 /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C212A1DF05E3200779435 /* AKPickerView.swift */; };
-		B50C212D1DF05E8300779435 /* PetSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C212C1DF05E8300779435 /* PetSelectionViewController.swift */; };
-		B50C21301DF05EDD00779435 /* Parlepus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C212F1DF05EDD00779435 /* Parlepus.swift */; };
-		B50C21321DF05EF100779435 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21311DF05EF100779435 /* Pet.swift */; };
-		B50C21341DF05F2400779435 /* PetUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21331DF05F2400779435 /* PetUtils.swift */; };
-		B5167E0A1DEC72E900DDAD8C /* MiniGame01Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E091DEC72E900DDAD8C /* MiniGame01Scene.swift */; };
-		B5167E0D1DEC736F00DDAD8C /* PetNodeMiniGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E0C1DEC736F00DDAD8C /* PetNodeMiniGame.swift */; };
-		B5167E0F1DEDBD0A00DDAD8C /* MiniGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E0E1DEDBD0A00DDAD8C /* MiniGameViewController.swift */; };
-		B5167E111DEF021A00DDAD8C /* MiniGame02Bitmasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E101DEF021A00DDAD8C /* MiniGame02Bitmasks.swift */; };
-		B5167E141DEF02EB00DDAD8C /* MiniGame02Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E131DEF02EB00DDAD8C /* MiniGame02Scene.swift */; };
-		B5167E161DEF034600DDAD8C /* MiniGame02Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E151DEF034600DDAD8C /* MiniGame02Manager.swift */; };
-		B5167E181DEF037800DDAD8C /* MiniGame02Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E171DEF037800DDAD8C /* MiniGame02Player.swift */; };
-		B5167E1B1DEF053B00DDAD8C /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E1A1DEF053B00DDAD8C /* Bullet.swift */; };
-		B5167E1D1DEF056000DDAD8C /* FriendlyBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E1C1DEF056000DDAD8C /* FriendlyBullet.swift */; };
-		B5167E1F1DEF059800DDAD8C /* EnemyBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E1E1DEF059800DDAD8C /* EnemyBullet.swift */; };
-		B5167E221DEF06A500DDAD8C /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E211DEF06A500DDAD8C /* Enemy.swift */; };
-		B5167E241DEF06D300DDAD8C /* SmallEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E231DEF06D300DDAD8C /* SmallEnemy.swift */; };
-		B5167E261DEF0D4C00DDAD8C /* BigEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E251DEF0D4C00DDAD8C /* BigEnemy.swift */; };
-		B5167E291DEF4B7A00DDAD8C /* MiniGameSelectionScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E281DEF4B7A00DDAD8C /* MiniGameSelectionScreenViewController.swift */; };
-		B5167E2B1DEF55B300DDAD8C /* MiniGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E2A1DEF55B300DDAD8C /* MiniGameTableViewCell.swift */; };
-		B5167E2D1DEFA28400DDAD8C /* MiniGamesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5167E2C1DEFA28400DDAD8C /* MiniGamesList.swift */; };
-=======
 		970FEA3E1DEF009900F86DDF /* MiniGame01Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970FEA3D1DEF009900F86DDF /* MiniGame01Scene.swift */; };
 		970FEA401DEF00A400F86DDF /* MiniGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970FEA3F1DEF00A400F86DDF /* MiniGameViewController.swift */; };
 		970FEA421DEF00B400F86DDF /* PetNodeMiniGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970FEA411DEF00B400F86DDF /* PetNodeMiniGame.swift */; };
 		979A618C1DEDA59200F8604B /* PetSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */; };
 		979A618E1DEDA9DA00F8604B /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618D1DEDA9DA00F8604B /* AKPickerView.swift */; };
->>>>>>> 41d8da3d2ae56536b5f7566c83648defc34b2919
+		B50C21371DF06D6F00779435 /* MiniGame02Bitmasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21361DF06D6F00779435 /* MiniGame02Bitmasks.swift */; };
+		B50C21391DF06D7A00779435 /* MiniGame02Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21381DF06D7A00779435 /* MiniGame02Manager.swift */; };
+		B50C213B1DF06D9E00779435 /* MiniGame02Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C213A1DF06D9E00779435 /* MiniGame02Scene.swift */; };
+		B50C213D1DF06DAF00779435 /* MiniGame02Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C213C1DF06DAF00779435 /* MiniGame02Player.swift */; };
+		B50C21401DF06DCD00779435 /* Parlepus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C213F1DF06DCD00779435 /* Parlepus.swift */; };
+		B50C21421DF06DD500779435 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21411DF06DD500779435 /* Pet.swift */; };
+		B50C21441DF06DDF00779435 /* PetUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21431DF06DDF00779435 /* PetUtils.swift */; };
+		B50C21471DF06E0500779435 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21461DF06E0500779435 /* Bullet.swift */; };
+		B50C21491DF06E1600779435 /* SmallEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21481DF06E1600779435 /* SmallEnemy.swift */; };
+		B50C214B1DF06E3000779435 /* BigEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C214A1DF06E3000779435 /* BigEnemy.swift */; };
+		B50C214E1DF06E5900779435 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C214D1DF06E5900779435 /* Enemy.swift */; };
+		B50C21501DF06E6800779435 /* FriendlyBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C214F1DF06E6800779435 /* FriendlyBullet.swift */; };
+		B50C21521DF06E7000779435 /* EnemyBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21511DF06E7000779435 /* EnemyBullet.swift */; };
+		B50C21551DF06EAC00779435 /* MiniGameSelectionScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21541DF06EAC00779435 /* MiniGameSelectionScreenViewController.swift */; };
+		B50C21571DF06EB400779435 /* MiniGamesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21561DF06EB400779435 /* MiniGamesList.swift */; };
+		B50C21591DF06EC200779435 /* MiniGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21581DF06EC200779435 /* MiniGameTableViewCell.swift */; };
+		B50C215B1DF0738300779435 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50C215A1DF0738300779435 /* Main.storyboard */; };
 		CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */; };
 		CE3B2B5B1DEC631A0096C3D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */; };
-		CE3B2B5E1DEC631A0096C3D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3B2B5C1DEC631A0096C3D8 /* Main.storyboard */; };
 		CE3B2B601DEC631A0096C3D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3B2B5F1DEC631A0096C3D8 /* Assets.xcassets */; };
 		CE3B2B631DEC631A0096C3D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3B2B611DEC631A0096C3D8 /* LaunchScreen.storyboard */; };
 		CE3B2B6E1DEC631A0096C3D8 /* SpiritPetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B6D1DEC631A0096C3D8 /* SpiritPetsTests.swift */; };
@@ -111,39 +103,31 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-<<<<<<< HEAD
-		B50C212A1DF05E3200779435 /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
-		B50C212C1DF05E8300779435 /* PetSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetSelectionViewController.swift; sourceTree = "<group>"; };
-		B50C212F1DF05EDD00779435 /* Parlepus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parlepus.swift; sourceTree = "<group>"; };
-		B50C21311DF05EF100779435 /* Pet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
-		B50C21331DF05F2400779435 /* PetUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetUtils.swift; sourceTree = "<group>"; };
-		B5167E091DEC72E900DDAD8C /* MiniGame01Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame01Scene.swift; sourceTree = "<group>"; };
-		B5167E0C1DEC736F00DDAD8C /* PetNodeMiniGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetNodeMiniGame.swift; sourceTree = "<group>"; };
-		B5167E0E1DEDBD0A00DDAD8C /* MiniGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGameViewController.swift; sourceTree = "<group>"; };
-		B5167E101DEF021A00DDAD8C /* MiniGame02Bitmasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Bitmasks.swift; sourceTree = "<group>"; };
-		B5167E131DEF02EB00DDAD8C /* MiniGame02Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Scene.swift; sourceTree = "<group>"; };
-		B5167E151DEF034600DDAD8C /* MiniGame02Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Manager.swift; sourceTree = "<group>"; };
-		B5167E171DEF037800DDAD8C /* MiniGame02Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Player.swift; sourceTree = "<group>"; };
-		B5167E1A1DEF053B00DDAD8C /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
-		B5167E1C1DEF056000DDAD8C /* FriendlyBullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendlyBullet.swift; sourceTree = "<group>"; };
-		B5167E1E1DEF059800DDAD8C /* EnemyBullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyBullet.swift; sourceTree = "<group>"; };
-		B5167E211DEF06A500DDAD8C /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
-		B5167E231DEF06D300DDAD8C /* SmallEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallEnemy.swift; sourceTree = "<group>"; };
-		B5167E251DEF0D4C00DDAD8C /* BigEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigEnemy.swift; sourceTree = "<group>"; };
-		B5167E281DEF4B7A00DDAD8C /* MiniGameSelectionScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGameSelectionScreenViewController.swift; sourceTree = "<group>"; };
-		B5167E2A1DEF55B300DDAD8C /* MiniGameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGameTableViewCell.swift; sourceTree = "<group>"; };
-		B5167E2C1DEFA28400DDAD8C /* MiniGamesList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGamesList.swift; sourceTree = "<group>"; };
-=======
 		970FEA3D1DEF009900F86DDF /* MiniGame01Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame01Scene.swift; sourceTree = "<group>"; };
 		970FEA3F1DEF00A400F86DDF /* MiniGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGameViewController.swift; sourceTree = "<group>"; };
 		970FEA411DEF00B400F86DDF /* PetNodeMiniGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetNodeMiniGame.swift; sourceTree = "<group>"; };
 		979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetSelectionViewController.swift; sourceTree = "<group>"; };
 		979A618D1DEDA9DA00F8604B /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
->>>>>>> 41d8da3d2ae56536b5f7566c83648defc34b2919
+		B50C21361DF06D6F00779435 /* MiniGame02Bitmasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Bitmasks.swift; sourceTree = "<group>"; };
+		B50C21381DF06D7A00779435 /* MiniGame02Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Manager.swift; sourceTree = "<group>"; };
+		B50C213A1DF06D9E00779435 /* MiniGame02Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Scene.swift; sourceTree = "<group>"; };
+		B50C213C1DF06DAF00779435 /* MiniGame02Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Player.swift; sourceTree = "<group>"; };
+		B50C213F1DF06DCD00779435 /* Parlepus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parlepus.swift; sourceTree = "<group>"; };
+		B50C21411DF06DD500779435 /* Pet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
+		B50C21431DF06DDF00779435 /* PetUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetUtils.swift; sourceTree = "<group>"; };
+		B50C21461DF06E0500779435 /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
+		B50C21481DF06E1600779435 /* SmallEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallEnemy.swift; sourceTree = "<group>"; };
+		B50C214A1DF06E3000779435 /* BigEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BigEnemy.swift; sourceTree = "<group>"; };
+		B50C214D1DF06E5900779435 /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
+		B50C214F1DF06E6800779435 /* FriendlyBullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendlyBullet.swift; sourceTree = "<group>"; };
+		B50C21511DF06E7000779435 /* EnemyBullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyBullet.swift; sourceTree = "<group>"; };
+		B50C21541DF06EAC00779435 /* MiniGameSelectionScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGameSelectionScreenViewController.swift; sourceTree = "<group>"; };
+		B50C21561DF06EB400779435 /* MiniGamesList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGamesList.swift; sourceTree = "<group>"; };
+		B50C21581DF06EC200779435 /* MiniGameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGameTableViewCell.swift; sourceTree = "<group>"; };
+		B50C215A1DF0738300779435 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CE3B2B551DEC631A0096C3D8 /* SpiritPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpiritPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CE3B2B5D1DEC631A0096C3D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE3B2B5F1DEC631A0096C3D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE3B2B621DEC631A0096C3D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE3B2B641DEC631A0096C3D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -199,32 +183,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-<<<<<<< HEAD
-		B50C212E1DF05EB300779435 /* PetUtil */ = {
-			isa = PBXGroup;
-			children = (
-				B50C212F1DF05EDD00779435 /* Parlepus.swift */,
-				B50C21311DF05EF100779435 /* Pet.swift */,
-				B50C21331DF05F2400779435 /* PetUtils.swift */,
-			);
-			name = PetUtil;
-			sourceTree = "<group>";
-		};
-		B5167E081DEC72C800DDAD8C /* MiniGames */ = {
-			isa = PBXGroup;
-			children = (
-				B5167E0C1DEC736F00DDAD8C /* PetNodeMiniGame.swift */,
-				B5167E0E1DEDBD0A00DDAD8C /* MiniGameViewController.swift */,
-				B5167E0B1DEC730A00DDAD8C /* MiniGame01 */,
-				B5167E121DEF025600DDAD8C /* MiniGame02 */,
-=======
 		970FEA431DEF00CB00F86DDF /* MiniGames */ = {
 			isa = PBXGroup;
 			children = (
 				970FEA411DEF00B400F86DDF /* PetNodeMiniGame.swift */,
 				970FEA3F1DEF00A400F86DDF /* MiniGameViewController.swift */,
 				970FEA441DEF00EE00F86DDF /* MiniGame01 */,
->>>>>>> 41d8da3d2ae56536b5f7566c83648defc34b2919
+				B50C21351DF06D4700779435 /* MiniGame02 */,
 			);
 			name = MiniGames;
 			sourceTree = "<group>";
@@ -237,55 +202,64 @@
 			name = MiniGame01;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
-		B5167E121DEF025600DDAD8C /* MiniGame02 */ = {
-			isa = PBXGroup;
-			children = (
-				B5167E201DEF068700DDAD8C /* Enemies */,
-				B5167E191DEF052800DDAD8C /* Bullets */,
-				B5167E131DEF02EB00DDAD8C /* MiniGame02Scene.swift */,
-				B5167E151DEF034600DDAD8C /* MiniGame02Manager.swift */,
-				B5167E171DEF037800DDAD8C /* MiniGame02Player.swift */,
-				B5167E101DEF021A00DDAD8C /* MiniGame02Bitmasks.swift */,
-			);
-			name = MiniGame02;
-			sourceTree = "<group>";
-		};
-		B5167E191DEF052800DDAD8C /* Bullets */ = {
-			isa = PBXGroup;
-			children = (
-				B5167E1A1DEF053B00DDAD8C /* Bullet.swift */,
-				B5167E1C1DEF056000DDAD8C /* FriendlyBullet.swift */,
-				B5167E1E1DEF059800DDAD8C /* EnemyBullet.swift */,
-			);
-			name = Bullets;
-			sourceTree = "<group>";
-		};
-		B5167E201DEF068700DDAD8C /* Enemies */ = {
-			isa = PBXGroup;
-			children = (
-				B5167E211DEF06A500DDAD8C /* Enemy.swift */,
-				B5167E231DEF06D300DDAD8C /* SmallEnemy.swift */,
-				B5167E251DEF0D4C00DDAD8C /* BigEnemy.swift */,
-			);
-			name = Enemies;
-			sourceTree = "<group>";
-		};
-		B5167E271DEF4AE700DDAD8C /* MiniGameSelectionScreenViewController */ = {
-			isa = PBXGroup;
-			children = (
-				B5167E281DEF4B7A00DDAD8C /* MiniGameSelectionScreenViewController.swift */,
-				B5167E2A1DEF55B300DDAD8C /* MiniGameTableViewCell.swift */,
-				B5167E2C1DEFA28400DDAD8C /* MiniGamesList.swift */,
-			);
-			name = MiniGameSelectionScreenViewController;
-=======
 		97EF4D051DEDF43200446053 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Model;
->>>>>>> 41d8da3d2ae56536b5f7566c83648defc34b2919
+			sourceTree = "<group>";
+		};
+		B50C21351DF06D4700779435 /* MiniGame02 */ = {
+			isa = PBXGroup;
+			children = (
+				B50C21451DF06DF500779435 /* Bullets */,
+				B50C214C1DF06E3600779435 /* Enemies */,
+				B50C21381DF06D7A00779435 /* MiniGame02Manager.swift */,
+				B50C213C1DF06DAF00779435 /* MiniGame02Player.swift */,
+				B50C21361DF06D6F00779435 /* MiniGame02Bitmasks.swift */,
+				B50C213A1DF06D9E00779435 /* MiniGame02Scene.swift */,
+			);
+			name = MiniGame02;
+			sourceTree = "<group>";
+		};
+		B50C213E1DF06DBF00779435 /* PetUtils */ = {
+			isa = PBXGroup;
+			children = (
+				B50C21411DF06DD500779435 /* Pet.swift */,
+				B50C213F1DF06DCD00779435 /* Parlepus.swift */,
+				B50C21431DF06DDF00779435 /* PetUtils.swift */,
+			);
+			name = PetUtils;
+			sourceTree = "<group>";
+		};
+		B50C21451DF06DF500779435 /* Bullets */ = {
+			isa = PBXGroup;
+			children = (
+				B50C21461DF06E0500779435 /* Bullet.swift */,
+				B50C214F1DF06E6800779435 /* FriendlyBullet.swift */,
+				B50C21511DF06E7000779435 /* EnemyBullet.swift */,
+			);
+			name = Bullets;
+			sourceTree = "<group>";
+		};
+		B50C214C1DF06E3600779435 /* Enemies */ = {
+			isa = PBXGroup;
+			children = (
+				B50C214D1DF06E5900779435 /* Enemy.swift */,
+				B50C21481DF06E1600779435 /* SmallEnemy.swift */,
+				B50C214A1DF06E3000779435 /* BigEnemy.swift */,
+			);
+			name = Enemies;
+			sourceTree = "<group>";
+		};
+		B50C21531DF06E8900779435 /* MiniGameSelectionScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B50C21541DF06EAC00779435 /* MiniGameSelectionScreenViewController.swift */,
+				B50C21581DF06EC200779435 /* MiniGameTableViewCell.swift */,
+				B50C21561DF06EB400779435 /* MiniGamesList.swift */,
+			);
+			name = MiniGameSelectionScreen;
 			sourceTree = "<group>";
 		};
 		CE3B2B4C1DEC63190096C3D8 = {
@@ -315,27 +289,18 @@
 		CE3B2B571DEC631A0096C3D8 /* SpiritPets */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				B50C212E1DF05EB300779435 /* PetUtil */,
-				B5167E271DEF4AE700DDAD8C /* MiniGameSelectionScreenViewController */,
-				B5167E081DEC72C800DDAD8C /* MiniGames */,
-=======
+				B50C213E1DF06DBF00779435 /* PetUtils */,
+				B50C21531DF06E8900779435 /* MiniGameSelectionScreen */,
 				970FEA431DEF00CB00F86DDF /* MiniGames */,
 				97EF4D051DEDF43200446053 /* Model */,
->>>>>>> 41d8da3d2ae56536b5f7566c83648defc34b2919
 				CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */,
 				CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */,
-				CE3B2B5C1DEC631A0096C3D8 /* Main.storyboard */,
+				B50C215A1DF0738300779435 /* Main.storyboard */,
 				CE3B2B5F1DEC631A0096C3D8 /* Assets.xcassets */,
 				CE3B2B611DEC631A0096C3D8 /* LaunchScreen.storyboard */,
 				CE3B2B641DEC631A0096C3D8 /* Info.plist */,
-<<<<<<< HEAD
-				B50C212A1DF05E3200779435 /* AKPickerView.swift */,
-				B50C212C1DF05E8300779435 /* PetSelectionViewController.swift */,
-=======
 				979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */,
 				979A618D1DEDA9DA00F8604B /* AKPickerView.swift */,
->>>>>>> 41d8da3d2ae56536b5f7566c83648defc34b2919
 			);
 			path = SpiritPets;
 			sourceTree = "<group>";
@@ -549,8 +514,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE3B2B631DEC631A0096C3D8 /* LaunchScreen.storyboard in Resources */,
+				B50C215B1DF0738300779435 /* Main.storyboard in Resources */,
 				CE3B2B601DEC631A0096C3D8 /* Assets.xcassets in Resources */,
-				CE3B2B5E1DEC631A0096C3D8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,39 +557,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-				B50C212B1DF05E3200779435 /* AKPickerView.swift in Sources */,
-				B5167E0A1DEC72E900DDAD8C /* MiniGame01Scene.swift in Sources */,
-				B5167E2B1DEF55B300DDAD8C /* MiniGameTableViewCell.swift in Sources */,
-				CE3B2B5B1DEC631A0096C3D8 /* ViewController.swift in Sources */,
-				B50C21301DF05EDD00779435 /* Parlepus.swift in Sources */,
-				B50C21341DF05F2400779435 /* PetUtils.swift in Sources */,
-				B5167E221DEF06A500DDAD8C /* Enemy.swift in Sources */,
-				B5167E111DEF021A00DDAD8C /* MiniGame02Bitmasks.swift in Sources */,
-				B5167E241DEF06D300DDAD8C /* SmallEnemy.swift in Sources */,
-				B5167E141DEF02EB00DDAD8C /* MiniGame02Scene.swift in Sources */,
-				B5167E0F1DEDBD0A00DDAD8C /* MiniGameViewController.swift in Sources */,
-				B5167E261DEF0D4C00DDAD8C /* BigEnemy.swift in Sources */,
-				B5167E0D1DEC736F00DDAD8C /* PetNodeMiniGame.swift in Sources */,
-				B5167E2D1DEFA28400DDAD8C /* MiniGamesList.swift in Sources */,
-				B5167E1F1DEF059800DDAD8C /* EnemyBullet.swift in Sources */,
-				B5167E181DEF037800DDAD8C /* MiniGame02Player.swift in Sources */,
-				B5167E1B1DEF053B00DDAD8C /* Bullet.swift in Sources */,
-				B5167E291DEF4B7A00DDAD8C /* MiniGameSelectionScreenViewController.swift in Sources */,
-				B5167E161DEF034600DDAD8C /* MiniGame02Manager.swift in Sources */,
-				B5167E1D1DEF056000DDAD8C /* FriendlyBullet.swift in Sources */,
-				B50C212D1DF05E8300779435 /* PetSelectionViewController.swift in Sources */,
-				CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */,
-				B50C21321DF05EF100779435 /* Pet.swift in Sources */,
-=======
 				970FEA3E1DEF009900F86DDF /* MiniGame01Scene.swift in Sources */,
+				B50C21401DF06DCD00779435 /* Parlepus.swift in Sources */,
+				B50C21491DF06E1600779435 /* SmallEnemy.swift in Sources */,
+				B50C21471DF06E0500779435 /* Bullet.swift in Sources */,
+				B50C21501DF06E6800779435 /* FriendlyBullet.swift in Sources */,
 				CE3B2B5B1DEC631A0096C3D8 /* ViewController.swift in Sources */,
+				B50C21371DF06D6F00779435 /* MiniGame02Bitmasks.swift in Sources */,
 				970FEA401DEF00A400F86DDF /* MiniGameViewController.swift in Sources */,
 				CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */,
 				979A618E1DEDA9DA00F8604B /* AKPickerView.swift in Sources */,
+				B50C213D1DF06DAF00779435 /* MiniGame02Player.swift in Sources */,
+				B50C21551DF06EAC00779435 /* MiniGameSelectionScreenViewController.swift in Sources */,
 				970FEA421DEF00B400F86DDF /* PetNodeMiniGame.swift in Sources */,
+				B50C21441DF06DDF00779435 /* PetUtils.swift in Sources */,
+				B50C214B1DF06E3000779435 /* BigEnemy.swift in Sources */,
+				B50C21591DF06EC200779435 /* MiniGameTableViewCell.swift in Sources */,
+				B50C21521DF06E7000779435 /* EnemyBullet.swift in Sources */,
 				979A618C1DEDA59200F8604B /* PetSelectionViewController.swift in Sources */,
->>>>>>> 41d8da3d2ae56536b5f7566c83648defc34b2919
+				B50C214E1DF06E5900779435 /* Enemy.swift in Sources */,
+				B50C21391DF06D7A00779435 /* MiniGame02Manager.swift in Sources */,
+				B50C21421DF06DD500779435 /* Pet.swift in Sources */,
+				B50C21571DF06EB400779435 /* MiniGamesList.swift in Sources */,
+				B50C213B1DF06D9E00779435 /* MiniGame02Scene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,14 +636,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CE3B2B5C1DEC631A0096C3D8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE3B2B5D1DEC631A0096C3D8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CE3B2B611DEC631A0096C3D8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
