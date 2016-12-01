@@ -11,10 +11,23 @@ import UIKit
 class MainScreenViewController: UIViewController {
 
     @IBOutlet weak var feedButton: UIButton!
+    @IBOutlet weak var exerciceButton: UIButton!
+    @IBOutlet weak var sleepButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var achievementButton: UIButton!
+    @IBOutlet weak var swordButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        feedButton.imageEdgeInsets = UIEdgeInsets(top: CGFloat(50), left: CGFloat(50), bottom: CGFloat(50), right: CGFloat(50))
+        let uiEdgeInsets = UIEdgeInsets(top: CGFloat(20), left: CGFloat(20), bottom: CGFloat(20), right: CGFloat(20))
+        
+        feedButton.imageEdgeInsets = uiEdgeInsets
+        exerciceButton.imageEdgeInsets = uiEdgeInsets
+        sleepButton.imageEdgeInsets = uiEdgeInsets
+        playButton.imageEdgeInsets = uiEdgeInsets
+        achievementButton.imageEdgeInsets = uiEdgeInsets
+        swordButton.imageEdgeInsets = uiEdgeInsets
+        
         // Do any additional setup after loading the view.
         
     }
