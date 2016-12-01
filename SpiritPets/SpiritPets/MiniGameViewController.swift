@@ -11,24 +11,45 @@ import SpriteKit
 
 class MiniGameViewController: UIViewController {
     
+    var numberScene: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        loadScene()
         
-        let scene = MiniGame01Scene(size: UIScreen.main.bounds.size)
+    }
+    
+    func chooseScene() -> SKScene {
+        var chosenScene: SKScene? = nil
+        switch numberScene! {
+        case 1:
+            chosenScene = MiniGame01Scene(size: UIScreen.main.bounds.size)
+        case 2:
+            
+            chosenScene = MiniGame02Scene(size: UIScreen.main.bounds.size)
+        default:
+            print("This MiniGame does not exist.")
+            break
+        }
+        return chosenScene!
+    }
+    
+    func loadScene() {
+        //let scene = chooseScene()
+        let scene = MiniGame02Scene(size: UIScreen.main.bounds.size)
         
-        // Set the scale mode to scale to fit the window
         scene.scaleMode = .aspectFill
         
-        // Present the scene
-        if let view = self.view as! SKView? {
-            view.presentScene(scene)
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+        let skView = SKView(frame: self.view.frame)
+        skView.ignoresSiblingOrder = true
+        skView.showsFPS = true
+        skView.showsNodeCount = true
+        
+        self.view.addSubview(skView)
+        
+        skView.presentScene(scene)
+
     }
     
     override func didReceiveMemoryWarning() {

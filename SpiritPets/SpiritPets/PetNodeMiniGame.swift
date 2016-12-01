@@ -9,11 +9,6 @@
 import SpriteKit
 import GameplayKit
 
-enum PetType {
-    case light
-    case dark
-}
-
 protocol PetNodeMiniGameDelegate {
     func didTapPetNode(petNode: PetNodeMiniGame)
 }
