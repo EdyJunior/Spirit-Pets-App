@@ -26,6 +26,7 @@ class PetSelectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
         self.pickerView.frame.size.width = view.frame.width
@@ -40,6 +41,11 @@ class PetSelectionViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        //so pra testar vei ************
+        let storyBerg = UIStoryboard.init(name: "BergStoryboard", bundle: nil)
+        let mainScreen = storyBerg.instantiateInitialViewController()
+        self.present(mainScreen!, animated: true, completion: nil)
+        //******************************
         let selectedIndex = 1
         self.pickerView.selectItem(selectedIndex)
         self.pickerView.reloadData()
