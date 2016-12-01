@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SMt-Zx-lWB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="CiG-14-Qmy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,10 +27,59 @@
             </objects>
             <point key="canvasLocation" x="58" y="-6"/>
         </scene>
+        <!--Mini Game Selection Screen View Controller-->
+        <scene sceneID="EEr-As-no6">
+            <objects>
+                <tableViewController id="CiG-14-Qmy" customClass="MiniGameSelectionScreenViewController" customModule="SpiritPets" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" id="8wr-1q-1jL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="bsF-8A-trP" customClass="MiniGameTableViewCell" customModule="SpiritPets" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="150"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bsF-8A-trP" id="gCz-qd-tdX">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h79-Vx-33E">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8y5-ca-1Ry">
+                                            <rect key="frame" x="103" y="120" width="264" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="backgroundImageView" destination="h79-Vx-33E" id="RKa-ML-TaO"/>
+                                    <outlet property="nameLabel" destination="8y5-ca-1Ry" id="TyM-PL-2SW"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="CiG-14-Qmy" id="4FW-p1-JdG"/>
+                            <outlet property="delegate" destination="CiG-14-Qmy" id="RO9-xO-kC0"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="miniGameTableView" destination="8wr-1q-1jL" id="bdL-hz-2cl"/>
+                        <segue destination="SMt-Zx-lWB" kind="show" identifier="MiniGameIdentifier" id="tdP-YS-uAL"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XV0-Fq-Pbh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-797.60000000000002" y="679.61019490254876"/>
+        </scene>
         <!--Mini Game View Controller-->
         <scene sceneID="kMK-Be-60N">
             <objects>
-                <viewController id="SMt-Zx-lWB" customClass="MiniGameViewController" customModule="SpiritPets" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="SMt-Zx-lWB" customClass="MiniGameViewController" customModule="SpiritPets" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hn9-ez-QNb"/>
                         <viewControllerLayoutGuide type="bottom" id="shI-N9-Zd9"/>
@@ -38,7 +87,7 @@
                     <view key="view" contentMode="scaleToFill" id="Hf7-3b-IYI" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i2v-jf-qCI" userLabel="First Responder" sceneMemberID="firstResponder"/>
