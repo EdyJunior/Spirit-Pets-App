@@ -29,3 +29,5 @@ struct GrowthAttributes {
     var awake: Int
     var stamina: Int
 }
+
+let defaults = UserDefaults.standard

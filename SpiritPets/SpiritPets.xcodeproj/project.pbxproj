@@ -44,6 +44,7 @@
 		CE3B2B981DEC631A0096C3D8 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B971DEC631A0096C3D8 /* NotificationController.swift */; };
 		CE3B2B9A1DEC631A0096C3D8 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B991DEC631A0096C3D8 /* ComplicationController.swift */; };
 		CE3B2B9C1DEC631A0096C3D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3B2B9B1DEC631A0096C3D8 /* Assets.xcassets */; };
+		CE6237331DF19B020021FD86 /* PetsAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = CE6237321DF19B020021FD86 /* PetsAttributes.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,7 @@
 		CE3B2B991DEC631A0096C3D8 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		CE3B2B9B1DEC631A0096C3D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE3B2B9D1DEC631A0096C3D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE6237321DF19B020021FD86 /* PetsAttributes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PetsAttributes.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 				B50C21411DF06DD500779435 /* Pet.swift */,
 				B50C213F1DF06DCD00779435 /* Parlepus.swift */,
 				B50C21431DF06DDF00779435 /* PetUtils.swift */,
+				CE6237321DF19B020021FD86 /* PetsAttributes.json */,
 			);
 			name = PetUtils;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 			files = (
 				CE3B2B631DEC631A0096C3D8 /* LaunchScreen.storyboard in Resources */,
 				B50C215B1DF0738300779435 /* Main.storyboard in Resources */,
+				CE6237331DF19B020021FD86 /* PetsAttributes.json in Resources */,
 				CE3B2B601DEC631A0096C3D8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
