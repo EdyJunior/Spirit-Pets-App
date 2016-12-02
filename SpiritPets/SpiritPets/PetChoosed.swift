@@ -1,15 +1,15 @@
 //
-//  Parlepus.swift
+//  PetChoosed.swift
 //  SpiritPets
 //
-//  Created by Edvaldo Junior on 30/11/16.
+//  Created by Edvaldo Junior on 02/12/16.
 //  Copyright © 2016 Edvaldo Junior. All rights reserved.
 //
 
 import UIKit
 
-class Parlepus: NSObject, Pet {
-    
+class PetChoosed: NSObject, Pet {
+
     var battleAtt: BattleAttributes
     var baseBattleAtr = BattleAttributes(hp: 10, atk: 8, dfs: 4, rdm: 5, lv: 0, xp: 0)
     var growthAtt: GrowthAttributes
@@ -65,5 +65,25 @@ class Parlepus: NSObject, Pet {
             hp = battleAtt.hp
         }
         return hp
+    }
+    
+    func lvlUp() {
+        
+    }
+    
+    func fed() {
+        
+    }
+    
+    func sleep() {
+        
+    }
+    
+    func wakeUp() {
+        
+    }
+    
+    func excercise() {
+        
     }
 }

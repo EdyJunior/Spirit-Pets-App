@@ -16,7 +16,7 @@ protocol Pet {
     var image: UIImage { get set }
     var type: PetType { get set }
     
-    init(type: PetType)
+    init(name: String)
     
     func calculateAttributes()
     
@@ -25,4 +25,14 @@ protocol Pet {
     func calculateDamageReceived(enemysOffensive offensive: Int) -> Int
     
     func add(toHp: Int, theValue value: Int) -> Int
+    
+    func lvlUp()
+    
+    func fed()
+    
+    func sleep()
+    
+    func wakeUp()
+    
+    func excercise()
 }
