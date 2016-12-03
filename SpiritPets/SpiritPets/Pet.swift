@@ -12,8 +12,9 @@ protocol Pet {
     
     var battleAtt: BattleAttributes { get set }
     var baseBattleAtr: BattleAttributes { get set }
-    var growthAtt: GrowthAttributes { get set }
-    var image: UIImage { get set }
+    
+    var frontImage: UIImage { get set }
+    var backImage: UIImage { get set }
     var type: PetType { get set }
     
     init(name: String)
@@ -26,13 +27,7 @@ protocol Pet {
     
     func add(toHp: Int, theValue value: Int) -> Int
     
+    func xpUp(xp: Int)
+    
     func lvlUp()
-    
-    func fed()
-    
-    func sleep()
-    
-    func wakeUp()
-    
-    func excercise()
 }

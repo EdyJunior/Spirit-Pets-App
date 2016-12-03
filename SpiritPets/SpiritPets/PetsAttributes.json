@@ -3,7 +3,8 @@
     "number": 1,
     "name": "Parlepus",
     "type": "light",
-    "image": "Parlepus",
+    "frontImage": "Parlepus",
+    "backImage": "Parlepus_B",
     "baseBattleAtt": {
         "hp": 10,
         "atk": 8,
@@ -18,7 +19,8 @@
     "number": 5,
     "name": "Pardaemon",
     "type": "dark",
-    "image": "Pardaemon",
+    "frontImage": "Pardaemon",
+    "backImage": "Pardaemon_B",
     "baseBattleAtt": {
         "hp": 8,
         "atk": 7,
