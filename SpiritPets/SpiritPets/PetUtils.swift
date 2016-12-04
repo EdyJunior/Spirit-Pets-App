@@ -9,7 +9,7 @@
 import Foundation
 
 //Types of pet. For now types won't influentiate the playability.
-enum PetType {
+enum PetType: String {
     
     case light
     case dark
@@ -18,9 +18,9 @@ enum PetType {
 //Types of exercises. First value of array is the cost of stamina. Second value is the increase in the pet's experience
 struct Exercise {
     
-    let basicHP = [5]
-    let basicAtk = 5
-    let basicDfs = 5
+    let basicHP = [5, 5]
+    let basicAtk = [5, 5]
+    let basicDfs = [5, 5]
 }
 
 //Types of lunch. Each value is related to the increase in fed status of the pet
@@ -31,10 +31,6 @@ struct Lunch {
     let steak = 40
 }
 
-//Types of pet in string format to faciliate to read the json with status
-let typeDict: [String : PetType] = ["light" : .light,
-                                    "dark" : .dark]
-
 //Variables related to battle
 struct BattleAttributes {
     
@@ -44,15 +40,6 @@ struct BattleAttributes {
     var rdm: UInt32
     var  lv: Int
     var  xp: Int
-    
-    init(value: Int) {
-        hp  = value
-        atk = value
-        dfs = value
-        rdm = UInt32(value)
-        lv  = value
-        xp  = value
-    }
 }
 
 //Variables related to growth
