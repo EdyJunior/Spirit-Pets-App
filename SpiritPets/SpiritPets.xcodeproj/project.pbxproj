@@ -16,7 +16,6 @@
 		B50C21391DF06D7A00779435 /* MiniGame02Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21381DF06D7A00779435 /* MiniGame02Manager.swift */; };
 		B50C213B1DF06D9E00779435 /* MiniGame02Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C213A1DF06D9E00779435 /* MiniGame02Scene.swift */; };
 		B50C213D1DF06DAF00779435 /* MiniGame02Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C213C1DF06DAF00779435 /* MiniGame02Player.swift */; };
-		B50C21401DF06DCD00779435 /* Parlepus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C213F1DF06DCD00779435 /* Parlepus.swift */; };
 		B50C21421DF06DD500779435 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21411DF06DD500779435 /* Pet.swift */; };
 		B50C21441DF06DDF00779435 /* PetUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21431DF06DDF00779435 /* PetUtils.swift */; };
 		B50C21471DF06E0500779435 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21461DF06E0500779435 /* Bullet.swift */; };
@@ -44,6 +43,9 @@
 		CE3B2B981DEC631A0096C3D8 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B971DEC631A0096C3D8 /* NotificationController.swift */; };
 		CE3B2B9A1DEC631A0096C3D8 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B991DEC631A0096C3D8 /* ComplicationController.swift */; };
 		CE3B2B9C1DEC631A0096C3D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3B2B9B1DEC631A0096C3D8 /* Assets.xcassets */; };
+		CE6237331DF19B020021FD86 /* PetsAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = CE6237321DF19B020021FD86 /* PetsAttributes.json */; };
+		CE6237351DF1A27F0021FD86 /* PetChoosed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6237341DF1A27F0021FD86 /* PetChoosed.swift */; };
+		CE98BCEC1DF354F8007D88CB /* LivingBeing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BCEB1DF354F8007D88CB /* LivingBeing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,7 +114,6 @@
 		B50C21381DF06D7A00779435 /* MiniGame02Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Manager.swift; sourceTree = "<group>"; };
 		B50C213A1DF06D9E00779435 /* MiniGame02Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Scene.swift; sourceTree = "<group>"; };
 		B50C213C1DF06DAF00779435 /* MiniGame02Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Player.swift; sourceTree = "<group>"; };
-		B50C213F1DF06DCD00779435 /* Parlepus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parlepus.swift; sourceTree = "<group>"; };
 		B50C21411DF06DD500779435 /* Pet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		B50C21431DF06DDF00779435 /* PetUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetUtils.swift; sourceTree = "<group>"; };
 		B50C21461DF06E0500779435 /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
@@ -149,6 +150,9 @@
 		CE3B2B991DEC631A0096C3D8 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		CE3B2B9B1DEC631A0096C3D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE3B2B9D1DEC631A0096C3D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE6237321DF19B020021FD86 /* PetsAttributes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PetsAttributes.json; sourceTree = "<group>"; };
+		CE6237341DF1A27F0021FD86 /* PetChoosed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetChoosed.swift; sourceTree = "<group>"; };
+		CE98BCEB1DF354F8007D88CB /* LivingBeing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivingBeing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,9 +229,11 @@
 		B50C213E1DF06DBF00779435 /* PetUtils */ = {
 			isa = PBXGroup;
 			children = (
-				B50C21411DF06DD500779435 /* Pet.swift */,
-				B50C213F1DF06DCD00779435 /* Parlepus.swift */,
 				B50C21431DF06DDF00779435 /* PetUtils.swift */,
+				B50C21411DF06DD500779435 /* Pet.swift */,
+				CE6237341DF1A27F0021FD86 /* PetChoosed.swift */,
+				CE98BCEB1DF354F8007D88CB /* LivingBeing.swift */,
+				CE6237321DF19B020021FD86 /* PetsAttributes.json */,
 			);
 			name = PetUtils;
 			sourceTree = "<group>";
@@ -459,7 +465,7 @@
 				TargetAttributes = {
 					CE3B2B541DEC631A0096C3D8 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 4XRA82V6CB;
+						DevelopmentTeam = CWK5G6U242;
 						ProvisioningStyle = Automatic;
 					};
 					CE3B2B681DEC631A0096C3D8 = {
@@ -476,12 +482,12 @@
 					};
 					CE3B2B7C1DEC631A0096C3D8 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 4XRA82V6CB;
+						DevelopmentTeam = CWK5G6U242;
 						ProvisioningStyle = Automatic;
 					};
 					CE3B2B8B1DEC631A0096C3D8 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 4XRA82V6CB;
+						DevelopmentTeam = CWK5G6U242;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -515,6 +521,7 @@
 			files = (
 				CE3B2B631DEC631A0096C3D8 /* LaunchScreen.storyboard in Resources */,
 				B50C215B1DF0738300779435 /* Main.storyboard in Resources */,
+				CE6237331DF19B020021FD86 /* PetsAttributes.json in Resources */,
 				CE3B2B601DEC631A0096C3D8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,7 +565,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				970FEA3E1DEF009900F86DDF /* MiniGame01Scene.swift in Sources */,
-				B50C21401DF06DCD00779435 /* Parlepus.swift in Sources */,
 				B50C21491DF06E1600779435 /* SmallEnemy.swift in Sources */,
 				B50C21471DF06E0500779435 /* Bullet.swift in Sources */,
 				B50C21501DF06E6800779435 /* FriendlyBullet.swift in Sources */,
@@ -574,7 +580,9 @@
 				B50C214B1DF06E3000779435 /* BigEnemy.swift in Sources */,
 				B50C21591DF06EC200779435 /* MiniGameTableViewCell.swift in Sources */,
 				B50C21521DF06E7000779435 /* EnemyBullet.swift in Sources */,
+				CE6237351DF1A27F0021FD86 /* PetChoosed.swift in Sources */,
 				979A618C1DEDA59200F8604B /* PetSelectionViewController.swift in Sources */,
+				CE98BCEC1DF354F8007D88CB /* LivingBeing.swift in Sources */,
 				B50C214E1DF06E5900779435 /* Enemy.swift in Sources */,
 				B50C21391DF06D7A00779435 /* MiniGame02Manager.swift in Sources */,
 				B50C21421DF06DD500779435 /* Pet.swift in Sources */,
@@ -750,7 +758,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				DEVELOPMENT_TEAM = 4XRA82V6CB;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				INFOPLIST_FILE = "SpiritPets WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPets.watchkitapp.watchkitextension";
@@ -767,7 +775,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				DEVELOPMENT_TEAM = 4XRA82V6CB;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				INFOPLIST_FILE = "SpiritPets WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPets.watchkitapp.watchkitextension";
@@ -785,7 +793,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4XRA82V6CB;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				IBSC_MODULE = SpiritPets_WatchKit_Extension;
 				INFOPLIST_FILE = "SpiritPets WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPets.watchkitapp";
@@ -803,7 +811,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4XRA82V6CB;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				IBSC_MODULE = SpiritPets_WatchKit_Extension;
 				INFOPLIST_FILE = "SpiritPets WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPets.watchkitapp";
@@ -820,7 +828,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4XRA82V6CB;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				INFOPLIST_FILE = SpiritPets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -834,7 +842,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4XRA82V6CB;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				INFOPLIST_FILE = SpiritPets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

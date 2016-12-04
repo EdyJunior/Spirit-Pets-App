@@ -31,7 +31,6 @@ class MiniGame01Scene: SKScene {
         self.createCounter()
     }
     
-    
     func touchDown(atPoint pos : CGPoint) {
         
         if (self.isPaused == true) {
