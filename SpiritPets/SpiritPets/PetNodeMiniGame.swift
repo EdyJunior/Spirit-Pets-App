@@ -45,9 +45,9 @@ class PetNodeMiniGame : SKNode {
 
 extension PetNodeMiniGame {
     
-    static let textures = (light: [#imageLiteral(resourceName: "Light_Pet_One_00")],
+    static let textures = (light: [#imageLiteral(resourceName: "Parlepus")],
                            
-                           dark: [#imageLiteral(resourceName: "Dark_Pet_One_00")])
+                           dark: [#imageLiteral(resourceName: "Pardaemon")])
     
     static func randomPetOfType(type: PetType) -> PetNodeMiniGame {
         return PetNodeMiniGame(withType: type, andTexture: self.randomPetTextureOfType(type: type))
