@@ -14,7 +14,9 @@ class LivingBeing: NSObject {
     var isSleeping = false
     var isLanguishing: Bool {
         didSet {
-            languish()
+            if isLanguishing {
+                languish()
+            }
         }
     }
 
@@ -55,23 +57,29 @@ class LivingBeing: NSObject {
         var starving = false
         var sleepy = false
         
-        growthAtt.fed -= (isSleeping ? 1 : 2)
-        growthAtt.awake += (isSleeping ? 2 : 1)
+        growthAtt.fed -= (isSleeping ? 1 : 3)
+        growthAtt.awake -= (isSleeping ? -2 : 3)
         
         if growthAtt.fed < 25 {
             starving = true
+            if growthAtt.fed < 0 {
+                growthAtt.fed = 0
+            }
         }
         if growthAtt.awake < 25 {
             sleepy = true
+            if growthAtt.awake < 0 {
+                growthAtt.awake = 0
+            }
+        } else if growthAtt.awake > 100 {
+            growthAtt.awake = 100
         }
         if starving && sleepy {
             isLanguishing = true
         }
         
-        print("fed = \(growthAtt.fed) e sta = \(growthAtt.stamina)")
+        print("fed = \(growthAtt.fed) e awake = \(growthAtt.awake)")
     }
     
-    func languish() {
-        
-    }
+    func languish() {}
 }

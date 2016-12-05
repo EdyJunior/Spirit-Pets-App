@@ -57,7 +57,6 @@ class PetChoosed: LivingBeing, Pet {
         super.init(fed: 0, awake: 0, stamina: 0)
 
         calculateAttributes()
-        Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(LivingBeing.updateStatus), userInfo: nil, repeats: true)
     }
     
     func calculateAttributes() {
@@ -81,7 +80,7 @@ class PetChoosed: LivingBeing, Pet {
             let base = self.baseBattleAtt
             let lv = 1
             let xp = 0
-            let rdm = Int(1 + arc4random_uniform(base.rdm))
+            let rdm = Int(base.rdm)
             let hp = 2 * base.hp + 1 + Int(arc4random_uniform(base.rdm))
             let atk = base.atk + 1 + Int(arc4random_uniform(base.rdm))
             let dfs = base.dfs + 1 + Int(arc4random_uniform(base.rdm))
@@ -145,6 +144,8 @@ class PetChoosed: LivingBeing, Pet {
         self.battleAtt.atk += self.baseBattleAtt.atk + Int(arc4random_uniform(self.battleAtt.rdm) / 2)
         self.battleAtt.dfs += self.baseBattleAtt.dfs + Int(arc4random_uniform(self.battleAtt.rdm) / 2)
         self.historyOfAtt.append(self.battleAtt)
+        
+        print("\n\nUpou\n\n\(battleAtt)")
     }
     
     func xpUp(xp: Int) {
@@ -152,6 +153,7 @@ class PetChoosed: LivingBeing, Pet {
         self.battleAtt.xp += xp
         while self.battleAtt.xp >= (self.baseBattleAtt.xp * self.battleAtt.lv) {
             self.battleAtt.xp -= (self.baseBattleAtt.xp * self.battleAtt.lv)
+            print("\n\nup = \(self.baseBattleAtt.xp * self.battleAtt.lv) to lv = \(battleAtt.lv + 1)\n\n")
             self.lvUp()
         }
     }
@@ -161,6 +163,8 @@ class PetChoosed: LivingBeing, Pet {
         let _ = self.historyOfAtt.popLast()
         self.battleAtt = self.historyOfAtt.last!
         self.battleAtt.xp = self.baseBattleAtt.xp * self.battleAtt.lv - 1
+        
+        print("\n\nDownou\n\n\(battleAtt)")
     }
     
     func xpDown(xp: Int) {
@@ -175,9 +179,11 @@ class PetChoosed: LivingBeing, Pet {
         }
     }
     
-//    func <#name#>(<#parameters#>) -> <#return type#> {
-//        <#function body#>
-//    }
+    override func languish() {
+        
+        print("Morrendo. Xp = \(battleAtt.xp) e lv = \(battleAtt.lv)")
+        xpDown(xp: 10)
+    }
 }
 
 extension UInt32 {
