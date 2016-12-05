@@ -19,7 +19,7 @@ class MiniGameSelectionScreenViewController: UITableViewController {
         
         super.viewDidLoad()
         
-        //let pet = PetChoosed(name: "Pardaemon")
+        let pet = PetChoosed(name: "Pardaemon")
         
         miniGameTableView = UITableView()
         

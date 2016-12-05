@@ -12,6 +12,7 @@ class PetChoosed: LivingBeing, Pet {
 
     var battleAtt: BattleAttributes
     var baseBattleAtt: BattleAttributes
+    var historyOfAtt: [BattleAttributes]
     
     var frontImage: UIImage
     var backImage: UIImage
@@ -51,9 +52,12 @@ class PetChoosed: LivingBeing, Pet {
                                               xp: base["xp"]!)
         
         self.battleAtt = BattleAttributes(hp: 0, atk: 0, dfs: 0, rdm: 0, lv: 0, xp: 0)
+        self.historyOfAtt = []
+        
         super.init(fed: 0, awake: 0, stamina: 0)
 
         calculateAttributes()
+        Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(LivingBeing.updateStatus), userInfo: nil, repeats: true)
     }
     
     func calculateAttributes() {
@@ -89,6 +93,7 @@ class PetChoosed: LivingBeing, Pet {
                                               rdm: UInt32(attributes["rdm"]!),
                                               lv: attributes["lv"]!,
                                               xp: attributes["xp"]!)
+            self.historyOfAtt.append(self.battleAtt)
             defaults.set(attributes, forKey: "battleAtt")
             defaults.set(true, forKey: "alreadySetBattleStatus")
         }
@@ -133,12 +138,13 @@ class PetChoosed: LivingBeing, Pet {
         return hp
     }
     
-    func lvlUp() {
+    func lvUp() {
         
         self.battleAtt.lv += 1
         self.battleAtt.hp += self.baseBattleAtt.hp + Int(arc4random_uniform(self.battleAtt.rdm) / 2)
         self.battleAtt.atk += self.baseBattleAtt.atk + Int(arc4random_uniform(self.battleAtt.rdm) / 2)
         self.battleAtt.dfs += self.baseBattleAtt.dfs + Int(arc4random_uniform(self.battleAtt.rdm) / 2)
+        self.historyOfAtt.append(self.battleAtt)
     }
     
     func xpUp(xp: Int) {
@@ -146,9 +152,32 @@ class PetChoosed: LivingBeing, Pet {
         self.battleAtt.xp += xp
         while self.battleAtt.xp >= (self.baseBattleAtt.xp * self.battleAtt.lv) {
             self.battleAtt.xp -= (self.baseBattleAtt.xp * self.battleAtt.lv)
-            self.lvlUp()
+            self.lvUp()
         }
     }
+    
+    func lvDown() {
+        
+        let _ = self.historyOfAtt.popLast()
+        self.battleAtt = self.historyOfAtt.last!
+        self.battleAtt.xp = self.baseBattleAtt.xp * self.battleAtt.lv - 1
+    }
+    
+    func xpDown(xp: Int) {
+        
+        self.battleAtt.xp -= xp
+        if self.battleAtt.xp < 0 {
+            if self.battleAtt.lv > 1 {
+                self.lvDown()
+            } else {
+                self.battleAtt.xp = 0
+            }
+        }
+    }
+    
+//    func <#name#>(<#parameters#>) -> <#return type#> {
+//        <#function body#>
+//    }
 }
 
 extension UInt32 {

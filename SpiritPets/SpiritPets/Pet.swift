@@ -12,6 +12,7 @@ protocol Pet {
     
     var battleAtt: BattleAttributes { get set }
     var baseBattleAtt: BattleAttributes { get set }
+    var historyOfAtt: [BattleAttributes] { get set }
     
     var frontImage: UIImage { get set }
     var backImage: UIImage { get set }
@@ -28,8 +29,4 @@ protocol Pet {
     func calculateDamageReceived(enemysOffensive offensive: Int) -> Int
     
     func add(toHp: Int, theValue value: Int) -> Int
-    
-    func xpUp(xp: Int)
-    
-    func lvlUp()
 }

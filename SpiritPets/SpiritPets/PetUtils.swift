@@ -42,6 +42,12 @@ struct BattleAttributes {
     var  xp: Int
 }
 
+struct StateOfAttributes {
+    
+    var previous: BattleAttributes
+    var current: BattleAttributes
+}
+
 //Variables related to growth
 struct GrowthAttributes {
     
