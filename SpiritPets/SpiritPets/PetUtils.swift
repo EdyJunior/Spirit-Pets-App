@@ -15,6 +15,15 @@ enum PetType: String {
     case dark
 }
 
+//Stages of the evolution of pets. chibi is the first one and monster is the most advanced
+enum PetStage: String {
+    
+    case chibi
+    case kid
+    case big
+    case monster
+}
+
 //Types of exercises. First value of array is the cost of stamina. Second value is the increase in the pet's experience
 struct Exercise {
     

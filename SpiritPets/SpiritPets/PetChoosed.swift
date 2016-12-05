@@ -10,6 +10,7 @@ import UIKit
 
 class PetChoosed: LivingBeing, Pet {
 
+    //TODO: Initiate attributes with zero and populate them in methods in order to shrink init
     var battleAtt: BattleAttributes
     var baseBattleAtt: BattleAttributes
     var historyOfAtt: [BattleAttributes]
