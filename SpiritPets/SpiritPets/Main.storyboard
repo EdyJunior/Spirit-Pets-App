@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kuQ-Rs-xqg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="prj-Eh-bCS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -20,12 +20,23 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eck-oV-XKe">
+                                <rect key="frame" x="179" y="207" width="46" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="kuQ-Rs-xqg" kind="show" id="EoL-Tk-asO"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="QDf-oy-SC5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="57" y="1348"/>
+            <point key="canvasLocation" x="56.799999999999997" y="-0.44977511244377816"/>
         </scene>
         <!--Pet Selection View Controller-->
         <scene sceneID="kMK-Be-60N">
@@ -127,28 +138,28 @@
             </objects>
             <point key="canvasLocation" x="57.971014492753625" y="679.89130434782612"/>
         </scene>
-        <!--Mini Game Selection Screen View Controller-->
+        <!--Mini Game Selection-->
         <scene sceneID="Vp4-eK-O21">
             <objects>
                 <tableViewController id="kuQ-Rs-xqg" customClass="MiniGameSelectionScreenViewController" customModule="SpiritPets" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="141" sectionHeaderHeight="28" sectionFooterHeight="28" id="O2R-BK-sET">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="300" sectionHeaderHeight="20" sectionFooterHeight="20" id="O2R-BK-sET">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="141" id="c4w-lK-4nH" customClass="MiniGameTableViewCell" customModule="SpiritPets" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="141"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MiniGameCellIdentifier" rowHeight="300" id="c4w-lK-4nH" customClass="MiniGameTableViewCell" customModule="SpiritPets" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="300"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c4w-lK-4nH" id="QkB-vv-FEH">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="299"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0bb-pa-hqs">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ci-L7-hIw">
-                                            <rect key="frame" x="170" y="111" width="197" height="21"/>
+                                            <rect key="frame" x="170" y="270" width="197" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -167,14 +178,17 @@
                             <outlet property="delegate" destination="kuQ-Rs-xqg" id="Bgk-e1-Fsf"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Mini Game Selection" id="4ey-Di-kOD">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="6LR-id-iPH"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="miniGameTableView" destination="O2R-BK-sET" id="29O-J7-HpI"/>
-                        <segue destination="a3A-A5-lO7" kind="show" identifier="MiniGameIdentifier" id="hWt-dH-fQg"/>
+                        <segue destination="a3A-A5-lO7" kind="presentation" identifier="MiniGameIdentifier" id="hWt-dH-fQg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aqj-xB-pMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48.799999999999997" y="-5.8470764617691158"/>
+            <point key="canvasLocation" x="988" y="-5.8470764617691158"/>
         </scene>
         <!--Mini Game View Controller-->
         <scene sceneID="spa-It-0kQ">
@@ -192,7 +206,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b7o-cN-rOB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="878" y="0.0"/>
+            <point key="canvasLocation" x="1816.8" y="-0.44977511244377816"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4dP-uq-MFe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="prj-Eh-bCS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AM8-fl-hiz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="X9Z-pe-1qr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QBZ-GQ-OQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-961" y="0.0"/>
         </scene>
     </scenes>
 </document>
