@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol Pet {
+protocol PetProtocol {
     
     var battleAtt: BattleAttributes { get set }
     var baseBattleAtt: BattleAttributes { get set }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PetChoosed: LivingBeing, Pet {
+class PetChoosed: LivingBeing, PetProtocol, languishProtocol {
 
     //TODO: Initiate attributes with zero and populate them in methods in order to shrink init
     var battleAtt: BattleAttributes
@@ -55,8 +55,10 @@ class PetChoosed: LivingBeing, Pet {
         self.battleAtt = BattleAttributes(hp: 0, atk: 0, dfs: 0, rdm: 0, lv: 0, xp: 0)
         self.historyOfAtt = []
         
+        
         super.init(fed: 0, awake: 0, stamina: 0)
 
+        self.delegate = self
         calculateAttributes()
     }
     
@@ -141,9 +143,9 @@ class PetChoosed: LivingBeing, Pet {
     func lvUp() {
         
         self.battleAtt.lv += 1
-        self.battleAtt.hp += self.baseBattleAtt.hp + Int(arc4random_uniform(self.battleAtt.rdm) / 2)
-        self.battleAtt.atk += self.baseBattleAtt.atk + Int(arc4random_uniform(self.battleAtt.rdm) / 2)
-        self.battleAtt.dfs += self.baseBattleAtt.dfs + Int(arc4random_uniform(self.battleAtt.rdm) / 2)
+        self.battleAtt.hp += self.baseBattleAtt.hp + Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
+        self.battleAtt.atk += self.baseBattleAtt.atk + Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
+        self.battleAtt.dfs += self.baseBattleAtt.dfs + Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
         self.historyOfAtt.append(self.battleAtt)
         
         print("\n\nUpou\n\n\(battleAtt)")
@@ -180,7 +182,7 @@ class PetChoosed: LivingBeing, Pet {
         }
     }
     
-    override func languish() {
+    func languish() {
         
         print("Morrendo. Xp = \(battleAtt.xp) e lv = \(battleAtt.lv)")
         xpDown(xp: 10)

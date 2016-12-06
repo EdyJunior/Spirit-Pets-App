@@ -16,7 +16,7 @@
 		B50C21391DF06D7A00779435 /* MiniGame02Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21381DF06D7A00779435 /* MiniGame02Manager.swift */; };
 		B50C213B1DF06D9E00779435 /* MiniGame02Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C213A1DF06D9E00779435 /* MiniGame02Scene.swift */; };
 		B50C213D1DF06DAF00779435 /* MiniGame02Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C213C1DF06DAF00779435 /* MiniGame02Player.swift */; };
-		B50C21421DF06DD500779435 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21411DF06DD500779435 /* Pet.swift */; };
+		B50C21421DF06DD500779435 /* PetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21411DF06DD500779435 /* PetProtocol.swift */; };
 		B50C21441DF06DDF00779435 /* PetUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21431DF06DDF00779435 /* PetUtils.swift */; };
 		B50C21471DF06E0500779435 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21461DF06E0500779435 /* Bullet.swift */; };
 		B50C21491DF06E1600779435 /* SmallEnemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21481DF06E1600779435 /* SmallEnemy.swift */; };
@@ -114,7 +114,7 @@
 		B50C21381DF06D7A00779435 /* MiniGame02Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Manager.swift; sourceTree = "<group>"; };
 		B50C213A1DF06D9E00779435 /* MiniGame02Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Scene.swift; sourceTree = "<group>"; };
 		B50C213C1DF06DAF00779435 /* MiniGame02Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Player.swift; sourceTree = "<group>"; };
-		B50C21411DF06DD500779435 /* Pet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
+		B50C21411DF06DD500779435 /* PetProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetProtocol.swift; sourceTree = "<group>"; };
 		B50C21431DF06DDF00779435 /* PetUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetUtils.swift; sourceTree = "<group>"; };
 		B50C21461DF06E0500779435 /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 		B50C21481DF06E1600779435 /* SmallEnemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmallEnemy.swift; sourceTree = "<group>"; };
@@ -230,7 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				B50C21431DF06DDF00779435 /* PetUtils.swift */,
-				B50C21411DF06DD500779435 /* Pet.swift */,
+				B50C21411DF06DD500779435 /* PetProtocol.swift */,
 				CE6237341DF1A27F0021FD86 /* PetChoosed.swift */,
 				CE98BCEB1DF354F8007D88CB /* LivingBeing.swift */,
 				CE6237321DF19B020021FD86 /* PetsAttributes.json */,
@@ -585,7 +585,7 @@
 				CE98BCEC1DF354F8007D88CB /* LivingBeing.swift in Sources */,
 				B50C214E1DF06E5900779435 /* Enemy.swift in Sources */,
 				B50C21391DF06D7A00779435 /* MiniGame02Manager.swift in Sources */,
-				B50C21421DF06DD500779435 /* Pet.swift in Sources */,
+				B50C21421DF06DD500779435 /* PetProtocol.swift in Sources */,
 				B50C21571DF06EB400779435 /* MiniGamesList.swift in Sources */,
 				B50C213B1DF06D9E00779435 /* MiniGame02Scene.swift in Sources */,
 			);
