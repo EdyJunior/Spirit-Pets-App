@@ -11,12 +11,16 @@ import UIKit
 protocol Pet {
     
     var battleAtt: BattleAttributes { get set }
-    var baseBattleAtr: BattleAttributes { get set }
-    var growthAtt: GrowthAttributes { get set }
-    var image: UIImage { get set }
-    var type: PetType { get set }
+    var baseBattleAtt: BattleAttributes { get set }
+    var historyOfAtt: [BattleAttributes] { get set }
     
-    init(type: PetType)
+    var frontImage: UIImage { get set }
+    var backImage: UIImage { get set }
+    
+    var type: PetType { get set }
+    var name: String { get set }
+    
+    init(name: String)
     
     func calculateAttributes()
     

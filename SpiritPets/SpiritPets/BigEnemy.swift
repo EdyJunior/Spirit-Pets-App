@@ -19,7 +19,7 @@ class BigEnemy: SKSpriteNode, Enemy {
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize.init(width: 70, height: 70))
         self.setPhysicsBody()
         
-        self.texture = SKTexture(image: #imageLiteral(resourceName: "Dark_Pet_One_00"))
+        self.texture = SKTexture(image: #imageLiteral(resourceName: "Pardaemon"))
         self.size = CGSize.init(width: 80, height: 80)
     }
     

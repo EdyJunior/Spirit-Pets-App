@@ -1,0 +1,35 @@
+[
+ {
+    "number": 1,
+    "name": "Parlepus",
+    "type": "light",
+    "stage": "chibi",
+    "baseBattleAtt": {
+        "hp": 10,
+        "atk": 8,
+        "dfs": 4,
+        "rdm": 5,
+        "lv": 0,
+        "xp": 30
+    },
+    "frontImage": "Parlepus",
+    "backImage": "Parlepus_B"
+ },
+ 
+ {
+    "number": 5,
+    "name": "Pardaemon",
+    "type": "dark",
+    "stage": "chibi",
+    "baseBattleAtt": {
+        "hp": 8,
+        "atk": 7,
+        "dfs": 8,
+        "rdm": 6,
+        "lv": 0,
+        "xp": 30
+    },
+    "frontImage": "Pardaemon",
+    "backImage": "Parlepus_B",
+ }
+]

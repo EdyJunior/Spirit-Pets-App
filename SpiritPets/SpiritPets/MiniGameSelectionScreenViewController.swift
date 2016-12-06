@@ -16,8 +16,12 @@ class MiniGameSelectionScreenViewController: UITableViewController {
     var miniGameViewController = MiniGameViewController()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let pet = PetChoosed(name: "Pardaemon")
+        pet.xpUp(xp: 400)
+        
         
         miniGameTableView = UITableView()
         
@@ -29,7 +33,6 @@ class MiniGameSelectionScreenViewController: UITableViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
