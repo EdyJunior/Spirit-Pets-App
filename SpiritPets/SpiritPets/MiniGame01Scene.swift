@@ -16,6 +16,7 @@ class MiniGame01Scene: SKScene {
     var darkPets: Int?
     
     var score: Int?
+    var gameOver = false
     
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
@@ -33,9 +34,8 @@ class MiniGame01Scene: SKScene {
     
     func touchDown(atPoint pos : CGPoint) {
         
-        if (self.isPaused == true) {
+        if (gameOver) {
             self.backToMenu()
-            //self.restart()
         }
     }
     
@@ -157,8 +157,7 @@ class MiniGame01Scene: SKScene {
         congrats.position = CGPoint(x: self.displaySize.width * 0.5, y: self.displaySize.height * 0.5)
         self.addChild(congrats)
         
-        self.isPaused = true
-        
+        gameOver = true
     }
     
     func finishVictory() {
@@ -186,25 +185,12 @@ class MiniGame01Scene: SKScene {
             UserDefaults.standard.set(seconds, forKey: "time")
         }
         
-        
-        self.isPaused = true
-    }
-    
-    func restart() {
-        self.lastUpdateTime = 0
-        self.blocked = true
-        self.removeAllActions()
-        self.removeAllChildren()
-        self.sceneDidLoad()
+        gameOver = true
     }
     
     func backToMenu() {
-        // fazer de novo
-        //let scene = GameScene(size: self.displaySize)
         
-        let transition = SKTransition.fade(withDuration: 0.5)
-        
-        //self.view?.presentScene(scene, transition: transition)
+        self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
     override func update(_ currentTime: TimeInterval) {

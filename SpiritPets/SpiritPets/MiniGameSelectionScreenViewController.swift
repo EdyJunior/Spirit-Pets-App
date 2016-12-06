@@ -44,8 +44,11 @@ class MiniGameSelectionScreenViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MiniGameCellIdentifier") as! MiniGameTableViewCell
         
-        let cell = MiniGameTableViewCell(myIndex: indexPath.row, style: .default, reuseIdentifier: nil)
+        cell.backgroundImageView.image = MiniGameList.getBackgroundImageOf(index: indexPath.row)
+        cell.nameLabel.text = MiniGameList.getNameOf(index: indexPath.row)
+        
         return cell
     }
     
@@ -57,7 +60,8 @@ class MiniGameSelectionScreenViewController: UITableViewController {
     }
     
     override func performSegue(withIdentifier identifier: String, sender: Any?) {
-        self.show(miniGameViewController, sender: sender)
-        //self.present(miniGameViewController, animated: true, completion: nil)
+        
+        self.present(miniGameViewController, animated: true, completion: { self.miniGameViewController.numberScene = 0 })
     }
+    
 }

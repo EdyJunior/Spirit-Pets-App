@@ -130,12 +130,14 @@ class MiniGame02Scene: SKScene, SKPhysicsContactDelegate, MiniGame02ManagerDeleg
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         if gameOver {
-            self.removeAllChildren()
-            self.removeAllActions()
-            self.sceneDidLoad()
-            self.gameOver = false
-            self.isPaused = false
+            
+            backToMenu()
         }
+    }
+    
+    func backToMenu() {
+        
+        self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
     //MARK: Movement Update

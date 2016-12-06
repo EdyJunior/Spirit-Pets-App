@@ -16,8 +16,10 @@ class MiniGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         loadScene()
-        
     }
     
     func chooseScene() -> SKScene {
@@ -26,7 +28,6 @@ class MiniGameViewController: UIViewController {
         case 1:
             chosenScene = MiniGame01Scene(size: UIScreen.main.bounds.size)
         case 2:
-            
             chosenScene = MiniGame02Scene(size: UIScreen.main.bounds.size)
         default:
             print("This MiniGame does not exist.")
@@ -36,8 +37,8 @@ class MiniGameViewController: UIViewController {
     }
     
     func loadScene() {
-        //let scene = chooseScene()
-        let scene = MiniGame02Scene(size: UIScreen.main.bounds.size)
+        
+        let scene = chooseScene()
         
         scene.scaleMode = .aspectFill
         
@@ -47,6 +48,8 @@ class MiniGameViewController: UIViewController {
         skView.showsNodeCount = true
         
         self.view.addSubview(skView)
+        
+        skView.presentScene(nil)
         
         skView.presentScene(scene)
 
