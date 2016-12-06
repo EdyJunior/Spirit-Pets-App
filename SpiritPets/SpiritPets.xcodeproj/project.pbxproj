@@ -307,6 +307,8 @@
 				CE3B2B641DEC631A0096C3D8 /* Info.plist */,
 				979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */,
 				979A618D1DEDA9DA00F8604B /* AKPickerView.swift */,
+				97F1FD261DF04B9F00264340 /* BergStoryboard.storyboard */,
+				97F1FD281DF0585F00264340 /* MainScreenViewController.swift */,
 			);
 			path = SpiritPets;
 			sourceTree = "<group>";
