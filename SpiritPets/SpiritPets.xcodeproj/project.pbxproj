@@ -28,6 +28,8 @@
 		B50C21571DF06EB400779435 /* MiniGamesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21561DF06EB400779435 /* MiniGamesList.swift */; };
 		B50C21591DF06EC200779435 /* MiniGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21581DF06EC200779435 /* MiniGameTableViewCell.swift */; };
 		B50C215B1DF0738300779435 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50C215A1DF0738300779435 /* Main.storyboard */; };
+		97F1FD271DF04B9F00264340 /* BergStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97F1FD261DF04B9F00264340 /* BergStoryboard.storyboard */; };
+		97F1FD291DF0585F00264340 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F1FD281DF0585F00264340 /* MainScreenViewController.swift */; };
 		CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */; };
 		CE3B2B5B1DEC631A0096C3D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */; };
 		CE3B2B601DEC631A0096C3D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3B2B5F1DEC631A0096C3D8 /* Assets.xcassets */; };
@@ -126,6 +128,8 @@
 		B50C21561DF06EB400779435 /* MiniGamesList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGamesList.swift; sourceTree = "<group>"; };
 		B50C21581DF06EC200779435 /* MiniGameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGameTableViewCell.swift; sourceTree = "<group>"; };
 		B50C215A1DF0738300779435 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		97F1FD261DF04B9F00264340 /* BergStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = BergStoryboard.storyboard; sourceTree = "<group>"; };
+		97F1FD281DF0585F00264340 /* MainScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		CE3B2B551DEC631A0096C3D8 /* SpiritPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpiritPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -524,6 +528,7 @@
 				CE3B2B631DEC631A0096C3D8 /* LaunchScreen.storyboard in Resources */,
 				B50C215B1DF0738300779435 /* Main.storyboard in Resources */,
 				CE6237331DF19B020021FD86 /* PetsAttributes.json in Resources */,
+				97F1FD271DF04B9F00264340 /* BergStoryboard.storyboard in Resources */,
 				CE3B2B601DEC631A0096C3D8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,6 +582,7 @@
 				979A618E1DEDA9DA00F8604B /* AKPickerView.swift in Sources */,
 				B50C213D1DF06DAF00779435 /* MiniGame02Player.swift in Sources */,
 				B50C21551DF06EAC00779435 /* MiniGameSelectionScreenViewController.swift in Sources */,
+				97F1FD291DF0585F00264340 /* MainScreenViewController.swift in Sources */,
 				970FEA421DEF00B400F86DDF /* PetNodeMiniGame.swift in Sources */,
 				B50C21441DF06DDF00779435 /* PetUtils.swift in Sources */,
 				B50C214B1DF06E3000779435 /* BigEnemy.swift in Sources */,
