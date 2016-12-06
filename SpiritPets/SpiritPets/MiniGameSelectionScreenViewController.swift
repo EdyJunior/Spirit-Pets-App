@@ -19,10 +19,6 @@ class MiniGameSelectionScreenViewController: UITableViewController {
         
         super.viewDidLoad()
         
-        let pet = PetChoosed(name: "Pardaemon")
-        pet.xpUp(xp: 400)
-        
-        
         miniGameTableView = UITableView()
         
         miniGameTableView.dataSource = self

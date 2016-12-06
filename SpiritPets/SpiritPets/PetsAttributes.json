@@ -9,11 +9,12 @@
         "atk": 8,
         "dfs": 4,
         "rdm": 5,
-        "lv": 0,
+        "lv": 16,
         "xp": 30
     },
     "frontImage": "Parlepus",
-    "backImage": "Parlepus_B"
+    "backImage": "Parlepus_B",
+    "nextEvo": "Pulepus"
  },
  
  {
@@ -31,5 +32,6 @@
     },
     "frontImage": "Pardaemon",
     "backImage": "Parlepus_B",
+    "nextEvo": "Pudaemon"
  }
 ]
