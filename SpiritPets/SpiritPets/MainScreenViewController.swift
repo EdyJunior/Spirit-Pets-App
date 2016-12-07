@@ -21,8 +21,12 @@ class MainScreenViewController: UIViewController {
     
     @IBOutlet weak var popupImageView: UIImageView!
     
+    var pet: PetChoosed!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         let uiEdgeInsets = UIEdgeInsets(top: CGFloat(20), left: CGFloat(20), bottom: CGFloat(20), right: CGFloat(20))
         
         xperienceLabel.layer.borderColor = UIColor.white.cgColor
@@ -34,17 +38,15 @@ class MainScreenViewController: UIViewController {
             btn.imageEdgeInsets = uiEdgeInsets
         }
         
-        // Do any additional setup after loading the view.
-        
+        petImageView.image = pet.frontImage
     }
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         backgroundLabel.clipsToBounds = true
         backgroundLabel.frame.size.width = 150
         //backgroundLabel.layer.cornerRadius = backgroundLabel.frame.width / 2
@@ -55,15 +57,14 @@ class MainScreenViewController: UIViewController {
         levelLabel.layer.borderWidth = 2
         levelLabel.text = "LV:\n12"
         
-        
         for btn in buttons{
             print("btn width \(btn.frame.width) height \(btn.frame.height)")
             btn.layer.cornerRadius = btn.frame.width / 2
         }
-        
     }
     
     @IBAction func onButtonTap(_ sender: UIButton) {
+        
     }
     
     

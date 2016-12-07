@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol Pet {
+protocol PetProtocol {
     
     var battleAtt: BattleAttributes { get set }
     var baseBattleAtt: BattleAttributes { get set }
@@ -19,6 +19,9 @@ protocol Pet {
     
     var type: PetType { get set }
     var name: String { get set }
+    
+    var number: Int { get set }
+    var stage: PetStage { get set }
     
     init(name: String)
     

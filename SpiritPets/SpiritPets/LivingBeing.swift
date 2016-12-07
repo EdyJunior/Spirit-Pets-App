@@ -8,14 +8,19 @@
 
 import UIKit
 
+protocol languishProtocol {
+    func languish()
+}
+
 class LivingBeing: NSObject {
     
     var growthAtt: GrowthAttributes
     var isSleeping = false
+    var delegate: languishProtocol? = nil
     var isLanguishing: Bool {
         didSet {
             if isLanguishing {
-                languish()
+                self.delegate?.languish()
             }
         }
     }
@@ -24,13 +29,13 @@ class LivingBeing: NSObject {
         
         self.growthAtt = GrowthAttributes(fed: fed, awake: awake, stamina: stamina)
         self.isLanguishing = false
-        
+
         super.init()
         
         Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(LivingBeing.updateStatus), userInfo: nil, repeats: true)
     }
     
-    func fed(lunch: Int) {
+    func feed(lunch: Int) {
         
         self.growthAtt.fed += lunch
         if self.growthAtt.fed > 100 {
@@ -79,7 +84,5 @@ class LivingBeing: NSObject {
         }
         
         print("fed = \(growthAtt.fed) e awake = \(growthAtt.awake)")
-    }
-    
-    func languish() {}
+    }    
 }

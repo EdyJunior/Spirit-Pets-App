@@ -15,7 +15,7 @@
         <!--Main Screen View Controller-->
         <scene sceneID="Cgj-9h-3pf">
             <objects>
-                <viewController id="c6D-iN-V16" customClass="MainScreenViewController" customModule="SpiritPets" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainScreenViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c6D-iN-V16" customClass="MainScreenViewController" customModule="SpiritPets" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C7q-p2-wBA"/>
                         <viewControllerLayoutGuide type="bottom" id="IJc-QR-d4a"/>
@@ -150,7 +150,7 @@
                                     <action selector="onButtonTap:" destination="c6D-iN-V16" eventType="touchUpInside" id="ulO-U5-enO"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qgb-PK-HVX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qgb-PK-HVX">
                                 <rect key="frame" x="96" y="216.5" width="183" height="183"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qgb-PK-HVX" secondAttribute="height" multiplier="1:1" id="MgF-rt-hLd"/>
