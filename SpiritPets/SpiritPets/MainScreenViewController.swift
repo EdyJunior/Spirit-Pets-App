@@ -57,7 +57,10 @@ class MainScreenViewController: UIViewController {
     }
     
     @IBAction func onLevelLabelTap(_ sender: UITapGestureRecognizer){
-        print("you tap on level label")
+        let bergStoryBoard = UIStoryboard.init(name: "BergStoryboard", bundle: nil)
+        let statusViewController = bergStoryBoard.instantiateViewController(withIdentifier: "statusPet") as! PetStatusViewController
+        statusViewController.pet = self.pet
+        self.show(statusViewController, sender: nil)
     }
     
     func changeEnabled(buttons: [UIButton], to: Bool) {
