@@ -69,9 +69,10 @@ class MainScreenViewController: UIViewController {
     
     
     @IBAction func onLevelLabelTap(_ sender: UITapGestureRecognizer){
-        let statusViewController = PetStatusViewController()
+        let bergStoryBoard = UIStoryboard.init(name: "BergStoryboard", bundle: nil)
+        let statusViewController = bergStoryBoard.instantiateViewController(withIdentifier: "statusPet") as! PetStatusViewController
         statusViewController.pet = self.pet
-        self.present(statusViewController, animated: true, completion: nil)
+        self.show(statusViewController, sender: nil)
     }
     
     /*

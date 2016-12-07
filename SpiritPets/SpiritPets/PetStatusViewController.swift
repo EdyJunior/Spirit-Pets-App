@@ -40,7 +40,6 @@ class PetStatusViewController: UIViewController {
     func setupLabels(){
         let battleAtt = pet.battleAtt
         let growthAtt = pet.growthAtt
-        //let evolutionStage = pet //Where is the stage???
         
         hpLabel.text = "HP: \(battleAtt.hp)"
         atkLabel.text = "ATK: \(battleAtt.atk)"
