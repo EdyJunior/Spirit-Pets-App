@@ -21,6 +21,9 @@ class PetChoosed: LivingBeing, PetProtocol, languishProtocol {
     var type: PetType
     var name: String
     
+    var number: Int
+    var stage: PetStage
+    
     required init(name: String) {
         
         guard let path = Bundle(for: type(of: self)).path(forResource: "PetsAttributes", ofType: "json")
@@ -43,6 +46,8 @@ class PetChoosed: LivingBeing, PetProtocol, languishProtocol {
         self.type = PetType(rawValue: pet["type"] as! String)!
         self.frontImage = UIImage(named: pet["frontImage"] as! String)!
         self.backImage = UIImage(named: pet["backImage"] as! String)!
+        self.number = pet["number"] as! Int
+        self.stage = PetStage(rawValue: pet["stage"] as! String)!
         
         let base = pet["baseBattleAtt"] as! [String : Int]
         self.baseBattleAtt = BattleAttributes(hp: base["hp"]!,
@@ -141,18 +146,18 @@ class PetChoosed: LivingBeing, PetProtocol, languishProtocol {
     }
     
     func lvUp() {
-        
+
         self.battleAtt.lv += 1
         self.battleAtt.hp += self.baseBattleAtt.hp + Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
         self.battleAtt.atk += self.baseBattleAtt.atk + Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
         self.battleAtt.dfs += self.baseBattleAtt.dfs + Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
         self.historyOfAtt.append(self.battleAtt)
-        
+
         print("\n\nUpou\n\n\(battleAtt)")
     }
-    
+
     func xpUp(xp: Int) {
-        
+
         self.battleAtt.xp += xp
         while self.battleAtt.xp >= (self.baseBattleAtt.xp * self.battleAtt.lv) {
             self.battleAtt.xp -= (self.baseBattleAtt.xp * self.battleAtt.lv)
@@ -160,13 +165,13 @@ class PetChoosed: LivingBeing, PetProtocol, languishProtocol {
             self.lvUp()
         }
     }
-    
+
     func lvDown() {
-        
+
         let _ = self.historyOfAtt.popLast()
         self.battleAtt = self.historyOfAtt.last!
         self.battleAtt.xp = self.baseBattleAtt.xp * self.battleAtt.lv - 1
-        
+
         print("\n\nDownou\n\n\(battleAtt)")
     }
     

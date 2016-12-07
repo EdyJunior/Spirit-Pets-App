@@ -20,6 +20,10 @@ protocol PetProtocol {
     var type: PetType { get set }
     var name: String { get set }
     
+    var number: Int { get set }
+    var stage: PetStage { get set }
+    
+    
     init(name: String)
     
     func calculateAttributes()
