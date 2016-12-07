@@ -70,11 +70,10 @@ class PetSelectionViewController: UIViewController {
         
         let mainView = story.instantiateViewController(withIdentifier: "MainScreenViewController") as! MainScreenViewController
         
-        let pet = chibis[pickerView.selectedItem]
-        mainView.petName = pet["name"] as! String!
+        let petDict = chibis[pickerView.selectedItem]
+        let pet = PetChoosed(name: petDict["name"] as! String!)
+        mainView.pet = pet
         show(mainView, sender: self)
-        
-        
     }
     
     

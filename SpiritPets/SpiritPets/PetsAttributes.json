@@ -18,6 +18,60 @@
  },
  
  {
+    "number": 2,
+    "name": "Pulepus",
+    "type": "light",
+    "stage": "kid",
+    "baseBattleAtt": {
+        "hp": 10,
+        "atk": 8,
+        "dfs": 4,
+        "rdm": 5,
+        "lv": 16,
+        "xp": 30
+    },
+    "frontImage": "Pulepus",
+    "backImage": "Pulepus_B",
+    "nextEvo": "Magnalepus"
+ },
+ 
+ {
+    "number": 3,
+    "name": "Magnalepus",
+    "type": "light",
+    "stage": "big",
+    "baseBattleAtt": {
+        "hp": 10,
+        "atk": 8,
+        "dfs": 4,
+        "rdm": 5,
+        "lv": 16,
+        "xp": 30
+    },
+    "frontImage": "Magnalepus",
+    "backImage": "Magnalepus_B",
+    "nextEvo": "Impelepus"
+ },
+ 
+ {
+    "number": 4,
+    "name": "Impelepus",
+    "type": "light",
+    "stage": "monster",
+    "baseBattleAtt": {
+        "hp": 10,
+        "atk": 8,
+        "dfs": 4,
+        "rdm": 5,
+        "lv": 16,
+        "xp": 30
+    },
+    "frontImage": "Impelepus",
+    "backImage": "Impelepus_B",
+    "nextEvo": ""
+ },
+ 
+ {
     "number": 5,
     "name": "Pardaemon",
     "type": "dark",
@@ -33,5 +87,23 @@
     "frontImage": "Pardaemon",
     "backImage": "Parlepus_B",
     "nextEvo": "Pudaemon"
+ },
+ 
+ {
+    "number": 5,
+    "name": "Pudaemon",
+    "type": "dark",
+    "stage": "kid",
+    "baseBattleAtt": {
+        "hp": 8,
+        "atk": 7,
+        "dfs": 8,
+        "rdm": 6,
+        "lv": 0,
+        "xp": 30
+    },
+    "frontImage": "Pudaemon",
+    "backImage": "Pudaemon_B",
+    "nextEvo": "Magnadaemon"
  }
 ]

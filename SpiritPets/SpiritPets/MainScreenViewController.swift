@@ -22,7 +22,6 @@ class MainScreenViewController: UIViewController {
     @IBOutlet weak var popupImageView: UIImageView!
     
     var pet: PetChoosed!
-    var petName: String!
     
     override func viewDidLoad() {
         
@@ -39,7 +38,6 @@ class MainScreenViewController: UIViewController {
             btn.imageEdgeInsets = uiEdgeInsets
         }
         
-        pet = PetChoosed(name: petName)
         petImageView.image = pet.frontImage
     }
 

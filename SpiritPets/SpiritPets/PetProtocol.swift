@@ -23,7 +23,6 @@ protocol PetProtocol {
     var number: Int { get set }
     var stage: PetStage { get set }
     
-    
     init(name: String)
     
     func calculateAttributes()
