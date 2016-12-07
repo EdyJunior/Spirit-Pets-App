@@ -69,7 +69,9 @@ class MainScreenViewController: UIViewController {
     
     
     @IBAction func onLevelLabelTap(_ sender: UITapGestureRecognizer){
-        print("you tap on level label")
+        let statusViewController = PetStatusViewController()
+        statusViewController.pet = self.pet
+        self.present(statusViewController, animated: true, completion: nil)
     }
     
     /*

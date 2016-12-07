@@ -597,7 +597,7 @@
 				B50C214E1DF06E5900779435 /* Enemy.swift in Sources */,
 				B50C21391DF06D7A00779435 /* MiniGame02Manager.swift in Sources */,
 				979F8B711DF7046700491FD2 /* PetStatusViewController.swift in Sources */,
-				B50C21421DF06DD500779435 /* Pet.swift in Sources */,
+				B50C21421DF06DD500779435 /* PetProtocol.swift in Sources */,
 				B50C21571DF06EB400779435 /* MiniGamesList.swift in Sources */,
 				B50C213B1DF06D9E00779435 /* MiniGame02Scene.swift in Sources */,
 			);

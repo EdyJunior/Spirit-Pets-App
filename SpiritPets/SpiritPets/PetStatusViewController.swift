@@ -46,7 +46,7 @@ class PetStatusViewController: UIViewController {
         atkLabel.text = "ATK: \(battleAtt.atk)"
         defLabel.text = "DEF: \(battleAtt.dfs)"
         levelLabel.text = "Level: \(battleAtt.lv)"
-        evolutionLabel.text = "Evolution Stage: "
+        evolutionLabel.text = "Evolution Stage: \(pet.stage)"
         experenceLabel.text = "\(battleAtt.xp)"
         staminiaLabel.text = "\(growthAtt.stamina)"
         sleepLabel.text = "\(growthAtt.awake)"//??
