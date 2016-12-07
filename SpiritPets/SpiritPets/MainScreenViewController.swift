@@ -67,7 +67,6 @@ class MainScreenViewController: UIViewController {
         
     }
     
-    
     @IBAction func onLevelLabelTap(_ sender: UITapGestureRecognizer){
         print("you tap on level label")
     }
@@ -81,5 +80,4 @@ class MainScreenViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
-    
 }
