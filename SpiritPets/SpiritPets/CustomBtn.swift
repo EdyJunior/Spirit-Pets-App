@@ -18,11 +18,22 @@ class CustomBtn: UIButton {
     }
     */
     
-    override func awakeFromNib() {
-        
+//    override func awakeFromNib() {
+//        
+//        let uiEdgeInsets = UIEdgeInsets(top: CGFloat(20), left: CGFloat(20), bottom: CGFloat(20), right: CGFloat(20))
+//        self.imageEdgeInsets = uiEdgeInsets
+//        self.layer.cornerRadius = self.frame.width / 2
+//    }
+    
+//    override func didMoveToSuperview() {
+//        let uiEdgeInsets = UIEdgeInsets(top: CGFloat(20), left: CGFloat(20), bottom: CGFloat(20), right: CGFloat(20))
+//        self.imageEdgeInsets = uiEdgeInsets
+//        self.layer.cornerRadius = self.frame.width / 2
+//    }
+    
+    override func didMoveToWindow() {
         let uiEdgeInsets = UIEdgeInsets(top: CGFloat(20), left: CGFloat(20), bottom: CGFloat(20), right: CGFloat(20))
         self.imageEdgeInsets = uiEdgeInsets
         self.layer.cornerRadius = self.frame.width / 2
     }
-
 }

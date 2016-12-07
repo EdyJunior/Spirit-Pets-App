@@ -27,7 +27,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="neon-grid" translatesAutoresizingMaskIntoConstraints="NO" id="OOP-uN-HcU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wgm-v7-Pko">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wgm-v7-Pko" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
                                 <rect key="frame" x="11" y="423.5" width="99" height="98.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -40,7 +40,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="onButtonTap:" destination="c6D-iN-V16" eventType="touchUpInside" id="w40-xA-dI2"/>
+                                    <action selector="feed:" destination="c6D-iN-V16" eventType="touchUpInside" id="Yvb-Af-ce4"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MtJ-kW-1bo">
@@ -70,7 +70,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGu-eg-fGQ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGu-eg-fGQ" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
                                 <rect key="frame" x="11" y="547" width="99" height="99"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -83,10 +83,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="onButtonTap:" destination="c6D-iN-V16" eventType="touchUpInside" id="0r4-Ns-zHK"/>
+                                    <action selector="play:" destination="c6D-iN-V16" eventType="touchUpInside" id="NyY-vP-r8F"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxW-k2-Z53">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sxW-k2-Z53" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
                                 <rect key="frame" x="138.5" y="547" width="99" height="99"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -99,10 +99,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="onButtonTap:" destination="c6D-iN-V16" eventType="touchUpInside" id="o9C-3j-7ry"/>
+                                    <action selector="achievementsBtn:" destination="c6D-iN-V16" eventType="touchUpInside" id="ilV-I0-Zn8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPx-Ht-G9D">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPx-Ht-G9D" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
                                 <rect key="frame" x="265" y="547" width="99" height="99"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -115,10 +115,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="onButtonTap:" destination="c6D-iN-V16" eventType="touchUpInside" id="i0B-mb-5xP"/>
+                                    <action selector="battle:" destination="c6D-iN-V16" eventType="touchUpInside" id="oM3-Kt-f5Q"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfS-Yd-Fuc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfS-Yd-Fuc" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
                                 <rect key="frame" x="138.5" y="423.5" width="99" height="98.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -131,10 +131,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="onButtonTap:" destination="c6D-iN-V16" eventType="touchUpInside" id="Lqs-hC-AQf"/>
+                                    <action selector="sleepBtn:" destination="c6D-iN-V16" eventType="touchUpInside" id="84E-jS-jix"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="083-hu-WxL">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="083-hu-WxL" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
                                 <rect key="frame" x="265" y="423.5" width="99" height="98.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -147,7 +147,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="onButtonTap:" destination="c6D-iN-V16" eventType="touchUpInside" id="ulO-U5-enO"/>
+                                    <action selector="exercise:" destination="c6D-iN-V16" eventType="touchUpInside" id="TwV-2v-P8b"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qgb-PK-HVX">
@@ -205,16 +205,14 @@
                     </view>
                     <connections>
                         <outlet property="backgroundLabel" destination="MtJ-kW-1bo" id="x9A-DV-dfc"/>
+                        <outlet property="battleBtn" destination="KPx-Ht-G9D" id="1ub-hm-FnA"/>
+                        <outlet property="exerciseBtn" destination="083-hu-WxL" id="cit-TC-gYp"/>
+                        <outlet property="feedBtn" destination="Wgm-v7-Pko" id="TMf-SA-iuE"/>
                         <outlet property="levelLabel" destination="SKH-pt-KJ1" id="pnJ-B0-Uqg"/>
                         <outlet property="petImageView" destination="qgb-PK-HVX" id="WPy-YM-3g4"/>
+                        <outlet property="playBtn" destination="OGu-eg-fGQ" id="McZ-GN-kKw"/>
                         <outlet property="popupImageView" destination="K4i-RI-DUW" id="kOy-QP-2Hr"/>
                         <outlet property="xperienceLabel" destination="bpe-f7-kkW" id="FQx-Sy-hrq"/>
-                        <outletCollection property="buttons" destination="Wgm-v7-Pko" collectionClass="NSMutableArray" id="Pwu-ZH-5EW"/>
-                        <outletCollection property="buttons" destination="sfS-Yd-Fuc" collectionClass="NSMutableArray" id="2dl-VI-zwV"/>
-                        <outletCollection property="buttons" destination="083-hu-WxL" collectionClass="NSMutableArray" id="QDe-dM-1nc"/>
-                        <outletCollection property="buttons" destination="OGu-eg-fGQ" collectionClass="NSMutableArray" id="DvX-C7-Nvb"/>
-                        <outletCollection property="buttons" destination="sxW-k2-Z53" collectionClass="NSMutableArray" id="udS-mT-XGt"/>
-                        <outletCollection property="buttons" destination="KPx-Ht-G9D" collectionClass="NSMutableArray" id="EKx-p8-1y9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fjt-a0-Fda" userLabel="First Responder" sceneMemberID="firstResponder"/>
