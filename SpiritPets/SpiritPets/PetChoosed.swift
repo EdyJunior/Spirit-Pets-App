@@ -8,27 +8,40 @@
 
 import UIKit
 
-class PetChoosed: LivingBeing, PetProtocol, languishProtocol {
+class PetChoosed: LivingBeing, PetProtocol, LanguishProtocol {
 
-    //TODO: Initiate attributes with zero and populate them in methods in order to shrink init
-    var battleAtt: BattleAttributes
-    var baseBattleAtt: BattleAttributes
-    var historyOfAtt: [BattleAttributes]
+    var battleAtt = BattleAttributes(hp: 0, atk: 0, dfs: 0, rdm: 0, lv: 0, xp: 0)
+    var baseBattleAtt = BattleAttributes(hp: 0, atk: 0, dfs: 0, rdm: 0, lv: 0, xp: 0)
+    var historyOfAtt: [BattleAttributes] = []
+
+    var frontImage = UIImage()
+    var backImage = UIImage()
     
-    var frontImage: UIImage
-    var backImage: UIImage
+    var type: PetType = .light
+    var name: String = ""
     
-    var type: PetType
-    var name: String
-    
-    var number: Int
-    var stage: PetStage
+    var number: Int = 0
+    var stage: PetStage = .chibi
     
     required init(name: String) {
         
+        super.init(fed: 0, awake: 0, stamina: 0)
+        
+        self.name = name
+        self.languishDelegate = self
+        
+        let pet = getPetDictionary()
+        
+        setFeaturesPet(pet: pet)
+        setBaseBattleAtt(pet: pet)
+        calculateAttributes()
+    }
+
+    func getPetDictionary() -> [String : Any] {
+
         guard let path = Bundle(for: type(of: self)).path(forResource: "PetsAttributes", ofType: "json")
             else { fatalError("Can't find PetsAttributes JSON resource.") }
-        
+
         let data = try! Data(contentsOf: URL(fileURLWithPath: path))
         let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [[String : Any]]
         
@@ -41,13 +54,19 @@ class PetChoosed: LivingBeing, PetProtocol, languishProtocol {
                 break
             }
         }
+        return pet
+    }
+    
+    func setFeaturesPet(pet: [String : Any]) {
         
-        self.name = name
         self.type = PetType(rawValue: pet["type"] as! String)!
         self.frontImage = UIImage(named: pet["frontImage"] as! String)!
         self.backImage = UIImage(named: pet["backImage"] as! String)!
         self.number = pet["number"] as! Int
         self.stage = PetStage(rawValue: pet["stage"] as! String)!
+    }
+    
+    func setBaseBattleAtt(pet: [String : Any]) {
         
         let base = pet["baseBattleAtt"] as! [String : Int]
         self.baseBattleAtt = BattleAttributes(hp: base["hp"]!,
@@ -56,15 +75,6 @@ class PetChoosed: LivingBeing, PetProtocol, languishProtocol {
                                               rdm: UInt32(base["rdm"]!),
                                               lv: base["lv"]!,
                                               xp: base["xp"]!)
-        
-        self.battleAtt = BattleAttributes(hp: 0, atk: 0, dfs: 0, rdm: 0, lv: 0, xp: 0)
-        self.historyOfAtt = []
-        
-        
-        super.init(fed: 0, awake: 0, stamina: 0)
-
-        self.delegate = self
-        calculateAttributes()
     }
     
     func calculateAttributes() {
@@ -113,7 +123,7 @@ class PetChoosed: LivingBeing, PetProtocol, languishProtocol {
             let fed = defaults.object(forKey: "fed") as! Int
             let awake = defaults.object(forKey: "awake") as! Int
             let stamina = defaults.object(forKey: "stamina") as! Int
-            
+
             self.growthAtt = GrowthAttributes(fed: fed, awake: awake, stamina: stamina)
         } else {
             defaults.set(100, forKey: "fed")
@@ -191,12 +201,5 @@ class PetChoosed: LivingBeing, PetProtocol, languishProtocol {
         
         print("Morrendo. Xp = \(battleAtt.xp) e lv = \(battleAtt.lv)")
         xpDown(xp: 10)
-    }
-}
-
-extension UInt32 {
-    
-    mutating func sqr() -> UInt32 {
-        return self * self
     }
 }

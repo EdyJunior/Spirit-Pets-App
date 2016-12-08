@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainScreenViewController: UIViewController {
+class MainScreenViewController: UIViewController, DisableButtonsProtocol {
 
     @IBOutlet weak var xperienceLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
@@ -21,18 +21,21 @@ class MainScreenViewController: UIViewController {
     @IBOutlet weak var exerciseBtn: CustomBtn!
     @IBOutlet weak var playBtn: CustomBtn!
     @IBOutlet weak var battleBtn: CustomBtn!
+    @IBOutlet weak var sleepBtn: CustomBtn!
     
     var pet: PetChoosed!
-
+    var xpReceived = 0
+    var feedPoints = 0
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
-
+        
         xperienceLabel.layer.borderColor = UIColor.white.cgColor
         xperienceLabel.layer.borderWidth = 2
         xperienceLabel.layer.cornerRadius = 10
         xperienceLabel.text = "XP: 79/120"
-
+        pet.disableDelegate = self
         petImageView.image = pet.frontImage
     }
 
@@ -52,11 +55,8 @@ class MainScreenViewController: UIViewController {
         levelLabel.text = "LV:\n12"
     }
     
-    @IBAction func onButtonTap(_ sender: UIButton) {
-        
-    }
-    
     @IBAction func onLevelLabelTap(_ sender: UITapGestureRecognizer){
+        
         let bergStoryBoard = UIStoryboard.init(name: "BergStoryboard", bundle: nil)
         let statusViewController = bergStoryBoard.instantiateViewController(withIdentifier: "statusPet") as! PetStatusViewController
         statusViewController.pet = self.pet
@@ -70,34 +70,32 @@ class MainScreenViewController: UIViewController {
         }
     }
     
-    // MARK: - Buttons' actions
+    // MARK: Buttons' actions
     
     @IBAction func feed(_ sender: CustomBtn) {
         
-        if !pet.isSleeping {
-            pet.feed(lunch: 20)
+        if !pet.isEating {
+            pet.tryFeed(duration: 5)
+            feedPoints = 20
         }
     }
     
-    @IBAction func sleepBtn(_ sender: CustomBtn) {
+    @IBAction func sleepOrWakeUp(_ sender: CustomBtn) {
         
-        pet.isSleeping = !pet.isSleeping
         if !pet.isSleeping {
-            sender.setImage(#imageLiteral(resourceName: "zzz"), for: .normal)
-            changeEnabled(buttons: [feedBtn, playBtn, battleBtn, exerciseBtn], to: true)
+            pet.trySleep()
         } else {
-            sender.setImage(#imageLiteral(resourceName: "sun"), for: .normal)
-            changeEnabled(buttons: [feedBtn, playBtn, battleBtn, exerciseBtn], to: false)
+            print("ACORDOU")
+            pet.wakeUp()
         }
-        print("LOLOLO = \(pet.isSleeping)")
-        
-        
+        //print("SleepOrWake: dormindo = \(pet.isSleeping)")
     }
     
     @IBAction func exercise(_ sender: CustomBtn) {
         
-        if !pet.isSleeping {
-            pet.xpUp(xp: 20)
+        if !pet.isExercising {
+            xpReceived = pet.tryExercise(typeOfExercise: Exercise(cost: 10, gain: 10))
+            print("XP = \(pet.battleAtt.xp)")
         }
     }
     
@@ -115,8 +113,45 @@ class MainScreenViewController: UIViewController {
         
     }
     
+    // MARK: DisableButtonsProtocol delegate
     
+    func enableBySleeping() {
+        
+        print("Ativou pra acordar")
+        changeEnabled(buttons: [feedBtn, playBtn, battleBtn, exerciseBtn], to: true)
+        sleepBtn.setImage(#imageLiteral(resourceName: "zzz"), for: .normal)
+    }
     
+    func disableBySleeping() {
+        
+        print("DesAtivou pra durmir")
+        changeEnabled(buttons: [feedBtn, playBtn, battleBtn, exerciseBtn], to: false)
+        sleepBtn.setImage(#imageLiteral(resourceName: "sun"), for: .normal)
+    }
+
+    func enableByFeeding() {
+        print("Ativou pra parar de comer")
+        pet.feedUp(lunch: feedPoints)
+        changeEnabled(buttons: [feedBtn, playBtn, battleBtn, exerciseBtn, sleepBtn], to: true)
+    }
+    
+    func disableByFeeding() {
+        print("DesAtivou pra comer")
+        changeEnabled(buttons: [feedBtn, playBtn, battleBtn, exerciseBtn, sleepBtn], to: false)
+    }
+    
+    func enableByExercising() {
+        
+        print("Ativou pra descansar")
+        pet.xpUp(xp: xpReceived)
+        print("XP += \(xpReceived)")
+        changeEnabled(buttons: [feedBtn, playBtn, battleBtn, exerciseBtn, sleepBtn], to: true)
+    }
+    
+    func disableByExercising() {
+        print("DesAtivou pra exercitar")
+        changeEnabled(buttons: [feedBtn, playBtn, battleBtn, exerciseBtn, sleepBtn], to: false)
+    }
     /*
      // MARK: - Navigation
      
