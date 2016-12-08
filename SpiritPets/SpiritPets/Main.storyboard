@@ -12,35 +12,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SpiritPets" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eck-oV-XKe">
-                                <rect key="frame" x="179" y="207" width="46" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="kuQ-Rs-xqg" kind="show" id="EoL-Tk-asO"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="QDf-oy-SC5"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="56.799999999999997" y="-0.44977511244377816"/>
-        </scene>
         <!--Pet Selection View Controller-->
         <scene sceneID="kMK-Be-60N">
             <objects>
@@ -191,7 +162,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aqj-xB-pMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="988" y="-5.8470764617691158"/>
+            <point key="canvasLocation" x="910" y="0.0"/>
         </scene>
         <!--Mini Game View Controller-->
         <scene sceneID="spa-It-0kQ">
@@ -211,24 +182,6 @@
             </objects>
             <point key="canvasLocation" x="1816.8" y="-0.44977511244377816"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="4dP-uq-MFe">
-            <objects>
-                <navigationController storyboardIdentifier="navigationMiniGames" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="prj-Eh-bCS" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AM8-fl-hiz">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="X9Z-pe-1qr"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QBZ-GQ-OQv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-961" y="0.0"/>
-        </scene>
         <!--Main Screen View Controller-->
         <scene sceneID="gCW-rE-89i">
             <objects>
@@ -245,7 +198,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2s-Ap-2Pe" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
-                                <rect key="frame" x="11" y="424" width="99" height="98"/>
+                                <rect key="frame" x="11" y="423" width="99" height="99"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="t2s-Ap-2Pe" secondAttribute="height" multiplier="1:1" id="FXb-BQ-r7f"/>
@@ -269,7 +222,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GoH-NS-lzR">
-                                <rect key="frame" x="8" y="34" width="81" height="81"/>
+                                <rect key="frame" x="8" y="34" width="80" height="80"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="GoH-NS-lzR" secondAttribute="height" multiplier="1:1" id="KIE-Om-uKK"/>
@@ -301,10 +254,11 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="play:" destination="qQc-24-ZK7" eventType="touchUpInside" id="8Jb-23-FOZ"/>
+                                    <segue destination="kuQ-Rs-xqg" kind="show" id="8au-0z-l3E"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDW-ZS-U61" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
-                                <rect key="frame" x="139" y="547" width="99" height="99"/>
+                                <rect key="frame" x="138" y="547" width="99" height="99"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="XDW-ZS-U61" secondAttribute="height" multiplier="1:1" id="sVZ-Ca-8GU"/>
@@ -336,7 +290,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oK9-Fh-91f" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
-                                <rect key="frame" x="139" y="424" width="99" height="98"/>
+                                <rect key="frame" x="138" y="423" width="99" height="99"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="oK9-Fh-91f" secondAttribute="height" multiplier="1:1" id="i5M-ca-81U"/>
@@ -352,7 +306,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahL-Mx-6dr" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
-                                <rect key="frame" x="265" y="424" width="99" height="98"/>
+                                <rect key="frame" x="265" y="423" width="99" height="99"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ahL-Mx-6dr" secondAttribute="height" multiplier="1:1" id="huS-FT-Yd1"/>
@@ -368,13 +322,13 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NoL-U4-ssw">
-                                <rect key="frame" x="96" y="217" width="183" height="183"/>
+                                <rect key="frame" x="96" y="216" width="183" height="183"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="NoL-U4-ssw" secondAttribute="height" multiplier="1:1" id="ibL-K4-fLl"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L9T-lX-hGR">
-                                <rect key="frame" x="214" y="109" width="139" height="139"/>
+                                <rect key="frame" x="214" y="108" width="139" height="139"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="L9T-lX-hGR" secondAttribute="height" multiplier="1:1" id="QIC-Lc-ALK"/>
                                 </constraints>
