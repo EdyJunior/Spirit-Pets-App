@@ -100,9 +100,9 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
     }
     
     @IBAction func play(_ sender: CustomBtn) {
-        let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let navigationMiniGames = mainStoryboard.instantiateViewController(withIdentifier: "navigationMiniGames")
-        self.present(navigationMiniGames, animated: true, completion: nil)
+//        let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
+//        let navigationMiniGames = mainStoryboard.instantiateViewController(withIdentifier: "navigationMiniGames")
+//        self.present(navigationMiniGames, animated: true, completion: nil)
     }
     
     @IBAction func achievementsBtn(_ sender: CustomBtn) {
