@@ -24,12 +24,11 @@ enum PetStage: String {
     case monster
 }
 
-//Types of exercises. First value of array is the cost of stamina. Second value is the increase in the pet's experience
+//Cost is the cost of stamina. Gain is the increase in the pet's experience
 struct Exercise {
     
-    let basicHP = [5, 5]
-    let basicAtk = [5, 5]
-    let basicDfs = [5, 5]
+    let cost: Int
+    let gain: Int
 }
 
 //Types of lunch. Each value is related to the increase in fed status of the pet

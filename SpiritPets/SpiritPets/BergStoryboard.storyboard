@@ -131,7 +131,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="sleepBtn:" destination="c6D-iN-V16" eventType="touchUpInside" id="84E-jS-jix"/>
+                                    <action selector="sleepOrWakeUp:" destination="c6D-iN-V16" eventType="touchUpInside" id="Jvt-D7-F0t"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="083-hu-WxL" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
@@ -212,6 +212,7 @@
                         <outlet property="petImageView" destination="qgb-PK-HVX" id="WPy-YM-3g4"/>
                         <outlet property="playBtn" destination="OGu-eg-fGQ" id="McZ-GN-kKw"/>
                         <outlet property="popupImageView" destination="K4i-RI-DUW" id="kOy-QP-2Hr"/>
+                        <outlet property="sleepBtn" destination="sfS-Yd-Fuc" id="Ljy-Z8-HpU"/>
                         <outlet property="xperienceLabel" destination="bpe-f7-kkW" id="FQx-Sy-hrq"/>
                     </connections>
                 </viewController>

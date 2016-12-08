@@ -8,54 +8,114 @@
 
 import UIKit
 
-protocol languishProtocol {
+protocol LanguishProtocol {
     func languish()
+}
+
+protocol DisableButtonsProtocol {
+    
+    func disable()
+    
+    func enable()
 }
 
 class LivingBeing: NSObject {
     
     var growthAtt: GrowthAttributes
-    var isSleeping = false
-    var delegate: languishProtocol? = nil
-    var isLanguishing: Bool {
+    var isEating = false
+    var isExercising = false
+    var languishDelegate: LanguishProtocol? = nil
+    var disableDelegate: DisableButtonsProtocol? = nil
+    
+    var isSleeping: Bool {
         didSet {
-            if isLanguishing {
-                self.delegate?.languish()
+            if isSleeping {
+                print("Didiset dormiu")
+                self.disableDelegate?.disable()
+            } else {
+                print("Didiset acordou")
+                self.disableDelegate?.enable()
             }
         }
     }
+    
+    var isLanguishing: Bool {
+        didSet {
+            if isLanguishing {
+                self.languishDelegate?.languish()
+            }
+        }
+    }
+    var sleepTask = DispatchWorkItem { }
 
     init(fed: Int, awake: Int, stamina: Int) {
         
         self.growthAtt = GrowthAttributes(fed: fed, awake: awake, stamina: stamina)
         self.isLanguishing = false
-
+        self.isSleeping = false
+        
         super.init()
         
-        Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(LivingBeing.updateStatus), userInfo: nil, repeats: true)
+        sleepTask = DispatchWorkItem(block: {
+            self.wakeUp()
+        })
+        
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(LivingBeing.updateStatus), userInfo: nil, repeats: true)
     }
 
     func feed(lunch: Int) {
 
-        self.growthAtt.fed += lunch
-        if self.growthAtt.fed > 100 {
-            self.growthAtt.fed = 100
+        if !isSleeping && !isEating && !isExercising {
+            isEating = true
+            self.growthAtt.fed += lunch
+            if self.growthAtt.fed > 100 {
+                self.growthAtt.fed = 100
+            }
+            let task = DispatchWorkItem { self.isEating = false }
+            let time = DispatchTimeInterval.seconds(lunch / 2)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time, execute: task)
+            //Timer.scheduledTimer(timeInterval: TimeInterval(lunch / 2), target: self, selector: #selector(LivingBeing.stopFeeding), userInfo: nil, repeats: false)
         }
     }
 
-    func sleep() {
-        self.isSleeping = true
+//    @objc private func stopFeeding() {
+//        isEating = false
+//    }
+    
+    func trySleep() {
+        
+        if !isEating && !isExercising {
+            self.isSleeping = true
+            sleepTask = DispatchWorkItem(block: {
+                self.wakeUp()
+            })
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5, execute: sleepTask)
+        }
     }
 
     func wakeUp() {
+        
         self.isSleeping = false
+        sleepTask.cancel()
     }
+    
+    func exercise(typeOfExercise exer: Exercise) -> Int {
 
-    func exercise(doing: [Int]) -> Int {
-
-        self.growthAtt.stamina -= doing[0]
-        return doing[1]
+        if !isSleeping && self.growthAtt.stamina > exer.cost && !isEating {
+            isExercising = true
+            self.growthAtt.stamina -= exer.cost
+            let task = DispatchWorkItem { self.isExercising = false }
+            let time = DispatchTimeInterval.seconds(exer.gain / 2)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time, execute: task)
+            //Timer.scheduledTimer(timeInterval: TimeInterval(exer.gain / 2), target: self, selector: #selector(LivingBeing.rest), userInfo: nil, repeats: false)
+            return exer.gain
+        }
+        return -1
     }
+    
+//    @objc private func rest() {
+//        isExercising = false
+//    }
 
     func updateStatus() {
         
@@ -82,7 +142,18 @@ class LivingBeing: NSObject {
         if starving && sleepy {
             isLanguishing = true
         }
-        
         print("fed = \(growthAtt.fed) e awake = \(growthAtt.awake)")
     }    
 }
+
+/* S
+ 
+ let task = DispatchWorkItem { print("do something") }
+ 
+ // execute task in 2 seconds
+ DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: task)
+ 
+ // optional: cancel task
+ task.cancel()
+ 
+ */
