@@ -9,67 +9,113 @@
 import UIKit
 
 class MainScreenViewController: UIViewController {
-    
-    @IBOutlet var buttons: [UIButton]!
-    
+
     @IBOutlet weak var xperienceLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
-    
     @IBOutlet weak var backgroundLabel: UILabel!
-    
+
     @IBOutlet weak var petImageView: UIImageView!
-    
     @IBOutlet weak var popupImageView: UIImageView!
     
+    @IBOutlet weak var feedBtn: CustomBtn!
+    @IBOutlet weak var exerciseBtn: CustomBtn!
+    @IBOutlet weak var playBtn: CustomBtn!
+    @IBOutlet weak var battleBtn: CustomBtn!
+    
+    var pet: PetChoosed!
+
     override func viewDidLoad() {
+
         super.viewDidLoad()
-        let uiEdgeInsets = UIEdgeInsets(top: CGFloat(20), left: CGFloat(20), bottom: CGFloat(20), right: CGFloat(20))
-        
+
         xperienceLabel.layer.borderColor = UIColor.white.cgColor
         xperienceLabel.layer.borderWidth = 2
         xperienceLabel.layer.cornerRadius = 10
         xperienceLabel.text = "XP: 79/120"
-        
-        for btn in buttons{
-            btn.imageEdgeInsets = uiEdgeInsets
-        }
-        
-        // Do any additional setup after loading the view.
-        
+
+        petImageView.image = pet.frontImage
     }
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         backgroundLabel.clipsToBounds = true
         backgroundLabel.frame.size.width = 150
-        //backgroundLabel.layer.cornerRadius = backgroundLabel.frame.width / 2
         backgroundLabel.layer.cornerRadius = 10
-        
+
         levelLabel.layer.cornerRadius = levelLabel.frame.width / 2
         levelLabel.layer.borderColor = UIColor.white.cgColor
         levelLabel.layer.borderWidth = 2
         levelLabel.text = "LV:\n12"
-        
-        
-        for btn in buttons{
-            print("btn width \(btn.frame.width) height \(btn.frame.height)")
-            btn.layer.cornerRadius = btn.frame.width / 2
-        }
-        
     }
     
     @IBAction func onButtonTap(_ sender: UIButton) {
+        
     }
-    
     
     @IBAction func onLevelLabelTap(_ sender: UITapGestureRecognizer){
-        print("you tap on level label")
+        let bergStoryBoard = UIStoryboard.init(name: "BergStoryboard", bundle: nil)
+        let statusViewController = bergStoryBoard.instantiateViewController(withIdentifier: "statusPet") as! PetStatusViewController
+        statusViewController.pet = self.pet
+        self.show(statusViewController, sender: nil)
     }
+    
+    func changeEnabled(buttons: [UIButton], to: Bool) {
+        
+        for btn in buttons {
+            btn.isEnabled = to
+        }
+    }
+    
+    // MARK: - Buttons' actions
+    
+    @IBAction func feed(_ sender: CustomBtn) {
+        
+        if !pet.isSleeping {
+            pet.feed(lunch: 20)
+        }
+    }
+    
+    @IBAction func sleepBtn(_ sender: CustomBtn) {
+        
+        pet.isSleeping = !pet.isSleeping
+        if !pet.isSleeping {
+            sender.setImage(#imageLiteral(resourceName: "zzz"), for: .normal)
+            changeEnabled(buttons: [feedBtn, playBtn, battleBtn, exerciseBtn], to: true)
+        } else {
+            sender.setImage(#imageLiteral(resourceName: "sun"), for: .normal)
+            changeEnabled(buttons: [feedBtn, playBtn, battleBtn, exerciseBtn], to: false)
+        }
+        print("LOLOLO = \(pet.isSleeping)")
+        
+        
+    }
+    
+    @IBAction func exercise(_ sender: CustomBtn) {
+        
+        if !pet.isSleeping {
+            pet.xpUp(xp: 20)
+        }
+    }
+    
+    @IBAction func play(_ sender: CustomBtn) {
+        let mainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let navigationMiniGames = mainStoryboard.instantiateViewController(withIdentifier: "navigationMiniGames")
+        self.present(navigationMiniGames, animated: true, completion: nil)
+    }
+    
+    @IBAction func achievementsBtn(_ sender: CustomBtn) {
+        
+    }
+    
+    @IBAction func battle(_ sender: CustomBtn) {
+        
+    }
+    
+    
     
     /*
      // MARK: - Navigation
@@ -80,5 +126,4 @@ class MainScreenViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
-    
 }
