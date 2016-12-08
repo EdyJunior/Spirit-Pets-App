@@ -60,4 +60,9 @@ class MiniGameSelectionScreenViewController: UITableViewController {
         self.present(miniGameViewController, animated: true, completion: { self.miniGameViewController.numberScene = 0 })
     }
     
+    
+    @IBAction func onSwapRight(_ sender: UISwipeGestureRecognizer) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }

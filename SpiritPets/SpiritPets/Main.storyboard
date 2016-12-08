@@ -112,7 +112,7 @@
             </objects>
             <point key="canvasLocation" x="-962" y="687"/>
         </scene>
-        <!--Mini Game Selection-->
+        <!--Mini Game Selection Screen View Controller-->
         <scene sceneID="Vp4-eK-O21">
             <objects>
                 <tableViewController id="kuQ-Rs-xqg" customClass="MiniGameSelectionScreenViewController" customModule="SpiritPets" customModuleProvider="target" sceneMemberID="viewController">
@@ -120,6 +120,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MiniGameCellIdentifier" rowHeight="300" id="c4w-lK-4nH" customClass="MiniGameTableViewCell" customModule="SpiritPets" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="300"/>
@@ -141,6 +142,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="backgroundImageView" destination="0bb-pa-hqs" id="dLE-RD-WHQ"/>
                                     <outlet property="nameLabel" destination="0ci-L7-hIw" id="wld-kz-U8c"/>
@@ -150,17 +152,20 @@
                         <connections>
                             <outlet property="dataSource" destination="kuQ-Rs-xqg" id="8Gq-2O-ZEg"/>
                             <outlet property="delegate" destination="kuQ-Rs-xqg" id="Bgk-e1-Fsf"/>
+                            <outletCollection property="gestureRecognizers" destination="Dm3-g9-dFF" appends="YES" id="p1R-IR-nEU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Mini Game Selection" id="4ey-Di-kOD">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="6LR-id-iPH"/>
-                    </navigationItem>
                     <connections>
                         <outlet property="miniGameTableView" destination="O2R-BK-sET" id="29O-J7-HpI"/>
                         <segue destination="a3A-A5-lO7" kind="presentation" identifier="MiniGameIdentifier" id="hWt-dH-fQg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aqj-xB-pMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="Dm3-g9-dFF">
+                    <connections>
+                        <action selector="onSwapRight:" destination="kuQ-Rs-xqg" id="5Cn-KO-HRw"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="910" y="0.0"/>
         </scene>
