@@ -26,6 +26,8 @@ class PetStatusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabels()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(setupLabels),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
     }
 
     override func didReceiveMemoryWarning() {

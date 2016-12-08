@@ -64,16 +64,12 @@ class PetSelectionViewController: UIViewController {
         }
     }
     
-    @IBAction func letsgoTap(_ sender: UIButton) {
-        
-        let story = UIStoryboard.init(name: "BergStoryboard", bundle: nil)
-        
-        let mainView = story.instantiateViewController(withIdentifier: "MainScreenViewController") as! MainScreenViewController
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let petDict = chibis[pickerView.selectedItem]
         let pet = PetChoosed(name: petDict["name"] as! String!)
-        mainView.pet = pet
-        show(mainView, sender: self)
+        let mainViewController = segue.destination as! MainScreenViewController
+        mainViewController.pet = pet
+
     }
     
     
