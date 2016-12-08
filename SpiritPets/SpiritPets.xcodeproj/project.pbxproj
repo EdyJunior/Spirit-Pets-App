@@ -13,6 +13,7 @@
 		979A618C1DEDA59200F8604B /* PetSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */; };
 		979A618E1DEDA9DA00F8604B /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618D1DEDA9DA00F8604B /* AKPickerView.swift */; };
 		979F8B711DF7046700491FD2 /* PetStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979F8B701DF7046700491FD2 /* PetStatusViewController.swift */; };
+		97ED98761DF998F2005B1C7C /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97ED98751DF998F2005B1C7C /* AchievementViewController.swift */; };
 		97F1FD291DF0585F00264340 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F1FD281DF0585F00264340 /* MainScreenViewController.swift */; };
 		B50C21371DF06D6F00779435 /* MiniGame02Bitmasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21361DF06D6F00779435 /* MiniGame02Bitmasks.swift */; };
 		B50C21391DF06D7A00779435 /* MiniGame02Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C21381DF06D7A00779435 /* MiniGame02Manager.swift */; };
@@ -114,6 +115,7 @@
 		979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetSelectionViewController.swift; sourceTree = "<group>"; };
 		979A618D1DEDA9DA00F8604B /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
 		979F8B701DF7046700491FD2 /* PetStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetStatusViewController.swift; sourceTree = "<group>"; };
+		97ED98751DF998F2005B1C7C /* AchievementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		97F1FD281DF0585F00264340 /* MainScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		B50C21361DF06D6F00779435 /* MiniGame02Bitmasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Bitmasks.swift; sourceTree = "<group>"; };
 		B50C21381DF06D7A00779435 /* MiniGame02Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Manager.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				97F1FD281DF0585F00264340 /* MainScreenViewController.swift */,
 				979F8B701DF7046700491FD2 /* PetStatusViewController.swift */,
 				CE8150BE1DF8352C00A8F3A0 /* CustomBtn.swift */,
+				97ED98751DF998F2005B1C7C /* AchievementViewController.swift */,
 			);
 			path = SpiritPets;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				B50C214B1DF06E3000779435 /* BigEnemy.swift in Sources */,
 				B50C21591DF06EC200779435 /* MiniGameTableViewCell.swift in Sources */,
 				B50C21521DF06E7000779435 /* EnemyBullet.swift in Sources */,
+				97ED98761DF998F2005B1C7C /* AchievementViewController.swift in Sources */,
 				CE6237351DF1A27F0021FD86 /* PetChoosed.swift in Sources */,
 				979A618C1DEDA59200F8604B /* PetSelectionViewController.swift in Sources */,
 				CE98BCEC1DF354F8007D88CB /* LivingBeing.swift in Sources */,

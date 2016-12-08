@@ -271,6 +271,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="achievementsBtn:" destination="qQc-24-ZK7" eventType="touchUpInside" id="7lp-YP-cUk"/>
+                                    <segue destination="aTq-3S-XND" kind="show" identifier="goToAchievement" id="zCo-zs-aAh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9h-g5-zIa" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
@@ -394,6 +395,24 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="57" y="687"/>
+        </scene>
+        <!--Achievement View Controller-->
+        <scene sceneID="Vjy-KH-3xb">
+            <objects>
+                <viewController id="aTq-3S-XND" customClass="AchievementViewController" customModule="SpiritPets" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pby-XH-jDb"/>
+                        <viewControllerLayoutGuide type="bottom" id="jaw-Cr-s97"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7sB-HJ-UL6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7f1-1z-V1C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="57" y="1424"/>
         </scene>
         <!--Pet Status View Controller-->
         <scene sceneID="C4R-g2-2XR">
