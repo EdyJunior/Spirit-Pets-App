@@ -191,6 +191,7 @@ class MiniGame01Scene: SKScene {
     func backToMenu() {
         
         self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        
     }
     
     override func update(_ currentTime: TimeInterval) {
