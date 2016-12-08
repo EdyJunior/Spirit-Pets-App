@@ -84,5 +84,7 @@ class LivingBeing: NSObject {
         }
         
         print("fed = \(growthAtt.fed) e awake = \(growthAtt.awake)")
+        
+        NotificationCenter.default.post(name: Notification.Name("UpdateStatusNotification"), object: nil, userInfo: nil)
     }    
 }
