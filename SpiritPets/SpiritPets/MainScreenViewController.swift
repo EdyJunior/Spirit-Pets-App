@@ -57,8 +57,8 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
     
     @IBAction func onLevelLabelTap(_ sender: UITapGestureRecognizer){
         
-        let bergStoryBoard = UIStoryboard.init(name: "BergStoryboard", bundle: nil)
-        let statusViewController = bergStoryBoard.instantiateViewController(withIdentifier: "statusPet") as! PetStatusViewController
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        let statusViewController = storyBoard.instantiateViewController(withIdentifier: "statusPet") as! PetStatusViewController
         statusViewController.pet = self.pet
         self.show(statusViewController, sender: nil)
     }
