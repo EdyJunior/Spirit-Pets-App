@@ -34,29 +34,42 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
         xperienceLabel.layer.borderColor = UIColor.white.cgColor
         xperienceLabel.layer.borderWidth = 2
         xperienceLabel.layer.cornerRadius = 10
-        xperienceLabel.text = "XP: 79/120"
+        xperienceLabel.text = "XP: \(pet.battleAtt.xp)/\(pet.baseBattleAtt.xp * pet.battleAtt.lv)"
         pet.disableDelegate = self
         petImageView.image = pet.frontImage
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateXpLabel),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         backgroundLabel.clipsToBounds = true
-        backgroundLabel.frame.size.width = 150
+        backgroundLabel.frame.size.width = CGFloat(pet.battleAtt.xp / pet.baseBattleAtt.xp * pet.battleAtt.lv)
         backgroundLabel.layer.cornerRadius = 10
         
         levelLabel.layer.cornerRadius = levelLabel.frame.width / 2
         levelLabel.layer.borderColor = UIColor.white.cgColor
         levelLabel.layer.borderWidth = 2
-        levelLabel.text = "LV:\n12"
+        levelLabel.text = "LV:\n\(pet.battleAtt.lv)"
+    }
+    
+    func updateXpLabel(){
+        
+        let xp = CGFloat(pet.battleAtt.xp)
+        let xpMax = CGFloat( pet.baseBattleAtt.xp * pet.battleAtt.lv )
+        backgroundLabel.frame.size.width = ( xp / xpMax) * xperienceLabel.frame.width
+        print((xp / xpMax) * xperienceLabel.frame.width)
+        xperienceLabel.text = "XP: \(Int(xp))/\(Int(xpMax))"
+        
     }
 
-    @IBAction func onLevelLabelTap(_ sender: UITapGestureRecognizer) {
-
+    @IBAction func onLevelLabelTap(_ sender: UITapGestureRecognizer){
+        
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        let statusViewController = storyBoard.instantiateViewController(withIdentifier: "statusPet") as! PetStatusViewController
+        statusViewController.pet = self.pet
+        self.show(statusViewController, sender: nil)
     }
 
     func changeEnabled(buttons: [UIButton], to: Bool) {

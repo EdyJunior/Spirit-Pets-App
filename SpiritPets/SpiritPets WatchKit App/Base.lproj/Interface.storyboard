@@ -1,16 +1,89 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SpiritPets_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="0.5" alignment="left" id="QHe-aK-QCH">
+                            <items>
+                                <button width="0.45000000000000001" height="0.90000000000000002" alignment="left" title="Button" id="Ztc-8C-fea"/>
+                                <button width="0.45000000000000001" height="0.90000000000000002" alignment="right" title="Button" id="4bU-Jo-z0h"/>
+                            </items>
+                        </group>
+                        <group width="1" height="0.5" alignment="left" id="v3I-BP-QpJ">
+                            <items>
+                                <button width="0.45000000000000001" height="0.90000000000000002" alignment="left" title="Button" id="hMz-3J-XBy"/>
+                                <button width="0.45000000000000001" height="0.90000000000000002" alignment="right" title="Button" id="UhN-Ml-j4M"/>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="exerciseImage" destination="hMz-3J-XBy" id="1hj-g8-dea"/>
+                        <outlet property="experienceImage" destination="Ztc-8C-fea" id="S3d-gI-w4j"/>
+                        <outlet property="fedImage" destination="UhN-Ml-j4M" id="HZi-ZL-mG5"/>
+                        <outlet property="sleepImage" destination="4bU-Jo-z0h" id="iwL-6W-kvJ"/>
+                        <segue destination="UbN-ZK-3Mx" kind="relationship" relationship="nextPage" id="wpC-m2-GpO"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Growth Actions View Controller-->
+        <scene sceneID="19Z-Vr-gvW">
+            <objects>
+                <controller id="UbN-ZK-3Mx" customClass="GrowthActionsViewController" customModule="SpiritPets_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="0.5" alignment="left" verticalAlignment="center" id="WBg-RF-OCp">
+                            <items>
+                                <button width="0.41999999999999998" height="1" alignment="left" backgroundImage="EatButton" id="Vhz-A7-AOk">
+                                    <connections>
+                                        <action selector="eatAction" destination="UbN-ZK-3Mx" id="J57-Ib-USc"/>
+                                    </connections>
+                                </button>
+                                <button width="0.41999999999999998" height="1" alignment="right" backgroundImage="SleepButton" id="kMl-nz-PX3">
+                                    <connections>
+                                        <action selector="sleepAction" destination="UbN-ZK-3Mx" id="lTr-rd-XaM"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <button width="0.41999999999999998" height="0.5" alignment="center" verticalAlignment="center" backgroundImage="ExerciseButton" id="2sy-rQ-VKs">
+                            <connections>
+                                <action selector="exerciseAction" destination="UbN-ZK-3Mx" id="ePM-me-MgU"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <segue destination="7tM-ls-6jh" kind="relationship" relationship="nextPage" id="So1-Xn-IJN"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="468" y="345"/>
+        </scene>
+        <!--Pet Animation View Controller-->
+        <scene sceneID="yVu-27-dDn">
+            <objects>
+                <controller id="7tM-ls-6jh" customClass="PetAnimationViewController" customModule="SpiritPets_WatchKit_Extension">
+                    <items>
+                        <spriteKitScene alignment="left" id="Din-3p-17Q"/>
+                    </items>
+                    <connections>
+                        <outlet property="skView" destination="Din-3p-17Q" id="zi7-vg-9nB"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="714" y="345"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -31,7 +104,7 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="SpiritPets_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
