@@ -92,12 +92,12 @@ class LivingBeing: NSObject {
             self.wakeUp()
         })
         
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(LivingBeing.updateStatus), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 2592, target: self, selector: #selector(LivingBeing.updateStatus), userInfo: nil, repeats: true)
     }
 
     func tryFeed(duration: Int) {
 
-        if !isSleeping && !isExercising {
+        if !isSleeping {
             isEating = true
             print("Comendo por \(duration) segundos")
             
@@ -118,15 +118,13 @@ class LivingBeing: NSObject {
         }
     }
 
-    func trySleep() {
+    func sleep() {
         
-        if !isEating && !isExercising {
-            self.isSleeping = true
-            sleepTask = DispatchWorkItem(block: {
-                self.wakeUp()
-            })
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5, execute: sleepTask)
-        }
+        self.isSleeping = true
+        sleepTask = DispatchWorkItem(block: {
+            self.wakeUp()
+        })
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 36000, execute: sleepTask)
     }
 
     func wakeUp() {
@@ -137,15 +135,15 @@ class LivingBeing: NSObject {
     
     func tryExercise(typeOfExercise exer: Exercise) -> Int {
 
-        if !isSleeping && self.growthAtt.stamina > exer.cost && !isEating {
+        if !isSleeping && self.growthAtt.stamina > exer.cost {
             isExercising = true
-            self.growthAtt.stamina -= exer.cost
             let task = DispatchWorkItem {
                 self.isExercising = false
+                self.growthAtt.stamina -= exer.cost
                 print("descançou")
             }
-            print("Exercitando por \(exer.cost / 2) segundos")
-            let time = DispatchTimeInterval.seconds(exer.cost / 2)
+            print("Exercitando por \(exer.time) segundos")
+            let time = DispatchTimeInterval.seconds(exer.time)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time, execute: task)
             return exer.gain
         }
@@ -157,27 +155,33 @@ class LivingBeing: NSObject {
         var starving = false
         var sleepy = false
 
-        growthAtt.fed -= (isSleeping ? 1 : 3)
-        growthAtt.awake -= (isSleeping ? -2 : 3)
+        growthAtt.fed -= (isSleeping ? 1 : 2)
+        growthAtt.awake -= (isSleeping ? -1 : 1)
+        growthAtt.stamina -= (isSleeping ? -4 : -2)
         
-        if growthAtt.fed < 25 {
+        if growthAtt.fed < 30 {
             starving = true
-            if growthAtt.fed < 0 {
+            if growthAtt.fed < 1 {
                 growthAtt.fed = 0
             }
         }
-        if growthAtt.awake < 25 {
+        if growthAtt.awake < 30 {
             sleepy = true
-            if growthAtt.awake < 0 {
+            if growthAtt.awake < 1 {
                 growthAtt.awake = 0
             }
         } else if growthAtt.awake > 100 {
             growthAtt.awake = 100
         }
-        if starving && sleepy {
-            isLanguishing = true
+        if growthAtt.stamina > 100 {
+            growthAtt.stamina = 100
         }
-        print("fed = \(growthAtt.fed) e awake = \(growthAtt.awake)")
+        if (starving && sleepy) || (growthAtt.awake < 10) || (growthAtt.fed < 10) {
+            isLanguishing = true
+        } else {
+            isLanguishing = false
+        }
+        print("fed = \(growthAtt.fed) awake = \(growthAtt.awake) stamina = \(growthAtt.stamina)")
         
         NotificationCenter.default.post(name: Notification.Name("UpdateStatusNotification"), object: nil, userInfo: nil)
     }    
