@@ -37,10 +37,9 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
         xperienceLabel.text = "XP: \(pet.battleAtt.xp)/\(pet.baseBattleAtt.xp * pet.battleAtt.lv)"
         pet.disableDelegate = self
         petImageView.image = pet.frontImage
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateXpLabel),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,6 +52,15 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
         levelLabel.layer.borderColor = UIColor.white.cgColor
         levelLabel.layer.borderWidth = 2
         levelLabel.text = "LV:\n\(pet.battleAtt.lv)"
+    }
+    
+    func updateXpLabel(){
+        
+        let xp = pet.battleAtt.xp
+        let xpMax = pet.baseBattleAtt.xp * pet.battleAtt.lv
+        backgroundLabel.frame.size.width = CGFloat( xp / xpMax) * xperienceLabel.frame.width
+        xperienceLabel.text = "XP: \(xp)/\(xpMax)"
+        
     }
     
     @IBAction func onLevelLabelTap(_ sender: UITapGestureRecognizer){
