@@ -34,7 +34,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
         xperienceLabel.layer.borderColor = UIColor.white.cgColor
         xperienceLabel.layer.borderWidth = 2
         xperienceLabel.layer.cornerRadius = 10
-        xperienceLabel.text = "XP: 79/120"
+        xperienceLabel.text = "XP: \(pet.battleAtt.xp)/\(pet.baseBattleAtt.xp * pet.battleAtt.lv)"
         pet.disableDelegate = self
         petImageView.image = pet.frontImage
     }
@@ -46,13 +46,13 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
     override func viewDidAppear(_ animated: Bool) {
         
         backgroundLabel.clipsToBounds = true
-        backgroundLabel.frame.size.width = 150
+        backgroundLabel.frame.size.width = CGFloat(pet.battleAtt.xp / pet.baseBattleAtt.xp * pet.battleAtt.lv)
         backgroundLabel.layer.cornerRadius = 10
 
         levelLabel.layer.cornerRadius = levelLabel.frame.width / 2
         levelLabel.layer.borderColor = UIColor.white.cgColor
         levelLabel.layer.borderWidth = 2
-        levelLabel.text = "LV:\n12"
+        levelLabel.text = "LV:\n\(pet.battleAtt.lv)"
     }
     
     @IBAction func onLevelLabelTap(_ sender: UITapGestureRecognizer){
