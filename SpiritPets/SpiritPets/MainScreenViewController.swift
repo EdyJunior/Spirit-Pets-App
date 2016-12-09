@@ -56,10 +56,11 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
     
     func updateXpLabel(){
         
-        let xp = pet.battleAtt.xp
-        let xpMax = pet.baseBattleAtt.xp * pet.battleAtt.lv
-        backgroundLabel.frame.size.width = CGFloat( xp / xpMax) * xperienceLabel.frame.width
-        xperienceLabel.text = "XP: \(xp)/\(xpMax)"
+        let xp = CGFloat(pet.battleAtt.xp)
+        let xpMax = CGFloat( pet.baseBattleAtt.xp * pet.battleAtt.lv )
+        backgroundLabel.frame.size.width = ( xp / xpMax) * xperienceLabel.frame.width
+        print((xp / xpMax) * xperienceLabel.frame.width)
+        xperienceLabel.text = "XP: \(Int(xp))/\(Int(xpMax))"
         
     }
     
