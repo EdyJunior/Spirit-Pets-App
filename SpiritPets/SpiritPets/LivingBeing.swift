@@ -112,7 +112,7 @@ class LivingBeing: NSObject {
     
     func feedUp(lunch: Int) {
         
-        self.growthAtt.fed += lunch
+        self.growthAtt.fed = lunch + self.growthAtt.fed
         if self.growthAtt.fed > 100 {
             self.growthAtt.fed = 100
         }
@@ -139,7 +139,7 @@ class LivingBeing: NSObject {
 
         if !isSleeping && self.growthAtt.stamina > exer.cost && !isEating {
             isExercising = true
-            self.growthAtt.stamina -= exer.cost
+            self.growthAtt.stamina = exer.cost - self.growthAtt.stamina
             let task = DispatchWorkItem {
                 self.isExercising = false
                 print("descançou")
@@ -157,8 +157,8 @@ class LivingBeing: NSObject {
         var starving = false
         var sleepy = false
 
-        growthAtt.fed -= (isSleeping ? 1 : 3)
-        growthAtt.awake -= (isSleeping ? -2 : 3)
+        growthAtt.fed = growthAtt.fed - (isSleeping ? 1 : 3)
+        growthAtt.awake = growthAtt.awake - (isSleeping ? -2 : 3)
         
         if growthAtt.fed < 25 {
             starving = true
