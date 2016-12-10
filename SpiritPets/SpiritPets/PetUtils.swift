@@ -29,6 +29,7 @@ struct Exercise {
     
     let cost: Int
     let gain: Int
+    let time: Int
 }
 
 //Types of lunch. Each value is related to the increase in fed status of the pet
