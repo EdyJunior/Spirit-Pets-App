@@ -37,7 +37,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
         xperienceLabel.layer.borderColor = UIColor.white.cgColor
         xperienceLabel.layer.borderWidth = 2
         xperienceLabel.layer.cornerRadius = 10
-        xperienceLabel.text = "XP: \(pet.battleAtt.xp)/\(pet.baseBattleAtt.xp * pet.battleAtt.lv)"
+        xperienceLabel.text = "XP: \(pet.battleAtt.xp!)/\(pet.baseBattleAtt.xp * pet.battleAtt.lv)"
         pet.disableDelegate = self
         petImageView.image = pet.frontImage
         

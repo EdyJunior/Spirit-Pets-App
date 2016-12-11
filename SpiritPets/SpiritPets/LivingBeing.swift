@@ -140,7 +140,7 @@ class LivingBeing: NSObject {
             self.growthAtt.stamina = exer.cost - self.growthAtt.stamina
             let task = DispatchWorkItem {
                 self.isExercising = false
-                self.growthAtt.stamina -= exer.cost
+                self.growthAtt.stamina = self.growthAtt.stamina - exer.cost
                 print("descançou")
             }
             print("Exercitando por \(exer.time) segundos")
