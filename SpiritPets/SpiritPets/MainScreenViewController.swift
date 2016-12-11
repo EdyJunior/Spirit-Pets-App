@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainScreenViewController: UIViewController, DisableButtonsProtocol {
+class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeToTakeCareProtocol {
 
     @IBOutlet weak var xperienceLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
@@ -16,6 +16,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
 
     @IBOutlet weak var petImageView: UIImageView!
     @IBOutlet weak var popupImageView: UIImageView!
+    @IBOutlet weak var messageImageView: UIImageView!
     
     @IBOutlet weak var feedBtn: CustomBtn!
     @IBOutlet weak var exerciseBtn: CustomBtn!
@@ -27,6 +28,8 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
     var xpReceived = 0
     var feedPoints = 0
     
+    var messages: Set<UIImage> = []
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -36,6 +39,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
         xperienceLabel.layer.cornerRadius = 10
         xperienceLabel.text = "XP: \(pet.battleAtt.xp)/\(pet.baseBattleAtt.xp * pet.battleAtt.lv)"
         pet.disableDelegate = self
+        pet.careDelegate = self
         petImageView.image = pet.frontImage
         
         NotificationCenter.default.addObserver(self,
@@ -61,7 +65,6 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
         backgroundLabel.frame.size.width = ( xp / xpMax) * xperienceLabel.frame.width
         print((xp / xpMax) * xperienceLabel.frame.width)
         xperienceLabel.text = "XP: \(Int(xp))/\(Int(xpMax))"
-        
     }
 
     @IBAction func onLevelLabelTap(_ sender: UITapGestureRecognizer){
@@ -84,8 +87,8 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
     @IBAction func feed(_ sender: CustomBtn) {
 
         if !pet.isEating {
-            pet.tryFeed(duration: 60)
-            feedPoints = 10
+            pet.tryFeed(duration: 5)//60)
+            feedPoints = 70
         }
     }
     
@@ -102,7 +105,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
     @IBAction func exercise(_ sender: CustomBtn) {
         
         if !pet.isExercising {
-            xpReceived = pet.tryExercise(typeOfExercise: Exercise(cost: 40, gain: 30, time: 3600))
+            xpReceived = pet.tryExercise(typeOfExercise: Exercise(cost: 40, gain: 30, time: 5))//3600))
             print("XP = \(pet.battleAtt.xp)")
         }
     }
@@ -171,6 +174,86 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol {
 
         print("DesAtivou pra exercitar")
         changeEnabled(buttons: [exerciseBtn, sleepBtn], to: false)
+    }
+    
+    // MARK: TimeToTakeCareProtocol delegate
+    
+    func hungerMessage() {
+        
+        popupImageView.isHidden = false
+        messageImageView.isHidden = false
+        messages.insert(#imageLiteral(resourceName: "hungry"))
+        print("Chamou HUNGER")
+        animateMessages()
+        //messageImageView.image =
+    }
+    
+    func sleepnessMessage() {
+        
+        popupImageView.isHidden = false
+        messageImageView.isHidden = false
+        messages.insert(#imageLiteral(resourceName: "sleepy"))
+        
+        animateMessages()
+        //messageImageView.image = #imageLiteral(resourceName: "sleepy")
+    }
+    
+    func tirednessMessage() {
+        
+        popupImageView.isHidden = false
+        messageImageView.isHidden = false
+        messages.insert(#imageLiteral(resourceName: "tired"))
+        
+        animateMessages()
+    }
+    
+    func animateMessages() {
+        
+        var messageImages: [UIImage] = []
+        for image in messages {
+            messageImages.append(image)
+        }
+        messageImageView.stopAnimating()
+        messageImageView.animationImages = messageImages
+        messageImageView.animationDuration = 3.0
+        messageImageView.animationRepeatCount = 0
+        messageImageView.startAnimating()
+    }
+    
+    func removeHunger() {
+        
+        messages.remove(#imageLiteral(resourceName: "hungry"))
+        if messages.isEmpty {
+            hiddenMessage()
+        } else {
+            animateMessages()
+        }
+    }
+    
+    func removeSleepness() {
+        
+        messages.remove(#imageLiteral(resourceName: "sleepy"))
+        if messages.isEmpty {
+            hiddenMessage()
+        } else {
+            animateMessages()
+        }
+    }
+    
+    func removeTiredness() {
+        
+        messages.remove(#imageLiteral(resourceName: "tired"))
+        if messages.isEmpty {
+            hiddenMessage()
+        } else {
+            animateMessages()
+        }
+    }
+    
+    func hiddenMessage() {
+        
+        messageImageView.stopAnimating()
+        messageImageView.image = #imageLiteral(resourceName: "happy")
     }
     /*
      // MARK: - Navigation

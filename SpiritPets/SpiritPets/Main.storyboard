@@ -333,10 +333,16 @@
                                     <constraint firstAttribute="width" secondItem="NoL-U4-ssw" secondAttribute="height" multiplier="1:1" id="ibL-K4-fLl"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L9T-lX-hGR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baloon" translatesAutoresizingMaskIntoConstraints="NO" id="L9T-lX-hGR">
                                 <rect key="frame" x="214" y="108" width="139" height="139"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="L9T-lX-hGR" secondAttribute="height" multiplier="1:1" id="QIC-Lc-ALK"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happy" translatesAutoresizingMaskIntoConstraints="NO" id="sXQ-O2-3od">
+                                <rect key="frame" x="238" y="132" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="sXQ-O2-3od" secondAttribute="height" multiplier="1:1" id="UXQ-NJ-SP8"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -368,14 +374,17 @@
                             <constraint firstItem="L9T-lX-hGR" firstAttribute="leading" secondItem="NoL-U4-ssw" secondAttribute="trailing" priority="750" constant="-14" id="bDM-Bs-7Wb"/>
                             <constraint firstItem="uX8-pO-0PR" firstAttribute="height" secondItem="kHC-5X-YWa" secondAttribute="height" id="bTm-ZO-p2e"/>
                             <constraint firstItem="P9h-g5-zIa" firstAttribute="top" secondItem="ahL-Mx-6dr" secondAttribute="bottom" constant="25.5" id="ei5-O6-T8S"/>
+                            <constraint firstItem="L9T-lX-hGR" firstAttribute="leading" secondItem="sXQ-O2-3od" secondAttribute="trailing" constant="-114" id="ejf-Va-BTi"/>
                             <constraint firstItem="XDW-ZS-U61" firstAttribute="centerX" secondItem="uX8-pO-0PR" secondAttribute="centerX" id="f0Z-oM-iU5"/>
                             <constraint firstItem="QDU-13-Whb" firstAttribute="width" secondItem="uX8-pO-0PR" secondAttribute="width" multiplier="0.26" constant="1" id="fGh-59-cdR"/>
                             <constraint firstItem="GoH-NS-lzR" firstAttribute="width" secondItem="OoN-L2-Tdw" secondAttribute="width" multiplier="6:20" id="hIw-6M-zYD"/>
+                            <constraint firstItem="sXQ-O2-3od" firstAttribute="centerX" secondItem="L9T-lX-hGR" secondAttribute="centerX" id="hMx-KC-69n"/>
                             <constraint firstItem="1gO-Wo-bKQ" firstAttribute="top" secondItem="QDU-13-Whb" secondAttribute="bottom" constant="21" id="hVj-y7-EDo"/>
                             <constraint firstAttribute="trailing" secondItem="uX8-pO-0PR" secondAttribute="trailing" id="nSF-So-VdX"/>
                             <constraint firstItem="uX8-pO-0PR" firstAttribute="bottom" secondItem="1gO-Wo-bKQ" secondAttribute="top" id="qkE-KY-HGP"/>
                             <constraint firstItem="oK9-Fh-91f" firstAttribute="centerX" secondItem="uX8-pO-0PR" secondAttribute="centerX" id="s9p-VP-baW"/>
                             <constraint firstItem="oK9-Fh-91f" firstAttribute="top" secondItem="NoL-U4-ssw" secondAttribute="bottom" constant="23.5" id="sRA-Yo-QJ8"/>
+                            <constraint firstItem="sXQ-O2-3od" firstAttribute="centerY" secondItem="L9T-lX-hGR" secondAttribute="centerY" id="vdW-VT-rrP"/>
                             <constraint firstItem="t2s-Ap-2Pe" firstAttribute="width" secondItem="uX8-pO-0PR" secondAttribute="width" multiplier="0.26" constant="1" id="wcM-La-chD"/>
                             <constraint firstItem="P9h-g5-zIa" firstAttribute="width" secondItem="uX8-pO-0PR" secondAttribute="width" multiplier="0.26" constant="1" id="zxj-u1-hdi"/>
                         </constraints>
@@ -386,6 +395,7 @@
                         <outlet property="exerciseBtn" destination="ahL-Mx-6dr" id="5Vu-7D-ZOX"/>
                         <outlet property="feedBtn" destination="t2s-Ap-2Pe" id="EUV-UI-AHI"/>
                         <outlet property="levelLabel" destination="GoH-NS-lzR" id="yc1-sg-jic"/>
+                        <outlet property="messageImageView" destination="sXQ-O2-3od" id="0Vi-GD-mm7"/>
                         <outlet property="petImageView" destination="NoL-U4-ssw" id="xT3-Sn-L08"/>
                         <outlet property="playBtn" destination="QDU-13-Whb" id="09X-8y-0dr"/>
                         <outlet property="popupImageView" destination="L9T-lX-hGR" id="XYH-AI-ank"/>
@@ -400,7 +410,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="57" y="687"/>
+            <point key="canvasLocation" x="56.799999999999997" y="686.80659670164926"/>
         </scene>
         <!--Achievement View Controller-->
         <scene sceneID="Vjy-KH-3xb">
@@ -578,8 +588,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="baloon" width="604" height="632"/>
         <image name="bodybuilding" width="147" height="77"/>
         <image name="garfo-e-faca" width="626" height="626"/>
+        <image name="happy" width="2000" height="2000"/>
         <image name="neon-grid" width="1920" height="1080"/>
         <image name="play" width="372" height="434"/>
         <image name="swords" width="512" height="512"/>
