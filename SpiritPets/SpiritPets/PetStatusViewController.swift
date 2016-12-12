@@ -11,6 +11,8 @@ import UIKit
 class PetStatusViewController: UIViewController {
 
     
+    @IBOutlet weak var viewImage: UIImageView!
+    @IBOutlet weak var mySubViewImage: UIImageView!
     @IBOutlet weak var mySubView: UIView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var hpLabel: UILabel!
@@ -31,8 +33,10 @@ class PetStatusViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(setupLabels),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
         
-        self.view.backgroundColor = UIColor.init(patternImage: UIImage(named: "background")!)
-        self.mySubView.backgroundColor = UIColor.init(patternImage: UIImage(named: "roundedRect")!)
+        self.viewImage.image = UIImage.init(named: "background")
+        self.mySubViewImage.image = UIImage.init(named: "roundedRect")
+        self.mySubView.clipsToBounds = true
+        self.mySubViewImage.clipsToBounds = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
