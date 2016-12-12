@@ -9,18 +9,17 @@
 import UIKit
 import SpriteKit
 
-class MiniGameSelectionScreenViewController: UITableViewController {
+class MiniGameSelectionScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var miniGameTableView: UITableView!
+    @IBOutlet weak var backButton: UIButton!
     
     var miniGameViewController = MiniGameViewController()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        miniGameTableView = UITableView()
-        
+        backButton.imageView?.image = UIImage.init(named: "backButton")
         miniGameTableView.dataSource = self
         miniGameTableView.delegate = self
         
@@ -31,28 +30,47 @@ class MiniGameSelectionScreenViewController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    
+    @IBAction func onBackButtonTap(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return MiniGameList.nameArray.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MiniGameCellIdentifier") as! MiniGameTableViewCell
         
-        cell.backgroundImageView.image = MiniGameList.getBackgroundImageOf(index: indexPath.row)
-        cell.nameLabel.text = MiniGameList.getNameOf(index: indexPath.row)
+        cell.backgroundImageView.image = MiniGameList.getBackgroundImageOf(index: indexPath.section)
+        cell.nameLabel.text = MiniGameList.getNameOf(index: indexPath.section)
+        cell.nameLabel.clipsToBounds = true
+        cell.nameLabel.layer.cornerRadius = 10
         
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        miniGameViewController.numberScene = indexPath.row + 1
+        miniGameViewController.numberScene = indexPath.section + 1
         
         self.performSegue(withIdentifier: "MiniGameIdentifier", sender: nil)
+    }
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat( tableView.frame.height / 100 )
     }
     
     override func performSegue(withIdentifier identifier: String, sender: Any?) {
