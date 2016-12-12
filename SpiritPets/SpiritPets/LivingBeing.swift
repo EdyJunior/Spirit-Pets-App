@@ -133,7 +133,7 @@ class LivingBeing: NSObject {
         self.growthAtt.fed += lunch
         if self.growthAtt.fed > 100 {
             self.growthAtt.fed = 100
-        } else if self.growthAtt.fed >= 30 {
+        } else if self.growthAtt.fed >= 50 {
             careDelegate?.removeHunger()
         }
     }
@@ -144,7 +144,7 @@ class LivingBeing: NSObject {
         sleepTask = DispatchWorkItem(block: {
             self.wakeUp()
         })
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 6/*36000*/, execute: sleepTask)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10/*36000*/, execute: sleepTask)
     }
 
     func wakeUp() {
@@ -183,26 +183,31 @@ class LivingBeing: NSObject {
         growthAtt.awake -= (isSleeping ? -50/*-1*/ : 5)//1)
         growthAtt.stamina -= (isSleeping ? -4 : -2)
 
-        if growthAtt.fed < 30 {
-            starving = true
-            if growthAtt.fed < 1 {
-                growthAtt.fed = 0
-            }
-        } else if growthAtt.fed < 50 {
+        if growthAtt.fed < 50 {
             careDelegate?.hungerMessage()
-        }
-        if growthAtt.awake < 30 {
-            careDelegate?.sleepnessMessage()
-            sleepy = true
-            if growthAtt.awake < 1 {
-                growthAtt.awake = 0
+            if growthAtt.fed < 30 {
+                starving = true
+                if growthAtt.fed < 1 {
+                    growthAtt.fed = 0
+                }
             }
-        } else if growthAtt.awake >= 30 && growthAtt.awake < 50 {
-            careDelegate?.sleepnessMessage()
-        } else if growthAtt.awake >= 50 && growthAtt.awake < 100 {
-            careDelegate?.removeSleepness()
         } else {
-            growthAtt.awake = 100
+            careDelegate?.removeHunger()
+        }
+        
+        if growthAtt.awake < 50 {
+            careDelegate?.sleepnessMessage()
+            if growthAtt.awake < 30 {
+                sleepy = true
+                if growthAtt.awake < 1 {
+                    growthAtt.awake = 0
+                }
+            }
+        } else if growthAtt.awake >= 50 && growthAtt.awake <= 100 {
+            careDelegate?.removeSleepness()
+            if growthAtt.awake > 100 {
+                growthAtt.awake = 100
+            }
         }
         if growthAtt.stamina > 100 {
             growthAtt.stamina = 100
