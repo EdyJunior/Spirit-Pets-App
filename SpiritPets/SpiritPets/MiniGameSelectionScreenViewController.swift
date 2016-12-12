@@ -49,6 +49,8 @@ class MiniGameSelectionScreenViewController: UIViewController, UITableViewDelega
         
         cell.backgroundImageView.image = MiniGameList.getBackgroundImageOf(index: indexPath.section)
         cell.nameLabel.text = MiniGameList.getNameOf(index: indexPath.section)
+        cell.nameLabel.clipsToBounds = true
+        cell.nameLabel.layer.cornerRadius = 10
         
         return cell
     }
