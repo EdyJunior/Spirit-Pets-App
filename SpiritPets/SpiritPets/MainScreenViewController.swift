@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeToTakeCareProtocol {
+class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeToTakeCareProtocol, SaveStatusDelegate {
 
     @IBOutlet weak var xperienceLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
@@ -30,20 +30,28 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     
     var messages: Set<UIImage> = []
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
+
+        let petData = defaults.data(forKey: "petDict")
+        pet = NSKeyedUnarchiver.unarchiveObject(with: petData!) as! PetChoosed!
         
         xperienceLabel.layer.borderColor = UIColor.white.cgColor
         xperienceLabel.layer.borderWidth = 2
         xperienceLabel.layer.cornerRadius = 10
-        xperienceLabel.text = "XP: \(pet.battleAtt.xp)/\(pet.baseBattleAtt.xp * pet.battleAtt.lv)"
+        xperienceLabel.text = "XP: \(pet.battleAtt.xp!)/\(pet.baseBattleAtt.xp * pet.battleAtt.lv)"
         pet.disableDelegate = self
         pet.careDelegate = self
+        appDelegate.saveDelegate = self
+        
         petImageView.image = pet.frontImage
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateXpLabel),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
+                                               selector: #selector(updateLabels),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,16 +63,19 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         levelLabel.layer.cornerRadius = levelLabel.frame.width / 2
         levelLabel.layer.borderColor = UIColor.white.cgColor
         levelLabel.layer.borderWidth = 2
-        levelLabel.text = "LV:\n\(pet.battleAtt.lv)"
+//        levelLabel.text = "LV:\n\(pet.battleAtt.lv!)"
+        updateLabels()
     }
     
-    func updateXpLabel(){
+    func updateLabels(){
         
         let xp = CGFloat(pet.battleAtt.xp)
         let xpMax = CGFloat( pet.baseBattleAtt.xp * pet.battleAtt.lv )
         backgroundLabel.frame.size.width = ( xp / xpMax) * xperienceLabel.frame.width
-        print((xp / xpMax) * xperienceLabel.frame.width)
+        //print((xp / xpMax) * xperienceLabel.frame.width)
         xperienceLabel.text = "XP: \(Int(xp))/\(Int(xpMax))"
+        levelLabel.text = "LV:\n\(pet.battleAtt.lv!)"
+
     }
 
     @IBAction func onLevelLabelTap(_ sender: UITapGestureRecognizer){
@@ -163,6 +174,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
 
         print("Ativou pra descansar")
         pet.xpUp(xp: xpReceived)
+        updateLabels()
         print("XP += \(xpReceived)")
         changeEnabled(buttons: [exerciseBtn], to: true)
         if !pet.isEating {
@@ -255,6 +267,20 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         messageImageView.stopAnimating()
         messageImageView.image = #imageLiteral(resourceName: "happy")
     }
+    
+    // MARK: - SaveStatusDelegate
+    
+    func save() {
+        
+        let data = NSKeyedArchiver.archivedData(withRootObject: pet)
+        defaults.set(data, forKey: "petDict")
+    }
+    
+    func load() {
+        
+    }
+    
+    
     /*
      // MARK: - Navigation
      
