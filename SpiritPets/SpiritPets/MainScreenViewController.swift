@@ -67,8 +67,10 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         let xp = CGFloat(pet.battleAtt.xp)
         let xpMax = CGFloat( pet.baseBattleAtt.xp * pet.battleAtt.lv )
         backgroundLabel.frame.size.width = ( xp / xpMax) * xperienceLabel.frame.width
-        print((xp / xpMax) * xperienceLabel.frame.width)
+        //print((xp / xpMax) * xperienceLabel.frame.width)
         xperienceLabel.text = "XP: \(Int(xp))/\(Int(xpMax))"
+        levelLabel.text = "LV:\n\(pet.battleAtt.lv!)"
+
     }
 
     @IBAction func onLevelLabelTap(_ sender: UITapGestureRecognizer){

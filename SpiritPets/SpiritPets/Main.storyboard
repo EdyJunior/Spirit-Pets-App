@@ -658,9 +658,11 @@
     </scenes>
     <resources>
         <image name="baloon" width="604" height="632"/>
+        <image name="backButton" width="150" height="150"/>
         <image name="bodybuilding" width="147" height="77"/>
         <image name="garfo-e-faca" width="626" height="626"/>
         <image name="happy" width="2000" height="2000"/>
+        <image name="heart" width="50" height="50"/>
         <image name="neon-grid" width="1920" height="1080"/>
         <image name="play" width="372" height="434"/>
         <image name="shield" width="50" height="50"/>

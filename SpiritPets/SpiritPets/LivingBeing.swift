@@ -155,20 +155,13 @@ class LivingBeing: NSObject {
     
     func tryExercise(typeOfExercise exer: Exercise) -> Int {
 
-        if !isSleeping {
-            if self.growthAtt.stamina > exer.cost {
-                isExercising = true
-                let task = DispatchWorkItem {
-                    self.isExercising = false
-                    self.growthAtt.stamina -= exer.cost
-                    print("descançou")
-                }
-                print("Exercitando por \(exer.time) segundos")
-                let time = DispatchTimeInterval.seconds(5)//exer.time)
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time, execute: task)
-                return exer.gain
-            } else {
-                careDelegate?.tirednessMessage()
+        if !isSleeping && self.growthAtt.stamina > exer.cost {
+            isExercising = true
+            self.growthAtt.stamina = exer.cost - self.growthAtt.stamina
+            let task = DispatchWorkItem {
+                self.isExercising = false
+                self.growthAtt.stamina = self.growthAtt.stamina - exer.cost
+                print("descançou")
             }
         }
         return 0
@@ -178,11 +171,10 @@ class LivingBeing: NSObject {
 
         var starving = false
         var sleepy = false
-
-        growthAtt.fed -= (isSleeping ? 1 : 10)//2)
-        growthAtt.awake -= (isSleeping ? -50/*-1*/ : 5)//1)
-        growthAtt.stamina -= (isSleeping ? -4 : -2)
-
+        growthAtt.fed = growthAtt.fed - (isSleeping ? 1 : 3)
+        growthAtt.awake = growthAtt.awake - (isSleeping ? -2 : 3)
+		growthAtt.stamina =  growthAtt.stamina - (isSleeping ? -4 : -2)
+        
         if growthAtt.fed < 30 {
             starving = true
             if growthAtt.fed < 1 {
