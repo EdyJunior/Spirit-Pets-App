@@ -46,7 +46,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         petImageView.image = pet.frontImage
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateXpLabel),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
+                                               selector: #selector(updateLabels),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
         
     }
     
@@ -62,7 +62,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         levelLabel.text = "LV:\n\(pet.battleAtt.lv!)"
     }
     
-    func updateXpLabel(){
+    func updateLabels(){
         
         let xp = CGFloat(pet.battleAtt.xp)
         let xpMax = CGFloat( pet.baseBattleAtt.xp * pet.battleAtt.lv )
@@ -169,6 +169,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
 
         print("Ativou pra descansar")
         pet.xpUp(xp: xpReceived)
+        updateLabels()
         print("XP += \(xpReceived)")
         changeEnabled(buttons: [exerciseBtn], to: true)
         if !pet.isEating {
