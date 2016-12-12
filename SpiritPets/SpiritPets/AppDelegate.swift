@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         if UserDefaults.standard.bool(forKey: "runBefore"){
             let mainStoryBoard = UIStoryboard.init(name: "Main", bundle: nil)
-            
+            self.window?.rootViewController = mainStoryBoard.instantiateViewController(withIdentifier: "MainScreenViewController")
         }
         return true
     }
