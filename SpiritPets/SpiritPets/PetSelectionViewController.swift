@@ -11,6 +11,7 @@ import UIKit
 class PetSelectionViewController: UIViewController {
     
     let pickerView = AKPickerView(frame: CGRect(origin: CGPoint.init(x: 0, y: 20), size: CGSize(width:200, height: 200)))
+    
     @IBOutlet var statusLabels: [UILabel]!
     @IBOutlet weak var hpLabel: UILabel!
     @IBOutlet weak var atkLabel: UILabel!
@@ -22,9 +23,9 @@ class PetSelectionViewController: UIViewController {
         
         super.viewDidLoad()
 
-        self.pickerView.frame.size.width = view.frame.width
-        self.pickerView.frame.size.height = view.frame.height / 3
         
+        self.pickerView.frame.size.width = view.frame.width
+        self.pickerView.frame.size.height = view.frame.height / 2.5
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
         self.pickerView.interitemSpacing = CGFloat(20)
@@ -49,6 +50,7 @@ class PetSelectionViewController: UIViewController {
         self.updateStatusLabels(status: [att["hp"]!,
                                          att["atk"]!,
                                          att["dfs"]!])
+        
     }
     
     func getPets(fromJsonWithPath path: String) {
@@ -66,10 +68,12 @@ class PetSelectionViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let petDict = chibis[pickerView.selectedItem]
-        let pet = PetChoosed(name: petDict["name"] as! String!)
-        let mainViewController = segue.destination as! MainScreenViewController
-        mainViewController.pet = pet
-
+        let pet = PetChoosed(dict: petDict)
+        
+        let data = NSKeyedArchiver.archivedData(withRootObject: pet)
+        defaults.set(data, forKey: "petDict")
+        UserDefaults.standard.set(true, forKey: "runBefore")//this controller wont be showed again.
+        print("enviei")
     }
     
     

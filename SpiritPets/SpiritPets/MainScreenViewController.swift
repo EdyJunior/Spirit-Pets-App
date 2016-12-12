@@ -33,17 +33,21 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     override func viewDidLoad() {
 
         super.viewDidLoad()
+
+        let petData = defaults.data(forKey: "petDict")
+        pet = NSKeyedUnarchiver.unarchiveObject(with: petData!) as! PetChoosed!
         
         xperienceLabel.layer.borderColor = UIColor.white.cgColor
         xperienceLabel.layer.borderWidth = 2
         xperienceLabel.layer.cornerRadius = 10
-        xperienceLabel.text = "XP: \(pet.battleAtt.xp)/\(pet.baseBattleAtt.xp * pet.battleAtt.lv)"
+        xperienceLabel.text = "XP: \(pet.battleAtt.xp!)/\(pet.baseBattleAtt.xp * pet.battleAtt.lv)"
         pet.disableDelegate = self
         pet.careDelegate = self
         petImageView.image = pet.frontImage
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateXpLabel),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,7 +59,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         levelLabel.layer.cornerRadius = levelLabel.frame.width / 2
         levelLabel.layer.borderColor = UIColor.white.cgColor
         levelLabel.layer.borderWidth = 2
-        levelLabel.text = "LV:\n\(pet.battleAtt.lv)"
+        levelLabel.text = "LV:\n\(pet.battleAtt.lv!)"
     }
     
     func updateXpLabel(){

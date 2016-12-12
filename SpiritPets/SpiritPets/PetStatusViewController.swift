@@ -11,6 +11,10 @@ import UIKit
 class PetStatusViewController: UIViewController {
 
     
+    @IBOutlet weak var viewImage: UIImageView!
+    @IBOutlet weak var mySubViewImage: UIImageView!
+    @IBOutlet weak var mySubView: UIView!
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var hpLabel: UILabel!
     @IBOutlet weak var atkLabel: UILabel!
     @IBOutlet weak var defLabel: UILabel!
@@ -28,11 +32,15 @@ class PetStatusViewController: UIViewController {
         setupLabels()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(setupLabels),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
+        
+        self.viewImage.image = UIImage.init(named: "background")
+        self.mySubViewImage.image = UIImage.init(named: "roundedRect")
+        self.mySubView.clipsToBounds = true
+        self.mySubViewImage.clipsToBounds = true
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
     
     @IBAction func onGoBackTap(_ sender: UIButton) {
@@ -43,15 +51,15 @@ class PetStatusViewController: UIViewController {
         let battleAtt = pet.battleAtt
         let growthAtt = pet.growthAtt
         
-        hpLabel.text = "HP: \(battleAtt.hp)"
-        atkLabel.text = "ATK: \(battleAtt.atk)"
-        defLabel.text = "DEF: \(battleAtt.dfs)"
-        levelLabel.text = "Level: \(battleAtt.lv)"
+        hpLabel.text = "HP: \(battleAtt.hp!)"
+        atkLabel.text = "ATK: \(battleAtt.atk!)"
+        defLabel.text = "DEF: \(battleAtt.dfs!)"
+        levelLabel.text = "Level: \(battleAtt.lv!)"
         evolutionLabel.text = "Evolution Stage: \(pet.stage)"
-        experenceLabel.text = "\(battleAtt.xp)"
-        staminiaLabel.text = "\(growthAtt.stamina)"
-        sleepLabel.text = "\(growthAtt.awake)"//??
-        feedLabel.text = "\(growthAtt.fed)"  //???
+        experenceLabel.text = "\(battleAtt.xp!)"
+        staminiaLabel.text = "\(growthAtt.stamina!)"
+        sleepLabel.text = "\(growthAtt.awake!)"
+        feedLabel.text = "\(growthAtt.fed!)"
     }
 
     /*

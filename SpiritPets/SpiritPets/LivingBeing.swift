@@ -130,7 +130,7 @@ class LivingBeing: NSObject {
     
     func feedUp(lunch: Int) {
         
-        self.growthAtt.fed += lunch
+        self.growthAtt.fed = lunch + self.growthAtt.fed
         if self.growthAtt.fed > 100 {
             self.growthAtt.fed = 100
         } else if self.growthAtt.fed >= 30 {
