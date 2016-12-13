@@ -100,14 +100,6 @@ struct StateOfAttributes {
     var current: BattleAttributes
 }
 
-//Variables related to growth
-/*struct GrowthAttributes {
-    
-    var fed: Int
-    var awake: Int
-    var stamina: Int
-}*/
-
 class GrowthAttributes: NSObject, NSCoding {
     
     var fed: Int!
@@ -139,5 +131,9 @@ class GrowthAttributes: NSObject, NSCoding {
         return "fed = \(self.fed!)\nawake = \(self.awake!)\nstamina = \(self.stamina!)"
     }
 }
+
+let updateInterval: TimeInterval = 10/*2592*/
+
+let sleepInterval: TimeInterval = 10/*36000*/
 
 let defaults = UserDefaults.standard

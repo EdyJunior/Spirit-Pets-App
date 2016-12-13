@@ -110,7 +110,7 @@ class LivingBeing: NSObject {
             self.wakeUp()
         })
         
-        Timer.scheduledTimer(timeInterval: 10/*2592*/, target: self, selector: #selector(LivingBeing.updateStatus), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(LivingBeing.updateStatus), userInfo: nil, repeats: true)
     }
 
     func tryFeed(duration: Int) {
@@ -144,7 +144,7 @@ class LivingBeing: NSObject {
         sleepTask = DispatchWorkItem(block: {
             self.wakeUp()
         })
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10/*36000*/, execute: sleepTask)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + sleepInterval, execute: sleepTask)
     }
 
     func wakeUp() {
@@ -219,7 +219,7 @@ class LivingBeing: NSObject {
         } else {
             isLanguishing = false
         }
-        print("\(growthAtt)")//fed = \(growthAtt.fed!) awake = \(growthAtt.awake!) stamina = \(growthAtt.stamina!)")
+        print("\(growthAtt)")
 
         NotificationCenter.default.post(name: Notification.Name("UpdateStatusNotification"), object: nil, userInfo: nil)
     }

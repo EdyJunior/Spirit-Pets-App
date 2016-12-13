@@ -23,14 +23,7 @@ protocol PetProtocol {
     var number: Int! { get set }
     var stage: PetStage { get set }
     
-    //init(name: String)
     init(dict: [String: Any])
     
     func calculateAttributes()
-    
-    func calculateOffensivePower() -> Int
-    
-    func calculateDamageReceived(enemysOffensive offensive: Int) -> Int
-    
-    func add(toHp: Int, theValue value: Int) -> Int
 }

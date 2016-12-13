@@ -32,6 +32,9 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    var lastActivate: Date = Date()
+    var backgroundTime: TimeInterval = TimeInterval()
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -276,7 +279,8 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         defaults.set(data, forKey: "petDict")
     }
     
-    func load() {
+    func load(after time: TimeInterval) {
+        
         
     }
     
