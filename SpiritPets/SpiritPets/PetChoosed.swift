@@ -41,7 +41,7 @@ class PetChoosed: LivingBeing, PetProtocol, LanguishProtocol, NSCoding {
         aCoder.encode(self.stage.rawValue, forKey: "stage")
     }
     
-    required init( dict: [String : Any] ){
+    required init(dict: [String : Any] ){
         
         self.name = dict["name"] as! String
         self.number = dict["number"] as! Int

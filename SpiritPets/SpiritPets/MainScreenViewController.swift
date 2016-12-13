@@ -40,13 +40,14 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         super.viewDidLoad()
 
         let petData = defaults.data(forKey: "petDict")
-        pet = NSKeyedUnarchiver.unarchiveObject(with: petData!) as! PetChoosed!
+        PetManager.sharedInstance.petChoosed = NSKeyedUnarchiver.unarchiveObject(with: petData!) as! PetChoosed!
+        pet = PetManager.sharedInstance.petChoosed
         
         xperienceLabel.layer.borderColor = UIColor.white.cgColor
         xperienceLabel.layer.borderWidth = 2
         xperienceLabel.layer.cornerRadius = 10
         xperienceLabel.text = "XP: \(pet.battleAtt.xp!)/\(pet.baseBattleAtt.xp * pet.battleAtt.lv)"
-        pet.disableDelegate = self
+        PetManager.sharedInstance.petChoosed.disableDelegate = self
         pet.careDelegate = self
         appDelegate.saveDelegate = self
         

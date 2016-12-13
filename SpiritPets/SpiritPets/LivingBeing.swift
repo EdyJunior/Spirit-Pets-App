@@ -110,7 +110,7 @@ class LivingBeing: NSObject {
             self.wakeUp()
         })
         
-        Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(LivingBeing.updateStatus), userInfo: nil, repeats: true)
+//        Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(LivingBeing.updateStatus), userInfo: nil, repeats: true)
     }
 
     func tryFeed(duration: Int) {
@@ -174,53 +174,53 @@ class LivingBeing: NSObject {
         return 0
     }
     
-    func updateStatus() {
-
-        var starving = false
-        var sleepy = false
-        
-        growthAtt.fed = growthAtt.fed - (isSleeping ? 1 : 10)//2)
-        growthAtt.awake = growthAtt.awake - (isSleeping ? -50/*-1*/ : 5)//1)
-		growthAtt.stamina =  growthAtt.stamina - (isSleeping ? -4 : -2)
-        
-        if growthAtt.fed < 50 {
-            careDelegate?.hungerMessage()
-            if growthAtt.fed < 30 {
-                starving = true
-                if growthAtt.fed < 1 {
-                    growthAtt.fed = 0
-                }
-            }
-        } else {
-            careDelegate?.removeHunger()
-        }
-        
-        if growthAtt.awake < 50 {
-            careDelegate?.sleepnessMessage()
-            if growthAtt.awake < 30 {
-                sleepy = true
-                if growthAtt.awake < 1 {
-                    growthAtt.awake = 0
-                }
-            }
-        } else if growthAtt.awake >= 50 && growthAtt.awake <= 100 {
-            careDelegate?.removeSleepness()
-        } else {
-            growthAtt.awake = 100
-        }
-        
-        if growthAtt.stamina > 100 {
-            growthAtt.stamina = 100
-        } else if growthAtt.stamina > 10 {
-            careDelegate?.removeTiredness()
-        }
-        if (starving && sleepy) || (growthAtt.awake < 10) || (growthAtt.fed < 10) {
-            isLanguishing = true
-        } else {
-            isLanguishing = false
-        }
-        print("\(growthAtt)")
-
-        NotificationCenter.default.post(name: Notification.Name("UpdateStatusNotification"), object: nil, userInfo: nil)
-    }
+//    func updateStatus() {
+//
+//        var starving = false
+//        var sleepy = false
+//        
+//        growthAtt.fed = growthAtt.fed - (isSleeping ? 1 : 10)//2)
+//        growthAtt.awake = growthAtt.awake - (isSleeping ? -50/*-1*/ : 5)//1)
+//		growthAtt.stamina =  growthAtt.stamina - (isSleeping ? -4 : -2)
+//        
+//        if growthAtt.fed < 50 {
+//            careDelegate?.hungerMessage()
+//            if growthAtt.fed < 30 {
+//                starving = true
+//                if growthAtt.fed < 1 {
+//                    growthAtt.fed = 0
+//                }
+//            }
+//        } else {
+//            careDelegate?.removeHunger()
+//        }
+//        
+//        if growthAtt.awake < 50 {
+//            careDelegate?.sleepnessMessage()
+//            if growthAtt.awake < 30 {
+//                sleepy = true
+//                if growthAtt.awake < 1 {
+//                    growthAtt.awake = 0
+//                }
+//            }
+//        } else if growthAtt.awake >= 50 && growthAtt.awake <= 100 {
+//            careDelegate?.removeSleepness()
+//        } else {
+//            growthAtt.awake = 100
+//        }
+//        
+//        if growthAtt.stamina > 100 {
+//            growthAtt.stamina = 100
+//        } else if growthAtt.stamina > 10 {
+//            careDelegate?.removeTiredness()
+//        }
+//        if (starving && sleepy) || (growthAtt.awake < 10) || (growthAtt.fed < 10) {
+//            isLanguishing = true
+//        } else {
+//            isLanguishing = false
+//        }
+//        print("\(growthAtt)")
+//
+//        NotificationCenter.default.post(name: Notification.Name("UpdateStatusNotification"), object: nil, userInfo: nil)
+//    }
 }
