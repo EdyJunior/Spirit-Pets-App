@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class BattleViewController: UIViewController {
+class BattleViewController: UIViewController, GameStateDelegate {
 
     var dictionary: [String: AnyObject]!
 
@@ -28,13 +28,21 @@ class BattleViewController: UIViewController {
         
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .aspectFill
+        
         scene.dictionary = self.dictionary
+        scene.gameDelegate = self
         skView.presentScene(scene)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    //GameStateDelegate
+    func onFinishGame(){
+        self.dismiss(animated: true, completion: nil)
     }
     
 

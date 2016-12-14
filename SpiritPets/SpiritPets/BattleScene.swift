@@ -9,6 +9,11 @@
 import SpriteKit
 import MultipeerConnectivity
 
+
+protocol GameStateDelegate {
+    func onFinishGame()
+}
+
 class BattleScene: SKScene {
     
     enum CurrentPlayer : String {
@@ -18,6 +23,8 @@ class BattleScene: SKScene {
     }
     
     var hp = 20
+    
+    var gameDelegate: GameStateDelegate?
     
     var currentPlayer = CurrentPlayer.player1
     var winner = CurrentPlayer.none.rawValue
@@ -92,7 +99,6 @@ class BattleScene: SKScene {
                 } else {
                     print("Não é seu turno ainda")
                 }
-//                print("tocou no batao 1")
             }
         }
     }
@@ -183,6 +189,7 @@ class BattleScene: SKScene {
                         if self.hp < 1 {
                             print("Eu perdi")
                             self.endBattle()
+                            self.gameDelegate?.onFinishGame()
                         }
                     }
                 } else {
@@ -196,6 +203,7 @@ class BattleScene: SKScene {
                     
                     alert.addAction(doneAction)
                     print("Eu ganhei")
+                    self.gameDelegate?.onFinishGame()
                     
                     OperationQueue.main.addOperation {
                         //self.present(alert, animated: true, completion: nil)
