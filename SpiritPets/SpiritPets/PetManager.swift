@@ -13,6 +13,7 @@ class PetManager: NSObject {
     static let sharedInstance = PetManager()
     
     var petChoosed: PetChoosed!
+    var historyOfAtt: [BattleAttributes] = []
     
     private override init() {
         

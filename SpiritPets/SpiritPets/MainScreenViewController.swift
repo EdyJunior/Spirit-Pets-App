@@ -119,7 +119,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     @IBAction func exercise(_ sender: CustomBtn) {
         
         if !pet.isExercising {
-            exercise = Exercise(cost: 40, gain: 30, time: 5)//3600)
+            exercise = Exercise(cost: 10, gain: 30, time: 5)//3600)
             pet.tryExercise(typeOfExercise: exercise)
             //print("XP = \(pet.battleAtt.xp)")
         }
@@ -283,7 +283,8 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         
         pet = PetManager.sharedInstance.petChoosed
         if pet.isSleeping {
-            pet.growthAtt.awake! += Int(time / sleepInterval)
+            pet.growthAtt.awake! += Int(time / updateInterval)
+            print("Soma = \(time / updateInterval)")
         }
     }
 }

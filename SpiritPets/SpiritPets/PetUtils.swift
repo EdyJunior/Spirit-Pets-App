@@ -85,6 +85,7 @@ class BattleAttributes: NSObject, NSCoding {
         self.rdm = rdm
         self.lv = lv
         self.xp = xp
+        super.init()
     }
     
     override var description: String {
@@ -130,7 +131,7 @@ class GrowthAttributes: NSObject, NSCoding {
     }
 }
 
-let updateInterval: TimeInterval = 10/*2592*/
+let updateInterval: TimeInterval = 6/*2592*/
 
 let sleepInterval: TimeInterval = 10/*36000*/
 let sleepnessUpRate: Int = 50//1

@@ -12,7 +12,6 @@ protocol PetProtocol {
     
     var battleAtt: BattleAttributes { get set }
     var baseBattleAtt: BattleAttributes { get set }
-    var historyOfAtt: [BattleAttributes] { get set }
     
     var frontImage: UIImage { get set }
     var backImage: UIImage { get set }

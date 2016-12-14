@@ -108,9 +108,7 @@ class LivingBeing: NSObject {
         
         sleepTask = DispatchWorkItem(block: {
             self.wakeUp()
-        })
-        
-//        Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(LivingBeing.updateStatus), userInfo: nil, repeats: true)
+        })        
     }
 
     func tryFeed(duration: Int) {
