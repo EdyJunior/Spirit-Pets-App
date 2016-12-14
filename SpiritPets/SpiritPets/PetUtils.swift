@@ -41,15 +41,12 @@ struct Lunch {
 }
 
 //Variables related to battle
-/*struct BattleAttributes: NSCoder {
-    
-    var  hp: Int
-    var atk: Int
-    var dfs: Int
-    var rdm: UInt32
-    var  lv: Int
-    var  xp: Int
-}*/
+let hpKey = "hp"
+let atkKey = "atk"
+let dfsKey = "dfs"
+let rdmKey = "rdm"
+let lvKey = "lv"
+let xpKey = "xp"
 
 class BattleAttributes: NSObject, NSCoding {
     
@@ -60,14 +57,8 @@ class BattleAttributes: NSObject, NSCoding {
     var  lv: Int!
     var  xp: Int!
     
-    let hpKey = "hp"
-    let atkKey = "atk"
-    let dfsKey = "dfs"
-    let rdmKey = "rdm"
-    let lvKey = "lv"
-    let xpKey = "xp"
-    
     func encode(with aCoder: NSCoder) {
+        
         aCoder.encode(self.hp, forKey: hpKey)
         aCoder.encode(self.atk, forKey: atkKey)
         aCoder.encode(self.dfs, forKey: dfsKey)
@@ -76,8 +67,8 @@ class BattleAttributes: NSObject, NSCoding {
         aCoder.encode(self.xp, forKey: xpKey)
     }
     
-    
     required init?(coder aDecoder: NSCoder) {
+        
         self.hp = aDecoder.decodeObject(forKey: hpKey) as! Int
         self.atk = aDecoder.decodeObject(forKey: atkKey) as! Int
         self.dfs = aDecoder.decodeObject(forKey: dfsKey) as! Int
@@ -88,12 +79,17 @@ class BattleAttributes: NSObject, NSCoding {
     }
     
     init(hp: Int, atk: Int, dfs: Int, rdm: UInt32, lv: Int, xp: Int) {
+        
         self.hp = hp
         self.atk = atk
         self.dfs = dfs
         self.rdm = rdm
         self.lv = lv
         self.xp = xp
+    }
+    
+    override var description: String {
+        return "hp = \(hp!)\natk = \(atk!)\ndfs = \(dfs!)\nrdm = \(rdm!)\nlv = \(lv!)\nxp = \(xp!)"
     }
     
 }
@@ -112,30 +108,36 @@ struct StateOfAttributes {
     var stamina: Int
 }*/
 
-class GrowthAttributes: NSObject, NSCoding{
+class GrowthAttributes: NSObject, NSCoding {
+    
     var fed: Int!
     var awake: Int!
     var stamina: Int!
     
     required init?(coder aDecoder: NSCoder) {
+        
         self.fed = aDecoder.decodeObject(forKey: "fed") as! Int
         self.awake = aDecoder.decodeObject(forKey: "awake") as! Int
         self.stamina = aDecoder.decodeObject(forKey: "stamina") as! Int
     }
     
     func encode(with aCoder: NSCoder) {
+        
         aCoder.encode(self.fed, forKey: "fed")
         aCoder.encode(self.awake, forKey: "awake")
         aCoder.encode(self.stamina, forKey: "stamina")
     }
     
     init(fed: Int, awake: Int, stamina: Int){
+        
         self.fed = fed
         self.awake = awake
         self.stamina = stamina
     }
+    
+    override var description: String {
+        return "fed = \(self.fed!)\nawake = \(self.awake!)\nstamina = \(self.stamina!)"
+    }
 }
-
-
 
 let defaults = UserDefaults.standard

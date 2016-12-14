@@ -514,24 +514,24 @@
 					};
 					CE3B2B681DEC631A0096C3D8 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 4XRA82V6CB;
+						DevelopmentTeam = CWK5G6U242;
 						ProvisioningStyle = Automatic;
 						TestTargetID = CE3B2B541DEC631A0096C3D8;
 					};
 					CE3B2B731DEC631A0096C3D8 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 4XRA82V6CB;
+						DevelopmentTeam = CWK5G6U242;
 						ProvisioningStyle = Automatic;
 						TestTargetID = CE3B2B541DEC631A0096C3D8;
 					};
 					CE3B2B7C1DEC631A0096C3D8 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 4XRA82V6CB;
+						DevelopmentTeam = CWK5G6U242;
 						ProvisioningStyle = Automatic;
 					};
 					CE3B2B8B1DEC631A0096C3D8 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 4XRA82V6CB;
+						DevelopmentTeam = CWK5G6U242;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -814,7 +814,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				DEVELOPMENT_TEAM = 4XRA82V6CB;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				INFOPLIST_FILE = "SpiritPets WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPets.watchkitapp.watchkitextension";
@@ -831,7 +831,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				DEVELOPMENT_TEAM = 4XRA82V6CB;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				INFOPLIST_FILE = "SpiritPets WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPets.watchkitapp.watchkitextension";
@@ -849,7 +849,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4XRA82V6CB;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				IBSC_MODULE = SpiritPets_WatchKit_Extension;
 				INFOPLIST_FILE = "SpiritPets WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPets.watchkitapp";
@@ -867,7 +867,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4XRA82V6CB;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				IBSC_MODULE = SpiritPets_WatchKit_Extension;
 				INFOPLIST_FILE = "SpiritPets WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPets.watchkitapp";
@@ -913,7 +913,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 4XRA82V6CB;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				INFOPLIST_FILE = SpiritPetsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPetsTests";
@@ -928,7 +928,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 4XRA82V6CB;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				INFOPLIST_FILE = SpiritPetsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPetsTests";
@@ -942,7 +942,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 4XRA82V6CB;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				INFOPLIST_FILE = SpiritPetsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPetsUITests";
@@ -956,7 +956,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 4XRA82V6CB;
+				DEVELOPMENT_TEAM = CWK5G6U242;
 				INFOPLIST_FILE = SpiritPetsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPetsUITests";

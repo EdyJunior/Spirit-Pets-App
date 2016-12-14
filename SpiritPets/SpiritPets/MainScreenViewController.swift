@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeToTakeCareProtocol {
+class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeToTakeCareProtocol, SaveStatusDelegate {
 
     @IBOutlet weak var xperienceLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
@@ -30,6 +30,8 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     
     var messages: Set<UIImage> = []
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -43,6 +45,8 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         xperienceLabel.text = "XP: \(pet.battleAtt.xp!)/\(pet.baseBattleAtt.xp * pet.battleAtt.lv)"
         pet.disableDelegate = self
         pet.careDelegate = self
+        appDelegate.saveDelegate = self
+        
         petImageView.image = pet.frontImage
         
         NotificationCenter.default.addObserver(self,
@@ -59,7 +63,8 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         levelLabel.layer.cornerRadius = levelLabel.frame.width / 2
         levelLabel.layer.borderColor = UIColor.white.cgColor
         levelLabel.layer.borderWidth = 2
-        levelLabel.text = "LV:\n\(pet.battleAtt.lv!)"
+//        levelLabel.text = "LV:\n\(pet.battleAtt.lv!)"
+        updateLabels()
     }
     
     func updateLabels(){
@@ -262,6 +267,20 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         messageImageView.stopAnimating()
         messageImageView.image = #imageLiteral(resourceName: "happy")
     }
+    
+    // MARK: - SaveStatusDelegate
+    
+    func save() {
+        
+        let data = NSKeyedArchiver.archivedData(withRootObject: pet)
+        defaults.set(data, forKey: "petDict")
+    }
+    
+    func load() {
+        
+    }
+    
+    
     /*
      // MARK: - Navigation
      

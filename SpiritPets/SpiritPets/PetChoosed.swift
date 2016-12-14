@@ -111,6 +111,7 @@ class PetChoosed: LivingBeing, PetProtocol, LanguishProtocol, NSCoding {
     required init?(coder aDecoder: NSCoder) {
         //let growthAttributes = aDecoder.decodeObject(forKey: "growthAtt") as! GrowthAttributes
         super.init(fed: 100, awake: 100, stamina: 100)
+        self.languishDelegate = self
         growthAtt = aDecoder.decodeObject(forKey: "growthAtt") as! GrowthAttributes
         battleAtt = aDecoder.decodeObject(forKey: "battleAtt") as! BattleAttributes
         baseBattleAtt = aDecoder.decodeObject(forKey: "baseBattleAtt") as! BattleAttributes
@@ -153,53 +154,62 @@ class PetChoosed: LivingBeing, PetProtocol, LanguishProtocol, NSCoding {
 
     func setBattleAtt() {
         
-        if let alreadySet = defaults.object(forKey: "alreadySetBattleStatus") as? Bool, alreadySet {
-            let attributes = defaults.object(forKey: "battleAtt") as! [String : Int]
-            
-            self.battleAtt = BattleAttributes(hp: attributes["hp"]!,
-                                              atk: attributes["atk"]!,
-                                              dfs: attributes["dfs"]!,
-                                              rdm: UInt32(attributes["rdm"]!),
-                                              lv: attributes["lv"]!,
-                                              xp: attributes["xp"]!)
-        } else {
-            let base = self.baseBattleAtt
-            let lv = 1
-            let xp = 0
-            let rdm = Int(base.rdm)
-            let hp = 2 * base.hp + 1 + Int(arc4random_uniform(UInt32(base.rdm)))
-            let atk = base.atk + 1 + Int(arc4random_uniform(UInt32(base.rdm)))
-            let dfs = base.dfs + 1 + Int(arc4random_uniform(UInt32(base.rdm)))
-            
-            let attributes: [String : Int] = ["hp": hp, "atk": atk, "dfs": dfs, "rdm": rdm, "lv": lv, "xp": xp]
-            self.battleAtt = BattleAttributes(hp: attributes["hp"]!,
-                                              atk: attributes["atk"]!,
-                                              dfs: attributes["dfs"]!,
-                                              rdm: UInt32(attributes["rdm"]!),
-                                              lv: attributes["lv"]!,
-                                              xp: attributes["xp"]!)
-            self.historyOfAtt.append(self.battleAtt)
-            defaults.set(attributes, forKey: "battleAtt")
-            defaults.set(true, forKey: "alreadySetBattleStatus")
-        }
-        defaults.set(false, forKey: "alreadySetBattleStatus")
+//        if let alreadySet = defaults.object(forKey: "alreadySetBattleStatus") as? Bool, alreadySet {
+//            let attributes = defaults.object(forKey: "battleAtt") as! [String : Int]
+//            
+//            self.battleAtt = BattleAttributes(hp: attributes["hp"]!,
+//                                              atk: attributes["atk"]!,
+//                                              dfs: attributes["dfs"]!,
+//                                              rdm: UInt32(attributes["rdm"]!),
+//                                              lv: attributes["lv"]!,
+//                                              xp: attributes["xp"]!)
+//            self.historyOfAtt.append(self.battleAtt)
+//        } else {
+        let base = self.baseBattleAtt
+        let lv = 1
+        let xp = 0
+        let rdm = Int(base.rdm)
+        let hp = 2 * base.hp + 1 + Int(arc4random_uniform(UInt32(base.rdm)))
+        let atk = base.atk + 1 + Int(arc4random_uniform(UInt32(base.rdm)))
+        let dfs = base.dfs + 1 + Int(arc4random_uniform(UInt32(base.rdm)))
+        
+        let attributes: [String : Int] = ["hp": hp, "atk": atk, "dfs": dfs, "rdm": rdm, "lv": lv, "xp": xp]
+        self.battleAtt = BattleAttributes(hp: attributes["hp"]!,
+                                          atk: attributes["atk"]!,
+                                          dfs: attributes["dfs"]!,
+                                          rdm: UInt32(attributes["rdm"]!),
+                                          lv: attributes["lv"]!,
+                                          xp: attributes["xp"]!)
+        
+        let nextLv = BattleAttributes(hp: 0, atk: 0, dfs: 0, rdm: 0, lv: 0, xp: 0)
+        nextLv.lv = self.battleAtt.lv
+        nextLv.xp = self.battleAtt.xp
+        nextLv.hp = self.battleAtt.hp
+        nextLv.atk = self.battleAtt.atk
+        nextLv.dfs = self.battleAtt.dfs
+
+        //defaults.set(attributes, forKey: "battleAtt")
+        self.historyOfAtt.append(nextLv)
+            //defaults.set(true, forKey: "alreadySetBattleStatus")
+        //}
+        //defaults.set(false, forKey: "alreadySetBattleStatus")
     }
-    
+
     func setGrowthAtt() {
         
-        if let alreadySet = defaults.object(forKey: "alreadySetGrowthStatus") as? Bool, alreadySet {
-            let fed = defaults.object(forKey: "fed") as! Int
-            let awake = defaults.object(forKey: "awake") as! Int
-            let stamina = defaults.object(forKey: "stamina") as! Int
-
-            self.growthAtt = GrowthAttributes(fed: fed, awake: awake, stamina: stamina)
-        } else {
-            defaults.set(100, forKey: "fed")
-            defaults.set(100, forKey: "awake")
-            defaults.set(100, forKey: "stamina")
-            self.growthAtt = GrowthAttributes(fed: 100, awake: 100, stamina: 100)
-            defaults.set(true, forKey: "alreadySetGrowthStatus")
-        }
+//        if let alreadySet = defaults.object(forKey: "alreadySetGrowthStatus") as? Bool, alreadySet {
+//            let fed = defaults.object(forKey: "fed") as! Int
+//            let awake = defaults.object(forKey: "awake") as! Int
+//            let stamina = defaults.object(forKey: "stamina") as! Int
+//
+//            self.growthAtt = GrowthAttributes(fed: fed, awake: awake, stamina: stamina)
+//        } else {
+//        defaults.set(100, forKey: "fed")
+//        defaults.set(100, forKey: "awake")
+//        defaults.set(100, forKey: "stamina")
+        self.growthAtt = GrowthAttributes(fed: 100, awake: 100, stamina: 100)
+            //defaults.set(true, forKey: "alreadySetGrowthStatus")
+//        }
     }
     
     func calculateOffensivePower() -> Int {
@@ -222,23 +232,31 @@ class PetChoosed: LivingBeing, PetProtocol, LanguishProtocol, NSCoding {
         }
         return hp
     }
-    
+
     func lvUp() {
 
-        self.battleAtt.lv = self.battleAtt.lv + 1
-        let number0:Int! = Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
-        self.battleAtt.hp = self.battleAtt.hp + self.baseBattleAtt.hp + number0
+        let number0: Int! = Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
+        let number1: Int! = Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
+        let number2: Int! = Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
         
-        let number1:Int! = Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
-        self.battleAtt.atk = self.battleAtt.atk + self.baseBattleAtt.atk + number1
+        let nextLv = BattleAttributes(hp: 0, atk: 0, dfs: 0, rdm: 0, lv: 0, xp: 0)
+        nextLv.lv = self.battleAtt.lv + 1
+        nextLv.xp = self.battleAtt.xp
+        nextLv.hp = self.battleAtt.hp + self.baseBattleAtt.hp + number0
+        nextLv.atk = self.battleAtt.atk + self.baseBattleAtt.atk + number1
+        nextLv.dfs = self.battleAtt.dfs + self.baseBattleAtt.dfs + number2
         
-        let number2:Int! = Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
-        self.battleAtt.dfs = self.battleAtt.dfs + self.baseBattleAtt.dfs + number2
-        self.historyOfAtt.append(self.battleAtt)
+        battleAtt.lv = nextLv.lv
+        battleAtt.xp = nextLv.xp
+        battleAtt.hp = nextLv.hp
+        battleAtt.atk = nextLv.atk
+        battleAtt.dfs = nextLv.dfs
+        
+        self.historyOfAtt.append(nextLv)
 
         print("\n\nUpou\n\n\(battleAtt)")
     }
-    
+
     func xpUp(xp: Int) {
 
         self.battleAtt.xp = xp + self.battleAtt.xp
