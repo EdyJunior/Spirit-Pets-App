@@ -153,7 +153,7 @@ class LivingBeing: NSObject {
         sleepTask.cancel()
     }
     
-    func tryExercise(typeOfExercise exer: Exercise) -> Int {
+    func tryExercise(typeOfExercise exer: Exercise) {
 
         if !isSleeping {
             if self.growthAtt.stamina > exer.cost {
@@ -166,12 +166,12 @@ class LivingBeing: NSObject {
             print("Exercitando por \(exer.time) segundos")
             let time = DispatchTimeInterval.seconds(5)//exer.time)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time, execute: task)
-            return exer.gain
+            //return exer.gain
             } else {
                 careDelegate?.tirednessMessage()
             }
         }
-        return 0
+        //return 0
     }
     
 //    func updateStatus() {
