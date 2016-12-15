@@ -23,6 +23,12 @@ protocol SaveStatusDelegate {
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+
+    var multipeerManager: MultipeerManager!
+    var gameArray = [0,0,0,0,0,0,0,0,0]
+    var gameTurn: Bool?
+    var gameUser: Int?
+    
     var saveDelegate: SaveStatusDelegate? = nil
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -31,7 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let mainStoryBoard = UIStoryboard.init(name: "Main", bundle: nil)
             self.window?.rootViewController = mainStoryBoard.instantiateViewController(withIdentifier: "MainScreenViewController")
         }
+        multipeerManager = MultipeerManager()
         return true
+    }
+    
+    func receiveMessage(dic: NSDictionary) {
+        self.gameArray = dic["gameArray"] as! [Int]
+        self.gameTurn = false
+        print(self.gameArray)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
