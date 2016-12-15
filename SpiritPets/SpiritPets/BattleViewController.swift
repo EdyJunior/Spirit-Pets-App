@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class BattleViewController: UIViewController, GameStateDelegate {
+class BattleViewController: UIViewController {
 
     var dictionary: [String: AnyObject]!
 
@@ -30,7 +30,7 @@ class BattleViewController: UIViewController, GameStateDelegate {
         scene.scaleMode = .aspectFill
         
         scene.dictionary = self.dictionary
-        scene.gameDelegate = self
+        scene.parentVC = self
         skView.presentScene(scene)
     }
 

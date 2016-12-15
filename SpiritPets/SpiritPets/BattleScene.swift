@@ -10,10 +10,6 @@ import SpriteKit
 import MultipeerConnectivity
 
 
-protocol GameStateDelegate {
-    func onFinishGame()
-}
-
 class BattleScene: SKScene {
     
     enum CurrentPlayer : String {
@@ -24,7 +20,7 @@ class BattleScene: SKScene {
     
     var hp = 20
     
-    var gameDelegate: GameStateDelegate?
+    var parentVC: BattleViewController!
     
     var currentPlayer = CurrentPlayer.player1
     var winner = CurrentPlayer.none.rawValue
@@ -35,10 +31,26 @@ class BattleScene: SKScene {
     
     var labelHp: SKLabelNode!
     var labelAtk: SKLabelNode!
+    var popUp: SKSpriteNode!
     
     override func didMove(to view: SKView) {
         
         self.backgroundColor = SKColor.white
+        let backgroundTexture = SKTexture.init(image: UIImage.init(named: "background")!)
+        let backgroundNode = SKSpriteNode.init(texture: backgroundTexture)
+        backgroundNode.position = CGPoint.init(x: self.frame.width / 2 , y: self.frame.height / 2)
+        backgroundNode.size = self.frame.size
+        self.addChild(backgroundNode)
+        backgroundNode.zPosition = -1
+        
+        let backButton = SKSpriteNode.init(texture: SKTexture.init(image: UIImage.init(named: "backButton")!))
+        backButton.size.width = self.frame.width / 5
+        backButton.size.height = self.frame.width / 5
+        backButton.position = CGPoint.init(x: backButton.size.width / 2 + 10, y: self.frame.height - backButton.size.height / 2 - 30)
+        backButton.name = "backButton"
+        self.addChild(backButton)
+        
+        
         let button1 = SKShapeNode.init(rect: CGRect.init(x: 100, y: 100, width: 50, height: 50))
         button1.fillColor = SKColor.black
         button1.name = "btn1"
@@ -53,6 +65,26 @@ class BattleScene: SKScene {
         self.labelAtk.position = CGPoint.init(x: self.labelAtk.frame.width, y: 0)
         self.labelAtk.fontColor = SKColor.black
         self.addChild(self.labelAtk)
+        
+        popUp = SKSpriteNode.init()
+        popUp.size.width = self.frame.size.width * 0.8
+        popUp.size.height = self.frame.size.height * 0.5
+        popUp.color = SKColor.white
+        popUp.position = CGPoint.init(x: self.frame.width / 2, y: self.frame.height / 2)
+        popUp.zPosition = 2
+        let label = SKLabelNode.init(text: "Would you like give up?")
+        label.fontColor = SKColor.black
+        popUp.addChild(label)
+        label.position = CGPoint.init(x: 0, y: label.frame.size.height - 10)
+
+        
+        let btnYes = SKLabelNode.init(text: "YES")
+        btnYes.fontColor = SKColor.black
+        let btnNo  = SKLabelNode.init(text: "No")
+        btnNo.fontColor = SKColor.black
+        popUp.addChild(btnYes)
+        popUp.addChild(btnNo)
+        //self.addChild(popUp)
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleMPCReceivedDataWithNotification(notification:)), name: NSNotification.Name(rawValue: "receivedMPCDataNotification"), object: nil)
@@ -74,8 +106,14 @@ class BattleScene: SKScene {
         if let touch = touches.first{
             let location = touch.location(in: self)
             let node = self.atPoint(location)
+            
+            if node.name == "backButton"{
+                self.addChild(popUp)//show popup
+                //gameDelegate?.onPlayerGiveUP()//talves substituir
+                //enviar menssagem de desistencia..
+            }
+            
             if node.name == "btn1"{
-                
                 if appDelegate.gameTurn! {
                     //view.isUserInteractionEnabled = false
                     //sender.isUserInteractionEnabled = false
@@ -176,7 +214,7 @@ class BattleScene: SKScene {
         if dataDictionary.allKeys.first as! String == "message" {
             if let message = dataDictionary["message"] {
                 if message as! String != "_end_chat_" {
-                    OperationQueue.main.addOperation {
+                    //OperationQueue.main.addOperation {
                         /// A ATUALIZAÇÃO DO JOGO FICA AQUI. REGRAS DE NEGÓCIO PROVAVELMENTE FICARÃO AQUI.
                         //self.user01.text = self.appDelegate.multipeerManager.peer.displayName
                         //self.user02.text = fromPeer.displayName
@@ -189,25 +227,33 @@ class BattleScene: SKScene {
                         if self.hp < 1 {
                             print("Eu perdi")
                             self.endBattle()
-                            self.gameDelegate?.onFinishGame()
+                            //mostra alert
+                            let alert = UIAlertController(title: "Spirit Pets", message: "You Lose!", preferredStyle: UIAlertControllerStyle.alert)
+                            
+                            let okAction: UIAlertAction = UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
+                                self.appDelegate.multipeerManager.session.disconnect()
+                                self.parentVC.dismiss(animated: true, completion: nil)
+                            })
+                            alert.addAction(okAction)
+                            self.parentVC.present(alert, animated: true, completion: nil)
                         }
-                    }
+                    //}
                 } else {
                     
-                    let alert = UIAlertController(title: "Victory!", message: "\(fromPeer.displayName) surrendered.", preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: "Spirit Pets", message: "You Won!", preferredStyle: UIAlertControllerStyle.alert)
                     
-                    let doneAction: UIAlertAction = UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
+                    let okAction: UIAlertAction = UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
                         self.appDelegate.multipeerManager.session.disconnect()
-                        //self.dismiss(animated: true, completion: nil)
+                        self.parentVC.dismiss(animated: true, completion: nil)
                     })
                     
-                    alert.addAction(doneAction)
+                    alert.addAction(okAction)
                     print("Eu ganhei")
-                    self.gameDelegate?.onFinishGame()
-                    
-                    OperationQueue.main.addOperation {
+                    //self.gameDelegate?.onFinishGame()
+                    self.parentVC.present(alert, animated: true, completion: nil)
+                    //OperationQueue.main.addOperation {
                         //self.present(alert, animated: true, completion: nil)
-                    }
+                    //}
                 }
             }
         }

@@ -9,12 +9,14 @@
 import UIKit
 import MultipeerConnectivity
 
-class MPFindOpponentViewController: UITableViewController, MultipeerDelegate {
+class MPFindOpponentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate ,MultipeerDelegate {
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var gameTurn: Bool?
     var gameUser: Int?
+    
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,8 @@ class MPFindOpponentViewController: UITableViewController, MultipeerDelegate {
         // Search for peers devices and enable them to be shown
         appDelegate.multipeerManager.delegate = self
         appDelegate.multipeerManager.browser.startBrowsingForPeers()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,15 +47,15 @@ class MPFindOpponentViewController: UITableViewController, MultipeerDelegate {
     
     /// TABLE VIEW DELEGATE
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return appDelegate.multipeerManager.foundPeer.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "peerCell", for: indexPath)
         
         cell.textLabel?.text = appDelegate.multipeerManager.foundPeer[indexPath.row].displayName
@@ -59,7 +63,7 @@ class MPFindOpponentViewController: UITableViewController, MultipeerDelegate {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedPeer = appDelegate.multipeerManager.foundPeer[indexPath.row]
         
         appDelegate.multipeerManager.browser.invitePeer(selectedPeer, to: appDelegate.multipeerManager.session, withContext: nil, timeout: 20)
