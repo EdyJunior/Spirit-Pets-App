@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        if UserDefaults.standard.bool(forKey: "runBefore"){
+        if defaults.bool(forKey: "runBefore"){
             let mainStoryBoard = UIStoryboard.init(name: "Main", bundle: nil)
             self.window?.rootViewController = mainStoryBoard.instantiateViewController(withIdentifier: "MainScreenViewController")
         }
@@ -54,22 +54,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         
-        saveDelegate?.save()
-        saveDelegate?.lastActivate = Date()
+        if defaults.bool(forKey: "runBefore") {
+            saveDelegate?.save()
+            saveDelegate?.lastActivate = Date()
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         
-        saveDelegate!.backgroundTime = Date().timeIntervalSince(saveDelegate!.lastActivate)
-        saveDelegate!.load(after: saveDelegate!.backgroundTime)
-        print("FORE Passaram-se \(saveDelegate!.backgroundTime) seg")
+        if defaults.bool(forKey: "runBefore") {
+            saveDelegate!.backgroundTime = Date().timeIntervalSince(saveDelegate!.lastActivate)
+            saveDelegate!.load(after: saveDelegate!.backgroundTime)
+            print("FORE Passaram-se \(saveDelegate!.backgroundTime) seg")
+        } else {
+            print("Não escolheu ainda 1")
+        }
     }
 
-    func applicationDidBecomeActive(_ application: UIApplication) { }
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        
+        if defaults.bool(forKey: "runBefore") {
+            saveDelegate!.backgroundTime = Date().timeIntervalSince(saveDelegate!.lastActivate)
+            saveDelegate!.load(after: saveDelegate!.backgroundTime)
+            print("ACTIV Passaram-se \(saveDelegate!.backgroundTime) seg")
+        } else {
+            print("Não escolheu ainda 1")
+        }
+    }
 
     func applicationWillTerminate(_ application: UIApplication) {
         
-        saveDelegate?.save()
-        saveDelegate?.lastActivate = Date()
+//        if defaults.bool(forKey: "runBefore") {
+//            saveDelegate?.save()
+//            saveDelegate?.lastActivate = Date()
+//        }
     }
 }

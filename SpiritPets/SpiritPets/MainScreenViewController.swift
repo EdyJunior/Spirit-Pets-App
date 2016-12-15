@@ -17,16 +17,16 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     @IBOutlet weak var petImageView: UIImageView!
     @IBOutlet weak var popupImageView: UIImageView!
     @IBOutlet weak var messageImageView: UIImageView!
-    
+
     @IBOutlet weak var feedBtn: CustomBtn!
     @IBOutlet weak var exerciseBtn: CustomBtn!
     @IBOutlet weak var playBtn: CustomBtn!
     @IBOutlet weak var battleBtn: CustomBtn!
     @IBOutlet weak var sleepBtn: CustomBtn!
-    
+
     var pet: PetChoosed!
-    var xpReceived = 0
-    var feedPoints = 0
+    var exercise = Exercise(cost: 0, gain: 0, time: 0)
+    var lunch = Lunch(gain: 0, time: 0)
     
     var messages: Set<UIImage> = []
     
@@ -40,21 +40,20 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         super.viewDidLoad()
 
         let petData = defaults.data(forKey: "petDict")
-        pet = NSKeyedUnarchiver.unarchiveObject(with: petData!) as! PetChoosed!
+        PetManager.sharedInstance.petChoosed = NSKeyedUnarchiver.unarchiveObject(with: petData!) as! PetChoosed!
+        pet = PetManager.sharedInstance.petChoosed
         
         xperienceLabel.layer.borderColor = UIColor.white.cgColor
         xperienceLabel.layer.borderWidth = 2
         xperienceLabel.layer.cornerRadius = 10
         xperienceLabel.text = "XP: \(pet.battleAtt.xp!)/\(pet.baseBattleAtt.xp * pet.battleAtt.lv)"
-        pet.disableDelegate = self
+        PetManager.sharedInstance.petChoosed.disableDelegate = self
         pet.careDelegate = self
         appDelegate.saveDelegate = self
         
         petImageView.image = pet.frontImage
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateLabels),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLabels),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,7 +65,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         levelLabel.layer.cornerRadius = levelLabel.frame.width / 2
         levelLabel.layer.borderColor = UIColor.white.cgColor
         levelLabel.layer.borderWidth = 2
-//        levelLabel.text = "LV:\n\(pet.battleAtt.lv!)"
+        
         updateLabels()
     }
     
@@ -75,7 +74,6 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         let xp = CGFloat(pet.battleAtt.xp)
         let xpMax = CGFloat( pet.baseBattleAtt.xp * pet.battleAtt.lv )
         backgroundLabel.frame.size.width = ( xp / xpMax) * xperienceLabel.frame.width
-        //print((xp / xpMax) * xperienceLabel.frame.width)
         xperienceLabel.text = "XP: \(Int(xp))/\(Int(xpMax))"
         levelLabel.text = "LV:\n\(pet.battleAtt.lv!)"
 
@@ -101,8 +99,8 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     @IBAction func feed(_ sender: CustomBtn) {
 
         if !pet.isEating {
-            pet.tryFeed(duration: 5)//60)
-            feedPoints = 70
+            lunch = Lunch(gain: 70, time: 5)//60
+            PetManager.sharedInstance.feed(with: lunch)
         }
     }
     
@@ -111,7 +109,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         if !pet.isSleeping {
             pet.sleep()
         } else {
-            print("ACORDOU")
+            //print("ACORDOU")
             pet.wakeUp()
         }
     }
@@ -119,8 +117,9 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     @IBAction func exercise(_ sender: CustomBtn) {
         
         if !pet.isExercising {
-            xpReceived = pet.tryExercise(typeOfExercise: Exercise(cost: 40, gain: 30, time: 5))//3600))
-            print("XP = \(pet.battleAtt.xp)")
+            exercise = Exercise(cost: 10, gain: 30, time: 5)//3600)
+            pet.tryExercise(typeOfExercise: exercise)
+            //print("XP = \(pet.battleAtt.xp)")
         }
     }
     
@@ -140,7 +139,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     
     func enableBySleeping() {
         
-        print("Ativou pra acordar")
+        //print("Ativou pra acordar")
         if !pet.isEating {
             changeEnabled(buttons: [feedBtn], to: true)
         }
@@ -159,8 +158,9 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
 
     func enableByFeeding() {
 
-        print("Ativou pra parar de comer")
-        pet.feedUp(lunch: feedPoints)
+        //print("Ativou pra parar de comer")
+        pet.feedUp(lunch: lunch.gain)
+        lunch = Lunch(gain: 0, time: 0)
         changeEnabled(buttons: [feedBtn], to: true)
         if !pet.isExercising {
             changeEnabled(buttons: [sleepBtn], to: true)
@@ -169,16 +169,17 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
 
     func disableByFeeding() {
 
-        print("DesAtivou pra comer")
+        //print("DesAtivou pra comer")
         changeEnabled(buttons: [feedBtn, sleepBtn], to: false)
     }
 
     func enableByExercising() {
 
-        print("Ativou pra descansar")
-        pet.xpUp(xp: xpReceived)
+        //print("Ativou pra descansar")
+        pet.xpUp(xp: exercise.gain)
+        exercise = Exercise(cost: 0, gain: 0, time: 0)
         updateLabels()
-        print("XP += \(xpReceived)")
+        //print("XP += \(xpReceived)")
         changeEnabled(buttons: [exerciseBtn], to: true)
         if !pet.isEating {
             changeEnabled(buttons: [sleepBtn], to: true)
@@ -187,7 +188,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
 
     func disableByExercising() {
 
-        print("DesAtivou pra exercitar")
+        //print("DesAtivou pra exercitar")
         changeEnabled(buttons: [exerciseBtn, sleepBtn], to: false)
     }
     
@@ -198,9 +199,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         popupImageView.isHidden = false
         messageImageView.isHidden = false
         messages.insert(#imageLiteral(resourceName: "hungry"))
-        print("Chamou HUNGER")
         animateMessages()
-        //messageImageView.image =
     }
     
     func sleepnessMessage() {
@@ -210,7 +209,6 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         messages.insert(#imageLiteral(resourceName: "sleepy"))
         
         animateMessages()
-        //messageImageView.image = #imageLiteral(resourceName: "sleepy")
     }
     
     func tirednessMessage() {
@@ -271,27 +269,41 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         messageImageView.image = #imageLiteral(resourceName: "happy")
     }
     
+    func saveInterals() {
+        
+        defaults.set(PetManager.sharedInstance.feedController.interval, forKey: "feedInterval")
+        defaults.set(PetManager.sharedInstance.sleepController.interval, forKey: "sleepInterval")
+        defaults.set(PetManager.sharedInstance.exerciseController.interval, forKey: "exerciseInterval")
+    }
+    
     // MARK: - SaveStatusDelegate
     
     func save() {
         
         let data = NSKeyedArchiver.archivedData(withRootObject: pet)
         defaults.set(data, forKey: "petDict")
+        saveInterals()
     }
     
     func load(after time: TimeInterval) {
         
-        
+        pet = PetManager.sharedInstance.petChoosed
+        if pet.isEating {
+            let feedInterval = defaults.object(forKey: "feedInterval") as! TimeInterval
+            let backTime = appDelegate.saveDelegate!.backgroundTime
+            
+//            if feedInterval > backTime {
+//                <#code#>
+//            }
+//        } else {
+//            delegate
+        }
+        if pet.isSleeping {
+            pet.growthAtt.awake! += Int(time / updateInterval)
+            if pet.growthAtt.awake > 100 {
+                pet.growthAtt.awake! = 100
+            }
+            print("Soma = \(time / updateInterval)")
+        }
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }
