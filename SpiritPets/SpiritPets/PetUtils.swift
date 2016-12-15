@@ -24,7 +24,7 @@ enum PetStage: String {
     case monster
 }
 
-//Cost is the cost of stamina. Gain is the increase in the pet's experience
+//Cost is the cost of stamina. Gain is the increase in the pet's experience. Time is the time needed to finish the exercise
 struct Exercise {
     
     let cost: Int
@@ -32,12 +32,11 @@ struct Exercise {
     let time: Int
 }
 
-//Types of lunch. Each value is related to the increase in fed status of the pet
+//Types of lunch. Gain is the increase in the pet's fed status. Time is the time needed to finish the meal
 struct Lunch {
     
-    let hamburguer = 20
-    let soda = 10
-    let steak = 40
+    let gain: Int
+    let time: TimeInterval
 }
 
 //Variables related to battle
@@ -86,12 +85,12 @@ class BattleAttributes: NSObject, NSCoding {
         self.rdm = rdm
         self.lv = lv
         self.xp = xp
+        super.init()
     }
     
     override var description: String {
         return "hp = \(hp!)\natk = \(atk!)\ndfs = \(dfs!)\nrdm = \(rdm!)\nlv = \(lv!)\nxp = \(xp!)"
     }
-    
 }
 
 struct StateOfAttributes {
@@ -99,14 +98,6 @@ struct StateOfAttributes {
     var previous: BattleAttributes
     var current: BattleAttributes
 }
-
-//Variables related to growth
-/*struct GrowthAttributes {
-    
-    var fed: Int
-    var awake: Int
-    var stamina: Int
-}*/
 
 class GrowthAttributes: NSObject, NSCoding {
     
@@ -139,5 +130,24 @@ class GrowthAttributes: NSObject, NSCoding {
         return "fed = \(self.fed!)\nawake = \(self.awake!)\nstamina = \(self.stamina!)"
     }
 }
+
+let updateInterval: TimeInterval = 6/*2592*/
+
+let sleepInterval: TimeInterval = 10/*36000*/
+let sleepnessUpRate: Int = 50//1
+let sleepnessDownRate: Int = -5//1
+let sleepnessWarningValue: Int = 50
+let sleepnessDangerousValue: Int = 30
+let sleepnessMortalValue: Int = 10
+
+let hungerHighRate: Int = 10//2
+let hungerLowRate: Int = 1
+let hungerWarningValue: Int = 50
+let hungerDangerousValue: Int = 30
+let hungerMortalValue: Int = 10
+
+let staminaHighRate: Int = 4
+let staminaLowRate: Int = 2
+let staminaMinDecentValue = 10
 
 let defaults = UserDefaults.standard

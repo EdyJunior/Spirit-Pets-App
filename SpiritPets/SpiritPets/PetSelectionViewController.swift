@@ -67,6 +67,7 @@ class PetSelectionViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         let petDict = chibis[pickerView.selectedItem]
         let pet = PetChoosed(dict: petDict)
         

@@ -10,9 +10,13 @@ import UIKit
 
 protocol SaveStatusDelegate {
     
+    var lastActivate: Date { get set }
+    
+    var backgroundTime: TimeInterval { get set }
+    
     func save()
     
-    func load()
+    func load(after time: TimeInterval)
 }
 
 @UIApplicationMain
@@ -29,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        if UserDefaults.standard.bool(forKey: "runBefore"){
+        if defaults.bool(forKey: "runBefore"){
             let mainStoryBoard = UIStoryboard.init(name: "Main", bundle: nil)
             self.window?.rootViewController = mainStoryBoard.instantiateViewController(withIdentifier: "MainScreenViewController")
         }
@@ -49,19 +53,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        if defaults.bool(forKey: "runBefore") {
+            saveDelegate?.save()
+            saveDelegate?.lastActivate = Date()
+        }
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        if defaults.bool(forKey: "runBefore") {
+            saveDelegate!.backgroundTime = Date().timeIntervalSince(saveDelegate!.lastActivate)
+            saveDelegate!.load(after: saveDelegate!.backgroundTime)
+            print("FORE Passaram-se \(saveDelegate!.backgroundTime) seg")
+        } else {
+            print("Não escolheu ainda 1")
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        if defaults.bool(forKey: "runBefore") {
+            saveDelegate!.backgroundTime = Date().timeIntervalSince(saveDelegate!.lastActivate)
+            saveDelegate!.load(after: saveDelegate!.backgroundTime)
+            print("ACTIV Passaram-se \(saveDelegate!.backgroundTime) seg")
+        } else {
+            print("Não escolheu ainda 1")
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        saveDelegate?.save()
+        
+//        if defaults.bool(forKey: "runBefore") {
+//            saveDelegate?.save()
+//            saveDelegate?.lastActivate = Date()
+//        }
     }
 }
