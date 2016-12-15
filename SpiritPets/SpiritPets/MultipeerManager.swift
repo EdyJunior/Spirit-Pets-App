@@ -54,6 +54,7 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
         
         do {
             try session.send(dataToSend, toPeers: peersArray as! [MCPeerID], with: MCSessionSendDataMode.reliable)
+            
         } catch {
             print("PAU NO SEND DATA!!!!!")
             return false

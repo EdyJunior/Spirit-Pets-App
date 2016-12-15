@@ -28,7 +28,8 @@ class BattleScene: SKScene {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var dictionary: [String: AnyObject]!
-    
+    var myPetNode: SKSpriteNode!
+    var opponentPetNode: SKSpriteNode!
     var labelHp: SKLabelNode!
     var labelAtk: SKLabelNode!
     var popUp: SKSpriteNode!
@@ -50,7 +51,7 @@ class BattleScene: SKScene {
         backButton.name = "backButton"
         self.addChild(backButton)
         
-        
+                
         let button1 = SKShapeNode.init(rect: CGRect.init(x: 100, y: 100, width: 50, height: 50))
         button1.fillColor = SKColor.black
         button1.name = "btn1"
@@ -89,7 +90,7 @@ class BattleScene: SKScene {
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleMPCReceivedDataWithNotification(notification:)), name: NSNotification.Name(rawValue: "receivedMPCDataNotification"), object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(sendArrayPeer(notification:)), name: NSNotification.Name(rawValue: "receivedMPCDataNotification"), object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(sendArrayPeer(notification:)), name: NSNotification.Name(rawValue: "receivedMPCDataNotification"), object: nil)
         
         for (key, value) in dictionary {
             if key == "turn" {
@@ -115,25 +116,20 @@ class BattleScene: SKScene {
             
             if node.name == "btn1"{
                 if appDelegate.gameTurn! {
-                    //view.isUserInteractionEnabled = false
-                    //sender.isUserInteractionEnabled = false
                     //send atack
                     let atk = (arc4random() % 5) + 1
                     self.labelAtk.text = "ATK: \(atk)"
                     let dictAtk = [ "atk": String(atk), "message": ""]
                     appDelegate.multipeerManager.sendData(dictionaryWithData: dictAtk, toPeer: appDelegate.multipeerManager.session.connectedPeers[0])
-                    
-                    
                     appDelegate.gameTurn = false
-                    sendTappedField()
+                    //sendTappedField()
                     print("\(appDelegate.multipeerManager.localPeer.displayName) tocou")
                     if appDelegate.gameUser == 1 {
                         //xisPositions.append(sender.tag)
                     } else {
                         //circlePositions.append(sender.tag)
                     }
-                        
-                    checkResult()
+                    //checkResult()
                 } else {
                     print("Não é seu turno ainda")
                 }
@@ -185,7 +181,6 @@ class BattleScene: SKScene {
         let messageDictionary: [String: [Int]] = ["array": appDelegate.gameArray]
         
         if appDelegate.multipeerManager.sendDataInt(dictionaryWithData: messageDictionary, toPeer: appDelegate.multipeerManager.session.connectedPeers[0]) {
-            //appDelegate.con.sendMessage(export: ["gameArray" : appDelegate.gameArray, "gameUser" : appDelegate.gameUser!, "gameTurn" : appDelegate.gameTurn!])
             print("Enviou saporra")
         } else {
             print("Não consegue enviar um dick com array int")
@@ -196,11 +191,9 @@ class BattleScene: SKScene {
         let messageDictionary: [String: String] = ["message": "_end_chat_"]
         
         if appDelegate.multipeerManager.sendData(dictionaryWithData: messageDictionary, toPeer: appDelegate.multipeerManager.session.connectedPeers[0]) {
-            /*dismiss(animated: true, completion: {
-                self.appDelegate.multipeerManager.session.disconnect()
-                self.appDelegate.con.sendMessage(export: ["gameArray" : self.appDelegate.gameArray, "gameUser" : self.appDelegate.gameUser!, "gameTurn" : self.appDelegate.gameTurn!])
-            })*/
+                //self.appDelegate.multipeerManager.session.disconnect()
         }
+        
     }
     
     func handleMPCReceivedDataWithNotification(notification: NSNotification) {
@@ -209,17 +202,17 @@ class BattleScene: SKScene {
         let data = receivedDataDictionary["data"] as? Data
         let fromPeer = receivedDataDictionary["fromPeer"] as! MCPeerID
         
-        let dataDictionary = NSKeyedUnarchiver.unarchiveObject(with: data!) as! NSDictionary //Dictionary<String, String>
+        let dataDictionary = NSKeyedUnarchiver.unarchiveObject(with: data!) as! NSDictionary
         
         if dataDictionary.allKeys.first as! String == "message" {
             if let message = dataDictionary["message"] {
                 if message as! String != "_end_chat_" {
-                    //OperationQueue.main.addOperation {
-                        /// A ATUALIZAÇÃO DO JOGO FICA AQUI. REGRAS DE NEGÓCIO PROVAVELMENTE FICARÃO AQUI.
-                        //self.user01.text = self.appDelegate.multipeerManager.peer.displayName
-                        //self.user02.text = fromPeer.displayName
+                    /// A ATUALIZAÇÃO DO JOGO FICA AQUI. REGRAS DE NEGÓCIO PROVAVELMENTE FICARÃO AQUI.
+                    //self.user01.text = self.appDelegate.multipeerManager.peer.displayName
+                    //self.user02.text = fromPeer.displayName
+                    //recebeu um ataque
+                    if dataDictionary.allKeys.contains(where: {(elemt) in elemt as! String == "atk"}){
                         self.opponentName = fromPeer.displayName
-                        //self.appDelegate.con.sendMessage(export: ["gameArray" : self.appDelegate.gameArray, "gameUser" : self.appDelegate.gameUser!, "gameTurn" : self.appDelegate.gameTurn!])
                         let atkStr = dataDictionary["atk"] as! String
                         let atk = Int(atkStr)
                         self.hp -= atk!
@@ -237,23 +230,20 @@ class BattleScene: SKScene {
                             alert.addAction(okAction)
                             self.parentVC.present(alert, animated: true, completion: nil)
                         }
-                    //}
-                } else {
+                        appDelegate.gameTurn = true
+                    }
                     
+                    
+                } else {
                     let alert = UIAlertController(title: "Spirit Pets", message: "You Won!", preferredStyle: UIAlertControllerStyle.alert)
                     
                     let okAction: UIAlertAction = UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
                         self.appDelegate.multipeerManager.session.disconnect()
                         self.parentVC.dismiss(animated: true, completion: nil)
                     })
-                    
                     alert.addAction(okAction)
-                    print("Eu ganhei")
-                    //self.gameDelegate?.onFinishGame()
                     self.parentVC.present(alert, animated: true, completion: nil)
-                    //OperationQueue.main.addOperation {
-                        //self.present(alert, animated: true, completion: nil)
-                    //}
+                    print("Eu ganhei")
                 }
             }
         }
