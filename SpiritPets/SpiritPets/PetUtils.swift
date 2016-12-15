@@ -36,7 +36,7 @@ struct Exercise {
 struct Lunch {
     
     let gain: Int
-    let time: Int
+    let time: TimeInterval
 }
 
 //Variables related to battle

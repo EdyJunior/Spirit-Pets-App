@@ -53,9 +53,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         
         petImageView.image = pet.frontImage
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateLabels),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateLabels),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -102,7 +100,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
 
         if !pet.isEating {
             lunch = Lunch(gain: 70, time: 5)//60
-            pet.tryFeed(duration: lunch.time)//60)
+            PetManager.sharedInstance.feed(with: lunch)
         }
     }
     
@@ -271,19 +269,40 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         messageImageView.image = #imageLiteral(resourceName: "happy")
     }
     
+    func saveInterals() {
+        
+        defaults.set(PetManager.sharedInstance.feedController.interval, forKey: "feedInterval")
+        defaults.set(PetManager.sharedInstance.sleepController.interval, forKey: "sleepInterval")
+        defaults.set(PetManager.sharedInstance.exerciseController.interval, forKey: "exerciseInterval")
+    }
+    
     // MARK: - SaveStatusDelegate
     
     func save() {
         
         let data = NSKeyedArchiver.archivedData(withRootObject: pet)
         defaults.set(data, forKey: "petDict")
+        saveInterals()
     }
     
     func load(after time: TimeInterval) {
         
         pet = PetManager.sharedInstance.petChoosed
+        if pet.isEating {
+            let feedInterval = defaults.object(forKey: "feedInterval") as! TimeInterval
+            let backTime = appDelegate.saveDelegate!.backgroundTime
+            
+//            if feedInterval > backTime {
+//                <#code#>
+//            }
+//        } else {
+//            delegate
+        }
         if pet.isSleeping {
             pet.growthAtt.awake! += Int(time / updateInterval)
+            if pet.growthAtt.awake > 100 {
+                pet.growthAtt.awake! = 100
+            }
             print("Soma = \(time / updateInterval)")
         }
     }

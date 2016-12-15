@@ -15,11 +15,42 @@ class PetManager: NSObject {
     var petChoosed: PetChoosed!
     var historyOfAtt: [BattleAttributes] = []
     
+    struct TimeController {
+        
+        var interval: TimeInterval
+        var timer: Timer?
+    }
+    
+    var feedController = TimeController(interval: 0, timer: nil)
+    var exerciseController = TimeController(interval: 0, timer: nil)
+    var sleepController = TimeController(interval: 0, timer: nil)
+    
     private override init() {
         
         super.init()
         
         Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(PetManager.updateStatus), userInfo: nil, repeats: true)
+    }
+    
+    func decreaseTimeEating() {
+        
+        feedController.interval -= 1
+        print("eating = \(feedController.interval)")
+        if feedController.interval < 1 {
+            feedController.timer?.invalidate()
+            petChoosed.isEating = false
+            print("Parou de Comer")
+        }
+    }
+    
+    func feed(with lunch: Lunch) {
+        
+        if !petChoosed.isSleeping {
+            petChoosed.isEating = true
+            print("Comendo por \(lunch.time) segundos")
+            feedController.interval = lunch.time
+            feedController.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(PetManager.decreaseTimeEating), userInfo: nil, repeats: true)
+        }
     }
     
     func updateStatus() {

@@ -110,21 +110,6 @@ class LivingBeing: NSObject {
             self.wakeUp()
         })        
     }
-
-    func tryFeed(duration: Int) {
-
-        if !isSleeping {
-            isEating = true
-            print("Comendo por \(duration) segundos")
-            
-            let task = DispatchWorkItem {
-                self.isEating = false
-                print("Parou de Comer")
-            }
-            let time = DispatchTimeInterval.seconds(duration)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time, execute: task)
-        }
-    }
     
     func feedUp(lunch: Int) {
         
