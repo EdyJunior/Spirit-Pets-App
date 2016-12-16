@@ -15,6 +15,7 @@ class MPFindOpponentViewController: UIViewController, UITableViewDataSource, UIT
     
     var gameTurn: Bool?
     var gameUser: Int?
+    var context: Data!//this content the oppponent image name
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,6 +27,7 @@ class MPFindOpponentViewController: UIViewController, UITableViewDataSource, UIT
         appDelegate.multipeerManager.browser.startBrowsingForPeers()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        //NotificationCenter.default.addObserver(self,selector: #selector(receiveDataWithNotification(notification:)),name: NSNotification.Name(rawValue: "receivedMPCDataNotification"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,7 +68,7 @@ class MPFindOpponentViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedPeer = appDelegate.multipeerManager.foundPeer[indexPath.row]
         
-        appDelegate.multipeerManager.browser.invitePeer(selectedPeer, to: appDelegate.multipeerManager.session, withContext: nil, timeout: 20)
+        appDelegate.multipeerManager.browser.invitePeer(selectedPeer, to: appDelegate.multipeerManager.session, withContext: NSKeyedArchiver.archivedData(withRootObject:  PetManager.sharedInstance.petChoosed.frontImageName), timeout: 20)
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -81,13 +83,16 @@ class MPFindOpponentViewController: UIViewController, UITableViewDataSource, UIT
         tableView.reloadData()
     }
     
-    func invitationWasReceived(fromPeer: String) {
+    func invitationWasReceived(fromPeer: MCPeerID, withData: Data) {
         let alert = UIAlertController(title: "Challenge Request", message: "\(fromPeer) wants to challenge you!", preferredStyle: UIAlertControllerStyle.alert)
         
         let accept = UIAlertAction(title: "Accept", style: UIAlertActionStyle.default) { (alertAction) -> Void in
             self.gameTurn = true
             self.gameUser = 1
+            //self.context = withData
             self.appDelegate.multipeerManager.invitationHandler(true, self.appDelegate.multipeerManager.session)
+            //let dictionary: [String: AnyObject] = ["turn": self.gameTurn as AnyObject, "user": self.gameUser as AnyObject ]
+            //self.performSegue(withIdentifier: "battleSegue", sender: dictionary)
         }
         
         let decline = UIAlertAction(title: "Decline", style: UIAlertActionStyle.destructive) { (alertAction) -> Void in
@@ -102,16 +107,35 @@ class MPFindOpponentViewController: UIViewController, UITableViewDataSource, UIT
         }
     }
     
-    func connectedWithPeer(peerID: MCPeerID) {
+    func connectedWithPeer(peerID: MCPeerID, imageName: String) {
+        /*let data = NSKeyedArchiver.archivedData(withRootObject: PetManager.sharedInstance.petChoosed.frontImageName)
+        do{
+            try self.appDelegate.multipeerManager.session.send(data, toPeers: [peerID], with: .reliable)
+
+        }catch{
+            print("Error ao enviar...")
+        }*/
+        print(peerID)
         OperationQueue.main.addOperation {
-            let dictionary: [String: AnyObject] = ["turn": self.gameTurn as AnyObject, "user": self.gameUser as AnyObject ]
+            let dictionary: [String: AnyObject] = ["turn": self.gameTurn as AnyObject, "user": self.gameUser as AnyObject, "imageNameOpponent": imageName as AnyObject ]
             self.performSegue(withIdentifier: "battleSegue", sender: dictionary)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let battleVC = segue.destination as! BattleViewController
-        battleVC.dictionary = ["turn": self.gameTurn as AnyObject, "user": self.gameUser as AnyObject]
+        //battleVC.dictionary = ["turn": self.gameTurn as AnyObject, "user": self.gameUser as AnyObject]
+        battleVC.dictionary = sender as! [String: AnyObject]
+        print("battleVC \(battleVC.dictionary)")
+        //battleVC.opponentImageName = NSKeyedUnarchiver.unarchiveObject(with: context) as! String
+        //Could not cast value of type '__NSDictionaryI' (0x1a07a2788) to 'NSString' (0x1a07ad7e8)
     }
+    
+    /*func receiveDataWithNotification(notification: Notification){
+        self.context = notification.userInfo?["data"] as! Data
+        let dictionary: [String: AnyObject] = ["turn": self.gameTurn as AnyObject, "user": self.gameUser as AnyObject ]
+        self.performSegue(withIdentifier: "battleSegue", sender: dictionary)
+        
+    }*/
 
 }

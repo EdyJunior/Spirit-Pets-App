@@ -12,6 +12,7 @@ import SpriteKit
 class BattleViewController: UIViewController {
 
     var dictionary: [String: AnyObject]!
+    var opponentImageName: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,8 @@ class BattleViewController: UIViewController {
         scene.scaleMode = .aspectFill
         
         scene.dictionary = self.dictionary
+        //scene.opponentPetImageName = self.opponentImageName
+        print(scene.dictionary)
         scene.parentVC = self
         skView.presentScene(scene)
     }

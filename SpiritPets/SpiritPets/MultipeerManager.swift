@@ -14,9 +14,9 @@ protocol MultipeerDelegate {
     
     func lostPeer()
     
-    func invitationWasReceived(fromPeer: String)
+    func invitationWasReceived(fromPeer: MCPeerID, withData: Data)
     
-    func connectedWithPeer(peerID: MCPeerID)
+    func connectedWithPeer(peerID: MCPeerID, imageName: String)
 }
 
 class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdvertiserDelegate {
@@ -27,6 +27,7 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
     var advertiser: MCNearbyServiceAdvertiser!
     
     var foundPeer: [MCPeerID] = [MCPeerID]()
+    var opponentsImagesName = [String]()
     var invitationHandler: ((Bool, MCSession?) -> Void)!
     
     var delegate: MultipeerDelegate?
@@ -43,7 +44,7 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
         browser = MCNearbyServiceBrowser(peer: localPeer, serviceType: "spirit-pets")
         browser.delegate = self
         
-        advertiser = MCNearbyServiceAdvertiser(peer: localPeer, discoveryInfo: nil, serviceType: "spirit-pets")
+        advertiser = MCNearbyServiceAdvertiser(peer: localPeer, discoveryInfo: ["imageName": PetManager.sharedInstance.petChoosed.frontImageName], serviceType: "spirit-pets")
         advertiser.delegate = self
     }
     
@@ -56,6 +57,7 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
             try session.send(dataToSend, toPeers: peersArray as! [MCPeerID], with: MCSessionSendDataMode.reliable)
             
         } catch {
+            print(error)
             print("PAU NO SEND DATA!!!!!")
             return false
         }
@@ -82,6 +84,7 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
     
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         
+        opponentsImagesName.append((info?["imageName"])!)
         foundPeer.append(peerID)
         
         delegate?.foundPeer()
@@ -104,12 +107,11 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
     }
     
     /// SESSION DELEGATE
-    
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         
-        let dictionary: [String: AnyObject] = ["data": data as AnyObject, "fromPeer": peerID]
+        let dictionary: [String: Any] = ["data": data , "fromPeer": peerID]
         //ATENÇÃO, ISSO PODE DAR PAU VVVVVVV
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "receivedMPCDataNotification"), object: dictionary)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "receivedMPCDataNotification"), object: dictionary, userInfo: dictionary)
         
     }
     
@@ -117,7 +119,9 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
         switch state {
         case MCSessionState.connected:
             print("Connected to session: \(session)")
-            delegate?.connectedWithPeer(peerID: peerID)
+            if peerID != localPeer{
+                delegate?.connectedWithPeer(peerID: peerID, imageName: opponentsImagesName[foundPeer.index(of: peerID)!])
+            }
         case MCSessionState.connecting:
             print("Connecting to session: \(session)")
         default:
@@ -131,10 +135,10 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) { }
     
-    /// ADVERTISER DELEGATE
     
+    /// ADVERTISER DELEGATE
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         self.invitationHandler = invitationHandler
-        delegate?.invitationWasReceived(fromPeer: peerID.displayName)
+        delegate?.invitationWasReceived(fromPeer: peerID, withData: context!)
     }
 }

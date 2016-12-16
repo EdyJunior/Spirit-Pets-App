@@ -28,13 +28,31 @@ class BattleScene: SKScene {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var dictionary: [String: AnyObject]!
+    
     var myPetNode: SKSpriteNode!
+    var myHpBar: SKSpriteNode!
+    
     var opponentPetNode: SKSpriteNode!
+    var opponentHpBar: SKSpriteNode!
+    var opponentPetImageName: String!
+    
     var labelHp: SKLabelNode!
     var labelAtk: SKLabelNode!
     var popUp: SKSpriteNode!
     
     override func didMove(to view: SKView) {
+        
+        for (key, value) in dictionary {
+            if key == "turn" {
+                appDelegate.gameTurn = value as? Bool
+            } else if key == "user" {
+                appDelegate.gameUser = value as? Int
+            }
+            else if key == "imageNameOpponent"{
+                self.opponentPetImageName = value as! String
+            }
+        }
+        
         
         self.backgroundColor = SKColor.white
         let backgroundTexture = SKTexture.init(image: UIImage.init(named: "background")!)
@@ -51,11 +69,71 @@ class BattleScene: SKScene {
         backButton.name = "backButton"
         self.addChild(backButton)
         
+        let atkNode = SKShapeNode(rectOf: CGSize(width: self.frame.width * 0.8, height: self.frame.height * 0.2), cornerRadius: 5)
+        atkNode.strokeColor = SKColor.white
+        atkNode.position = CGPoint.init(x: self.frame.midX, y: ( atkNode.frame.height / 2 ) + 20)
+        
+        let btnAtk0 = SKShapeNode(rectOf: CGSize(width: (atkNode.frame.width / 2) - 10, height: 50), cornerRadius: 5)
+        btnAtk0.strokeColor = SKColor.white
+        btnAtk0.fillColor = SKColor.white
+        btnAtk0.name = "btnAtk0"
+        btnAtk0.position = CGPoint(x: -btnAtk0.frame.width / 2, y: 0)
+        let btn0Label = SKLabelNode(text: "Atack 1")
+        btn0Label.position = CGPoint(x: 0, y: -btn0Label.frame.height / 2)
+        btn0Label.fontColor = SKColor.black
+        btnAtk0.addChild(btn0Label)
+        
+        let btnAtk1 = SKShapeNode(rectOf: CGSize(width: (atkNode.frame.width / 2) - 10, height: 50), cornerRadius: 5)
+        btnAtk1.strokeColor = SKColor.white
+        btnAtk1.fillColor = SKColor.white
+        btnAtk1.name = "btnAtk1"
+        btnAtk1.position = CGPoint(x: btnAtk1.frame.width / 2, y: 0)
+        let btn1Label = SKLabelNode(text: "Atack 2")
+        btn1Label.position = CGPoint(x: 0, y: -btn1Label.frame.height / 2)
+        btn1Label.fontColor = SKColor.black
+        btnAtk1.addChild(btn1Label)
+        
+        atkNode.addChild(btnAtk0)
+        atkNode.addChild(btnAtk1)
+        
+        self.addChild(atkNode)
+        
+        myPetNode = SKSpriteNode(imageNamed: PetManager.sharedInstance.petChoosed.frontImageName)
+        myPetNode.position = CGPoint.init(x: myPetNode.size.width / 2, y: myPetNode.size.height)
+        self.addChild(myPetNode)
+        myHpBar = SKSpriteNode.init(color: SKColor.red, size: CGSize.init(width: self.frame.midX - 40, height: self.frame.size.height / 20))
+        myHpBar.anchorPoint = CGPoint.init(x: 0, y: 0.5)
+        //let goodHeight = self.frame.size.height - (myHpBar.size.height * 2 / 3)
+        //let goodWidth = self.frame.size.width - (10 + myHpBar.frame.size.width)
+        //myHpBar.position = CGPoint(x: goodWidth, y: goodHeight)
+        myHpBar.position = CGPoint(x: myPetNode.position.x + (myPetNode.size.width / 2) + 10, y: myPetNode.position.y)
+        self.addChild(myHpBar)
+        let edges = SKShapeNode.init(rect: myHpBar.frame, cornerRadius: 10)
+        edges.fillColor = SKColor.clear
+        edges.strokeColor = SKColor.black
+        self.addChild(edges)
+        
+        
+        opponentPetNode = SKSpriteNode.init(imageNamed: self.opponentPetImageName)
+        opponentPetNode.size.width = self.frame.size.width * 0.3
+        opponentPetNode.size.height = self.frame.size.height * 0.2
+        opponentPetNode.position = CGPoint.init(x: self.frame.width - (opponentPetNode.size.width / 2), y: self.frame.height - opponentPetNode.size.height)
+        self.addChild(opponentPetNode)
+
+        opponentHpBar = SKSpriteNode.init(color: SKColor.green, size: CGSize.init(width: self.frame.midX - 40, height: self.frame.size.height / 25))
+        opponentHpBar.anchorPoint = CGPoint.init(x: 1, y: 0.5)
+        opponentHpBar.position = CGPoint(x: opponentPetNode.position.x - opponentHpBar.frame.width / 2, y: opponentPetNode.position.y)
+        self.addChild(opponentHpBar)
+        let opEdges = SKShapeNode.init(rect: opponentHpBar.frame, cornerRadius: 10)
+        opEdges.fillColor = SKColor.clear
+        opEdges.strokeColor = SKColor.black
+        self.addChild(opEdges)
+        
                 
         let button1 = SKShapeNode.init(rect: CGRect.init(x: 100, y: 100, width: 50, height: 50))
         button1.fillColor = SKColor.black
         button1.name = "btn1"
-        self.addChild(button1)
+        //self.addChild(button1)
         
         self.labelHp = SKLabelNode.init(text: "HP: \(self.hp)")
         self.labelHp.position = CGPoint.init(x: self.labelHp.frame.width, y: 50)
@@ -90,16 +168,6 @@ class BattleScene: SKScene {
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleMPCReceivedDataWithNotification(notification:)), name: NSNotification.Name(rawValue: "receivedMPCDataNotification"), object: nil)
         
-        //NotificationCenter.default.addObserver(self, selector: #selector(sendArrayPeer(notification:)), name: NSNotification.Name(rawValue: "receivedMPCDataNotification"), object: nil)
-        
-        for (key, value) in dictionary {
-            if key == "turn" {
-                appDelegate.gameTurn = value as? Bool
-            } else if key == "user" {
-                appDelegate.gameUser = value as? Int
-            }
-        }
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -114,7 +182,7 @@ class BattleScene: SKScene {
                 //enviar menssagem de desistencia..
             }
             
-            if node.name == "btn1"{
+            if node.name == "btnAtk0" || node.parent?.name == "btnAtk0"{
                 if appDelegate.gameTurn! {
                     //send atack
                     let atk = (arc4random() % 5) + 1
@@ -124,6 +192,7 @@ class BattleScene: SKScene {
                     appDelegate.gameTurn = false
                     //sendTappedField()
                     print("\(appDelegate.multipeerManager.localPeer.displayName) tocou")
+                    
                     if appDelegate.gameUser == 1 {
                         //xisPositions.append(sender.tag)
                     } else {
@@ -204,19 +273,36 @@ class BattleScene: SKScene {
         
         let dataDictionary = NSKeyedUnarchiver.unarchiveObject(with: data!) as! NSDictionary
         
+        if dataDictionary.allKeys.contains(where: {(elemt) in elemt as! String == "res"}){
+            //atualiza a opponentHpBar
+            let res = dataDictionary["res"] as! String
+            let ratio = Double( Int(res)! ) / 20.0
+            let newWidth = Double(opponentHpBar.frame.size.width) * ratio
+            opponentHpBar.run(SKAction.resize(toWidth: CGFloat(newWidth), duration: 1))
+        }
+        
         if dataDictionary.allKeys.first as! String == "message" {
             if let message = dataDictionary["message"] {
                 if message as! String != "_end_chat_" {
                     /// A ATUALIZAÇÃO DO JOGO FICA AQUI. REGRAS DE NEGÓCIO PROVAVELMENTE FICARÃO AQUI.
                     //self.user01.text = self.appDelegate.multipeerManager.peer.displayName
                     //self.user02.text = fromPeer.displayName
+                    
                     //recebeu um ataque
                     if dataDictionary.allKeys.contains(where: {(elemt) in elemt as! String == "atk"}){
                         self.opponentName = fromPeer.displayName
                         let atkStr = dataDictionary["atk"] as! String
                         let atk = Int(atkStr)
                         self.hp -= atk!
+                        let dictAtk = ["res": String( self.hp ), "message": ""]
+                        
+                        appDelegate.multipeerManager.sendData(dictionaryWithData: dictAtk, toPeer: fromPeer)
                         self.labelHp.text = "HP: \(self.hp)"
+                        //atualiza a myHpBar
+                        let ratio = Double( self.hp ) / 20.0
+                        let newWidth = Double(myHpBar.frame.size.width) * ratio
+                        myHpBar.run(SKAction.resize(toWidth: CGFloat(newWidth), duration: 1))
+                        
                         if self.hp < 1 {
                             print("Eu perdi")
                             self.endBattle()
@@ -232,7 +318,7 @@ class BattleScene: SKScene {
                         }
                         appDelegate.gameTurn = true
                     }
-                    
+
                     
                 } else {
                     let alert = UIAlertController(title: "Spirit Pets", message: "You Won!", preferredStyle: UIAlertControllerStyle.alert)

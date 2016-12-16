@@ -37,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let mainStoryBoard = UIStoryboard.init(name: "Main", bundle: nil)
             self.window?.rootViewController = mainStoryBoard.instantiateViewController(withIdentifier: "MainScreenViewController")
         }
-        multipeerManager = MultipeerManager()
         return true
     }
     
@@ -62,13 +61,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         
-        if defaults.bool(forKey: "runBefore") {
-            saveDelegate!.backgroundTime = Date().timeIntervalSince(saveDelegate!.lastActivate)
-            saveDelegate!.load(after: saveDelegate!.backgroundTime)
-            print("FORE Passaram-se \(saveDelegate!.backgroundTime) seg")
-        } else {
-            print("Não escolheu ainda 1")
-        }
+//        if defaults.bool(forKey: "runBefore") {
+//            saveDelegate!.backgroundTime = Date().timeIntervalSince(saveDelegate!.lastActivate)
+//            saveDelegate!.load(after: saveDelegate!.backgroundTime)
+//            print("FORE Passaram-se \(saveDelegate!.backgroundTime) seg")
+//        } else {
+//            print("Não escolheu ainda 1")
+//        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -80,6 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             print("Não escolheu ainda 1")
         }
+        multipeerManager = MultipeerManager()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
