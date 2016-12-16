@@ -27,7 +27,6 @@ class MPFindOpponentViewController: UIViewController, UITableViewDataSource, UIT
         appDelegate.multipeerManager.browser.startBrowsingForPeers()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        //NotificationCenter.default.addObserver(self,selector: #selector(receiveDataWithNotification(notification:)),name: NSNotification.Name(rawValue: "receivedMPCDataNotification"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,7 +83,7 @@ class MPFindOpponentViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func invitationWasReceived(fromPeer: MCPeerID, withData: Data) {
-        let alert = UIAlertController(title: "Challenge Request", message: "\(fromPeer) wants to challenge you!", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Challenge Request", message: "\(fromPeer.displayName) wants to challenge you!", preferredStyle: UIAlertControllerStyle.alert)
         
         let accept = UIAlertAction(title: "Accept", style: UIAlertActionStyle.default) { (alertAction) -> Void in
             self.gameTurn = true

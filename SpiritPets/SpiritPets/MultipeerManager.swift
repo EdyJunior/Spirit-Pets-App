@@ -48,6 +48,11 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
         advertiser.delegate = self
     }
     
+//    func startAdvertise(){
+//        advertiser = MCNearbyServiceAdvertiser(peer: localPeer, discoveryInfo: ["imageName": PetManager.sharedInstance.petChoosed.frontImageName], serviceType: "spirit-pets")
+//        advertiser.delegate = self
+//    }
+    
     func sendData(dictionaryWithData dictionary: Dictionary<String, String>, toPeer targetPeer: MCPeerID)  -> Bool {
         let dataToSend = NSKeyedArchiver.archivedData(withRootObject: dictionary)
         let peersArray = NSArray(object: targetPeer)
@@ -84,10 +89,12 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
     
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         
-        opponentsImagesName.append((info?["imageName"])!)
-        foundPeer.append(peerID)
+        if let infoRecived = info?["imageName"]{
+            opponentsImagesName.append( infoRecived )
+            foundPeer.append(peerID)
         
-        delegate?.foundPeer()
+            delegate?.foundPeer()
+        }
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {

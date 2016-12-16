@@ -19,6 +19,7 @@ class BattleScene: SKScene {
     }
     
     var hp = 20
+    var finished = false
     
     var parentVC: BattleViewController!
     
@@ -52,8 +53,9 @@ class BattleScene: SKScene {
                 self.opponentPetImageName = value as! String
             }
         }
+        self.hp = 20
         
-        
+        print("session: \(appDelegate.multipeerManager.session.connectedPeers.count)")
         self.backgroundColor = SKColor.white
         let backgroundTexture = SKTexture.init(image: UIImage.init(named: "background")!)
         let backgroundNode = SKSpriteNode.init(texture: backgroundTexture)
@@ -107,6 +109,12 @@ class BattleScene: SKScene {
         //let goodWidth = self.frame.size.width - (10 + myHpBar.frame.size.width)
         //myHpBar.position = CGPoint(x: goodWidth, y: goodHeight)
         myHpBar.position = CGPoint(x: myPetNode.position.x + (myPetNode.size.width / 2) + 10, y: myPetNode.position.y)
+        self.labelHp = SKLabelNode.init(text: "HP: \(self.hp)")
+        self.labelHp.position = CGPoint.init(x: self.myHpBar.frame.size.width / 2, y: -self.labelHp.frame.size.height / 2)
+        self.labelHp.fontColor = SKColor.white
+        myHpBar.addChild(self.labelHp)
+        
+        
         self.addChild(myHpBar)
         let edges = SKShapeNode.init(rect: myHpBar.frame, cornerRadius: 10)
         edges.fillColor = SKColor.clear
@@ -135,14 +143,10 @@ class BattleScene: SKScene {
         button1.name = "btn1"
         //self.addChild(button1)
         
-        self.labelHp = SKLabelNode.init(text: "HP: \(self.hp)")
-        self.labelHp.position = CGPoint.init(x: self.labelHp.frame.width, y: 50)
-        self.labelHp.fontColor = SKColor.black
-        self.addChild(self.labelHp)
         
         self.labelAtk = SKLabelNode.init(text: "Atk: 0000")
         self.labelAtk.position = CGPoint.init(x: self.labelAtk.frame.width, y: 0)
-        self.labelAtk.fontColor = SKColor.black
+        self.labelAtk.fontColor = SKColor.white
         self.addChild(self.labelAtk)
         
         popUp = SKSpriteNode.init()
@@ -279,6 +283,17 @@ class BattleScene: SKScene {
             let ratio = Double( Int(res)! ) / 20.0
             let newWidth = Double(opponentHpBar.frame.size.width) * ratio
             opponentHpBar.run(SKAction.resize(toWidth: CGFloat(newWidth), duration: 1))
+            if Int(res)! < 0{
+                let alert = UIAlertController(title: "Spirit Pets", message: "You Won!", preferredStyle: UIAlertControllerStyle.alert)
+                let okAction: UIAlertAction = UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
+                    self.appDelegate.multipeerManager.session.disconnect()
+                    //self.parentVC.dismiss(animated: true, completion: nil)
+                    self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                })
+                alert.addAction(okAction)
+                self.parentVC.present(alert, animated: true, completion: nil)
+                print("Eu ganhei")
+            }
         }
         
         if dataDictionary.allKeys.first as! String == "message" {
@@ -294,9 +309,10 @@ class BattleScene: SKScene {
                         let atkStr = dataDictionary["atk"] as! String
                         let atk = Int(atkStr)
                         self.hp -= atk!
-                        let dictAtk = ["res": String( self.hp ), "message": ""]
                         
+                        let dictAtk = ["res": String( self.hp ), "message": ""]
                         appDelegate.multipeerManager.sendData(dictionaryWithData: dictAtk, toPeer: fromPeer)
+                        
                         self.labelHp.text = "HP: \(self.hp)"
                         //atualiza a myHpBar
                         let ratio = Double( self.hp ) / 20.0
@@ -311,7 +327,8 @@ class BattleScene: SKScene {
                             
                             let okAction: UIAlertAction = UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
                                 self.appDelegate.multipeerManager.session.disconnect()
-                                self.parentVC.dismiss(animated: true, completion: nil)
+                                //self.parentVC.dismiss(animated: true, completion: nil)
+                                self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
                             })
                             alert.addAction(okAction)
                             self.parentVC.present(alert, animated: true, completion: nil)
@@ -321,11 +338,12 @@ class BattleScene: SKScene {
 
                     
                 } else {
-                    let alert = UIAlertController(title: "Spirit Pets", message: "You Won!", preferredStyle: UIAlertControllerStyle.alert)
                     
+                    let alert = UIAlertController(title: "Spirit Pets", message: "You Won!", preferredStyle: UIAlertControllerStyle.alert)
                     let okAction: UIAlertAction = UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
                         self.appDelegate.multipeerManager.session.disconnect()
-                        self.parentVC.dismiss(animated: true, completion: nil)
+                        //self.parentVC.dismiss(animated: true, completion: nil)
+                        self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
                     })
                     alert.addAction(okAction)
                     self.parentVC.present(alert, animated: true, completion: nil)
