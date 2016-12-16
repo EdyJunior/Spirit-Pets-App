@@ -7,10 +7,10 @@
 //
 
 import UIKit
+import WatchConnectivity
 
-class PetStatusViewController: UIViewController {
+class PetStatusViewController: UIViewController, ConnectivityManagerProtocol {
 
-    
     @IBOutlet weak var hpLabel: UILabel!
     @IBOutlet weak var atkLabel: UILabel!
     @IBOutlet weak var defLabel: UILabel!
@@ -22,14 +22,25 @@ class PetStatusViewController: UIViewController {
     @IBOutlet weak var sleepLabel: UILabel!
     @IBOutlet weak var feedLabel: UILabel!
     var pet: PetChoosed!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupLabels()
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(setupLabels),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ConnectivityManager.connectivityManager.addDataChangedDelegate(delegate: self)
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        ConnectivityManager.connectivityManager.removeDataChangedDelegate(delegate: self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -54,6 +65,32 @@ class PetStatusViewController: UIViewController {
         feedLabel.text = "\(growthAtt.fed)"  //???
     }
 
+    @IBAction func sendMsg(_ sender: Any) {
+        messageTest()
+    }
+    
+    func messageTest() {
+        print("\n\n\nBom\n\n\n")
+        
+        let fedMessage = ["fed" : 100]
+        
+        let message = ["updateStatus" : fedMessage]
+        
+        do {
+            try ConnectivityManager.connectivityManager.updateApplicationContext(applicationContext: message as [String : AnyObject])
+        } catch {
+            print("Error")
+        }
+        
+    }
+    
+    // MARK: Connectivity Delegate
+    
+    func changeUI() {
+        print("\n\n2\n\n")
+        levelLabel.text = "BOM"
+    }
+ 
     /*
     // MARK: - Navigation
 

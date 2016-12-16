@@ -23,7 +23,11 @@
                         <group width="1" height="0.5" alignment="left" id="v3I-BP-QpJ">
                             <items>
                                 <button width="0.45000000000000001" height="0.90000000000000002" alignment="left" title="Button" id="hMz-3J-XBy"/>
-                                <button width="0.45000000000000001" height="0.90000000000000002" alignment="right" title="Button" id="UhN-Ml-j4M"/>
+                                <button width="0.45000000000000001" height="0.90000000000000002" alignment="right" title="Button" id="UhN-Ml-j4M">
+                                    <connections>
+                                        <action selector="sendMsg" destination="AgC-eL-Hgc" id="A9i-pB-WYU"/>
+                                    </connections>
+                                </button>
                             </items>
                             <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                         </group>

@@ -7,10 +7,11 @@
 //
 
 import WatchKit
+import WatchConnectivity
 import Foundation
 
 
-class InterfaceController: WKInterfaceController {
+class InterfaceController: WKInterfaceController, ConnectivityManagerProtocol {
     @IBOutlet var experienceImage: WKInterfaceButton!
     @IBOutlet var sleepImage: WKInterfaceButton!
     @IBOutlet var exerciseImage: WKInterfaceButton!
@@ -22,15 +23,23 @@ class InterfaceController: WKInterfaceController {
     var fedValue: Int!
     
     override func awake(withContext context: Any?) {
+        
         setup()
+        
         super.awake(withContext: context)
         // Configure interface objects here.
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
-        setup()
+        ConnectivityManager.connectivityManager.addDataChangedDelegate(delegate: self)
         super.willActivate()
+    }
+    
+    override func didDeactivate() {
+        // This method is called when watch view controller is no longer visible
+        ConnectivityManager.connectivityManager.removeDataChangedDelegate(delegate: self)
+        super.didDeactivate()
     }
     
     func setup() {
@@ -66,9 +75,31 @@ class InterfaceController: WKInterfaceController {
         
     }
     
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
+    @IBAction func sendMsg() {
+        messageTest()
     }
-
+    
+    func messageTest() {
+        print("\n\n\nCheguei")
+        
+        let fedMessage = ["fed" : 0]
+        
+        let message = ["updateStatus" : fedMessage]
+        
+        do {
+            try ConnectivityManager.connectivityManager.updateApplicationContext(applicationContext: message as [String : AnyObject])
+            print("\(message)\n\n\n")
+        } catch {
+            print("Error")
+        }
+    }
+    
+    // MARK: Connectivity Delegate
+    
+    func changeUI() {
+        print("\n\n2\n\n")
+        fedValue = 50
+        loadGauges()
+    }
+ 
 }
