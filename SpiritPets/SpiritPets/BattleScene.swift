@@ -127,7 +127,7 @@ class BattleScene: SKScene {
         opponentPetNode.size.height = self.frame.size.height * 0.2
         opponentPetNode.position = CGPoint.init(x: self.frame.width - (opponentPetNode.size.width / 2), y: self.frame.height - opponentPetNode.size.height)
         self.addChild(opponentPetNode)
-
+        
         opponentHpBar = SKSpriteNode.init(color: SKColor.green, size: CGSize.init(width: self.frame.midX - 40, height: self.frame.size.height / 25))
         opponentHpBar.anchorPoint = CGPoint.init(x: 1, y: 0.5)
         opponentHpBar.position = CGPoint(x: opponentPetNode.position.x - opponentHpBar.frame.width / 2, y: opponentPetNode.position.y)
@@ -137,7 +137,7 @@ class BattleScene: SKScene {
         opEdges.strokeColor = SKColor.black
         self.addChild(opEdges)
         
-                
+        
         let button1 = SKShapeNode.init(rect: CGRect.init(x: 100, y: 100, width: 50, height: 50))
         button1.fillColor = SKColor.black
         button1.name = "btn1"
@@ -159,7 +159,7 @@ class BattleScene: SKScene {
         label.fontColor = SKColor.black
         popUp.addChild(label)
         label.position = CGPoint.init(x: 0, y: label.frame.size.height - 10)
-
+        
         
         let btnYes = SKLabelNode.init(text: "YES")
         btnYes.fontColor = SKColor.black
@@ -211,8 +211,8 @@ class BattleScene: SKScene {
     }
     
     //override func viewDidAppear(_ animated: Bool) {
-      //  appDelegate.multipeerManager.advertiser.stopAdvertisingPeer()
-        //sendBasicInformation()
+    //  appDelegate.multipeerManager.advertiser.stopAdvertisingPeer()
+    //sendBasicInformation()
     //}
     
     func receiveMessage(dic: NSDictionary) {
@@ -227,16 +227,16 @@ class BattleScene: SKScene {
     
     func fillTicTacToe() {
         /*OperationQueue.main.addOperation {
-            for (index, user) in self.appDelegate.gameArray.enumerated() {
-                if user == 1 {
-                    self.buttons[index].setImage(#imageLiteral(resourceName: "x"), for: .normal)
-                    self.buttons[index].isUserInteractionEnabled = false
-                } else if user == 2 {
-                    self.buttons[index].setImage(#imageLiteral(resourceName: "o"), for: .normal)
-                    self.buttons[index].isUserInteractionEnabled = false
-                }
-            }
-        }*/
+         for (index, user) in self.appDelegate.gameArray.enumerated() {
+         if user == 1 {
+         self.buttons[index].setImage(#imageLiteral(resourceName: "x"), for: .normal)
+         self.buttons[index].isUserInteractionEnabled = false
+         } else if user == 2 {
+         self.buttons[index].setImage(#imageLiteral(resourceName: "o"), for: .normal)
+         self.buttons[index].isUserInteractionEnabled = false
+         }
+         }
+         }*/
         
     }
     
@@ -264,7 +264,7 @@ class BattleScene: SKScene {
         let messageDictionary: [String: String] = ["message": "_end_chat_"]
         
         if appDelegate.multipeerManager.sendData(dictionaryWithData: messageDictionary, toPeer: appDelegate.multipeerManager.session.connectedPeers[0]) {
-                //self.appDelegate.multipeerManager.session.disconnect()
+            //self.appDelegate.multipeerManager.session.disconnect()
         }
         
     }
@@ -287,8 +287,8 @@ class BattleScene: SKScene {
                 let alert = UIAlertController(title: "Spirit Pets", message: "You Won!", preferredStyle: UIAlertControllerStyle.alert)
                 let okAction: UIAlertAction = UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
                     self.appDelegate.multipeerManager.session.disconnect()
-                    //self.parentVC.dismiss(animated: true, completion: nil)
-                    self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                    self.parentVC.dismiss(animated: true, completion: nil)
+                    //self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 })
                 alert.addAction(okAction)
                 self.parentVC.present(alert, animated: true, completion: nil)
@@ -327,23 +327,23 @@ class BattleScene: SKScene {
                             
                             let okAction: UIAlertAction = UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
                                 self.appDelegate.multipeerManager.session.disconnect()
-                                //self.parentVC.dismiss(animated: true, completion: nil)
-                                self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                                self.parentVC.dismiss(animated: true, completion: nil)
+                                //self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
                             })
                             alert.addAction(okAction)
                             self.parentVC.present(alert, animated: true, completion: nil)
                         }
                         appDelegate.gameTurn = true
                     }
-
+                    
                     
                 } else {
                     
                     let alert = UIAlertController(title: "Spirit Pets", message: "You Won!", preferredStyle: UIAlertControllerStyle.alert)
                     let okAction: UIAlertAction = UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
                         self.appDelegate.multipeerManager.session.disconnect()
-                        //self.parentVC.dismiss(animated: true, completion: nil)
-                        self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                        self.parentVC.dismiss(animated: true, completion: nil)
+                        //self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
                     })
                     alert.addAction(okAction)
                     self.parentVC.present(alert, animated: true, completion: nil)
@@ -377,6 +377,4 @@ class BattleScene: SKScene {
     
     func checkResult(){
     }
-    
-    
 }
