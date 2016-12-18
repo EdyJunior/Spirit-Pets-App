@@ -298,6 +298,8 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         var backTime = appDelegate.saveDelegate!.backgroundTime
         PetManager.sharedInstance.feedController.timer?.invalidate()
         PetManager.sharedInstance.exerciseController.timer?.invalidate()
+        var timeLanguishingByHunger: Int = 0
+        var timeLanguishingBySleepness: Int = 0
         
         //Eating in background
         
@@ -316,6 +318,10 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
                 pet.growthAtt.fed! += Int(feedInterval)
                 pet.isEating = false
                 backTime -= feedInterval
+                //let gettingHungryTime = backTime / updateInterval
+                if pet.growthAtt.fed! - (hungerHighRate * Int(backTime / updateInterval)) < hungerMortalValue {
+                    timeLanguishingByHunger = hungerMortalValue - (pet.growthAtt.fed! - (hungerHighRate * Int(backTime / updateInterval)))
+                }
                 pet.growthAtt.fed! -= (hungerHighRate * Int(backTime / updateInterval))
             }
         }
