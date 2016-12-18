@@ -20,7 +20,7 @@ protocol MultipeerDelegate {
 }
 
 class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate, MCNearbyServiceAdvertiserDelegate {
-
+    
     var session: MCSession!
     var localPeer: MCPeerID!
     var browser: MCNearbyServiceBrowser!
@@ -44,14 +44,14 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
         browser = MCNearbyServiceBrowser(peer: localPeer, serviceType: "spirit-pets")
         browser.delegate = self
         
+        //advertiser = MCNearbyServiceAdvertiser(peer: localPeer, discoveryInfo: ["imageName": PetManager.sharedInstance.petChoosed.frontImageName], serviceType: "spirit-pets")
+        //advertiser.delegate = self
+    }
+    
+    func startAdvertise(){
         advertiser = MCNearbyServiceAdvertiser(peer: localPeer, discoveryInfo: ["imageName": PetManager.sharedInstance.petChoosed.frontImageName], serviceType: "spirit-pets")
         advertiser.delegate = self
     }
-    
-//    func startAdvertise(){
-//        advertiser = MCNearbyServiceAdvertiser(peer: localPeer, discoveryInfo: ["imageName": PetManager.sharedInstance.petChoosed.frontImageName], serviceType: "spirit-pets")
-//        advertiser.delegate = self
-//    }
     
     func sendData(dictionaryWithData dictionary: Dictionary<String, String>, toPeer targetPeer: MCPeerID)  -> Bool {
         let dataToSend = NSKeyedArchiver.archivedData(withRootObject: dictionary)
@@ -92,7 +92,7 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
         if let infoRecived = info?["imageName"]{
             opponentsImagesName.append( infoRecived )
             foundPeer.append(peerID)
-        
+            
             delegate?.foundPeer()
         }
     }
