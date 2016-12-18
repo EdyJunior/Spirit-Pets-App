@@ -32,6 +32,7 @@ class InterfaceController: WKInterfaceController , WCSessionDelegate {
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
+        send(message: ["fed" : 10])
         super.willActivate()
     }
     
@@ -70,6 +71,7 @@ class InterfaceController: WKInterfaceController , WCSessionDelegate {
     
     func uploadingChanges(_ data: [String : Any]) {
         // tratar os dados recebidos da mensagem aqui, mantendo o modelo para todas as VC
+        print("\nRecebendo Watch\n\(data)\n")
         fedValue = 50
         loadGauges()
     }
@@ -83,6 +85,7 @@ class InterfaceController: WKInterfaceController , WCSessionDelegate {
     
     func send(message: [String : Any]) {
         if session.isReachable {
+            print("\nenviando Watch\n")
             session.sendMessage(message, replyHandler: nil, errorHandler: nil)
         }
     }

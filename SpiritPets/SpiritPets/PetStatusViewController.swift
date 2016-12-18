@@ -59,6 +59,7 @@ class PetStatusViewController: UIViewController , WCSessionDelegate {
     }
     
     func setupLabels(){
+        send(message: ["fed" : 22])
         let battleAtt = pet.battleAtt
         let growthAtt = pet.growthAtt
         
@@ -77,7 +78,7 @@ class PetStatusViewController: UIViewController , WCSessionDelegate {
     
     func uploadingChanges(_ data: [String : Any]) {
         // tratar os dados recebidos da mensagem aqui, mantendo o modelo para todas as VC
-        print("\n\n3\n\n")
+        print("\nrecebendo iPhone\n\(data)\n")
         self.levelLabel.text = "BOM"
     }
     
@@ -92,6 +93,7 @@ class PetStatusViewController: UIViewController , WCSessionDelegate {
     
     func send(message: [String : Any]) {
         if session.isReachable {
+            print("\nenviando iPhone\n")
             session.sendMessage(message, replyHandler: nil, errorHandler: nil)
         }
     }
