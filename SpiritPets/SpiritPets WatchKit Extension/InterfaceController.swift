@@ -11,7 +11,7 @@ import WatchConnectivity
 import Foundation
 
 
-class InterfaceController: WKInterfaceController, ConnectivityManagerProtocol {
+class InterfaceController: WKInterfaceController , WCSessionDelegate {
     @IBOutlet var experienceImage: WKInterfaceButton!
     @IBOutlet var sleepImage: WKInterfaceButton!
     @IBOutlet var exerciseImage: WKInterfaceButton!
@@ -24,21 +24,19 @@ class InterfaceController: WKInterfaceController, ConnectivityManagerProtocol {
     
     override func awake(withContext context: Any?) {
         
+        startConnectivity()
         setup()
-        
         super.awake(withContext: context)
         // Configure interface objects here.
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
-        ConnectivityManager.connectivityManager.addDataChangedDelegate(delegate: self)
         super.willActivate()
     }
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
-        ConnectivityManager.connectivityManager.removeDataChangedDelegate(delegate: self)
         super.didDeactivate()
     }
     
@@ -48,58 +46,53 @@ class InterfaceController: WKInterfaceController, ConnectivityManagerProtocol {
     }
     
     func loadValues() {
-        // implementar consumo de dados
-        
-        experienceValue = 100
-        sleepValue = 75
-        exerciseValue = 50
-        fedValue = 25
+        experienceValue = 0
+        sleepValue = 0
+        exerciseValue = 0
+        fedValue = 0
     }
     
     func loadGauges() {
-        //experienceImage.setEnabled(false)
         experienceImage.setTitle("XP")
         experienceImage.setBackgroundImageNamed("Experience\(experienceValue!)Gauge")
         
-        //sleepImage.setEnabled(false)
         sleepImage.setTitle("SL")
         sleepImage.setBackgroundImageNamed("Sleep\(sleepValue!)Gauge")
         
-        //exerciseImage.setEnabled(false)
         exerciseImage.setTitle("ST")
         exerciseImage.setBackgroundImageNamed("Exercise\(exerciseValue!)Gauge")
         
-        //fedImage.setEnabled(false)
         fedImage.setTitle("FD")
         fedImage.setBackgroundImageNamed("Fed\(fedValue!)Gauge")
-        
     }
     
-    @IBAction func sendMsg() {
-        messageTest()
-    }
+    // MARK: instant message treta
     
-    func messageTest() {
-        print("\n\n\nCheguei")
-        
-        let fedMessage = ["fed" : 0]
-        
-        let message = ["updateStatus" : fedMessage]
-        
-        do {
-            try ConnectivityManager.connectivityManager.updateApplicationContext(applicationContext: message as [String : AnyObject])
-            print("\(message)\n\n\n")
-        } catch {
-            print("Error")
-        }
-    }
-    
-    // MARK: Connectivity Delegate
-    
-    func changeUI() {
-        print("\n\n2\n\n")
+    func uploadingChanges(_ data: [String : Any]) {
+        // tratar os dados recebidos da mensagem aqui, mantendo o modelo para todas as VC
         fedValue = 50
         loadGauges()
     }
- 
+    
+    let session = WCSession.default()
+    
+    func startConnectivity() {
+        session.delegate = self
+        session.activate()
+    }
+    
+    func send(message: [String : Any]) {
+        if session.isReachable {
+            session.sendMessage(message, replyHandler: nil, errorHandler: nil)
+        }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        DispatchQueue.main.async {
+            self.uploadingChanges(message)
+        }
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+    }
 }

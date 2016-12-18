@@ -8,66 +8,89 @@
 
 import UIKit
 
-class PetChoosed: LivingBeing, PetProtocol, LanguishProtocol {
+class PetChoosed: LivingBeing, PetProtocol, LanguishProtocol, NSCoding {
 
     var battleAtt = BattleAttributes(hp: 0, atk: 0, dfs: 0, rdm: 0, lv: 0, xp: 0)
     var baseBattleAtt = BattleAttributes(hp: 0, atk: 0, dfs: 0, rdm: 0, lv: 0, xp: 0)
-    var historyOfAtt: [BattleAttributes] = []
 
     var frontImage = UIImage()
     var backImage = UIImage()
+    var frontImageName = ""
+    var backImageName = ""
     
     var type: PetType = .light
     var name: String = ""
     
-    var number: Int = 0
+    var number: Int! = 0
     var stage: PetStage = .chibi
     
-    required init(name: String) {
+    func encode(with aCoder: NSCoder) {
         
-        super.init(fed: 0, awake: 0, stamina: 0)
-        
-        self.name = name
-        self.languishDelegate = self
-        
-        let pet = getPetDictionary()
-        
-        setFeaturesPet(pet: pet)
-        setBaseBattleAtt(pet: pet)
-        calculateAttributes()
-    }
-
-    func getPetDictionary() -> [String : Any] {
-
-        guard let path = Bundle(for: type(of: self)).path(forResource: "PetsAttributes", ofType: "json")
-            else { fatalError("Can't find PetsAttributes JSON resource.") }
-
-        let data = try! Data(contentsOf: URL(fileURLWithPath: path))
-        let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [[String : Any]]
-        
-        var pet: [String : Any] = [:]
-        
-        for petJson in json {
-            let petName = petJson["name"] as? String
-            if petName == name {
-                pet = petJson
-                break
-            }
-        }
-        return pet
+        aCoder.encode(self.growthAtt, forKey: "growthAtt")
+        aCoder.encode(self.battleAtt, forKey: "battleAtt")
+        aCoder.encode(self.baseBattleAtt, forKey: "baseBattleAtt")
+        aCoder.encode(PetManager.sharedInstance.historyOfAtt, forKey:"historyOfAtt")
+        aCoder.encode(self.frontImage, forKey: "frontImage")
+        aCoder.encode(self.backImage, forKey: "backImage")
+        aCoder.encode(self.frontImageName, forKey: "frontImageName")
+        aCoder.encode(self.backImageName, forKey: "backImageName")
+        aCoder.encode(self.type.rawValue, forKey: "type")
+        aCoder.encode(self.name, forKey: "name")
+        aCoder.encode(self.number, forKey: "number")
+        aCoder.encode(self.stage.rawValue, forKey: "stage")
+        aCoder.encode(self.isSleeping, forKey: "isSleeping")
+        aCoder.encode(self.isEating, forKey: "isEating")
+        aCoder.encode(self.isExercising, forKey: "isExercising")
     }
     
-    func setFeaturesPet(pet: [String : Any]) {
+    required init(dict: [String : Any] ) {
         
+        self.name = dict["name"] as! String
+        self.number = dict["number"] as! Int
+        self.frontImageName = dict["frontImage"] as! String
+        self.backImageName  = dict["backImage"] as! String
+        super.init(fed: 100, awake: 100, stamina: 100)
+        
+        self.languishDelegate = self
+        setFeaturesPet(pet: dict)
+        setBaseBattleAtt(pet: dict)
+        calculateAttributes()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+
+        super.init(fed: 100, awake: 100, stamina: 100)
+        
+        self.languishDelegate = self
+        
+        growthAtt = aDecoder.decodeObject(forKey: "growthAtt") as! GrowthAttributes
+        battleAtt = aDecoder.decodeObject(forKey: "battleAtt") as! BattleAttributes
+        baseBattleAtt = aDecoder.decodeObject(forKey: "baseBattleAtt") as! BattleAttributes
+        PetManager.sharedInstance.historyOfAtt = aDecoder.decodeObject(forKey: "historyOfAtt") as! [BattleAttributes]
+        frontImage = aDecoder.decodeObject(forKey: "frontImage") as! UIImage
+        backImage = aDecoder.decodeObject(forKey: "backImage") as! UIImage
+        frontImageName = aDecoder.decodeObject(forKey: "frontImageName") as! String
+        backImageName = aDecoder.decodeObject(forKey: "backImageName") as! String
+        type = PetType(rawValue: aDecoder.decodeObject(forKey: "type") as! String)!
+        name = aDecoder.decodeObject(forKey: "name") as! String
+        number = aDecoder.decodeObject(forKey: "number") as! Int
+        stage = PetStage(rawValue: aDecoder.decodeObject(forKey: "stage") as! String)!
+        self.isSleeping = aDecoder.decodeBool(forKey: "isSleeping")// as! Bool
+        self.isEating = aDecoder.decodeBool(forKey: "isEating")// as! Bool
+        isExercising = aDecoder.decodeBool(forKey: "isExercising")// as! Bool
+    }
+
+    func setFeaturesPet(pet: [String : Any]) {
+
         self.type = PetType(rawValue: pet["type"] as! String)!
         self.frontImage = UIImage(named: pet["frontImage"] as! String)!
         self.backImage = UIImage(named: pet["backImage"] as! String)!
         self.number = pet["number"] as! Int
         self.stage = PetStage(rawValue: pet["stage"] as! String)!
     }
-    
+
     func setBaseBattleAtt(pet: [String : Any]) {
-        
+
         let base = pet["baseBattleAtt"] as! [String : Int]
         self.baseBattleAtt = BattleAttributes(hp: base["hp"]!,
                                               atk: base["atk"]!,
@@ -76,120 +99,74 @@ class PetChoosed: LivingBeing, PetProtocol, LanguishProtocol {
                                               lv: base["lv"]!,
                                               xp: base["xp"]!)
     }
-    
+
     func calculateAttributes() {
-        
-        setBattleAtt()
-        setGrowthAtt()
+
+        let base = self.baseBattleAtt
+        let lv = 1
+        let xp = 0
+        let rdm = base.rdm!
+        let hp = 2 * base.hp + 1 + Int(arc4random_uniform(UInt32(base.rdm)))
+        let atk = base.atk + 1 + Int(arc4random_uniform(UInt32(base.rdm)))
+        let dfs = base.dfs + 1 + Int(arc4random_uniform(UInt32(base.rdm)))
+
+        self.battleAtt = BattleAttributes(hp: hp,
+                                          atk: atk,
+                                          dfs: dfs,
+                                          rdm: rdm,
+                                          lv: lv,
+                                          xp: xp)
+
+        let nextLv = BattleAttributes(hp: hp, atk: atk, dfs: dfs, rdm: rdm, lv: lv, xp: xp)
+
+        PetManager.sharedInstance.historyOfAtt.append(nextLv)
     }
 
-    func setBattleAtt() {
-        
-        if let alreadySet = defaults.object(forKey: "alreadySetBattleStatus") as? Bool, alreadySet {
-            let attributes = defaults.object(forKey: "battleAtt") as! [String : Int]
-            
-            self.battleAtt = BattleAttributes(hp: attributes["hp"]!,
-                                              atk: attributes["atk"]!,
-                                              dfs: attributes["dfs"]!,
-                                              rdm: UInt32(attributes["rdm"]!),
-                                              lv: attributes["lv"]!,
-                                              xp: attributes["xp"]!)
-        } else {
-            let base = self.baseBattleAtt
-            let lv = 1
-            let xp = 0
-            let rdm = Int(base.rdm)
-            let hp = 2 * base.hp + 1 + Int(arc4random_uniform(base.rdm))
-            let atk = base.atk + 1 + Int(arc4random_uniform(base.rdm))
-            let dfs = base.dfs + 1 + Int(arc4random_uniform(base.rdm))
-            
-            let attributes: [String : Int] = ["hp": hp, "atk": atk, "dfs": dfs, "rdm": rdm, "lv": lv, "xp": xp]
-            self.battleAtt = BattleAttributes(hp: attributes["hp"]!,
-                                              atk: attributes["atk"]!,
-                                              dfs: attributes["dfs"]!,
-                                              rdm: UInt32(attributes["rdm"]!),
-                                              lv: attributes["lv"]!,
-                                              xp: attributes["xp"]!)
-            self.historyOfAtt.append(self.battleAtt)
-            defaults.set(attributes, forKey: "battleAtt")
-            defaults.set(true, forKey: "alreadySetBattleStatus")
-        }
-        defaults.set(false, forKey: "alreadySetBattleStatus")
-    }
-    
-    func setGrowthAtt() {
-        
-        if let alreadySet = defaults.object(forKey: "alreadySetGrowthStatus") as? Bool, alreadySet {
-            let fed = defaults.object(forKey: "fed") as! Int
-            let awake = defaults.object(forKey: "awake") as! Int
-            let stamina = defaults.object(forKey: "stamina") as! Int
-
-            self.growthAtt = GrowthAttributes(fed: fed, awake: awake, stamina: stamina)
-        } else {
-            defaults.set(100, forKey: "fed")
-            defaults.set(100, forKey: "awake")
-            defaults.set(100, forKey: "stamina")
-            self.growthAtt = GrowthAttributes(fed: 100, awake: 100, stamina: 100)
-            defaults.set(true, forKey: "alreadySetGrowthStatus")
-        }
-    }
-    
-    func calculateOffensivePower() -> Int {
-        return (battleAtt.atk + 2 * Int(battleAtt.rdm))
-    }
-    
-    func calculateDamageReceived(enemysOffensive offensive: Int) -> Int {
-        
-        let dano = (offensive - (battleAtt.dfs + 2 * Int(battleAtt.rdm)))
-        return dano > 0 ? dano : 1
-    }
-    
-    func add(toHp: Int, theValue value: Int) -> Int {
-        
-        var hp = toHp + value
-        if hp < 0 {
-            hp = 0
-        } else if hp > battleAtt.hp {
-            hp = battleAtt.hp
-        }
-        return hp
-    }
-    
     func lvUp() {
 
-        self.battleAtt.lv += 1
-        self.battleAtt.hp += self.baseBattleAtt.hp + Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
-        self.battleAtt.atk += self.baseBattleAtt.atk + Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
-        self.battleAtt.dfs += self.baseBattleAtt.dfs + Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
-        self.historyOfAtt.append(self.battleAtt)
+        let number0: Int! = Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
+        let number1: Int! = Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
+        let number2: Int! = Int(arc4random_uniform(self.battleAtt.rdm + 1) / 2)
+        
+        let lv = self.battleAtt.lv + 1
+        let xp = self.battleAtt.xp!
+        let rdm = self.battleAtt.rdm!
+        let hp = self.battleAtt.hp + self.baseBattleAtt.hp + number0
+        let atk = self.battleAtt.atk + self.baseBattleAtt.atk + number1
+        let dfs = self.battleAtt.dfs + self.baseBattleAtt.dfs + number2
+        
+        let nextLv = BattleAttributes(hp: hp, atk: atk, dfs: dfs, rdm: rdm, lv: lv, xp: xp)
+        
+        self.battleAtt = nextLv
+        
+        PetManager.sharedInstance.historyOfAtt.append(nextLv)
 
         print("\n\nUpou\n\n\(battleAtt)")
     }
 
     func xpUp(xp: Int) {
 
-        self.battleAtt.xp += xp
-        while self.battleAtt.xp >= (self.baseBattleAtt.xp * self.battleAtt.lv) {
-            self.battleAtt.xp -= (self.baseBattleAtt.xp * self.battleAtt.lv)
-            print("\n\nup = \(self.baseBattleAtt.xp * self.battleAtt.lv) to lv = \(battleAtt.lv + 1)\n\n")
+        self.battleAtt.xp! += xp
+        while self.battleAtt.xp >= (self.baseBattleAtt.xp! * self.battleAtt.lv!) {
+            self.battleAtt.xp! -= (self.baseBattleAtt.xp! * self.battleAtt.lv!)
+            print("\n\nup = \(self.baseBattleAtt.xp! * self.battleAtt.lv!) to lv = \(battleAtt.lv! + 1)\n\n")
             self.lvUp()
         }
     }
 
     func lvDown() {
 
-        let _ = self.historyOfAtt.popLast()
-        self.battleAtt = self.historyOfAtt.last!
+        let _ = PetManager.sharedInstance.historyOfAtt.popLast()
+        self.battleAtt = PetManager.sharedInstance.historyOfAtt.last!
         self.battleAtt.xp = self.baseBattleAtt.xp * self.battleAtt.lv - 1
-
         print("\n\nDownou\n\n\(battleAtt)")
     }
     
     func xpDown(xp: Int) {
         
-        self.battleAtt.xp -= xp
+        self.battleAtt.xp! -= xp
         if self.battleAtt.xp < 0 {
-            if self.battleAtt.lv > 1 {
+            if PetManager.sharedInstance.historyOfAtt.count > 1 {
                 self.lvDown()
             } else {
                 self.battleAtt.xp = 0
@@ -199,7 +176,7 @@ class PetChoosed: LivingBeing, PetProtocol, LanguishProtocol {
     
     func languish() {
         
-        print("Morrendo. Xp = \(battleAtt.xp) e lv = \(battleAtt.lv)")
+        print("Morrendo. Xp = \(battleAtt.xp!) e lv = \(battleAtt.lv!)")
         xpDown(xp: 10)
     }
 }

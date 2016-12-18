@@ -12,7 +12,6 @@ protocol PetProtocol {
     
     var battleAtt: BattleAttributes { get set }
     var baseBattleAtt: BattleAttributes { get set }
-    var historyOfAtt: [BattleAttributes] { get set }
     
     var frontImage: UIImage { get set }
     var backImage: UIImage { get set }
@@ -20,16 +19,10 @@ protocol PetProtocol {
     var type: PetType { get set }
     var name: String { get set }
     
-    var number: Int { get set }
+    var number: Int! { get set }
     var stage: PetStage { get set }
     
-    init(name: String)
+    init(dict: [String: Any])
     
     func calculateAttributes()
-    
-    func calculateOffensivePower() -> Int
-    
-    func calculateDamageReceived(enemysOffensive offensive: Int) -> Int
-    
-    func add(toHp: Int, theValue value: Int) -> Int
 }

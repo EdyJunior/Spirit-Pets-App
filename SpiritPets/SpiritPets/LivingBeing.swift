@@ -27,11 +27,29 @@ protocol DisableButtonsProtocol {
     func enableByExercising()
 }
 
+protocol TimeToTakeCareProtocol {
+    
+    var messages: Set <UIImage> {get set}
+    
+    func hungerMessage()
+    
+    func sleepnessMessage()
+    
+    func tirednessMessage()
+    
+    func removeHunger()
+    
+    func removeSleepness()
+    
+    func removeTiredness()
+}
+
 class LivingBeing: NSObject {
     
     var growthAtt: GrowthAttributes
     var languishDelegate: LanguishProtocol? = nil
     var disableDelegate: DisableButtonsProtocol? = nil
+    var careDelegate: TimeToTakeCareProtocol? = nil
     
     var isSleeping: Bool {
         didSet {
@@ -90,43 +108,26 @@ class LivingBeing: NSObject {
         
         sleepTask = DispatchWorkItem(block: {
             self.wakeUp()
-        })
-        
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(LivingBeing.updateStatus), userInfo: nil, repeats: true)
-    }
-
-    func tryFeed(duration: Int) {
-
-        if !isSleeping && !isExercising {
-            isEating = true
-            print("Comendo por \(duration) segundos")
-            
-            let task = DispatchWorkItem {
-                self.isEating = false
-                print("Parou de Comer")
-            }
-            let time = DispatchTimeInterval.seconds(duration)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time, execute: task)
-        }
+        })        
     }
     
     func feedUp(lunch: Int) {
         
-        self.growthAtt.fed += lunch
+        self.growthAtt.fed = lunch + self.growthAtt.fed
         if self.growthAtt.fed > 100 {
             self.growthAtt.fed = 100
+        } else if self.growthAtt.fed >= 50 {
+            careDelegate?.removeHunger()
         }
     }
 
-    func trySleep() {
+    func sleep() {
         
-        if !isEating && !isExercising {
-            self.isSleeping = true
-            sleepTask = DispatchWorkItem(block: {
-                self.wakeUp()
-            })
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5, execute: sleepTask)
-        }
+        self.isSleeping = true
+        sleepTask = DispatchWorkItem(block: {
+            self.wakeUp()
+        })
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + sleepInterval, execute: sleepTask)
     }
 
     func wakeUp() {
@@ -135,50 +136,74 @@ class LivingBeing: NSObject {
         sleepTask.cancel()
     }
     
-    func tryExercise(typeOfExercise exer: Exercise) -> Int {
+    func tryExercise(typeOfExercise exer: Exercise) {
 
-        if !isSleeping && self.growthAtt.stamina > exer.cost && !isEating {
+        if !isSleeping {
+            if self.growthAtt.stamina > exer.cost {
             isExercising = true
-            self.growthAtt.stamina -= exer.cost
             let task = DispatchWorkItem {
                 self.isExercising = false
+                self.growthAtt.stamina = self.growthAtt.stamina - exer.cost
                 print("descançou")
             }
-            print("Exercitando por \(exer.cost / 2) segundos")
-            let time = DispatchTimeInterval.seconds(exer.cost / 2)
+            print("Exercitando por \(exer.time) segundos")
+            let time = DispatchTimeInterval.seconds(5)//exer.time)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time, execute: task)
-            return exer.gain
+            //return exer.gain
+            } else {
+                careDelegate?.tirednessMessage()
+            }
         }
-        return 0
+        //return 0
     }
     
-    func updateStatus() {
-        
-        var starving = false
-        var sleepy = false
-
-        growthAtt.fed -= (isSleeping ? 1 : 3)
-        growthAtt.awake -= (isSleeping ? -2 : 3)
-        
-        if growthAtt.fed < 25 {
-            starving = true
-            if growthAtt.fed < 0 {
-                growthAtt.fed = 0
-            }
-        }
-        if growthAtt.awake < 25 {
-            sleepy = true
-            if growthAtt.awake < 0 {
-                growthAtt.awake = 0
-            }
-        } else if growthAtt.awake > 100 {
-            growthAtt.awake = 100
-        }
-        if starving && sleepy {
-            isLanguishing = true
-        }
-        print("fed = \(growthAtt.fed) e awake = \(growthAtt.awake)")
-        
-        NotificationCenter.default.post(name: Notification.Name("UpdateStatusNotification"), object: nil, userInfo: nil)
-    }    
+//    func updateStatus() {
+//
+//        var starving = false
+//        var sleepy = false
+//        
+//        growthAtt.fed = growthAtt.fed - (isSleeping ? 1 : 10)//2)
+//        growthAtt.awake = growthAtt.awake - (isSleeping ? -50/*-1*/ : 5)//1)
+//		growthAtt.stamina =  growthAtt.stamina - (isSleeping ? -4 : -2)
+//        
+//        if growthAtt.fed < 50 {
+//            careDelegate?.hungerMessage()
+//            if growthAtt.fed < 30 {
+//                starving = true
+//                if growthAtt.fed < 1 {
+//                    growthAtt.fed = 0
+//                }
+//            }
+//        } else {
+//            careDelegate?.removeHunger()
+//        }
+//        
+//        if growthAtt.awake < 50 {
+//            careDelegate?.sleepnessMessage()
+//            if growthAtt.awake < 30 {
+//                sleepy = true
+//                if growthAtt.awake < 1 {
+//                    growthAtt.awake = 0
+//                }
+//            }
+//        } else if growthAtt.awake >= 50 && growthAtt.awake <= 100 {
+//            careDelegate?.removeSleepness()
+//        } else {
+//            growthAtt.awake = 100
+//        }
+//        
+//        if growthAtt.stamina > 100 {
+//            growthAtt.stamina = 100
+//        } else if growthAtt.stamina > 10 {
+//            careDelegate?.removeTiredness()
+//        }
+//        if (starving && sleepy) || (growthAtt.awake < 10) || (growthAtt.fed < 10) {
+//            isLanguishing = true
+//        } else {
+//            isLanguishing = false
+//        }
+//        print("\(growthAtt)")
+//
+//        NotificationCenter.default.post(name: Notification.Name("UpdateStatusNotification"), object: nil, userInfo: nil)
+//    }
 }

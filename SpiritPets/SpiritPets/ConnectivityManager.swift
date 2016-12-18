@@ -12,7 +12,7 @@ protocol ConnectivityManagerProtocol {
     func changeUI()
 }
 
-class ConnectivityManager: NSObject, WCSessionDelegate {
+class ConnectivityManager: NSObject, WCSessionDelegate { // Modelo para furutas atualizações > CRASH
     
     var connectivityDelegates = [ConnectivityManagerProtocol]()
     
@@ -36,11 +36,11 @@ class ConnectivityManager: NSObject, WCSessionDelegate {
         session?.activate()
     }
     
-    func addDataChangedDelegate<T where T: ConnectivityManagerProtocol, T: Equatable>(delegate: T) {
+    func addDataChangedDelegate<T> (delegate: T) where T: ConnectivityManagerProtocol, T: Equatable {
         connectivityDelegates.append(delegate)
     }
     
-    func removeDataChangedDelegate<T where T: ConnectivityManagerProtocol, T: Equatable>(delegate: T) {
+    func removeDataChangedDelegate<T> (delegate: T) where T: ConnectivityManagerProtocol, T: Equatable {
         for (index, dataChanged) in connectivityDelegates.enumerated() {
             if let dataChanged = dataChanged as? T, delegate == dataChanged {
                 connectivityDelegates.remove(at: index)
@@ -50,7 +50,6 @@ class ConnectivityManager: NSObject, WCSessionDelegate {
     }
     
     func updateApplicationContext(applicationContext: [String : AnyObject]) throws {
-        
         if let session = validSession {
             do {
                 try session.updateApplicationContext(applicationContext)
@@ -66,11 +65,8 @@ class ConnectivityManager: NSObject, WCSessionDelegate {
         DispatchQueue.main.async { [weak self] in
             
             let object = applicationContext["updateStatus"] as! [String : Any]
-            
             let fed = object["fed"] as! Int
-
             print("\n\n\n\n\n\n\nvai ma - \(fed)\n\n\n\n\n\n\n\n")
-            
             self?.connectivityDelegates.forEach {$0.changeUI()}
         }
     }

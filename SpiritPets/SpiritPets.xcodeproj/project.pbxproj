@@ -10,6 +10,10 @@
 		970FEA3E1DEF009900F86DDF /* MiniGame01Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970FEA3D1DEF009900F86DDF /* MiniGame01Scene.swift */; };
 		970FEA401DEF00A400F86DDF /* MiniGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970FEA3F1DEF00A400F86DDF /* MiniGameViewController.swift */; };
 		970FEA421DEF00B400F86DDF /* PetNodeMiniGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970FEA411DEF00B400F86DDF /* PetNodeMiniGame.swift */; };
+		97370C8A1E00126F00B53DDC /* MPFindOpponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97370C891E00126F00B53DDC /* MPFindOpponentViewController.swift */; };
+		97370C8D1E00177800B53DDC /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97370C8C1E00177800B53DDC /* BattleViewController.swift */; };
+		97370C8F1E0017B700B53DDC /* BattleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97370C8E1E0017B700B53DDC /* BattleScene.swift */; };
+		977812281DFF37150071D273 /* MultipeerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977812271DFF37150071D273 /* MultipeerManager.swift */; };
 		979A618C1DEDA59200F8604B /* PetSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */; };
 		979A618E1DEDA9DA00F8604B /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618D1DEDA9DA00F8604B /* AKPickerView.swift */; };
 		979F8B711DF7046700491FD2 /* PetStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979F8B701DF7046700491FD2 /* PetStatusViewController.swift */; };
@@ -34,7 +38,6 @@
 		B587DC321DF9887F00D84BCA /* PetAnimationScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B587DC311DF9887F00D84BCA /* PetAnimationScene.swift */; };
 		B587DC341DF989EF00D84BCA /* PetAnimationScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B587DC331DF989EF00D84BCA /* PetAnimationScene.sks */; };
 		B587DC391E040AA600D84BCA /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B587DC381E040AA600D84BCA /* ConnectivityManager.swift */; };
-		B587DC3B1E040C0F00D84BCA /* ConnectivityManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B587DC3A1E040C0F00D84BCA /* ConnectivityManger.swift */; };
 		B5FBD1A61DF84CB70038848B /* GrowthActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBD1A51DF84CB70038848B /* GrowthActionsViewController.swift */; };
 		B5FBD1A81DF85F0C0038848B /* PetAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBD1A71DF85F0C0038848B /* PetAnimationViewController.swift */; };
 		CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */; };
@@ -56,6 +59,7 @@
 		CE6237351DF1A27F0021FD86 /* PetChoosed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6237341DF1A27F0021FD86 /* PetChoosed.swift */; };
 		CE8150BF1DF8352C00A8F3A0 /* CustomBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8150BE1DF8352C00A8F3A0 /* CustomBtn.swift */; };
 		CE98BCEC1DF354F8007D88CB /* LivingBeing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BCEB1DF354F8007D88CB /* LivingBeing.swift */; };
+		CEB8BB3D1E003C950012739A /* PetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8BB3C1E003C950012739A /* PetManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +122,10 @@
 		970FEA3D1DEF009900F86DDF /* MiniGame01Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame01Scene.swift; sourceTree = "<group>"; };
 		970FEA3F1DEF00A400F86DDF /* MiniGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGameViewController.swift; sourceTree = "<group>"; };
 		970FEA411DEF00B400F86DDF /* PetNodeMiniGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetNodeMiniGame.swift; sourceTree = "<group>"; };
+		97370C891E00126F00B53DDC /* MPFindOpponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPFindOpponentViewController.swift; sourceTree = "<group>"; };
+		97370C8C1E00177800B53DDC /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
+		97370C8E1E0017B700B53DDC /* BattleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleScene.swift; sourceTree = "<group>"; };
+		977812271DFF37150071D273 /* MultipeerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipeerManager.swift; sourceTree = "<group>"; };
 		979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetSelectionViewController.swift; sourceTree = "<group>"; };
 		979A618D1DEDA9DA00F8604B /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
 		979F8B701DF7046700491FD2 /* PetStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetStatusViewController.swift; sourceTree = "<group>"; };
@@ -142,7 +150,6 @@
 		B587DC311DF9887F00D84BCA /* PetAnimationScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetAnimationScene.swift; sourceTree = "<group>"; };
 		B587DC331DF989EF00D84BCA /* PetAnimationScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PetAnimationScene.sks; sourceTree = "<group>"; };
 		B587DC381E040AA600D84BCA /* ConnectivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
-		B587DC3A1E040C0F00D84BCA /* ConnectivityManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityManger.swift; sourceTree = "<group>"; };
 		B5FBD1A51DF84CB70038848B /* GrowthActionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowthActionsViewController.swift; sourceTree = "<group>"; };
 		B5FBD1A71DF85F0C0038848B /* PetAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetAnimationViewController.swift; sourceTree = "<group>"; };
 		CE3B2B551DEC631A0096C3D8 /* SpiritPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpiritPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +180,7 @@
 		CE6237341DF1A27F0021FD86 /* PetChoosed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetChoosed.swift; sourceTree = "<group>"; };
 		CE8150BE1DF8352C00A8F3A0 /* CustomBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBtn.swift; sourceTree = "<group>"; };
 		CE98BCEB1DF354F8007D88CB /* LivingBeing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivingBeing.swift; sourceTree = "<group>"; };
+		CEB8BB3C1E003C950012739A /* PetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +234,15 @@
 			name = MiniGame01;
 			sourceTree = "<group>";
 		};
+		97370C8B1E00175800B53DDC /* Battle */ = {
+			isa = PBXGroup;
+			children = (
+				97370C8C1E00177800B53DDC /* BattleViewController.swift */,
+				97370C8E1E0017B700B53DDC /* BattleScene.swift */,
+			);
+			name = Battle;
+			sourceTree = "<group>";
+		};
 		97EF4D051DEDF43200446053 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,9 +267,11 @@
 			isa = PBXGroup;
 			children = (
 				B50C21431DF06DDF00779435 /* PetUtils.swift */,
+				977812271DFF37150071D273 /* MultipeerManager.swift */,
 				B50C21411DF06DD500779435 /* PetProtocol.swift */,
 				CE6237341DF1A27F0021FD86 /* PetChoosed.swift */,
 				CE98BCEB1DF354F8007D88CB /* LivingBeing.swift */,
+				CEB8BB3C1E003C950012739A /* PetManager.swift */,
 				CE6237321DF19B020021FD86 /* PetsAttributes.json */,
 			);
 			name = PetUtils;
@@ -316,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				B587DC381E040AA600D84BCA /* ConnectivityManager.swift */,
+				97370C8B1E00175800B53DDC /* Battle */,
 				B50C213E1DF06DBF00779435 /* PetUtils */,
 				B50C21531DF06E8900779435 /* MiniGameSelectionScreen */,
 				970FEA431DEF00CB00F86DDF /* MiniGames */,
@@ -332,6 +352,7 @@
 				979F8B701DF7046700491FD2 /* PetStatusViewController.swift */,
 				CE8150BE1DF8352C00A8F3A0 /* CustomBtn.swift */,
 				97ED98751DF998F2005B1C7C /* AchievementViewController.swift */,
+				97370C891E00126F00B53DDC /* MPFindOpponentViewController.swift */,
 			);
 			path = SpiritPets;
 			sourceTree = "<group>";
@@ -378,7 +399,6 @@
 				B5FBD1A71DF85F0C0038848B /* PetAnimationViewController.swift */,
 				B587DC311DF9887F00D84BCA /* PetAnimationScene.swift */,
 				B587DC331DF989EF00D84BCA /* PetAnimationScene.sks */,
-				B587DC3A1E040C0F00D84BCA /* ConnectivityManger.swift */,
 			);
 			path = "SpiritPets WatchKit Extension";
 			sourceTree = "<group>";
@@ -490,7 +510,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Edvaldo Junior";
 				TargetAttributes = {
 					CE3B2B541DEC631A0096C3D8 = {
@@ -596,11 +616,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				970FEA3E1DEF009900F86DDF /* MiniGame01Scene.swift in Sources */,
+				97370C8A1E00126F00B53DDC /* MPFindOpponentViewController.swift in Sources */,
 				B50C21491DF06E1600779435 /* SmallEnemy.swift in Sources */,
 				B50C21471DF06E0500779435 /* Bullet.swift in Sources */,
 				CE8150BF1DF8352C00A8F3A0 /* CustomBtn.swift in Sources */,
 				B50C21501DF06E6800779435 /* FriendlyBullet.swift in Sources */,
 				CE3B2B5B1DEC631A0096C3D8 /* ViewController.swift in Sources */,
+				CEB8BB3D1E003C950012739A /* PetManager.swift in Sources */,
 				B50C21371DF06D6F00779435 /* MiniGame02Bitmasks.swift in Sources */,
 				970FEA401DEF00A400F86DDF /* MiniGameViewController.swift in Sources */,
 				CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */,
@@ -617,9 +639,12 @@
 				97ED98761DF998F2005B1C7C /* AchievementViewController.swift in Sources */,
 				CE6237351DF1A27F0021FD86 /* PetChoosed.swift in Sources */,
 				979A618C1DEDA59200F8604B /* PetSelectionViewController.swift in Sources */,
+				97370C8F1E0017B700B53DDC /* BattleScene.swift in Sources */,
 				CE98BCEC1DF354F8007D88CB /* LivingBeing.swift in Sources */,
+				977812281DFF37150071D273 /* MultipeerManager.swift in Sources */,
 				B50C214E1DF06E5900779435 /* Enemy.swift in Sources */,
 				B50C21391DF06D7A00779435 /* MiniGame02Manager.swift in Sources */,
+				97370C8D1E00177800B53DDC /* BattleViewController.swift in Sources */,
 				979F8B711DF7046700491FD2 /* PetStatusViewController.swift in Sources */,
 				B50C21421DF06DD500779435 /* PetProtocol.swift in Sources */,
 				B50C21571DF06EB400779435 /* MiniGamesList.swift in Sources */,
@@ -651,7 +676,6 @@
 				CE3B2B981DEC631A0096C3D8 /* NotificationController.swift in Sources */,
 				CE3B2B9A1DEC631A0096C3D8 /* ComplicationController.swift in Sources */,
 				CE3B2B961DEC631A0096C3D8 /* ExtensionDelegate.swift in Sources */,
-				B587DC3B1E040C0F00D84BCA /* ConnectivityManger.swift in Sources */,
 				B5FBD1A61DF84CB70038848B /* GrowthActionsViewController.swift in Sources */,
 				B5FBD1A81DF85F0C0038848B /* PetAnimationViewController.swift in Sources */,
 				CE3B2B941DEC631A0096C3D8 /* InterfaceController.swift in Sources */,
@@ -721,6 +745,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -770,6 +795,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

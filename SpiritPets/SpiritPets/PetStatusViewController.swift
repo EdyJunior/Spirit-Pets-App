@@ -9,7 +9,12 @@
 import UIKit
 import WatchConnectivity
 
-class PetStatusViewController: UIViewController, ConnectivityManagerProtocol {
+class PetStatusViewController: UIViewController , WCSessionDelegate {
+    
+    @IBOutlet weak var viewImage: UIImageView!
+    @IBOutlet weak var mySubViewImage: UIImageView!
+    @IBOutlet weak var mySubView: UIView!
+    @IBOutlet weak var backButton: UIButton!
 
     @IBOutlet weak var hpLabel: UILabel!
     @IBOutlet weak var atkLabel: UILabel!
@@ -22,23 +27,26 @@ class PetStatusViewController: UIViewController, ConnectivityManagerProtocol {
     @IBOutlet weak var sleepLabel: UILabel!
     @IBOutlet weak var feedLabel: UILabel!
     var pet: PetChoosed!
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupLabels()
         
+        startConnectivity()
+        setupLabels()
+    
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(setupLabels),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
-        
+
+        self.viewImage.image = UIImage.init(named: "background")
+        self.mySubViewImage.image = UIImage.init(named: "roundedRect")
+        self.mySubView.clipsToBounds = true
+        self.mySubViewImage.clipsToBounds = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        ConnectivityManager.connectivityManager.addDataChangedDelegate(delegate: self)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        ConnectivityManager.connectivityManager.removeDataChangedDelegate(delegate: self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -54,44 +62,58 @@ class PetStatusViewController: UIViewController, ConnectivityManagerProtocol {
         let battleAtt = pet.battleAtt
         let growthAtt = pet.growthAtt
         
-        hpLabel.text = "HP: \(battleAtt.hp)"
-        atkLabel.text = "ATK: \(battleAtt.atk)"
-        defLabel.text = "DEF: \(battleAtt.dfs)"
-        levelLabel.text = "Level: \(battleAtt.lv)"
+        hpLabel.text = "HP: \(battleAtt.hp!)"
+        atkLabel.text = "ATK: \(battleAtt.atk!)"
+        defLabel.text = "DEF: \(battleAtt.dfs!)"
+        levelLabel.text = "Level: \(battleAtt.lv!)"
         evolutionLabel.text = "Evolution Stage: \(pet.stage)"
-        experenceLabel.text = "\(battleAtt.xp)"
-        staminiaLabel.text = "\(growthAtt.stamina)"
-        sleepLabel.text = "\(growthAtt.awake)"//??
-        feedLabel.text = "\(growthAtt.fed)"  //???
-    }
-
-    @IBAction func sendMsg(_ sender: Any) {
-        messageTest()
+        experenceLabel.text = "\(battleAtt.xp!)"
+        staminiaLabel.text = "\(growthAtt.stamina!)"
+        sleepLabel.text = "\(growthAtt.awake!)"
+        feedLabel.text = "\(growthAtt.fed!)"
     }
     
-    func messageTest() {
-        print("\n\n\nBom\n\n\n")
-        
-        let fedMessage = ["fed" : 100]
-        
-        let message = ["updateStatus" : fedMessage]
-        
-        do {
-            try ConnectivityManager.connectivityManager.updateApplicationContext(applicationContext: message as [String : AnyObject])
-        } catch {
-            print("Error")
+    // MARK: instant message treta
+    
+    func uploadingChanges(_ data: [String : Any]) {
+        // tratar os dados recebidos da mensagem aqui, mantendo o modelo para todas as VC
+        print("\n\n3\n\n")
+        self.levelLabel.text = "BOM"
+    }
+    
+    let session = WCSession.default()
+    
+    func startConnectivity() {
+        if WCSession.isSupported() {
+            session.delegate = self
+            session.activate()
         }
-        
     }
     
-    // MARK: Connectivity Delegate
-    
-    func changeUI() {
-        print("\n\n2\n\n")
-        levelLabel.text = "BOM"
+    func send(message: [String : Any]) {
+        if session.isReachable {
+            session.sendMessage(message, replyHandler: nil, errorHandler: nil)
+        }
     }
- 
-    /*
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        DispatchQueue.main.async {
+            self.uploadingChanges(message)
+        }
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        //
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        //
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        //
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -99,6 +121,5 @@ class PetStatusViewController: UIViewController, ConnectivityManagerProtocol {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }
