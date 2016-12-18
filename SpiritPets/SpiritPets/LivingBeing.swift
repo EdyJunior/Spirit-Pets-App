@@ -54,10 +54,8 @@ class LivingBeing: NSObject {
     var isSleeping: Bool {
         didSet {
             if isSleeping {
-                print("Didiset dormiu\n")
                 self.disableDelegate?.disableBySleeping()
             } else {
-                print("Didiset acordou\n")
                 self.disableDelegate?.enableBySleeping()
             }
         }
@@ -66,10 +64,8 @@ class LivingBeing: NSObject {
     var isEating: Bool {
         didSet {
             if isEating {
-                print("Didiset comendo\n")
                 self.disableDelegate?.disableByFeeding()
             } else {
-                print("Didiset parou de comer\n")
                 self.disableDelegate?.enableByFeeding()
             }
         }
@@ -78,10 +74,8 @@ class LivingBeing: NSObject {
     var isExercising: Bool {
         didSet {
             if isExercising {
-                print("Didiset exercitando\n")
                 self.disableDelegate?.disableByExercising()
             } else {
-                print("Didiset descansou\n")
                 self.disableDelegate?.enableByExercising()
             }
         }
@@ -94,7 +88,6 @@ class LivingBeing: NSObject {
             }
         }
     }
-    var sleepTask = DispatchWorkItem { }
 
     init(fed: Int, awake: Int, stamina: Int) {
         
@@ -105,24 +98,5 @@ class LivingBeing: NSObject {
         self.isExercising = false
         
         super.init()
-        
-        sleepTask = DispatchWorkItem(block: {
-            self.wakeUp()
-        })        
-    }
-
-    func sleep() {
-        
-        self.isSleeping = true
-        sleepTask = DispatchWorkItem(block: {
-            self.wakeUp()
-        })
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + sleepInterval, execute: sleepTask)
-    }
-
-    func wakeUp() {
-        
-        self.isSleeping = false
-        sleepTask.cancel()
     }
 }

@@ -108,9 +108,9 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     @IBAction func sleepOrWakeUp(_ sender: CustomBtn) {
         
         if !pet.isSleeping {
-            pet.sleep()
+            PetManager.sharedInstance.sleep()
         } else {
-            pet.wakeUp()
+            PetManager.sharedInstance.wakeUp()
         }
     }
     
@@ -298,8 +298,8 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         var backTime = appDelegate.saveDelegate!.backgroundTime
         PetManager.sharedInstance.feedController.timer?.invalidate()
         PetManager.sharedInstance.exerciseController.timer?.invalidate()
-        var timeLanguishingByHunger: Int = 0
-        var timeLanguishingBySleepness: Int = 0
+        var LanguishingByHungerTime: Int = 0
+        var LanguishingBySleepnessTime: Int = 0
         
         //Eating in background
         
@@ -318,15 +318,17 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
                 pet.growthAtt.fed! += Int(feedInterval)
                 pet.isEating = false
                 backTime -= feedInterval
-                //let gettingHungryTime = backTime / updateInterval
                 if pet.growthAtt.fed! - (hungerHighRate * Int(backTime / updateInterval)) < hungerMortalValue {
-                    timeLanguishingByHunger = hungerMortalValue - (pet.growthAtt.fed! - (hungerHighRate * Int(backTime / updateInterval)))
+                    LanguishingByHungerTime = Int(updateInterval) * (hungerMortalValue - (pet.growthAtt.fed! - (hungerHighRate * Int(backTime / updateInterval))))
                 }
                 pet.growthAtt.fed! -= (hungerHighRate * Int(backTime / updateInterval))
             }
         }
         //Pet wasn't eating when it entered in background
         else {
+            if pet.growthAtt.fed! - (hungerHighRate * Int(backTime / updateInterval)) < hungerMortalValue {
+                LanguishingByHungerTime = Int(updateInterval) * (hungerMortalValue - (pet.growthAtt.fed! - (hungerHighRate * Int(backTime / updateInterval))))
+            }
             let rate = (pet.isSleeping ? hungerLowRate : hungerHighRate)
             pet.growthAtt.fed! -= (rate * Int(backTime / updateInterval))
         }
@@ -393,8 +395,32 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         //Sleeping in background
         
         if pet.isSleeping {
-            pet.growthAtt.awake! += Int(time / updateInterval)
-            print("Soma = \(time / updateInterval)\n")
+            var sleepInterval = defaults.object(forKey: "sleepInterval") as! TimeInterval
+            
+            //Pet will keep sleeping when it come back from background
+//            if sleepInterval > backTime {
+//                pet.growthAtt.awake! += sleepnessUpRate * Int(backTime / updateInterval)
+//                sleepInterval -= backTime
+//                PetManager.sharedInstance.feed(with: lunch)
+//            }
+//                //Pet finished eating while it was in background
+//            else {
+//                pet.growthAtt.fed! += Int(sleepInterval)
+//                pet.isEating = false
+//                backTime -= sleepInterval
+//                if pet.growthAtt.fed! - (hungerHighRate * Int(backTime / updateInterval)) < hungerMortalValue {
+//                    LanguishingByHungerTime = Int(updateInterval) * (hungerMortalValue - (pet.growthAtt.fed! - (hungerHighRate * Int(backTime / updateInterval))))
+//                }
+//                pet.growthAtt.fed! -= (hungerHighRate * Int(backTime / updateInterval))
+//            }
+        }
+            //Pet wasn't eating when it entered in background
+        else {
+            if pet.growthAtt.fed! - (hungerHighRate * Int(backTime / updateInterval)) < hungerMortalValue {
+                LanguishingByHungerTime = Int(updateInterval) * (hungerMortalValue - (pet.growthAtt.fed! - (hungerHighRate * Int(backTime / updateInterval))))
+            }
+            let rate = (pet.isSleeping ? hungerLowRate : hungerHighRate)
+            pet.growthAtt.fed! -= (rate * Int(backTime / updateInterval))
         }
     }
 }

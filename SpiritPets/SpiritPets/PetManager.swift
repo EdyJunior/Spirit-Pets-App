@@ -28,10 +28,15 @@ class PetManager: NSObject {
     
     var exercise = Exercise(cost: 0, gain: 0, time: 0)
     var cost: Int = 0
-    
+    var sleepTask = DispatchWorkItem { }
+
     private override init() {
         
         super.init()
+        
+        sleepTask = DispatchWorkItem(block: {
+            self.wakeUp()
+        })
         
         Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(PetManager.updateStatus), userInfo: nil, repeats: true)
     }
@@ -96,6 +101,21 @@ class PetManager: NSObject {
                 petChoosed.careDelegate?.tirednessMessage()
             }
         }
+    }
+    
+    func sleep() {
+        
+        petChoosed.isSleeping = true
+        sleepTask = DispatchWorkItem(block: {
+            self.wakeUp()
+        })
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + sleepInterval, execute: sleepTask)
+    }
+    
+    func wakeUp() {
+        
+        petChoosed.isSleeping = false
+        sleepTask.cancel()
     }
 
     func languishInstantaniously(basedOn time: TimeInterval) {
