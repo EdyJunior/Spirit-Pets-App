@@ -93,12 +93,6 @@ class BattleAttributes: NSObject, NSCoding {
     }
 }
 
-struct StateOfAttributes {
-    
-    var previous: BattleAttributes
-    var current: BattleAttributes
-}
-
 class GrowthAttributes: NSObject, NSCoding {
     
     var fed: Int!
@@ -131,23 +125,24 @@ class GrowthAttributes: NSObject, NSCoding {
     }
 }
 
-let updateInterval: TimeInterval = 6/*2592*/
+let updateInterval: TimeInterval = 6/*2592*///Period of method 'updateStatus' in PetMangager
 
 let sleepInterval: TimeInterval = 10/*36000*/
-let sleepnessUpRate: Int = 50//1
-let sleepnessDownRate: Int = -5//1
+let sleepnessUpRate: Int = 50//1//value added from pet's sleep when pet is sleeping
+let sleepnessDownRate: Int = -5//1//value subtracted to pet's sleep when pet isn't sleeping
 let sleepnessWarningValue: Int = 50
-let sleepnessDangerousValue: Int = 30
-let sleepnessMortalValue: Int = 10
+let sleepnessDangerousValue: Int = 30//values under this may make pet linguish deending on pet's fed status
 
-let hungerHighRate: Int = 10//2
-let hungerLowRate: Int = 1
+let sleepnessMortalValue: Int = 10//values under this will make pet linguish
+
+let hungerHighRate: Int = 10//2//value subtracted from pet's fed when pet isn't sleeping
+let hungerLowRate: Int = 1//value subtracted from pet's fed when pet is sleeping
 let hungerWarningValue: Int = 50
-let hungerDangerousValue: Int = 30
-let hungerMortalValue: Int = 10
+let hungerDangerousValue: Int = 30//values under this may make pet linguish deending on pet's awake status
+let hungerMortalValue: Int = 10//values under this will make pet linguish
 
-let staminaHighRate: Int = 4
-let staminaLowRate: Int = 2
+let staminaHighRate: Int = 4//value added to pet's staminas when pet is sleeping
+let staminaLowRate: Int = 2//value added to pet's staminas when pet isn't sleeping
 let staminaMinDecentValue = 10
 
 let depletionRate: Int = 10

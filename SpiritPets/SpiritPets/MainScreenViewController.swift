@@ -47,7 +47,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         xperienceLabel.layer.borderWidth = 2
         xperienceLabel.layer.cornerRadius = 10
         xperienceLabel.text = "XP: \(pet.battleAtt.xp!)/\(pet.baseBattleAtt.xp * pet.battleAtt.lv)"
-        PetManager.sharedInstance.petChoosed.disableDelegate = self
+        pet.disableDelegate = self
         pet.careDelegate = self
         appDelegate.saveDelegate = self
         
@@ -87,6 +87,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         self.show(statusViewController, sender: nil)
     }
 
+    //Enable or disanable buttons passed as parameter based on boolean 'to'
     func changeEnabled(buttons: [UIButton], to: Bool) {
 
         for btn in buttons {
@@ -135,6 +136,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     
     // MARK: DisableButtonsProtocol delegate
     
+    //Enables exercise and feed buttons when pet wake up
     func enableBySleeping() {
         
         if !pet.isEating {
@@ -146,6 +148,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         sleepBtn.setImage(#imageLiteral(resourceName: "zzz"), for: .normal)
     }
     
+    //Disables feed and exercise buttons when sleep button is pressed
     func disableBySleeping() {
         
         print("DesAtivou pra durmir")
@@ -153,6 +156,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         sleepBtn.setImage(#imageLiteral(resourceName: "sun"), for: .normal)
     }
 
+    //Enables feed and sleep (if pet isn't exercising) buttons when pet finish eating
     func enableByFeeding() {
 
         //pet.feedUp(lunch: lunch.gain)
@@ -163,13 +167,14 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         }
     }
 
+    //Disables feed and sleep buttons when feed button is pressed
     func disableByFeeding() {
         changeEnabled(buttons: [feedBtn, sleepBtn], to: false)
     }
 
+    //Enables exercise and sleep (if pet isn't eating) buttons when pet finish exercising
     func enableByExercising() {
 
-//        pet.xpUp(xp: exercise.gain)
         exercise = Exercise(cost: 0, gain: 0, time: 0)
         updateLabels()
         changeEnabled(buttons: [exerciseBtn], to: true)
@@ -178,12 +183,14 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         }
     }
 
+    //Disables exercise and sleep buttons when exercise button is pressed
     func disableByExercising() {
         changeEnabled(buttons: [exerciseBtn, sleepBtn], to: false)
     }
     
     // MARK: TimeToTakeCareProtocol delegate
     
+    //Presents hunger status image in feedback ballon
     func hungerMessage() {
         
         popupImageView.isHidden = false
@@ -192,6 +199,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         animateMessages()
     }
     
+    //Presents sleep status image in feedback ballon
     func sleepnessMessage() {
         
         popupImageView.isHidden = false
@@ -201,6 +209,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         animateMessages()
     }
     
+    //Presents tired status image in feedback ballon
     func tirednessMessage() {
         
         popupImageView.isHidden = false
@@ -210,6 +219,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         animateMessages()
     }
     
+    //Alternates status images in feedback ballon
     func animateMessages() {
         
         var messageImages: [UIImage] = []
@@ -223,6 +233,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         messageImageView.startAnimating()
     }
     
+    //Stops present hunger status image in feedback ballon
     func removeHunger() {
         
         messages.remove(#imageLiteral(resourceName: "hungry"))
@@ -233,6 +244,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         }
     }
     
+    //Stops present sleep status image in feedback ballon
     func removeSleepness() {
         
         messages.remove(#imageLiteral(resourceName: "sleepy"))
@@ -243,6 +255,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         }
     }
     
+    //Stops present tired status image in feedback ballon
     func removeTiredness() {
         
         messages.remove(#imageLiteral(resourceName: "tired"))
@@ -253,12 +266,14 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         }
     }
     
+    //Presents the default status image in feedback ballon
     func hiddenMessage() {
         
         messageImageView.stopAnimating()
         messageImageView.image = #imageLiteral(resourceName: "happy")
     }
     
+    //Saves some variables when app enters in background
     func saveState() {
         
         defaults.set(PetManager.sharedInstance.feedController.interval, forKey: "feedInterval")
@@ -281,7 +296,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
 
     func load(after time: TimeInterval) {
         
-        pet = PetManager.sharedInstance.petChoosed
+        //pet = PetManager.sharedInstance.petChoosed
         var backTime = appDelegate.saveDelegate!.backgroundTime
         PetManager.sharedInstance.feedController.timer?.invalidate()
         PetManager.sharedInstance.exerciseController.timer?.invalidate()
@@ -291,12 +306,15 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         if pet.isEating {
             var feedInterval = defaults.object(forKey: "feedInterval") as! TimeInterval
             
+            //Pet will keep eating when it come back from background
             if feedInterval > backTime {
                 pet.growthAtt.fed! += Int(backTime)
                 feedInterval -= backTime
                 lunch = Lunch(gain: 10, time: feedInterval)//60
                 PetManager.sharedInstance.feed(with: lunch)
-            } else {
+            }
+            //Pet finished eating while it was in background
+            else {
                 pet.growthAtt.fed! += Int(feedInterval)
                 pet.isEating = false
                 if pet.growthAtt.fed > 100 {
@@ -305,7 +323,9 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
                 backTime -= feedInterval
                 pet.growthAtt.fed! -= (hungerHighRate * Int(backTime / updateInterval))
             }
-        } else {
+        }
+        //Pet wasn't eating when it entered in background
+        else {
             let rate = (pet.isSleeping ? hungerLowRate : hungerHighRate)
             pet.growthAtt.fed! -= (rate * Int(backTime / updateInterval))
         }
@@ -319,19 +339,27 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
             exercise = Exercise(cost: exerciseDict["cost"] as! Int,
                                 gain: exerciseDict["gain"] as! Int,
                                 time: exerciseDict["time"] as! TimeInterval)
+            //Pet will keep exercising when it come back from background
             if exerciseInterval > backTime {
                 pet.growthAtt.stamina! -= Int(backTime)
                 exerciseInterval -= backTime
                 let cost = (exercise.cost > Int(backTime) ? exercise.cost - Int(backTime) : 0)
                 exercise = Exercise(cost: cost, gain: exercise.gain, time: exerciseInterval)
                 PetManager.sharedInstance.exercise(typeOfExercise: exercise)
-            } else {
+            }
+            //Pet finished exercising while it was in background
+            else {
                 let cost = (Int(exercise.time - exerciseInterval) >= exercise.cost ? 0 : exercise.cost - Int(exercise.time - exerciseInterval))
                 pet.growthAtt.stamina! -= cost
                 pet.isExercising = false
                 backTime -= exerciseInterval
                 pet.growthAtt.stamina! += (staminaLowRate * Int(backTime / updateInterval))
             }
+        }
+        //Pet wasn't exercising when it entered in background
+        else {
+            let rate = (pet.isSleeping ? staminaHighRate : staminaLowRate)
+            pet.growthAtt.stamina! += (rate * Int(backTime / updateInterval))
         }
         
         //Languishing in background
