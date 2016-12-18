@@ -141,7 +141,7 @@ class PetChoosed: LivingBeing, PetProtocol, LanguishProtocol, NSCoding {
         
         PetManager.sharedInstance.historyOfAtt.append(nextLv)
 
-        print("\n\nUpou\n\n\(battleAtt)")
+        print("\n\nUpou\n\n\(battleAtt)\n")
     }
 
     func xpUp(xp: Int) {
@@ -159,7 +159,7 @@ class PetChoosed: LivingBeing, PetProtocol, LanguishProtocol, NSCoding {
         let _ = PetManager.sharedInstance.historyOfAtt.popLast()
         self.battleAtt = PetManager.sharedInstance.historyOfAtt.last!
         self.battleAtt.xp = self.baseBattleAtt.xp * self.battleAtt.lv - 1
-        print("\n\nDownou\n\n\(battleAtt)")
+        print("\n\nDownou\n\n\(battleAtt)\n")
     }
     
     func xpDown(xp: Int) {
@@ -176,7 +176,7 @@ class PetChoosed: LivingBeing, PetProtocol, LanguishProtocol, NSCoding {
     
     func languish() {
         
-        print("Morrendo. Xp = \(battleAtt.xp!) e lv = \(battleAtt.lv!)")
-        xpDown(xp: 10)
+        print("Morrendo. Xp = \(battleAtt.xp!) e lv = \(battleAtt.lv!)\n")
+        xpDown(xp: depletionRate)
     }
 }

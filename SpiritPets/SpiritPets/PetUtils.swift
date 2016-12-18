@@ -29,7 +29,7 @@ struct Exercise {
     
     let cost: Int
     let gain: Int
-    let time: Int
+    let time: TimeInterval
 }
 
 //Types of lunch. Gain is the increase in the pet's fed status. Time is the time needed to finish the meal
@@ -149,5 +149,7 @@ let hungerMortalValue: Int = 10
 let staminaHighRate: Int = 4
 let staminaLowRate: Int = 2
 let staminaMinDecentValue = 10
+
+let depletionRate: Int = 10
 
 let defaults = UserDefaults.standard

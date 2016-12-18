@@ -97,9 +97,9 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     // MARK: Buttons' actions
 
     @IBAction func feed(_ sender: CustomBtn) {
-
+        //TODO: Transformar lunch em inteiro, já que o tempo gasto pra comer é o número de pontos ganhos em fed
         if !pet.isEating {
-            lunch = Lunch(gain: 70, time: 5)//60
+            lunch = Lunch(gain: 10, time: 10)//60
             PetManager.sharedInstance.feed(with: lunch)
         }
     }
@@ -109,7 +109,6 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         if !pet.isSleeping {
             pet.sleep()
         } else {
-            //print("ACORDOU")
             pet.wakeUp()
         }
     }
@@ -117,9 +116,8 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     @IBAction func exercise(_ sender: CustomBtn) {
         
         if !pet.isExercising {
-            exercise = Exercise(cost: 10, gain: 30, time: 5)//3600)
-            pet.tryExercise(typeOfExercise: exercise)
-            //print("XP = \(pet.battleAtt.xp)")
+            exercise = Exercise(cost: 10, gain: 30, time: 30)//3600)
+            PetManager.sharedInstance.exercise(typeOfExercise: exercise)
         }
     }
     
@@ -139,7 +137,6 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     
     func enableBySleeping() {
         
-        //print("Ativou pra acordar")
         if !pet.isEating {
             changeEnabled(buttons: [feedBtn], to: true)
         }
@@ -158,8 +155,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
 
     func enableByFeeding() {
 
-        //print("Ativou pra parar de comer")
-        pet.feedUp(lunch: lunch.gain)
+        //pet.feedUp(lunch: lunch.gain)
         lunch = Lunch(gain: 0, time: 0)
         changeEnabled(buttons: [feedBtn], to: true)
         if !pet.isExercising {
@@ -168,18 +164,14 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     }
 
     func disableByFeeding() {
-
-        //print("DesAtivou pra comer")
         changeEnabled(buttons: [feedBtn, sleepBtn], to: false)
     }
 
     func enableByExercising() {
 
-        //print("Ativou pra descansar")
-        pet.xpUp(xp: exercise.gain)
+//        pet.xpUp(xp: exercise.gain)
         exercise = Exercise(cost: 0, gain: 0, time: 0)
         updateLabels()
-        //print("XP += \(xpReceived)")
         changeEnabled(buttons: [exerciseBtn], to: true)
         if !pet.isEating {
             changeEnabled(buttons: [sleepBtn], to: true)
@@ -187,8 +179,6 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     }
 
     func disableByExercising() {
-
-        //print("DesAtivou pra exercitar")
         changeEnabled(buttons: [exerciseBtn, sleepBtn], to: false)
     }
     
@@ -269,7 +259,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         messageImageView.image = #imageLiteral(resourceName: "happy")
     }
     
-    func saveInterals() {
+    func saveState() {
         
         defaults.set(PetManager.sharedInstance.feedController.interval, forKey: "feedInterval")
         defaults.set(PetManager.sharedInstance.sleepController.interval, forKey: "sleepInterval")
@@ -282,28 +272,90 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         
         let data = NSKeyedArchiver.archivedData(withRootObject: pet)
         defaults.set(data, forKey: "petDict")
-        saveInterals()
+        let exerciseDict: [String : Any] = ["cost" : exercise.cost,
+                                            "gain" : exercise.gain,
+                                            "time" : exercise.time]
+        defaults.set(exerciseDict, forKey: "exerciseDict")
+        saveState()
     }
-    
+
     func load(after time: TimeInterval) {
         
         pet = PetManager.sharedInstance.petChoosed
+        var backTime = appDelegate.saveDelegate!.backgroundTime
+        PetManager.sharedInstance.feedController.timer?.invalidate()
+        PetManager.sharedInstance.exerciseController.timer?.invalidate()
+        
+        //Eating in background
+        
         if pet.isEating {
-            let feedInterval = defaults.object(forKey: "feedInterval") as! TimeInterval
-            let backTime = appDelegate.saveDelegate!.backgroundTime
+            var feedInterval = defaults.object(forKey: "feedInterval") as! TimeInterval
             
-//            if feedInterval > backTime {
-//                <#code#>
-//            }
-//        } else {
-//            delegate
+            if feedInterval > backTime {
+                pet.growthAtt.fed! += Int(backTime)
+                feedInterval -= backTime
+                lunch = Lunch(gain: 10, time: feedInterval)//60
+                PetManager.sharedInstance.feed(with: lunch)
+            } else {
+                pet.growthAtt.fed! += Int(feedInterval)
+                pet.isEating = false
+                if pet.growthAtt.fed > 100 {
+                    pet.growthAtt.fed = 100
+                }
+                backTime -= feedInterval
+                pet.growthAtt.fed! -= (hungerHighRate * Int(backTime / updateInterval))
+            }
+        } else {
+            let rate = (pet.isSleeping ? hungerLowRate : hungerHighRate)
+            pet.growthAtt.fed! -= (rate * Int(backTime / updateInterval))
         }
+        
+        //Exercising in background
+        
+        if pet.isExercising {
+            var exerciseInterval = defaults.object(forKey: "exerciseInterval") as! TimeInterval
+            let exerciseDict = defaults.object(forKey: "exerciseDict") as! [String : Any]
+            
+            exercise = Exercise(cost: exerciseDict["cost"] as! Int,
+                                gain: exerciseDict["gain"] as! Int,
+                                time: exerciseDict["time"] as! TimeInterval)
+            if exerciseInterval > backTime {
+                pet.growthAtt.stamina! -= Int(backTime)
+                exerciseInterval -= backTime
+                let cost = (exercise.cost > Int(backTime) ? exercise.cost - Int(backTime) : 0)
+                exercise = Exercise(cost: cost, gain: exercise.gain, time: exerciseInterval)
+                PetManager.sharedInstance.exercise(typeOfExercise: exercise)
+            } else {
+                let cost = (Int(exercise.time - exerciseInterval) >= exercise.cost ? 0 : exercise.cost - Int(exercise.time - exerciseInterval))
+                pet.growthAtt.stamina! -= cost
+                pet.isExercising = false
+                backTime -= exerciseInterval
+                pet.growthAtt.stamina! += (staminaLowRate * Int(backTime / updateInterval))
+            }
+        }
+        
+        //Languishing in background
+        
+        if pet.growthAtt.fed < hungerMortalValue || pet.growthAtt.awake < sleepnessMortalValue {
+            //TODO: testar os dois menores do que 30, que tb vão regredir
+            
+            var depletionTime = TimeInterval(hungerMortalValue)
+            if pet.growthAtt.fed < hungerMortalValue {
+                depletionTime -= TimeInterval(hungerMortalValue)
+            } else if pet.growthAtt.awake < sleepnessMortalValue {
+                depletionTime -= TimeInterval(sleepnessMortalValue)
+            }
+            PetManager.sharedInstance.languishInstantaniously(basedOn: depletionTime)
+        }
+        
+        //Sleeping in background
+        
         if pet.isSleeping {
             pet.growthAtt.awake! += Int(time / updateInterval)
             if pet.growthAtt.awake > 100 {
                 pet.growthAtt.awake! = 100
             }
-            print("Soma = \(time / updateInterval)")
+            print("Soma = \(time / updateInterval)\n")
         }
     }
 }

@@ -62,13 +62,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         
-        if defaults.bool(forKey: "runBefore") {
-            saveDelegate!.backgroundTime = Date().timeIntervalSince(saveDelegate!.lastActivate)
-            saveDelegate!.load(after: saveDelegate!.backgroundTime)
-            print("FORE Passaram-se \(saveDelegate!.backgroundTime) seg")
-        } else {
-            print("Não escolheu ainda 1")
-        }
+//        if defaults.bool(forKey: "runBefore") {
+//            saveDelegate!.backgroundTime = Date().timeIntervalSince(saveDelegate!.lastActivate)
+//            saveDelegate!.load(after: saveDelegate!.backgroundTime)
+//            print("FORE Passaram-se \(saveDelegate!.backgroundTime) seg")
+//        } else {
+//            print("Não escolheu ainda 1")
+//        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             saveDelegate!.load(after: saveDelegate!.backgroundTime)
             print("ACTIV Passaram-se \(saveDelegate!.backgroundTime) seg")
         } else {
-            print("Não escolheu ainda 1")
+            print("Não escolheu ainda 2")
         }
     }
 
