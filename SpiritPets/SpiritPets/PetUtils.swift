@@ -95,9 +95,33 @@ class BattleAttributes: NSObject, NSCoding {
 
 class GrowthAttributes: NSObject, NSCoding {
     
-    var fed: Int!
-    var awake: Int!
-    var stamina: Int!
+    var fed: Int! {
+        didSet {
+            if fed > 100 {
+                fed = 100
+            } else if fed < 0 {
+                fed = 0
+            }
+        }
+    }
+    var awake: Int! {
+        didSet {
+            if awake > 100 {
+                awake = 100
+            } else if awake < 0 {
+                awake = 0
+            }
+        }
+    }
+    var stamina: Int! {
+        didSet {
+            if stamina > 100 {
+                stamina = 100
+            } else if stamina < 0 {
+                stamina = 0
+            }
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         
@@ -128,14 +152,14 @@ class GrowthAttributes: NSObject, NSCoding {
 let updateInterval: TimeInterval = 6/*2592*///Period of method 'updateStatus' in PetMangager
 
 let sleepInterval: TimeInterval = 10/*36000*/
-let sleepnessUpRate: Int = 50//1//value added from pet's sleep when pet is sleeping
+let sleepnessUpRate: Int = 30//1//value added from pet's sleep when pet is sleeping
 let sleepnessDownRate: Int = -5//1//value subtracted to pet's sleep when pet isn't sleeping
 let sleepnessWarningValue: Int = 50
 let sleepnessDangerousValue: Int = 30//values under this may make pet linguish deending on pet's fed status
 
 let sleepnessMortalValue: Int = 10//values under this will make pet linguish
 
-let hungerHighRate: Int = 10//2//value subtracted from pet's fed when pet isn't sleeping
+let hungerHighRate: Int = 5//2//value subtracted from pet's fed when pet isn't sleeping
 let hungerLowRate: Int = 1//value subtracted from pet's fed when pet is sleeping
 let hungerWarningValue: Int = 50
 let hungerDangerousValue: Int = 30//values under this may make pet linguish deending on pet's awake status

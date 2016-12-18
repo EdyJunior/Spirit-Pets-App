@@ -27,6 +27,7 @@ class PetManager: NSObject {
     var sleepController = TimeController(interval: 0, timer: nil, add: nil)
     
     var exercise = Exercise(cost: 0, gain: 0, time: 0)
+    var cost: Int = 0
     
     private override init() {
         
@@ -40,7 +41,7 @@ class PetManager: NSObject {
         feedController.interval -= 1
         petChoosed.growthAtt.fed! += 1
         print("eating = \(feedController.interval)")
-        if feedController.interval < 1.0 || petChoosed.growthAtt.fed! >= 100 {
+        if feedController.interval < 1.0 || petChoosed.growthAtt.fed! > 99 {
             petChoosed.isEating = false
             feedController.timer!.invalidate()
             
@@ -62,14 +63,14 @@ class PetManager: NSObject {
     func countingTimeExercising() {
         
         exerciseController.interval -= 1
-        petChoosed.growthAtt.stamina! -= 1
-        if petChoosed.growthAtt.stamina! < 0 {
-            petChoosed.growthAtt.stamina! = 0
+        if cost < exercise.cost {
+            cost += 1
+            petChoosed.growthAtt.stamina! -= 1
         }
         print("exercising = \(exerciseController.interval)")
         if exerciseController.interval < 1.0 {
-            if exercise.cost > Int(exerciseController.interval) {
-                petChoosed.growthAtt.stamina! -= (exercise.cost - Int(exerciseController.interval))
+            if exercise.cost > Int(exercise.time) {
+                petChoosed.growthAtt.stamina! -= (exercise.cost - Int(exercise.time))
             }
             
             petChoosed.isExercising = false
@@ -86,6 +87,7 @@ class PetManager: NSObject {
             if petChoosed.growthAtt.stamina > exer.cost {
                 exercise = exer
                 petChoosed.isExercising = true
+                cost = 0
                 print("Exercitando por \(exer.time) segundos\n")
                 
                 exerciseController = TimeController(interval: exer.time,
@@ -112,7 +114,7 @@ class PetManager: NSObject {
             petChoosed.growthAtt.fed! -= (petChoosed.isSleeping ? hungerLowRate : hungerHighRate)
         }
         petChoosed.growthAtt.awake! += (petChoosed.isSleeping ? sleepnessUpRate : sleepnessDownRate)
-        if !petChoosed.isExercising {
+        if !petChoosed.isExercising && !petChoosed.isLanguishing {
             petChoosed.growthAtt.stamina! += (petChoosed.isSleeping ? staminaHighRate : staminaLowRate)
         }
     
@@ -120,33 +122,21 @@ class PetManager: NSObject {
             petChoosed.careDelegate?.hungerMessage()
             if petChoosed.growthAtt.fed < hungerDangerousValue {
                 starving = true
-                if petChoosed.growthAtt.fed < 1 {
-                    petChoosed.growthAtt.fed = 0
-                }
             }
-        } else if petChoosed.growthAtt.fed >= hungerWarningValue && petChoosed.growthAtt.fed <= 100{
+        } else if petChoosed.growthAtt.fed >= hungerWarningValue && petChoosed.growthAtt.fed <= 100 {
             petChoosed.careDelegate?.removeHunger()
-        } else {
-            petChoosed.growthAtt.fed = 100
         }
 
         if petChoosed.growthAtt.awake < sleepnessWarningValue {
             petChoosed.careDelegate?.sleepnessMessage()
             if petChoosed.growthAtt.awake < sleepnessDangerousValue {
                 sleepy = true
-                if petChoosed.growthAtt.awake < 1 {
-                    petChoosed.growthAtt.awake = 0
-                }
             }
         } else if petChoosed.growthAtt.awake >= sleepnessWarningValue && petChoosed.growthAtt.awake <= 100 {
             petChoosed.careDelegate?.removeSleepness()
-        } else {
-            petChoosed.growthAtt.awake = 100
         }
-
-        if petChoosed.growthAtt.stamina > 100 {
-            petChoosed.growthAtt.stamina = 100
-        } else if petChoosed.growthAtt.stamina > staminaMinDecentValue {
+        
+        if petChoosed.growthAtt.stamina > staminaMinDecentValue {
             petChoosed.careDelegate?.removeTiredness()
         }
         if (starving && sleepy) || (petChoosed.growthAtt.awake < sleepnessMortalValue) || (petChoosed.growthAtt.fed < hungerMortalValue) {

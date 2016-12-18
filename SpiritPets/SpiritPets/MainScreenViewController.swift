@@ -117,7 +117,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     @IBAction func exercise(_ sender: CustomBtn) {
         
         if !pet.isExercising {
-            exercise = Exercise(cost: 10, gain: 30, time: 30)//3600)
+            exercise = Exercise(cost: 30, gain: 30, time: 15)//3600)
             PetManager.sharedInstance.exercise(typeOfExercise: exercise)
         }
     }
@@ -159,7 +159,6 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     //Enables feed and sleep (if pet isn't exercising) buttons when pet finish eating
     func enableByFeeding() {
 
-        //pet.feedUp(lunch: lunch.gain)
         lunch = Lunch(gain: 0, time: 0)
         changeEnabled(buttons: [feedBtn], to: true)
         if !pet.isExercising {
@@ -296,7 +295,6 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
 
     func load(after time: TimeInterval) {
         
-        //pet = PetManager.sharedInstance.petChoosed
         var backTime = appDelegate.saveDelegate!.backgroundTime
         PetManager.sharedInstance.feedController.timer?.invalidate()
         PetManager.sharedInstance.exerciseController.timer?.invalidate()
@@ -317,9 +315,6 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
             else {
                 pet.growthAtt.fed! += Int(feedInterval)
                 pet.isEating = false
-                if pet.growthAtt.fed > 100 {
-                    pet.growthAtt.fed = 100
-                }
                 backTime -= feedInterval
                 pet.growthAtt.fed! -= (hungerHighRate * Int(backTime / updateInterval))
             }
@@ -339,26 +334,39 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
             exercise = Exercise(cost: exerciseDict["cost"] as! Int,
                                 gain: exerciseDict["gain"] as! Int,
                                 time: exerciseDict["time"] as! TimeInterval)
+            let timeExercisingBeforeBackground = exercise.time - exerciseInterval
+            var cost: Int = 0
             //Pet will keep exercising when it come back from background
             if exerciseInterval > backTime {
-                pet.growthAtt.stamina! -= Int(backTime)
+                //The cost of stamina of the exercise wasn't consumed in background
+                if exercise.cost >= Int(timeExercisingBeforeBackground + backTime) {
+                    pet.growthAtt.stamina! -= Int(backTime)
+                    cost = exercise.cost - Int(timeExercisingBeforeBackground + backTime)
+                }
+                //The cost of stamina of the exercise was consumed in background
+                else if exercise.cost > Int(timeExercisingBeforeBackground) {
+                    pet.growthAtt.stamina! -= (exercise.cost - Int(timeExercisingBeforeBackground))
+                    cost = 0
+                }
                 exerciseInterval -= backTime
-                let cost = (exercise.cost > Int(backTime) ? exercise.cost - Int(backTime) : 0)
+                
                 exercise = Exercise(cost: cost, gain: exercise.gain, time: exerciseInterval)
                 PetManager.sharedInstance.exercise(typeOfExercise: exercise)
             }
             //Pet finished exercising while it was in background
             else {
-                let cost = (Int(exercise.time - exerciseInterval) >= exercise.cost ? 0 : exercise.cost - Int(exercise.time - exerciseInterval))
+                cost = exercise.cost - Int(timeExercisingBeforeBackground)
                 pet.growthAtt.stamina! -= cost
+                pet.xpUp(xp: exercise.gain)
                 pet.isExercising = false
                 backTime -= exerciseInterval
-                pet.growthAtt.stamina! += (staminaLowRate * Int(backTime / updateInterval))
+                let rate = (pet.isLanguishing ? 0 : staminaLowRate)
+                pet.growthAtt.stamina! += (rate * Int(backTime / updateInterval))
             }
         }
         //Pet wasn't exercising when it entered in background
         else {
-            let rate = (pet.isSleeping ? staminaHighRate : staminaLowRate)
+            let rate = (pet.isLanguishing ? 0 : (pet.isSleeping ? staminaHighRate : staminaLowRate))
             pet.growthAtt.stamina! += (rate * Int(backTime / updateInterval))
         }
         
@@ -380,9 +388,6 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         
         if pet.isSleeping {
             pet.growthAtt.awake! += Int(time / updateInterval)
-            if pet.growthAtt.awake > 100 {
-                pet.growthAtt.awake! = 100
-            }
             print("Soma = \(time / updateInterval)\n")
         }
     }
