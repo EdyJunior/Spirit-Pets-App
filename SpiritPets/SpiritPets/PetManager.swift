@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import WatchConnectivity
 
-class PetManager: NSObject {
+class PetManager: NSObject, WCSessionDelegate {
 
     static let sharedInstance = PetManager()
 
@@ -111,11 +112,9 @@ class PetManager: NSObject {
             petChoosed.isSleeping = false
             wakeUp()
             sleepController.timer!.invalidate()
-            
             print("Parou de Dormir")
         }
     }
-
     
     func sleep(during secondes: TimeInterval) {
         
@@ -141,6 +140,11 @@ class PetManager: NSObject {
         for _ in 0..<Int(time / updateInterval) {
             petChoosed.xpDown(xp: depletionRate)
         }
+    }
+    
+    func evolving() {
+        
+        
     }
 
     func updateStatus() {
@@ -185,5 +189,87 @@ class PetManager: NSObject {
         print("\(petChoosed.growthAtt)\n")
         
         NotificationCenter.default.post(name: Notification.Name("UpdateStatusNotification"), object: nil, userInfo: nil)
+        
+        send(message: buildMessage())
+    }
+    
+    // MARK: instant message ULTRA TRETA - building iPhone message
+    
+    func buildMessage() -> [String : Any] {
+        var message: [String : Any] = [:]
+        
+        let fed = petChoosed.growthAtt.fed
+        let awake = petChoosed.growthAtt.awake
+        let stamina = petChoosed.growthAtt.stamina
+        let experience = petChoosed.battleAtt.xp
+        let nextLevel = petChoosed.baseBattleAtt.xp * petChoosed.battleAtt.lv
+        let level = petChoosed.battleAtt.lv
+        
+        message["fed"] = fed
+        message["awake"] = awake
+        message["stamina"] = stamina
+        message["experience"] = experience
+        message["nextLevel"] = nextLevel
+        message["level"] = level
+        
+        return message
+    }
+    
+    // MARK: instant message treta
+    
+    func uploadingChanges(_ data: [String : Any]) {
+        print("\nrecebendo iPhone\n\(data)\n")
+        
+        if data.keys.first == "command" {
+            let cmd = data["command"] as! Int
+            switch cmd {
+            case 1:
+                let lunch = Lunch(gain: 10, time: 10) //60
+                PetManager.sharedInstance.feed(with: lunch)
+            case 2:
+                // sleep
+                //PetManager.sharedInstance.sleep(with: )
+                break
+            case 3:
+                let exercise = Exercise(cost: 30, gain: 30, time: 15) //3600
+                PetManager.sharedInstance.exercise(typeOfExercise: exercise)
+            default:
+                print("O debug tá bom demais!")
+            }
+        }
+    }
+    
+    let session = WCSession.default()
+    
+    func startConnectivity() {
+        if WCSession.isSupported() {
+            session.delegate = self
+            session.activate()
+        }
+    }
+    
+    func send(message: [String : Any]) {
+        if session.isReachable {
+            print("\nenviando iPhone\n")
+            session.sendMessage(message, replyHandler: nil, errorHandler: nil)
+        }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        DispatchQueue.main.async {
+            self.uploadingChanges(message)
+        }
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        //
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        //
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        //
     }
 }

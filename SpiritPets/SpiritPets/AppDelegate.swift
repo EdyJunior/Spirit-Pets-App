@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = mainStoryBoard.instantiateViewController(withIdentifier: "MainScreenViewController")
         }
         multipeerManager = MultipeerManager()
+
         return true
     }
     
@@ -89,4 +90,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            saveDelegate?.lastActivate = Date()
 //        }
     }
+
 }

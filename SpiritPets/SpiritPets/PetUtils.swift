@@ -156,7 +156,7 @@ let sleepnessUpRate: Int = 30//1//value added from pet's sleep when pet is sleep
 let sleepnessDownRate: Int = -5//1//value subtracted to pet's sleep when pet isn't sleeping
 let sleepnessWarningValue: Int = 50
 let sleepnessDangerousValue: Int = 30//values under this may make pet linguish deending on pet's fed status
-let sleepDefaultTime: TimeInterval = 36000
+let sleepDefaultTime: TimeInterval = 10//36000
 
 let sleepnessMortalValue: Int = 10//values under this will make pet linguish
 

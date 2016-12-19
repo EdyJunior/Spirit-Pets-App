@@ -37,6 +37,7 @@
 		B50C215B1DF0738300779435 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50C215A1DF0738300779435 /* Main.storyboard */; };
 		B587DC321DF9887F00D84BCA /* PetAnimationScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B587DC311DF9887F00D84BCA /* PetAnimationScene.swift */; };
 		B587DC341DF989EF00D84BCA /* PetAnimationScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B587DC331DF989EF00D84BCA /* PetAnimationScene.sks */; };
+		B587DC391E040AA600D84BCA /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B587DC381E040AA600D84BCA /* ConnectivityManager.swift */; };
 		B5FBD1A61DF84CB70038848B /* GrowthActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBD1A51DF84CB70038848B /* GrowthActionsViewController.swift */; };
 		B5FBD1A81DF85F0C0038848B /* PetAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBD1A71DF85F0C0038848B /* PetAnimationViewController.swift */; };
 		CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */; };
@@ -148,6 +149,7 @@
 		B50C215A1DF0738300779435 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B587DC311DF9887F00D84BCA /* PetAnimationScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetAnimationScene.swift; sourceTree = "<group>"; };
 		B587DC331DF989EF00D84BCA /* PetAnimationScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PetAnimationScene.sks; sourceTree = "<group>"; };
+		B587DC381E040AA600D84BCA /* ConnectivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		B5FBD1A51DF84CB70038848B /* GrowthActionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowthActionsViewController.swift; sourceTree = "<group>"; };
 		B5FBD1A71DF85F0C0038848B /* PetAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetAnimationViewController.swift; sourceTree = "<group>"; };
 		CE3B2B551DEC631A0096C3D8 /* SpiritPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpiritPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -332,6 +334,7 @@
 		CE3B2B571DEC631A0096C3D8 /* SpiritPets */ = {
 			isa = PBXGroup;
 			children = (
+				B587DC381E040AA600D84BCA /* ConnectivityManager.swift */,
 				97370C8B1E00175800B53DDC /* Battle */,
 				B50C213E1DF06DBF00779435 /* PetUtils */,
 				B50C21531DF06E8900779435 /* MiniGameSelectionScreen */,
@@ -627,6 +630,7 @@
 				B50C213D1DF06DAF00779435 /* MiniGame02Player.swift in Sources */,
 				B50C21551DF06EAC00779435 /* MiniGameSelectionScreenViewController.swift in Sources */,
 				97F1FD291DF0585F00264340 /* MainScreenViewController.swift in Sources */,
+				B587DC391E040AA600D84BCA /* ConnectivityManager.swift in Sources */,
 				970FEA421DEF00B400F86DDF /* PetNodeMiniGame.swift in Sources */,
 				B50C21441DF06DDF00779435 /* PetUtils.swift in Sources */,
 				B50C214B1DF06E3000779435 /* BigEnemy.swift in Sources */,

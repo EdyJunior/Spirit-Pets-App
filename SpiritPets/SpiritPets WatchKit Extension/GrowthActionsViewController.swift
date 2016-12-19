@@ -8,9 +8,9 @@
 
 import WatchKit
 import Foundation
+import WatchConnectivity
 
-
-class GrowthActionsViewController: WKInterfaceController {
+class GrowthActionsViewController: WKInterfaceController, WCSessionDelegate {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
@@ -29,14 +29,47 @@ class GrowthActionsViewController: WKInterfaceController {
     }
     
     @IBAction func eatAction() {
-        
+        let message = ["command" : 1]
+        send(message: message)
     }
     
     @IBAction func sleepAction() {
-        
+        let message = ["command" : 2]
+        send(message: message)
     }
     
     @IBAction func exerciseAction() {
-        
+        let message = ["command" : 3]
+        send(message: message)
+    }
+    
+    // MARK: instant message treta
+    
+    func uploadingChanges(_ data: [String : Any]) {
+        // tratar os dados recebidos da mensagem aqui, mantendo o modelo para todas as VC
+        print("\nRecebendo Watch\n\(data)\n")
+    }
+    
+    let session = WCSession.default()
+    
+    func startConnectivity() {
+        session.delegate = self
+        session.activate()
+    }
+    
+    func send(message: [String : Any]) {
+        if session.isReachable {
+            print("\nenviando Watch\n")
+            session.sendMessage(message, replyHandler: nil, errorHandler: nil)
+        }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        DispatchQueue.main.async {
+            self.uploadingChanges(message)
+        }
+    }
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
     }
 }

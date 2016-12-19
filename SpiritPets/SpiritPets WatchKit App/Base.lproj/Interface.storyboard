@@ -64,9 +64,6 @@
                             </connections>
                         </button>
                     </items>
-                    <connections>
-                        <segue destination="7tM-ls-6jh" kind="relationship" relationship="nextPage" id="So1-Xn-IJN"/>
-                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="468" y="345"/>
