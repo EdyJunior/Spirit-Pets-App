@@ -17,9 +17,11 @@ class InterfaceController: WKInterfaceController , WCSessionDelegate {
     @IBOutlet var exerciseImage: WKInterfaceButton!
     @IBOutlet var fedImage: WKInterfaceButton!
     
+    var levelValue: Int!
     var experienceValue: Int!
     var sleepValue: Int!
     var exerciseValue: Int!
+    var nextLevel: Int!
     var fedValue: Int!
     
     override func awake(withContext context: Any?) {
@@ -47,6 +49,8 @@ class InterfaceController: WKInterfaceController , WCSessionDelegate {
     }
     
     func loadValues() {
+        levelValue = 1
+        nextLevel = 30
         experienceValue = 0
         sleepValue = 0
         exerciseValue = 0
@@ -54,8 +58,8 @@ class InterfaceController: WKInterfaceController , WCSessionDelegate {
     }
     
     func loadGauges() {
-        experienceImage.setTitle("XP")
-        experienceImage.setBackgroundImageNamed("Experience\(experienceValue!)Gauge")
+        experienceImage.setTitle("LV: \(levelValue!)")
+        experienceImage.setBackgroundImageNamed("Experience\(Int(100 * experienceValue! / nextLevel!))Gauge")
         
         sleepImage.setTitle("SL")
         sleepImage.setBackgroundImageNamed("Sleep\(sleepValue!)Gauge")
@@ -72,7 +76,14 @@ class InterfaceController: WKInterfaceController , WCSessionDelegate {
     func uploadingChanges(_ data: [String : Any]) {
         // tratar os dados recebidos da mensagem aqui, mantendo o modelo para todas as VC
         print("\nRecebendo Watch\n\(data)\n")
-        fedValue = 50
+
+        fedValue = data["fed"] as! Int
+        sleepValue = data["awake"] as! Int
+        exerciseValue = data["stamina"] as! Int
+        experienceValue = data["experience"] as! Int
+        nextLevel = data["nextLevel"] as! Int
+        levelValue = data["level"] as! Int
+        
         loadGauges()
     }
     
