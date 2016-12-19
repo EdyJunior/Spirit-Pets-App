@@ -103,13 +103,31 @@ class PetManager: NSObject {
         }
     }
     
-    func sleep() {
+    func countingTimeSleeping() {
+        
+        sleepController.interval -= 1
+        print("sleeping = \(sleepController.interval)")
+        if sleepController.interval < 1.0 {
+            petChoosed.isSleeping = false
+            wakeUp()
+            sleepController.timer!.invalidate()
+            
+            print("Parou de Dormir")
+        }
+    }
+
+    
+    func sleep(during secondes: TimeInterval) {
         
         petChoosed.isSleeping = true
-        sleepTask = DispatchWorkItem(block: {
-            self.wakeUp()
-        })
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + sleepInterval, execute: sleepTask)
+        print("Dormindo por \(secondes) segundos\n")
+        
+        sleepController = TimeController(interval: secondes,
+                                            timer: Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(PetManager.countingTimeSleeping), userInfo: nil, repeats: true), add: nil)
+//        sleepTask = DispatchWorkItem(block: {
+//            self.wakeUp()
+//        })
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + sleepInterval, execute: sleepTask)
     }
     
     func wakeUp() {
@@ -120,7 +138,7 @@ class PetManager: NSObject {
 
     func languishInstantaniously(basedOn time: TimeInterval) {
 
-        for _ in 0...Int(time / updateInterval) {
+        for _ in 0..<Int(time / updateInterval) {
             petChoosed.xpDown(xp: depletionRate)
         }
     }

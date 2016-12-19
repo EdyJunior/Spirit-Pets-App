@@ -108,7 +108,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     @IBAction func sleepOrWakeUp(_ sender: CustomBtn) {
         
         if !pet.isSleeping {
-            PetManager.sharedInstance.sleep()
+            PetManager.sharedInstance.sleep(during: sleepDefaultTime)
         } else {
             PetManager.sharedInstance.wakeUp()
         }
@@ -378,49 +378,52 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
             pet.growthAtt.stamina! += (rate * Int(backTime / updateInterval))
         }
         
-        //Languishing in background
-        
-        if pet.growthAtt.fed < hungerMortalValue || pet.growthAtt.awake < sleepnessMortalValue {
-            //TODO: testar os dois menores do que 30, que tb vão regredir
-            
-            var depletionTime = TimeInterval(hungerMortalValue)
-            if pet.growthAtt.fed < hungerMortalValue {
-                depletionTime -= TimeInterval(hungerMortalValue)
-            } else if pet.growthAtt.awake < sleepnessMortalValue {
-                depletionTime -= TimeInterval(sleepnessMortalValue)
-            }
-            PetManager.sharedInstance.languishInstantaniously(basedOn: depletionTime)
-        }
-        
         //Sleeping in background
         
         if pet.isSleeping {
             var sleepInterval = defaults.object(forKey: "sleepInterval") as! TimeInterval
             
             //Pet will keep sleeping when it come back from background
-//            if sleepInterval > backTime {
-//                pet.growthAtt.awake! += sleepnessUpRate * Int(backTime / updateInterval)
-//                sleepInterval -= backTime
-//                PetManager.sharedInstance.feed(with: lunch)
-//            }
-//                //Pet finished eating while it was in background
-//            else {
-//                pet.growthAtt.fed! += Int(sleepInterval)
-//                pet.isEating = false
-//                backTime -= sleepInterval
-//                if pet.growthAtt.fed! - (hungerHighRate * Int(backTime / updateInterval)) < hungerMortalValue {
-//                    LanguishingByHungerTime = Int(updateInterval) * (hungerMortalValue - (pet.growthAtt.fed! - (hungerHighRate * Int(backTime / updateInterval))))
-//                }
-//                pet.growthAtt.fed! -= (hungerHighRate * Int(backTime / updateInterval))
-//            }
-        }
-            //Pet wasn't eating when it entered in background
-        else {
-            if pet.growthAtt.fed! - (hungerHighRate * Int(backTime / updateInterval)) < hungerMortalValue {
-                LanguishingByHungerTime = Int(updateInterval) * (hungerMortalValue - (pet.growthAtt.fed! - (hungerHighRate * Int(backTime / updateInterval))))
+            if sleepInterval > backTime {
+                pet.growthAtt.awake! += sleepnessUpRate * Int(backTime / updateInterval)
+                sleepInterval -= backTime
+                PetManager.sharedInstance.sleep(during: sleepInterval)
             }
-            let rate = (pet.isSleeping ? hungerLowRate : hungerHighRate)
-            pet.growthAtt.fed! -= (rate * Int(backTime / updateInterval))
+                //Pet finished sleeping while it was in background
+            else {
+                pet.growthAtt.fed! += sleepnessUpRate * Int(sleepInterval / updateInterval)
+                pet.isSleeping = false
+                backTime -= sleepInterval
+                if pet.growthAtt.awake! - (sleepnessDownRate * Int(backTime / updateInterval)) < sleepnessMortalValue {
+                    LanguishingBySleepnessTime = Int(updateInterval) * (sleepnessMortalValue - (pet.growthAtt.awake! - (sleepnessDownRate * Int(backTime / updateInterval))))
+                }
+                pet.growthAtt.awake! -= (sleepnessDownRate * Int(backTime / updateInterval))
+            }
         }
+            //Pet wasn't sleeping when it entered in background
+        else {
+            if pet.growthAtt.awake! - (sleepnessDownRate * Int(backTime / updateInterval)) < sleepnessMortalValue {
+                LanguishingBySleepnessTime = Int(updateInterval) * (sleepnessMortalValue - (pet.growthAtt.awake! - (sleepnessDownRate * Int(backTime / updateInterval))))
+            }
+            pet.growthAtt.awake! -= (sleepnessDownRate * Int(backTime / updateInterval))
+        }
+        
+        //Languishing in background
+        
+        let languishTime = LanguishingBySleepnessTime > LanguishingByHungerTime ? LanguishingBySleepnessTime : LanguishingByHungerTime
+        PetManager.sharedInstance.languishInstantaniously(basedOn: TimeInterval(languishTime))
+        
+//        if pet.growthAtt.fed < hungerMortalValue || pet.growthAtt.awake < sleepnessMortalValue {
+//            //TODO: testar os dois menores do que 30, que tb vão regredir
+//            
+//            var depletionTime = TimeInterval(hungerMortalValue)
+//            if pet.growthAtt.fed < hungerMortalValue {
+//                depletionTime -= TimeInterval(hungerMortalValue)
+//            } else if pet.growthAtt.awake < sleepnessMortalValue {
+//                depletionTime -= TimeInterval(sleepnessMortalValue)
+//            }
+//            PetManager.sharedInstance.languishInstantaniously(basedOn: depletionTime)
+//        }
     }
+    
 }
