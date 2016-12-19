@@ -140,7 +140,7 @@ class PetChoosed: LivingBeing, PetProtocol, LanguishProtocol, NSCoding {
         self.battleAtt = nextLv
         
         PetManager.sharedInstance.historyOfAtt.append(nextLv)
-        PetManager.sharedInstance.evolve()
+        //PetManager.sharedInstance.evolve()
         
         print("\n\nUpou\n\n\(battleAtt)\n")
     }

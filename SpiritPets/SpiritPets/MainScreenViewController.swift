@@ -119,7 +119,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     @IBAction func exercise(_ sender: CustomBtn) {
         
         if !pet.isExercising {
-            exercise = Exercise(cost: 30, gain: 30, time: 15)//3600)
+            exercise = Exercise(cost: 20, gain: 30, time: 6)//3600)
             PetManager.sharedInstance.exercise(typeOfExercise: exercise)
         }
     }
@@ -192,6 +192,8 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
             petImageView.animationDuration = 3.0
             petImageView.animationRepeatCount = 2
             petImageView.startAnimating()
+            
+            
             
             petImageView.stopAnimating()
             petImageView.image = pet.frontImage
@@ -456,7 +458,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
             case 2:
                 PetManager.sharedInstance.sleep(during: sleepDefaultTime)
             case 3:
-                let exercise = Exercise(cost: 30, gain: 30, time: 15) //3600
+                let exercise = Exercise(cost: 20, gain: 30, time: 6) //3600
                 PetManager.sharedInstance.exercise(typeOfExercise: exercise)
             default:
                 print("O debug tá bom demais!")

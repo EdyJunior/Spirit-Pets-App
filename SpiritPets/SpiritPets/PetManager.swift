@@ -75,13 +75,16 @@ class PetManager: NSObject, WCSessionDelegate {
         }
         print("exercising = \(exerciseController.interval)")
         if exerciseController.interval < 1.0 {
+            
             if exercise.cost > Int(exercise.time) {
                 petChoosed.growthAtt.stamina! -= (exercise.cost - Int(exercise.time))
             }
             
-            petChoosed.isExercising = false
+            
             petChoosed.xpUp(xp: exerciseController.add!)
+            
             exerciseController.timer!.invalidate()
+            petChoosed.isExercising = false
             
             print("Parou de Treinar")
         }
@@ -144,33 +147,34 @@ class PetManager: NSObject, WCSessionDelegate {
     
     func evolve() -> Bool {
         
-//        guard let path = Bundle(for: type(of: self)).path(forResource: "PetsAttributes", ofType: "json")
-//            else { fatalError("Can't find PetsAttributes JSON resource.") }
-//        let data = try! Data(contentsOf: URL(fileURLWithPath: path))
-//        let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [[String : Any]]
-//        
-//        var petDict: [String : Any] = [:]
-//        var nextDict: [String : Any] = [:]
-//        for pet in json {
-//            if pet["name"] as! String == petChoosed.name {
-//                petDict = pet
-//                break
-//            }
-//        }
-//        let a = petDict["nextEvo"] as! String
-//        let b = (petDict["baseBattleAtt"] as! [String : Any])["lv"] as! Int
-//        if a != "" && petChoosed.battleAtt.lv >= b {
-//            for pet in json {
-//                if pet["name"] as! String == petDict["nextEvo"] as! String {
-//                    nextDict = pet
-//                    petChoosed.name = nextDict["name"] as! String
-//                    petChoosed.number = nextDict["number"] as! Int
-//                    petChoosed.frontImage = UIImage(named: nextDict["frontImage"] as! String)!
-////                    petChoosed.backImage = UIImage(named: nextDict["backImage"] as! String)!
-//                    return true
-//                }
-//            }
-//        }
+        guard let path = Bundle(for: type(of: self)).path(forResource: "PetsAttributes", ofType: "json")
+            else { fatalError("Can't find PetsAttributes JSON resource.") }
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path))
+        let json = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [[String : Any]]
+        
+        var petDict: [String : Any] = [:]
+        var nextDict: [String : Any] = [:]
+        for pet in json {
+            if pet["name"] as! String == petChoosed.name {
+                petDict = pet
+                break
+            }
+        }
+        let a = petDict["nextEvo"] as! String
+        let b = (petDict["baseBattleAtt"] as! [String : Any])["lv"] as! Int
+        if a != "" && petChoosed.battleAtt.lv >= b {
+            for pet in json {
+                if pet["name"] as! String == petDict["nextEvo"] as! String {
+                    nextDict = pet
+                    petChoosed.name = nextDict["name"] as! String
+                    petChoosed.number = nextDict["number"] as! Int
+                    petChoosed.frontImage = UIImage(named: nextDict["frontImage"] as! String)!
+                    petChoosed.baseBattleAtt.lv = (nextDict["baseBattleAtt"] as! [String : Any])["lv"] as! Int
+//                    petChoosed.backImage = UIImage(named: nextDict["backImage"] as! String)!
+                    return true
+                }
+            }
+        }
         return false
     }
 
