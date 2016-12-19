@@ -440,9 +440,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
                 let lunch = Lunch(gain: 10, time: 10) //60
                 PetManager.sharedInstance.feed(with: lunch)
             case 2:
-                // sleep
-                //PetManager.sharedInstance.sleep(with: )
-                break
+                PetManager.sharedInstance.sleep(during: sleepDefaultTime)
             case 3:
                 let exercise = Exercise(cost: 30, gain: 30, time: 15) //3600
                 PetManager.sharedInstance.exercise(typeOfExercise: exercise)
