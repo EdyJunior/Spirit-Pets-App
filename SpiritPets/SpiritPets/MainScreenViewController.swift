@@ -11,20 +11,21 @@ import WatchConnectivity
 
 class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeToTakeCareProtocol, SaveStatusDelegate, WCSessionDelegate {
 
+
     @IBOutlet weak var xperienceLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet weak var backgroundLabel: UILabel!
-
+    
     @IBOutlet weak var petImageView: UIImageView!
     @IBOutlet weak var popupImageView: UIImageView!
     @IBOutlet weak var messageImageView: UIImageView!
-
+    
     @IBOutlet weak var feedBtn: CustomBtn!
     @IBOutlet weak var exerciseBtn: CustomBtn!
     @IBOutlet weak var playBtn: CustomBtn!
     @IBOutlet weak var battleBtn: CustomBtn!
     @IBOutlet weak var sleepBtn: CustomBtn!
-
+    
     var pet: PetChoosed!
     var exercise = Exercise(cost: 0, gain: 0, time: 0)
     var lunch = Lunch(gain: 0, time: 0)
@@ -37,7 +38,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     var backgroundTime: TimeInterval = TimeInterval()
     
     override func viewDidLoad() {
-
+        
         super.viewDidLoad()
         startConnectivity()
 
@@ -55,6 +56,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         
         petImageView.image = pet.frontImage
         
+        appDelegate.multipeerManager.startAdvertise()
         NotificationCenter.default.addObserver(self, selector: #selector(updateLabels),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
     }
     
@@ -78,9 +80,9 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         backgroundLabel.frame.size.width = ( xp / xpMax) * xperienceLabel.frame.width
         xperienceLabel.text = "XP: \(Int(xp))/\(Int(xpMax))"
         levelLabel.text = "LV:\n\(pet.battleAtt.lv!)"
-
+        
     }
-
+    
     @IBAction func onLevelLabelTap(_ sender: UITapGestureRecognizer){
         
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -91,16 +93,17 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
 
     //Enable or disanable buttons passed as parameter based on boolean 'to'
     func changeEnabled(buttons: [UIButton], to: Bool) {
-
+        
         for btn in buttons {
             btn.isEnabled = to
         }
     }
-
+    
     // MARK: Buttons' actions
-
+    
     @IBAction func feed(_ sender: CustomBtn) {
         //TODO: Transformar lunch em inteiro, já que o tempo gasto pra comer é o número de pontos ganhos em fed
+
         if !pet.isEating {
             lunch = Lunch(gain: 10, time: 10)//60
             PetManager.sharedInstance.feed(with: lunch)
@@ -175,7 +178,6 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
 
     //Enables exercise and sleep (if pet isn't eating) buttons when pet finish exercising
     func enableByExercising() {
-
         exercise = Exercise(cost: 0, gain: 0, time: 0)
         updateLabels()
         changeEnabled(buttons: [exerciseBtn], to: true)
