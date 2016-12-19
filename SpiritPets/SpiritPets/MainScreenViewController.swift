@@ -185,20 +185,22 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
             changeEnabled(buttons: [sleepBtn], to: true)
         }
         if PetManager.sharedInstance.evolve() {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                self.petImageView.stopAnimating()
+                self.petImageView.image = self.pet.frontImage
+            }
+            
             var Images: [UIImage] = []
             for num in 0...15 {
                 Images.append(UIImage(named: "Effect-\(num)")!)
             }
             petImageView.stopAnimating()
             petImageView.animationImages = Images
-            petImageView.animationDuration = 3.0
+            petImageView.animationDuration = 1.0
             petImageView.animationRepeatCount = 2
             petImageView.startAnimating()
             
-            
-            
-            petImageView.stopAnimating()
-            petImageView.image = pet.frontImage
         }
     }
 

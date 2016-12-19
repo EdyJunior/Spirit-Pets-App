@@ -14,7 +14,7 @@
     },
     "frontImage": "Parlepus",
     "backImage": "Parlepus_B",
-    "nextEvo": "Pulepus"
+    "nextEvo": "Pulepus",
  },
  
  {
@@ -32,7 +32,7 @@
     },
     "frontImage": "Pulepus",
     "backImage": "Pulepus_B",
-    "nextEvo": "Magnalepus"
+    "nextEvo": ""
  },
  
  {
@@ -50,7 +50,7 @@
     },
     "frontImage": "Magnalepus",
     "backImage": "Magnalepus_B",
-    "nextEvo": "Impelepus"
+    "nextEvo": ""
  },
  
  {
@@ -85,7 +85,7 @@
         "xp": 30
     },
     "frontImage": "Pardaemon",
-    "backImage": "Parlepus_B",
+    "backImage": "Pardaemon_B",
     "nextEvo": "Pudaemon"
  },
  
