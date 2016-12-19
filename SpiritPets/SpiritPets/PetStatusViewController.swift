@@ -77,9 +77,25 @@ class PetStatusViewController: UIViewController , WCSessionDelegate {
     // MARK: instant message treta
     
     func uploadingChanges(_ data: [String : Any]) {
-        // tratar os dados recebidos da mensagem aqui, mantendo o modelo para todas as VC
         print("\nrecebendo iPhone\n\(data)\n")
-        self.levelLabel.text = "BOM"
+        
+        if data.keys.first == "command" {
+            let cmd = data["command"] as! Int
+            switch cmd {
+            case 1:
+                let lunch = Lunch(gain: 10, time: 10) //60
+                PetManager.sharedInstance.feed(with: lunch)
+            case 2:
+                // sleep
+                //PetManager.sharedInstance.sleep(with: )
+                break
+            case 3:
+                let exercise = Exercise(cost: 30, gain: 30, time: 15) //3600
+                PetManager.sharedInstance.exercise(typeOfExercise: exercise)
+            default:
+                print("O debug tá bom demais!")
+            }
+        }
     }
     
     let session = WCSession.default()
