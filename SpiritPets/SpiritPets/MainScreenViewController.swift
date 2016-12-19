@@ -182,6 +182,20 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         if !pet.isEating {
             changeEnabled(buttons: [sleepBtn], to: true)
         }
+        if PetManager.sharedInstance.evolve() {
+            var Images: [UIImage] = []
+            for num in 0...15 {
+                Images.append(UIImage(named: "Effect-\(num)")!)
+            }
+            petImageView.stopAnimating()
+            petImageView.animationImages = Images
+            petImageView.animationDuration = 3.0
+            petImageView.animationRepeatCount = 2
+            petImageView.startAnimating()
+            
+            petImageView.stopAnimating()
+            petImageView.image = pet.frontImage
+        }
     }
 
     //Disables exercise and sleep buttons when exercise button is pressed

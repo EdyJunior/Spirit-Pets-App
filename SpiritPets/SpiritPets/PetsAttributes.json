@@ -9,7 +9,7 @@
         "atk": 8,
         "dfs": 4,
         "rdm": 5,
-        "lv": 16,
+        "lv": 2,
         "xp": 30
     },
     "frontImage": "Parlepus",
@@ -81,7 +81,7 @@
         "atk": 7,
         "dfs": 8,
         "rdm": 6,
-        "lv": 0,
+        "lv": 2,
         "xp": 30
     },
     "frontImage": "Pardaemon",
