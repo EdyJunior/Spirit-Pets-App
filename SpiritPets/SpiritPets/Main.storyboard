@@ -237,16 +237,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="neon-grid" translatesAutoresizingMaskIntoConstraints="NO" id="uX8-pO-0PR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG5" translatesAutoresizingMaskIntoConstraints="NO" id="uX8-pO-0PR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2s-Ap-2Pe" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2s-Ap-2Pe">
                                 <rect key="frame" x="11" y="423.5" width="99" height="98.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="t2s-Ap-2Pe" secondAttribute="height" multiplier="1:1" id="FXb-BQ-r7f"/>
                                 </constraints>
-                                <state key="normal" image="garfo-e-faca"/>
+                                <state key="normal" image="feedBtn"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="50"/>
@@ -283,13 +283,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDU-13-Whb" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QDU-13-Whb">
                                 <rect key="frame" x="11" y="547" width="99" height="99"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="QDU-13-Whb" secondAttribute="height" multiplier="1:1" id="a9N-Z7-5jW"/>
                                 </constraints>
-                                <state key="normal" image="play"/>
+                                <state key="normal" image="playBtn"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="50"/>
@@ -300,13 +300,13 @@
                                     <segue destination="wB5-vx-ZxO" kind="show" identifier="selectionGameSegue" id="p4m-wm-NSA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDW-ZS-U61" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDW-ZS-U61">
                                 <rect key="frame" x="138" y="547" width="99" height="99"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="XDW-ZS-U61" secondAttribute="height" multiplier="1:1" id="sVZ-Ca-8GU"/>
                                 </constraints>
-                                <state key="normal" image="trofeu"/>
+                                <state key="normal" image="achievimentsBtn"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="50"/>
@@ -317,13 +317,13 @@
                                     <segue destination="aTq-3S-XND" kind="show" identifier="goToAchievement" id="zCo-zs-aAh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9h-g5-zIa" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9h-g5-zIa">
                                 <rect key="frame" x="265" y="547" width="99" height="99"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="P9h-g5-zIa" secondAttribute="height" multiplier="1:1" id="4mr-uM-wTC"/>
                                 </constraints>
-                                <state key="normal" image="swords"/>
+                                <state key="normal" image="battleBtn"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="50"/>
@@ -334,13 +334,13 @@
                                     <segue destination="4lI-Ri-FeL" kind="show" id="gW1-qY-hOb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oK9-Fh-91f" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oK9-Fh-91f">
                                 <rect key="frame" x="138" y="423" width="99" height="99"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="oK9-Fh-91f" secondAttribute="height" multiplier="1:1" id="i5M-ca-81U"/>
                                 </constraints>
-                                <state key="normal" image="zzz"/>
+                                <state key="normal" image="sleepBtn"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="50"/>
@@ -350,13 +350,13 @@
                                     <action selector="sleepOrWakeUp:" destination="qQc-24-ZK7" eventType="touchUpInside" id="Nc1-S8-X2a"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahL-Mx-6dr" customClass="CustomBtn" customModule="SpiritPets" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahL-Mx-6dr">
                                 <rect key="frame" x="265" y="423.5" width="99" height="98.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ahL-Mx-6dr" secondAttribute="height" multiplier="1:1" id="huS-FT-Yd1"/>
                                 </constraints>
-                                <state key="normal" image="bodybuilding"/>
+                                <state key="normal" image="ExerciseBtn"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="50"/>
@@ -786,19 +786,19 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BG5" width="1451" height="840"/>
+        <image name="ExerciseBtn" width="126" height="126"/>
+        <image name="achievimentsBtn" width="126" height="126"/>
         <image name="backButton" width="150" height="150"/>
         <image name="background" width="360" height="640"/>
         <image name="baloon" width="604" height="632"/>
-        <image name="bodybuilding" width="147" height="77"/>
-        <image name="garfo-e-faca" width="626" height="626"/>
+        <image name="battleBtn" width="126" height="126"/>
+        <image name="feedBtn" width="126" height="126"/>
         <image name="happy" width="2000" height="2000"/>
         <image name="heart" width="50" height="50"/>
-        <image name="neon-grid" width="1920" height="1080"/>
-        <image name="play" width="372" height="434"/>
+        <image name="playBtn" width="126" height="126"/>
         <image name="shield" width="50" height="50"/>
+        <image name="sleepBtn" width="126" height="126"/>
         <image name="sword" width="50" height="50"/>
-        <image name="swords" width="512" height="512"/>
-        <image name="trofeu" width="506" height="626"/>
-        <image name="zzz" width="267" height="220"/>
     </resources>
 </document>

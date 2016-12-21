@@ -170,7 +170,9 @@ class PetManager: NSObject, WCSessionDelegate {
                     petChoosed.number = nextDict["number"] as! Int
                     petChoosed.frontImage = UIImage(named: nextDict["frontImage"] as! String)!
                     petChoosed.baseBattleAtt.lv = (nextDict["baseBattleAtt"] as! [String : Any])["lv"] as! Int
-//                    petChoosed.backImage = UIImage(named: nextDict["backImage"] as! String)!
+                    petChoosed.frontImageName = nextDict["name"] as! String
+                    petChoosed.backImage = UIImage(named: nextDict["backImage"] as! String)!
+                    petChoosed.backImageName = "\(nextDict["name"] as! String)_B"
                     return true
                 }
             }
