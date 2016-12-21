@@ -100,7 +100,7 @@ class BattleScene: SKScene {
         self.addChild(atkNode)
         
         myPetNode = SKSpriteNode(imageNamed: PetManager.sharedInstance.petChoosed.backImageName)
-        myPetNode.position = CGPoint.init(x: 10, y: 150)//(x: myPetNode.size.width / 2, y: myPetNode.size.height)
+        myPetNode.position = CGPoint.init(x: 100, y: 250)//(x: myPetNode.size.width / 2, y: myPetNode.size.height)
         myPetNode.size = CGSize(width: 150, height: 150)
         self.addChild(myPetNode)
         myHpBar = SKSpriteNode.init(color: SKColor.red, size: CGSize.init(width: self.frame.midX - 40, height: self.frame.size.height / 20))

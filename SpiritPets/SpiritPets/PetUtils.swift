@@ -149,11 +149,11 @@ class GrowthAttributes: NSObject, NSCoding {
     }
 }
 
-let updateInterval: TimeInterval = 6/*2592*///Period of method 'updateStatus' in PetMangager
+let updateInterval: TimeInterval = 7/*2592*///Period of method 'updateStatus' in PetMangager
 
 let sleepInterval: TimeInterval = 10/*36000*/
 let sleepnessUpRate: Int = 30//1//value added from pet's sleep when pet is sleeping
-let sleepnessDownRate: Int = -5//1//value subtracted to pet's sleep when pet isn't sleeping
+let sleepnessDownRate: Int = -2//1//value subtracted to pet's sleep when pet isn't sleeping
 let sleepnessWarningValue: Int = 50
 let sleepnessDangerousValue: Int = 30//values under this may make pet linguish deending on pet's fed status
 let sleepDefaultTime: TimeInterval = 10//36000
@@ -170,6 +170,6 @@ let staminaHighRate: Int = 4//value added to pet's staminas when pet is sleeping
 let staminaLowRate: Int = 2//value added to pet's staminas when pet isn't sleeping
 let staminaMinDecentValue = 10
 
-let depletionRate: Int = 10
+let depletionRate: Int = 1
 
 let defaults = UserDefaults.standard

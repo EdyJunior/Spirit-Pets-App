@@ -259,7 +259,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJv-E1-urN">
                                 <rect key="frame" x="98" y="27.999999999999996" width="305" height="20.666666666666661"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.69534748130000001" green="0.68697125859999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.14509803921568629" green="0.13725490196078433" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -786,7 +786,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BG5" width="1451" height="840"/>
         <image name="ExerciseBtn" width="126" height="126"/>
         <image name="achievimentsBtn" width="126" height="126"/>
         <image name="backButton" width="150" height="150"/>
@@ -796,6 +795,7 @@
         <image name="feedBtn" width="126" height="126"/>
         <image name="happy" width="2000" height="2000"/>
         <image name="heart" width="50" height="50"/>
+        <image name="neon-grid" width="1920" height="1080"/>
         <image name="playBtn" width="126" height="126"/>
         <image name="shield" width="50" height="50"/>
         <image name="sleepBtn" width="126" height="126"/>
