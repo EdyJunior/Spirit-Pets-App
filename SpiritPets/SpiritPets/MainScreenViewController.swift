@@ -150,7 +150,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         if !pet.isExercising {
             changeEnabled(buttons: [exerciseBtn], to: true)
         }
-        sleepBtn.setImage(#imageLiteral(resourceName: "zzz"), for: .normal)
+        sleepBtn.setImage(#imageLiteral(resourceName: "sleepBtn"), for: .normal)
     }
     
     //Disables feed and exercise buttons when sleep button is pressed
@@ -158,7 +158,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         
         print("DesAtivou pra durmir")
         changeEnabled(buttons: [feedBtn, exerciseBtn], to: false)
-        sleepBtn.setImage(#imageLiteral(resourceName: "sun"), for: .normal)
+        sleepBtn.setImage(#imageLiteral(resourceName: "wakeBtn"), for: .normal)
     }
 
     //Enables feed and sleep (if pet isn't exercising) buttons when pet finish eating
@@ -320,6 +320,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         var backTime = appDelegate.saveDelegate!.backgroundTime
         PetManager.sharedInstance.feedController.timer?.invalidate()
         PetManager.sharedInstance.exerciseController.timer?.invalidate()
+        PetManager.sharedInstance.sleepController.timer?.invalidate()
         var LanguishingByHungerTime: Int = 0
         var LanguishingBySleepnessTime: Int = 0
         
