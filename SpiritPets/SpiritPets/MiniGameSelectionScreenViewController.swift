@@ -21,7 +21,7 @@ class MiniGameSelectionScreenViewController: UIViewController, UITableViewDelega
         super.viewDidLoad()
         startConnectivity()
         
-        backButton.imageView?.image = UIImage.init(named: "backButton")
+        //backButton.imageView?.image = UIImage.init(named: "backButton")
         miniGameTableView.dataSource = self
         miniGameTableView.delegate = self
         
@@ -37,6 +37,9 @@ class MiniGameSelectionScreenViewController: UIViewController, UITableViewDelega
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func onCancelTap(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return MiniGameList.nameArray.count

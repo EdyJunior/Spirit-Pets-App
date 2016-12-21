@@ -53,7 +53,6 @@ class BattleScene: SKScene {
                 self.opponentPetImageName = value as! String
             }
         }
-        self.hp = 20
         
         print("session: \(appDelegate.multipeerManager.session.connectedPeers.count)")
         self.backgroundColor = SKColor.white
@@ -171,6 +170,7 @@ class BattleScene: SKScene {
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleMPCReceivedDataWithNotification(notification:)), name: NSNotification.Name(rawValue: "receivedMPCDataNotification"), object: nil)
+        self.hp = 20
         
     }
     
@@ -215,30 +215,6 @@ class BattleScene: SKScene {
     //sendBasicInformation()
     //}
     
-    func receiveMessage(dic: NSDictionary) {
-        self.fillTicTacToe()
-        //self.sendBasicInformation()
-        self.sendTappedField()
-        OperationQueue.main.addOperation {
-            self.checkResult()
-        }
-        print("rodou aq")
-    }
-    
-    func fillTicTacToe() {
-        /*OperationQueue.main.addOperation {
-         for (index, user) in self.appDelegate.gameArray.enumerated() {
-         if user == 1 {
-         self.buttons[index].setImage(#imageLiteral(resourceName: "x"), for: .normal)
-         self.buttons[index].isUserInteractionEnabled = false
-         } else if user == 2 {
-         self.buttons[index].setImage(#imageLiteral(resourceName: "o"), for: .normal)
-         self.buttons[index].isUserInteractionEnabled = false
-         }
-         }
-         }*/
-        
-    }
     
     func sendBasicInformation() {
         let messageDictionary: [String: String] = ["message": appDelegate.multipeerManager.localPeer.displayName]
@@ -365,7 +341,7 @@ class BattleScene: SKScene {
                 OperationQueue.main.addOperation {
                     self.appDelegate.gameArray = newArray as! [Int]
                     self.appDelegate.gameTurn = true
-                    self.fillTicTacToe()
+                    //self.fillTicTacToe()
                     //self.appDelegate.con.sendMessage(export: ["gameArray" : self.appDelegate.gameArray, "gameUser" : self.appDelegate.gameUser!, "gameTurn" : self.appDelegate.gameTurn!])
                     self.checkResult()
                     //self.fixArray()
