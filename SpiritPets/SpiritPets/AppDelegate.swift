@@ -45,12 +45,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func receiveMessage(dic: NSDictionary) {
         self.gameArray = dic["gameArray"] as! [Int]
         self.gameTurn = false
-        print(self.gameArray)
+//        print(self.gameArray)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
         
-        print("desativado")
+//        print("desativado")
         if defaults.bool(forKey: "runBefore") {
             saveDelegate?.save()
             saveDelegate?.lastActivate = Date()
@@ -61,20 +61,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         
-        print("background")
+//        print("background")
     }
     
-    func applicationWillEnterForeground(_ application: UIApplication) {print("Foreground") }
+//    func applicationWillEnterForeground(_ application: UIApplication) {print("Foreground") }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         
-        print("Ativo")
+//        print("Ativo")
         if defaults.bool(forKey: "runBefore") {
             saveDelegate!.backgroundTime = Date().timeIntervalSince(saveDelegate!.lastActivate)
             saveDelegate!.load(after: saveDelegate!.backgroundTime)
-            print("ACTIV Passaram-se \(saveDelegate!.backgroundTime) seg")
+//            print("ACTIV Passaram-se \(saveDelegate!.backgroundTime) seg")
         } else {
-            print("Não escolheu ainda 2")
+//            print("Não escolheu ainda 2")
         }
         
     }
@@ -85,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //            saveDelegate?.save()
         //            saveDelegate?.lastActivate = Date()
         //        }
-        print("Terminate")
+//        print("Terminate")
     }
 
 }

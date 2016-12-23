@@ -54,7 +54,7 @@ class BattleScene: SKScene {
             }
         }
         
-        print("session: \(appDelegate.multipeerManager.session.connectedPeers.count)")
+//        print("session: \(appDelegate.multipeerManager.session.connectedPeers.count)")
         self.backgroundColor = SKColor.white
         let backgroundTexture = SKTexture.init(image: UIImage.init(named: "background")!)
         let backgroundNode = SKSpriteNode.init(texture: backgroundTexture)
@@ -196,7 +196,7 @@ class BattleScene: SKScene {
                     appDelegate.multipeerManager.sendData(dictionaryWithData: dictAtk, toPeer: appDelegate.multipeerManager.session.connectedPeers[0])
                     appDelegate.gameTurn = false
                     //sendTappedField()
-                    print("\(appDelegate.multipeerManager.localPeer.displayName) tocou")
+                    //print("\(appDelegate.multipeerManager.localPeer.displayName) tocou")
                     
                     if appDelegate.gameUser == 1 {
                         //xisPositions.append(sender.tag)
@@ -205,7 +205,7 @@ class BattleScene: SKScene {
                     }
                     //checkResult()
                 } else {
-                    print("Não é seu turno ainda")
+//                    print("Não é seu turno ainda")
                 }
             }
         }
@@ -221,9 +221,9 @@ class BattleScene: SKScene {
         let messageDictionary: [String: String] = ["message": appDelegate.multipeerManager.localPeer.displayName]
         
         if appDelegate.multipeerManager.sendData(dictionaryWithData: messageDictionary, toPeer: appDelegate.multipeerManager.session.connectedPeers[0]) {
-            print("Enviou os dados BÁSICOS")
+//            print("Enviou os dados BÁSICOS")
         } else {
-            print("Enviar dados BÁSICOS não funcionou")
+//            print("Enviar dados BÁSICOS não funcionou")
         }
     }
     
@@ -231,9 +231,9 @@ class BattleScene: SKScene {
         let messageDictionary: [String: [Int]] = ["array": appDelegate.gameArray]
         
         if appDelegate.multipeerManager.sendDataInt(dictionaryWithData: messageDictionary, toPeer: appDelegate.multipeerManager.session.connectedPeers[0]) {
-            print("Enviou saporra")
+//            print("Enviou saporra")
         } else {
-            print("Não consegue enviar um dick com array int")
+//            print("Não consegue enviar um dick com array int")
         }
     }
     
@@ -269,7 +269,7 @@ class BattleScene: SKScene {
                 })
                 alert.addAction(okAction)
                 self.parentVC.present(alert, animated: true, completion: nil)
-                print("Eu ganhei")
+//                print("Eu ganhei")
             }
         }
         
@@ -297,7 +297,7 @@ class BattleScene: SKScene {
                         myHpBar.run(SKAction.resize(toWidth: CGFloat(newWidth), duration: 1))
                         
                         if self.hp < 1 {
-                            print("Eu perdi")
+//                            print("Eu perdi")
                             self.endBattle()
                             //mostra alert
                             let alert = UIAlertController(title: "Spirit Pets", message: "You Lose!", preferredStyle: UIAlertControllerStyle.alert)
@@ -324,7 +324,7 @@ class BattleScene: SKScene {
                     })
                     alert.addAction(okAction)
                     self.parentVC.present(alert, animated: true, completion: nil)
-                    print("Eu ganhei")
+//                    print("Eu ganhei")
                 }
             }
         }

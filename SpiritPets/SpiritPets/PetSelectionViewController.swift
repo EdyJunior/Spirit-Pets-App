@@ -74,7 +74,7 @@ class PetSelectionViewController: UIViewController {
         let data = NSKeyedArchiver.archivedData(withRootObject: pet)
         defaults.set(data, forKey: "petDict")
         defaults.set(true, forKey: "runBefore")//this controller wont be showed again.
-        print("enviei")
+//        print("enviei")
     }
     
     

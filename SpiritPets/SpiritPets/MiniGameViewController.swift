@@ -30,7 +30,7 @@ class MiniGameViewController: UIViewController {
         case 2:
             chosenScene = MiniGame02Scene(size: UIScreen.main.bounds.size)
         default:
-            print("This MiniGame does not exist.")
+//            print("This MiniGame does not exist.")
             break
         }
         return chosenScene!

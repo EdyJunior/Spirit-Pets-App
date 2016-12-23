@@ -170,7 +170,7 @@
                             </tableView>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx7-78-08o">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
-                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <items>
                                     <navigationItem title="Mini Game" id="Pf9-Lp-imn">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="13u-fj-Ggo">
@@ -331,7 +331,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="battle:" destination="qQc-24-ZK7" eventType="touchUpInside" id="sRY-iL-Ztb"/>
-                                    <segue destination="4lI-Ri-FeL" kind="show" id="gW1-qY-hOb"/>
+                                    <segue destination="aTq-3S-XND" kind="show" id="y0L-G1-zQT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oK9-Fh-91f">
@@ -495,7 +495,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7f1-1z-V1C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="1632.5"/>
+            <point key="canvasLocation" x="56" y="1494"/>
         </scene>
         <!--Find Opponent View Controller-->
         <scene sceneID="SZf-Qk-s2Q">
@@ -529,11 +529,11 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MVg-Gx-Uya" id="9Kl-VW-v0V">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vpB-uL-Qym">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
@@ -830,4 +830,7 @@
         <image name="sword" width="50" height="50"/>
         <image name="under-construction" width="1064" height="845"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="y0L-G1-zQT"/>
+    </inferredMetricsTieBreakers>
 </document>

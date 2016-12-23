@@ -46,12 +46,12 @@ class PetManager: NSObject, WCSessionDelegate {
         
         feedController.interval -= 1
         petChoosed.growthAtt.fed! += 1
-        print("eating = \(feedController.interval)")
+//        print("eating = \(feedController.interval)")
         if feedController.interval < 1.0 || petChoosed.growthAtt.fed! > 99 {
             petChoosed.isEating = false
             feedController.timer!.invalidate()
             
-            print("Parou de Comer")
+//            print("Parou de Comer")
         }
     }
     
@@ -59,7 +59,7 @@ class PetManager: NSObject, WCSessionDelegate {
         
         if !petChoosed.isSleeping {
             petChoosed.isEating = true
-            print("Comendo por \(lunch.time) segundos")
+//            print("Comendo por \(lunch.time) segundos")
             
             feedController = TimeController(interval: lunch.time,
                                             timer: Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(PetManager.countingTimeEating), userInfo: nil, repeats: true), add: nil)
@@ -73,7 +73,7 @@ class PetManager: NSObject, WCSessionDelegate {
             cost += 1
             petChoosed.growthAtt.stamina! -= 1
         }
-        print("exercising = \(exerciseController.interval)")
+//        print("exercising = \(exerciseController.interval)")
         if exerciseController.interval < 1.0 {
             
             if exercise.cost > Int(exercise.time) {
@@ -86,7 +86,7 @@ class PetManager: NSObject, WCSessionDelegate {
             exerciseController.timer!.invalidate()
             petChoosed.isExercising = false
             
-            print("Parou de Treinar")
+//            print("Parou de Treinar")
         }
     }
     
@@ -97,7 +97,7 @@ class PetManager: NSObject, WCSessionDelegate {
                 exercise = exer
                 petChoosed.isExercising = true
                 cost = 0
-                print("Exercitando por \(exer.time) segundos\n")
+//                print("Exercitando por \(exer.time) segundos\n")
                 
                 exerciseController = TimeController(interval: exer.time,
                                                     timer: Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(PetManager.countingTimeExercising), userInfo: nil, repeats: true), add: exer.gain)
@@ -110,19 +110,19 @@ class PetManager: NSObject, WCSessionDelegate {
     func countingTimeSleeping() {
         
         sleepController.interval -= 1
-        print("sleeping = \(sleepController.interval)")
+//        print("sleeping = \(sleepController.interval)")
         if sleepController.interval < 1.0 {
             petChoosed.isSleeping = false
             wakeUp()
             sleepController.timer!.invalidate()
-            print("Parou de Dormir")
+//            print("Parou de Dormir")
         }
     }
     
     func sleep(during secondes: TimeInterval) {
         
         petChoosed.isSleeping = true
-        print("Dormindo por \(secondes) segundos\n")
+//        print("Dormindo por \(secondes) segundos\n")
         
         sleepController = TimeController(interval: secondes,
                                             timer: Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(PetManager.countingTimeSleeping), userInfo: nil, repeats: true), add: nil)
@@ -219,7 +219,7 @@ class PetManager: NSObject, WCSessionDelegate {
         } else {
             petChoosed.isLanguishing = false
         }
-        print("\(petChoosed.growthAtt)\n")
+        //print("\(petChoosed.growthAtt)\n")
         
         NotificationCenter.default.post(name: Notification.Name("UpdateStatusNotification"), object: nil, userInfo: nil)
         
@@ -251,7 +251,7 @@ class PetManager: NSObject, WCSessionDelegate {
     // MARK: instant message treta
     
     func uploadingChanges(_ data: [String : Any]) {
-        print("\nrecebendo iPhone\n\(data)\n")
+//        print("\nrecebendo iPhone\n\(data)\n")
         
         if data.keys.first == "command" {
             let cmd = data["command"] as! Int
@@ -264,8 +264,8 @@ class PetManager: NSObject, WCSessionDelegate {
             case 3:
                 let exercise = Exercise(cost: 30, gain: 30, time: 15) //3600
                 PetManager.sharedInstance.exercise(typeOfExercise: exercise)
-            default:
-                print("O debug tá bom demais!")
+            default: break
+//                print("O debug tá bom demais!")
             }
         }
     }
@@ -281,7 +281,7 @@ class PetManager: NSObject, WCSessionDelegate {
     
     func send(message: [String : Any]) {
         if session.isReachable {
-            print("\nenviando iPhone\n")
+//            print("\nenviando iPhone\n")
             session.sendMessage(message, replyHandler: nil, errorHandler: nil)
         }
     }

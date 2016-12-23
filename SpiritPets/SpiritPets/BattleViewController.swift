@@ -36,7 +36,7 @@ class BattleViewController: UIViewController {
         
         scene.dictionary = self.dictionary
         //scene.opponentPetImageName = self.opponentImageName
-        print(scene.dictionary)
+        //print(scene.dictionary)
         scene.parentVC = self
         skView.presentScene(scene)
     }

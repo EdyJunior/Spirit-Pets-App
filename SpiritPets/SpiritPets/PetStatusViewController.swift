@@ -77,7 +77,7 @@ class PetStatusViewController: UIViewController , WCSessionDelegate {
     // MARK: instant message treta
     
     func uploadingChanges(_ data: [String : Any]) {
-        print("\nrecebendo iPhone\n\(data)\n")
+//        print("\nrecebendo iPhone\n\(data)\n")
         
         if data.keys.first == "command" {
             let cmd = data["command"] as! Int
@@ -90,8 +90,8 @@ class PetStatusViewController: UIViewController , WCSessionDelegate {
             case 3:
                 let exercise = Exercise(cost: 30, gain: 30, time: 15) //3600
                 PetManager.sharedInstance.exercise(typeOfExercise: exercise)
-            default:
-                print("O debug tá bom demais!")
+            default: break
+//                print("O debug tá bom demais!")
             }
         }
     }
@@ -107,7 +107,7 @@ class PetStatusViewController: UIViewController , WCSessionDelegate {
     
     func send(message: [String : Any]) {
         if session.isReachable {
-            print("\nenviando iPhone\n")
+//            print("\nenviando iPhone\n")
             session.sendMessage(message, replyHandler: nil, errorHandler: nil)
         }
     }

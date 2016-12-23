@@ -57,7 +57,6 @@
 		CE3B2B9C1DEC631A0096C3D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3B2B9B1DEC631A0096C3D8 /* Assets.xcassets */; };
 		CE6237331DF19B020021FD86 /* PetsAttributes.json in Resources */ = {isa = PBXBuildFile; fileRef = CE6237321DF19B020021FD86 /* PetsAttributes.json */; };
 		CE6237351DF1A27F0021FD86 /* PetChoosed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6237341DF1A27F0021FD86 /* PetChoosed.swift */; };
-		CE8150BF1DF8352C00A8F3A0 /* CustomBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8150BE1DF8352C00A8F3A0 /* CustomBtn.swift */; };
 		CE98BCEC1DF354F8007D88CB /* LivingBeing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BCEB1DF354F8007D88CB /* LivingBeing.swift */; };
 		CEB8BB3D1E003C950012739A /* PetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8BB3C1E003C950012739A /* PetManager.swift */; };
 /* End PBXBuildFile section */
@@ -178,7 +177,6 @@
 		CE3B2B9D1DEC631A0096C3D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE6237321DF19B020021FD86 /* PetsAttributes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PetsAttributes.json; sourceTree = "<group>"; };
 		CE6237341DF1A27F0021FD86 /* PetChoosed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetChoosed.swift; sourceTree = "<group>"; };
-		CE8150BE1DF8352C00A8F3A0 /* CustomBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBtn.swift; sourceTree = "<group>"; };
 		CE98BCEB1DF354F8007D88CB /* LivingBeing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivingBeing.swift; sourceTree = "<group>"; };
 		CEB8BB3C1E003C950012739A /* PetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -241,13 +239,6 @@
 				97370C8E1E0017B700B53DDC /* BattleScene.swift */,
 			);
 			name = Battle;
-			sourceTree = "<group>";
-		};
-		97EF4D051DEDF43200446053 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		B50C21351DF06D4700779435 /* MiniGame02 */ = {
@@ -339,7 +330,6 @@
 				B50C213E1DF06DBF00779435 /* PetUtils */,
 				B50C21531DF06E8900779435 /* MiniGameSelectionScreen */,
 				970FEA431DEF00CB00F86DDF /* MiniGames */,
-				97EF4D051DEDF43200446053 /* Model */,
 				CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */,
 				CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */,
 				B50C215A1DF0738300779435 /* Main.storyboard */,
@@ -350,7 +340,6 @@
 				979A618D1DEDA9DA00F8604B /* AKPickerView.swift */,
 				97F1FD281DF0585F00264340 /* MainScreenViewController.swift */,
 				979F8B701DF7046700491FD2 /* PetStatusViewController.swift */,
-				CE8150BE1DF8352C00A8F3A0 /* CustomBtn.swift */,
 				97ED98751DF998F2005B1C7C /* AchievementViewController.swift */,
 				97370C891E00126F00B53DDC /* MPFindOpponentViewController.swift */,
 			);
@@ -619,7 +608,6 @@
 				97370C8A1E00126F00B53DDC /* MPFindOpponentViewController.swift in Sources */,
 				B50C21491DF06E1600779435 /* SmallEnemy.swift in Sources */,
 				B50C21471DF06E0500779435 /* Bullet.swift in Sources */,
-				CE8150BF1DF8352C00A8F3A0 /* CustomBtn.swift in Sources */,
 				B50C21501DF06E6800779435 /* FriendlyBullet.swift in Sources */,
 				CE3B2B5B1DEC631A0096C3D8 /* ViewController.swift in Sources */,
 				CEB8BB3D1E003C950012739A /* PetManager.swift in Sources */,

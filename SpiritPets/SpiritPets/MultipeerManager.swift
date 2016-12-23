@@ -62,8 +62,8 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
             try session.send(dataToSend, toPeers: peersArray as! [MCPeerID], with: MCSessionSendDataMode.reliable)
             
         } catch {
-            print(error)
-            print("PAU NO SEND DATA!!!!!")
+//            print(error)
+//            print("PAU NO SEND DATA!!!!!")
             return false
         }
         
@@ -78,7 +78,7 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
         do {
             try session.send(dataToSend, toPeers: peersArray as! [MCPeerID], with: MCSessionSendDataMode.reliable)
         } catch {
-            print("PAU NO SEND DATA!!!!!")
+//            print("PAU NO SEND DATA!!!!!")
             return false
         }
         
@@ -110,7 +110,7 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {
-        print(error.localizedDescription)
+//        print(error.localizedDescription)
     }
     
     /// SESSION DELEGATE
@@ -125,14 +125,14 @@ class MultipeerManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDeleg
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         switch state {
         case MCSessionState.connected:
-            print("Connected to session: \(session)")
+//            print("Connected to session: \(session)")
             if peerID != localPeer{
                 delegate?.connectedWithPeer(peerID: peerID, imageName: opponentsImagesName[foundPeer.index(of: peerID)!])
             }
-        case MCSessionState.connecting:
-            print("Connecting to session: \(session)")
-        default:
-            print("Did not connect to session: \(session)")
+        case MCSessionState.connecting: break
+//            print("Connecting to session: \(session)")
+        default: break
+//            print("Did not connect to session: \(session)")
         }
     }
     

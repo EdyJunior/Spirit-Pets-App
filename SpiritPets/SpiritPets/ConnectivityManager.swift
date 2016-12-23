@@ -66,7 +66,7 @@ class ConnectivityManager: NSObject, WCSessionDelegate { // Modelo para furutas 
             
             let object = applicationContext["updateStatus"] as! [String : Any]
             let fed = object["fed"] as! Int
-            print("\n\n\n\n\n\n\nvai ma - \(fed)\n\n\n\n\n\n\n\n")
+            //print("\n\n\n\n\n\n\nvai ma - \(fed)\n\n\n\n\n\n\n\n")
             self?.connectivityDelegates.forEach {$0.changeUI()}
         }
     }

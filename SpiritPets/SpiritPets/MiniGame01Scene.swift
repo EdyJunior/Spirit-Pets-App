@@ -190,6 +190,7 @@ class MiniGame01Scene: SKScene {
     
     func backToMenu() {
         
+//        print("ACABOU")
         self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
         
     }

@@ -119,7 +119,7 @@ class MPFindOpponentViewController: UIViewController, UITableViewDataSource, UIT
         }catch{
             print("Error ao enviar...")
         }*/
-        print(peerID)
+//        print(peerID)
         OperationQueue.main.addOperation {
             let dictionary: [String: AnyObject] = ["turn": self.gameTurn as AnyObject, "user": self.gameUser as AnyObject, "imageNameOpponent": imageName as AnyObject ]
             self.performSegue(withIdentifier: "battleSegue", sender: dictionary)
@@ -130,7 +130,7 @@ class MPFindOpponentViewController: UIViewController, UITableViewDataSource, UIT
         let battleVC = segue.destination as! BattleViewController
         //battleVC.dictionary = ["turn": self.gameTurn as AnyObject, "user": self.gameUser as AnyObject]
         battleVC.dictionary = sender as! [String: AnyObject]
-        print("battleVC \(battleVC.dictionary)")
+//        print("battleVC \(battleVC.dictionary)")
         //battleVC.opponentImageName = NSKeyedUnarchiver.unarchiveObject(with: context) as! String
         //Could not cast value of type '__NSDictionaryI' (0x1a07a2788) to 'NSString' (0x1a07ad7e8)
     }
@@ -138,7 +138,7 @@ class MPFindOpponentViewController: UIViewController, UITableViewDataSource, UIT
     // MARK: instant message treta
     
     func uploadingChanges(_ data: [String : Any]) {
-        print("\nrecebendo iPhone\n\(data)\n")
+//        print("\nrecebendo iPhone\n\(data)\n")
         
         if data.keys.first == "command" {
             let cmd = data["command"] as! Int
@@ -151,8 +151,8 @@ class MPFindOpponentViewController: UIViewController, UITableViewDataSource, UIT
             case 3:
                 let exercise = Exercise(cost: 30, gain: 30, time: 15) //3600
                 PetManager.sharedInstance.exercise(typeOfExercise: exercise)
-            default:
-                print("O debug tá bom demais!")
+            default: break
+//                print("O debug tá bom demais!")
             }
         }
     }
@@ -168,7 +168,7 @@ class MPFindOpponentViewController: UIViewController, UITableViewDataSource, UIT
     
     func send(message: [String : Any]) {
         if session.isReachable {
-            print("\nenviando iPhone\n")
+//            print("\nenviando iPhone\n")
             session.sendMessage(message, replyHandler: nil, errorHandler: nil)
         }
     }

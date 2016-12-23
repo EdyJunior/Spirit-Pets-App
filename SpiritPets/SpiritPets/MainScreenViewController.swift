@@ -20,11 +20,11 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     @IBOutlet weak var popupImageView: UIImageView!
     @IBOutlet weak var messageImageView: UIImageView!
     
-    @IBOutlet weak var feedBtn: CustomBtn!
-    @IBOutlet weak var exerciseBtn: CustomBtn!
-    @IBOutlet weak var playBtn: CustomBtn!
-    @IBOutlet weak var battleBtn: CustomBtn!
-    @IBOutlet weak var sleepBtn: CustomBtn!
+    @IBOutlet weak var feedBtn: UIButton!
+    @IBOutlet weak var exerciseBtn: UIButton!
+    @IBOutlet weak var playBtn: UIButton!
+    @IBOutlet weak var battleBtn: UIButton!
+    @IBOutlet weak var sleepBtn: UIButton!
     
     var pet: PetChoosed!
     var exercise = Exercise(cost: 0, gain: 0, time: 0)
@@ -101,7 +101,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     
     // MARK: Buttons' actions
     
-    @IBAction func feed(_ sender: CustomBtn) {
+    @IBAction func feed(_ sender: UIButton) {
         //TODO: Transformar lunch em inteiro, já que o tempo gasto pra comer é o número de pontos ganhos em fed
 
         if !pet.isEating {
@@ -110,7 +110,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         }
     }
     
-    @IBAction func sleepOrWakeUp(_ sender: CustomBtn) {
+    @IBAction func sleepOrWakeUp(_ sender: UIButton) {
         
         if !pet.isSleeping {
             PetManager.sharedInstance.sleep(during: sleepDefaultTime)
@@ -119,7 +119,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         }
     }
     
-    @IBAction func exercise(_ sender: CustomBtn) {
+    @IBAction func exercise(_ sender: UIButton) {
         
         if !pet.isExercising {
             exercise = Exercise(cost: 20, gain: 30, time: 3600)//6)
@@ -127,15 +127,15 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         }
     }
     
-    @IBAction func play(_ sender: CustomBtn) {
+    @IBAction func play(_ sender: UIButton) {
         
     }
     
-    @IBAction func achievementsBtn(_ sender: CustomBtn) {
+    @IBAction func achievementsBtn(_ sender: UIButton) {
         
     }
     
-    @IBAction func battle(_ sender: CustomBtn) {
+    @IBAction func battle(_ sender: UIButton) {
         
     }
     
@@ -156,7 +156,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     //Disables feed and exercise buttons when sleep button is pressed
     func disableBySleeping() {
         
-        print("DesAtivou pra durmir")
+//        print("DesAtivou pra durmir")
         changeEnabled(buttons: [feedBtn, exerciseBtn], to: false)
         sleepBtn.setImage(#imageLiteral(resourceName: "wakeBtn"), for: .normal)
     }
@@ -452,7 +452,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     // MARK: instant message treta
     
     func uploadingChanges(_ data: [String : Any]) {
-        print("\nrecebendo iPhone\n\(data)\n")
+//        print("\nrecebendo iPhone\n\(data)\n")
         
         if data.keys.first == "command" {
             let cmd = data["command"] as! Int
@@ -465,8 +465,8 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
             case 3:
                 let exercise = Exercise(cost: 20, gain: 30, time: 6) //3600
                 PetManager.sharedInstance.exercise(typeOfExercise: exercise)
-            default:
-                print("O debug tá bom demais!")
+            default: break
+//                print("O debug tá bom demais!")
             }
         }
     }
@@ -482,7 +482,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     
     func send(message: [String : Any]) {
         if session.isReachable {
-            print("\nenviando iPhone\n")
+//            print("\nenviando iPhone\n")
             session.sendMessage(message, replyHandler: nil, errorHandler: nil)
         }
     }
