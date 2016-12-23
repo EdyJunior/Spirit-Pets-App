@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SMt-Zx-lWB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SMt-Zx-lWB">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -237,7 +237,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG5" translatesAutoresizingMaskIntoConstraints="NO" id="uX8-pO-0PR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="neon-grid" translatesAutoresizingMaskIntoConstraints="NO" id="uX8-pO-0PR">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2s-Ap-2Pe">
@@ -462,12 +462,24 @@
                     <view key="view" contentMode="scaleToFill" id="7sB-HJ-UL6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="under-construction" translatesAutoresizingMaskIntoConstraints="NO" id="er1-9r-2RE">
+                                <rect key="frame" x="20" y="129" width="280" height="223"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="er1-9r-2RE" secondAttribute="height" multiplier="1064:845" id="ZQL-1l-ypY"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="er1-9r-2RE" firstAttribute="centerY" secondItem="7sB-HJ-UL6" secondAttribute="centerY" id="hTj-GK-evi"/>
+                            <constraint firstItem="er1-9r-2RE" firstAttribute="centerX" secondItem="7sB-HJ-UL6" secondAttribute="centerX" id="p7d-Eq-0fT"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7f1-1z-V1C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="31" y="1633"/>
+            <point key="canvasLocation" x="30" y="1632.5"/>
         </scene>
         <!--Find Opponent View Controller-->
         <scene sceneID="SZf-Qk-s2Q">
@@ -800,5 +812,6 @@
         <image name="shield" width="50" height="50"/>
         <image name="sleepBtn" width="126" height="126"/>
         <image name="sword" width="50" height="50"/>
+        <image name="under-construction" width="1064" height="845"/>
     </resources>
 </document>

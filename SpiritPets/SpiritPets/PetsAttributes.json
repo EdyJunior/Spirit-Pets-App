@@ -9,7 +9,7 @@
         "atk": 8,
         "dfs": 4,
         "rdm": 5,
-        "lv": 3,
+        "lv": 16,
         "xp": 30
     },
     "frontImage": "Parlepus",
@@ -27,7 +27,7 @@
         "atk": 8,
         "dfs": 4,
         "rdm": 5,
-        "lv": 16,
+        "lv": 23,
         "xp": 30
     },
     "frontImage": "Pulepus",
@@ -45,7 +45,7 @@
         "atk": 8,
         "dfs": 4,
         "rdm": 5,
-        "lv": 20,
+        "lv": 30,
         "xp": 30
     },
     "frontImage": "Magnalepus",
@@ -63,7 +63,7 @@
         "atk": 8,
         "dfs": 4,
         "rdm": 5,
-        "lv": 16,
+        "lv": 100,
         "xp": 30
     },
     "frontImage": "Impelepus",
@@ -81,7 +81,7 @@
         "atk": 7,
         "dfs": 8,
         "rdm": 6,
-        "lv": 2,
+        "lv": 13,
         "xp": 30
     },
     "frontImage": "Pardaemon",
@@ -99,7 +99,7 @@
         "atk": 7,
         "dfs": 8,
         "rdm": 6,
-        "lv": 16,
+        "lv": 21,
         "xp": 30
     },
     "frontImage": "Pudaemon",
