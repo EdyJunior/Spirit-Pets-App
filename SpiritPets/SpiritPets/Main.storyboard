@@ -463,16 +463,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="under-construction" translatesAutoresizingMaskIntoConstraints="NO" id="er1-9r-2RE">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="under-construction" translatesAutoresizingMaskIntoConstraints="NO" id="er1-9r-2RE">
                                 <rect key="frame" x="20" y="129" width="280" height="223"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="er1-9r-2RE" secondAttribute="height" multiplier="1064:845" id="ZQL-1l-ypY"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-FP-TyE">
+                                <rect key="frame" x="20" y="20" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="XdT-FP-TyE" secondAttribute="height" multiplier="1:1" id="SM9-Aa-k5y"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="backButton"/>
+                                <connections>
+                                    <action selector="onGoBackTap:" destination="aTq-3S-XND" eventType="touchUpInside" id="0FC-al-6t2"/>
+                                    <action selector="onGoBackTap:" destination="WDi-GV-Ts4" eventType="touchUpInside" id="wt0-PU-GjI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="XdT-FP-TyE" firstAttribute="leading" secondItem="er1-9r-2RE" secondAttribute="leading" id="ECN-i9-Lsx"/>
+                            <constraint firstItem="er1-9r-2RE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7sB-HJ-UL6" secondAttribute="leadingMargin" constant="4" id="O2J-zz-JBG"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="er1-9r-2RE" secondAttribute="trailing" constant="4" id="d9j-kF-obF"/>
+                            <constraint firstItem="XdT-FP-TyE" firstAttribute="top" secondItem="Pby-XH-jDb" secondAttribute="bottom" id="fBE-NG-hAL"/>
                             <constraint firstItem="er1-9r-2RE" firstAttribute="centerY" secondItem="7sB-HJ-UL6" secondAttribute="centerY" id="hTj-GK-evi"/>
+                            <constraint firstItem="XdT-FP-TyE" firstAttribute="width" secondItem="7sB-HJ-UL6" secondAttribute="width" multiplier="0.2" id="mZp-hP-1Ce"/>
                             <constraint firstItem="er1-9r-2RE" firstAttribute="centerX" secondItem="7sB-HJ-UL6" secondAttribute="centerX" id="p7d-Eq-0fT"/>
                         </constraints>
                     </view>
