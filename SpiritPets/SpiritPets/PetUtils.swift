@@ -149,18 +149,18 @@ class GrowthAttributes: NSObject, NSCoding {
     }
 }
 
-let updateInterval: TimeInterval = 7/*2592*///Period of method 'updateStatus' in PetMangager
+let updateInterval: TimeInterval = 2592//7 Period of method 'updateStatus' in PetMangager
 
-let sleepInterval: TimeInterval = 10/*36000*/
-let sleepnessUpRate: Int = 30//1//value added from pet's sleep when pet is sleeping
-let sleepnessDownRate: Int = -2//1//value subtracted to pet's sleep when pet isn't sleeping
+let sleepInterval: TimeInterval = 36000//10/**/
+let sleepnessUpRate: Int = 1//30//1//value added from pet's sleep when pet is sleeping
+let sleepnessDownRate: Int = 1//-2//value subtracted to pet's sleep when pet isn't sleeping
 let sleepnessWarningValue: Int = 50
 let sleepnessDangerousValue: Int = 30//values under this may make pet linguish deending on pet's fed status
-let sleepDefaultTime: TimeInterval = 10//36000
+let sleepDefaultTime: TimeInterval = 36000//10
 
 let sleepnessMortalValue: Int = 10//values under this will make pet linguish
 
-let hungerHighRate: Int = 5//2//value subtracted from pet's fed when pet isn't sleeping
+let hungerHighRate: Int = 2//5//value subtracted from pet's fed when pet isn't sleeping
 let hungerLowRate: Int = 1//value subtracted from pet's fed when pet is sleeping
 let hungerWarningValue: Int = 50
 let hungerDangerousValue: Int = 30//values under this may make pet linguish deending on pet's awake status

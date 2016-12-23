@@ -105,7 +105,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         //TODO: Transformar lunch em inteiro, já que o tempo gasto pra comer é o número de pontos ganhos em fed
 
         if !pet.isEating {
-            lunch = Lunch(gain: 10, time: 10)//60
+            lunch = Lunch(gain: 30, time: 30)//60
             PetManager.sharedInstance.feed(with: lunch)
         }
     }
@@ -122,7 +122,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     @IBAction func exercise(_ sender: CustomBtn) {
         
         if !pet.isExercising {
-            exercise = Exercise(cost: 20, gain: 30, time: 6)//3600)
+            exercise = Exercise(cost: 20, gain: 30, time: 3600)//6)
             PetManager.sharedInstance.exercise(typeOfExercise: exercise)
         }
     }
