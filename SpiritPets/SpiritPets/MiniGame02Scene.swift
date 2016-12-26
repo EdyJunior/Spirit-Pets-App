@@ -136,7 +136,6 @@ class MiniGame02Scene: SKScene, SKPhysicsContactDelegate, MiniGame02ManagerDeleg
     }
     
     func backToMenu() {
-        
         self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
