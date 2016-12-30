@@ -59,9 +59,9 @@ extension PetNodeMiniGame {
         
         switch type {
         case .light:
-            return SKTexture(image: self.textures.light[random.nextInt(upperBound: self.textures.light.count)] as! UIImage)
+            return SKTexture(image: self.textures.light[random.nextInt(upperBound: self.textures.light.count)] )
         case .dark:
-            return SKTexture(image: self.textures.dark[random.nextInt(upperBound: self.textures.dark.count)] as! UIImage)
+            return SKTexture(image: self.textures.dark[random.nextInt(upperBound: self.textures.dark.count)] )
         }
     }
 }
