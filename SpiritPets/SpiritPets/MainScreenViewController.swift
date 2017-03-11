@@ -122,7 +122,7 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
     @IBAction func exercise(_ sender: UIButton) {
         
         if !pet.isExercising {
-            exercise = Exercise(cost: 20, gain: 30, time: 3600)//6)
+            exercise = Exercise(cost: 20, gain: 30, time: 6)//3600
             PetManager.sharedInstance.exercise(typeOfExercise: exercise)
         }
     }
@@ -185,12 +185,12 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
             changeEnabled(buttons: [sleepBtn], to: true)
         }
         if PetManager.sharedInstance.evolve() {
-            
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 self.petImageView.stopAnimating()
                 self.petImageView.image = self.pet.frontImage
             }
-            
+
             var Images: [UIImage] = []
             for num in 0...15 {
                 Images.append(UIImage(named: "Effect-\(num)")!)
