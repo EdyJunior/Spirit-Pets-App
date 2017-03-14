@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    var multipeerManager: MultipeerManager!
     var gameArray = [0,0,0,0,0,0,0,0,0]
     var gameTurn: Bool?
     var gameUser: Int?
@@ -38,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = mainStoryBoard.instantiateViewController(withIdentifier: "MainScreenViewController")
         }
 
-        multipeerManager = MultipeerManager()//apenas inclua essa linha antes do return nesse metodo.
         return true
     }
     

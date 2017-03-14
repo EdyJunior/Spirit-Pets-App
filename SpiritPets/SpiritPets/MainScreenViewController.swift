@@ -56,7 +56,6 @@ class MainScreenViewController: UIViewController, DisableButtonsProtocol, TimeTo
         
         petImageView.image = pet.frontImage
         
-        appDelegate.multipeerManager.startAdvertise()
         NotificationCenter.default.addObserver(self, selector: #selector(updateLabels),name: NSNotification.Name(rawValue: "UpdateStatusNotification"), object: nil)
     }
     
