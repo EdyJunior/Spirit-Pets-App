@@ -15,7 +15,12 @@ class MiniGame02Player: SKSpriteNode, ContactListener {
     
     func setup() {
         
-        self.texture = SKTexture(image: #imageLiteral(resourceName: "Parlepus"))
+        if (PetManager.sharedInstance.petChoosed.type == .light) {
+            self.texture = SKTexture(image: #imageLiteral(resourceName: "Parlepus"))
+        } else {
+            self.texture = SKTexture(image: #imageLiteral(resourceName: "Pardaemon"))
+        }
+        
         self.size = CGSize.init(width: 100, height: 100)
         
         self.setPhysicsBody()
