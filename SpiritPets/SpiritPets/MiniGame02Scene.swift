@@ -136,6 +136,9 @@ class MiniGame02Scene: SKScene, SKPhysicsContactDelegate, MiniGame02ManagerDeleg
     }
     
     func backToMenu() {
+        let mainStoryBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        self.view?.window?.rootViewController = mainStoryBoard.instantiateViewController(withIdentifier: "MainScreenViewController")
+        
         self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     

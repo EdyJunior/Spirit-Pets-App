@@ -191,6 +191,10 @@ class MiniGame01Scene: SKScene {
     func backToMenu() {
         
 //        print("ACABOU")
+        
+        let mainStoryBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        self.view?.window?.rootViewController = mainStoryBoard.instantiateViewController(withIdentifier: "MainScreenViewController")
+
         self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
         
     }
