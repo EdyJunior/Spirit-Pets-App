@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31049427BD69171A47FBFAD4 /* Pods_SpiritPetsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AFF1622A4FB6FB766559BD0 /* Pods_SpiritPetsUITests.framework */; };
+		33E3DA4C66FDE2C9FEF0D9EE /* Pods_SpiritPetsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EB2454BEF5F7D959AC3BD6D /* Pods_SpiritPetsTests.framework */; };
 		970FEA3E1DEF009900F86DDF /* MiniGame01Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970FEA3D1DEF009900F86DDF /* MiniGame01Scene.swift */; };
 		970FEA401DEF00A400F86DDF /* MiniGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970FEA3F1DEF00A400F86DDF /* MiniGameViewController.swift */; };
 		970FEA421DEF00B400F86DDF /* PetNodeMiniGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 970FEA411DEF00B400F86DDF /* PetNodeMiniGame.swift */; };
 		97370C8A1E00126F00B53DDC /* MPFindOpponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97370C891E00126F00B53DDC /* MPFindOpponentViewController.swift */; };
 		97370C8D1E00177800B53DDC /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97370C8C1E00177800B53DDC /* BattleViewController.swift */; };
 		97370C8F1E0017B700B53DDC /* BattleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97370C8E1E0017B700B53DDC /* BattleScene.swift */; };
+		97571EC91F39FDA300F22016 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97571EC81F39FDA300F22016 /* GoogleService-Info.plist */; };
+		97571ECA1F39FDA300F22016 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97571EC81F39FDA300F22016 /* GoogleService-Info.plist */; };
 		977812281DFF37150071D273 /* MultipeerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977812271DFF37150071D273 /* MultipeerManager.swift */; };
 		979A618C1DEDA59200F8604B /* PetSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */; };
 		979A618E1DEDA9DA00F8604B /* AKPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979A618D1DEDA9DA00F8604B /* AKPickerView.swift */; };
@@ -40,6 +44,7 @@
 		B587DC391E040AA600D84BCA /* ConnectivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B587DC381E040AA600D84BCA /* ConnectivityManager.swift */; };
 		B5FBD1A61DF84CB70038848B /* GrowthActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBD1A51DF84CB70038848B /* GrowthActionsViewController.swift */; };
 		B5FBD1A81DF85F0C0038848B /* PetAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FBD1A71DF85F0C0038848B /* PetAnimationViewController.swift */; };
+		BB1B74BE7695AB40484F3BC3 /* Pods_SpiritPets_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72186A4B9CF9EB568D9C189 /* Pods_SpiritPets_WatchKit_App.framework */; };
 		CE3B2B591DEC631A0096C3D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */; };
 		CE3B2B5B1DEC631A0096C3D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */; };
 		CE3B2B601DEC631A0096C3D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3B2B5F1DEC631A0096C3D8 /* Assets.xcassets */; };
@@ -59,6 +64,8 @@
 		CE6237351DF1A27F0021FD86 /* PetChoosed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6237341DF1A27F0021FD86 /* PetChoosed.swift */; };
 		CE98BCEC1DF354F8007D88CB /* LivingBeing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE98BCEB1DF354F8007D88CB /* LivingBeing.swift */; };
 		CEB8BB3D1E003C950012739A /* PetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8BB3C1E003C950012739A /* PetManager.swift */; };
+		CFD243C718F39994DC6F1110 /* Pods_SpiritPets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD9D0C1EFFB60A405ED0D97 /* Pods_SpiritPets.framework */; };
+		DDC6E51AD7801312206A5D0C /* Pods_SpiritPets_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B4D7F467989A0E03AC71688 /* Pods_SpiritPets_WatchKit_Extension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,18 +125,30 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		16F94A27D3E2AA2469A48D52 /* Pods-SpiritPetsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiritPetsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpiritPetsUITests/Pods-SpiritPetsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		45E201F9F396D906DBB51F0D /* Pods-SpiritPets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiritPets.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpiritPets/Pods-SpiritPets.release.xcconfig"; sourceTree = "<group>"; };
+		4AFF1622A4FB6FB766559BD0 /* Pods_SpiritPetsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiritPetsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DB16FF45609D257C268C1A9 /* Pods-SpiritPetsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiritPetsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpiritPetsTests/Pods-SpiritPetsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5231237B1986955662691B43 /* Pods-SpiritPetsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiritPetsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpiritPetsUITests/Pods-SpiritPetsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5B4D7F467989A0E03AC71688 /* Pods_SpiritPets_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiritPets_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AFA31E0A8032EF5D1F77334 /* Pods-SpiritPets WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiritPets WatchKit App.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpiritPets WatchKit App/Pods-SpiritPets WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
+		6EB2454BEF5F7D959AC3BD6D /* Pods_SpiritPetsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiritPetsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7100FA4558FD28A10651857B /* Pods-SpiritPetsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiritPetsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpiritPetsTests/Pods-SpiritPetsTests.release.xcconfig"; sourceTree = "<group>"; };
 		970FEA3D1DEF009900F86DDF /* MiniGame01Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame01Scene.swift; sourceTree = "<group>"; };
 		970FEA3F1DEF00A400F86DDF /* MiniGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGameViewController.swift; sourceTree = "<group>"; };
 		970FEA411DEF00B400F86DDF /* PetNodeMiniGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetNodeMiniGame.swift; sourceTree = "<group>"; };
 		97370C891E00126F00B53DDC /* MPFindOpponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPFindOpponentViewController.swift; sourceTree = "<group>"; };
 		97370C8C1E00177800B53DDC /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
 		97370C8E1E0017B700B53DDC /* BattleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleScene.swift; sourceTree = "<group>"; };
+		97571EC81F39FDA300F22016 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		977812271DFF37150071D273 /* MultipeerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipeerManager.swift; sourceTree = "<group>"; };
 		979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetSelectionViewController.swift; sourceTree = "<group>"; };
 		979A618D1DEDA9DA00F8604B /* AKPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AKPickerView.swift; sourceTree = "<group>"; };
 		979F8B701DF7046700491FD2 /* PetStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetStatusViewController.swift; sourceTree = "<group>"; };
 		97ED98751DF998F2005B1C7C /* AchievementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		97F1FD281DF0585F00264340 /* MainScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		996144906BC5E18BE324807D /* Pods-SpiritPets WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiritPets WatchKit App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpiritPets WatchKit App/Pods-SpiritPets WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
+		ADD9D0C1EFFB60A405ED0D97 /* Pods_SpiritPets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiritPets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50C21361DF06D6F00779435 /* MiniGame02Bitmasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Bitmasks.swift; sourceTree = "<group>"; };
 		B50C21381DF06D7A00779435 /* MiniGame02Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Manager.swift; sourceTree = "<group>"; };
 		B50C213A1DF06D9E00779435 /* MiniGame02Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame02Scene.swift; sourceTree = "<group>"; };
@@ -151,6 +170,7 @@
 		B587DC381E040AA600D84BCA /* ConnectivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectivityManager.swift; sourceTree = "<group>"; };
 		B5FBD1A51DF84CB70038848B /* GrowthActionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowthActionsViewController.swift; sourceTree = "<group>"; };
 		B5FBD1A71DF85F0C0038848B /* PetAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetAnimationViewController.swift; sourceTree = "<group>"; };
+		B69A7DFC6F88D39BF78AC02C /* Pods-SpiritPets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiritPets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpiritPets/Pods-SpiritPets.debug.xcconfig"; sourceTree = "<group>"; };
 		CE3B2B551DEC631A0096C3D8 /* SpiritPets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpiritPets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3B2B581DEC631A0096C3D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE3B2B5A1DEC631A0096C3D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -179,13 +199,25 @@
 		CE6237341DF1A27F0021FD86 /* PetChoosed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetChoosed.swift; sourceTree = "<group>"; };
 		CE98BCEB1DF354F8007D88CB /* LivingBeing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivingBeing.swift; sourceTree = "<group>"; };
 		CEB8BB3C1E003C950012739A /* PetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetManager.swift; sourceTree = "<group>"; };
+		D9DB50CFCBC22ED2A84AFAC8 /* Pods-SpiritPets WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiritPets WatchKit Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-SpiritPets WatchKit Extension/Pods-SpiritPets WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		DC0C4043912982B2FDE01AD1 /* Pods-SpiritPets WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpiritPets WatchKit Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpiritPets WatchKit Extension/Pods-SpiritPets WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		E72186A4B9CF9EB568D9C189 /* Pods_SpiritPets_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiritPets_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		049BD2EF9CC719EE710949DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB1B74BE7695AB40484F3BC3 /* Pods_SpiritPets_WatchKit_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE3B2B521DEC631A0096C3D8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD243C718F39994DC6F1110 /* Pods_SpiritPets.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +225,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33E3DA4C66FDE2C9FEF0D9EE /* Pods_SpiritPetsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31049427BD69171A47FBFAD4 /* Pods_SpiritPetsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,12 +241,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDC6E51AD7801312206A5D0C /* Pods_SpiritPets_WatchKit_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58CB8C3755C85EE5DDBED789 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B69A7DFC6F88D39BF78AC02C /* Pods-SpiritPets.debug.xcconfig */,
+				45E201F9F396D906DBB51F0D /* Pods-SpiritPets.release.xcconfig */,
+				996144906BC5E18BE324807D /* Pods-SpiritPets WatchKit App.debug.xcconfig */,
+				6AFA31E0A8032EF5D1F77334 /* Pods-SpiritPets WatchKit App.release.xcconfig */,
+				DC0C4043912982B2FDE01AD1 /* Pods-SpiritPets WatchKit Extension.debug.xcconfig */,
+				D9DB50CFCBC22ED2A84AFAC8 /* Pods-SpiritPets WatchKit Extension.release.xcconfig */,
+				4DB16FF45609D257C268C1A9 /* Pods-SpiritPetsTests.debug.xcconfig */,
+				7100FA4558FD28A10651857B /* Pods-SpiritPetsTests.release.xcconfig */,
+				5231237B1986955662691B43 /* Pods-SpiritPetsUITests.debug.xcconfig */,
+				16F94A27D3E2AA2469A48D52 /* Pods-SpiritPetsUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		970FEA431DEF00CB00F86DDF /* MiniGames */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,12 +353,15 @@
 		CE3B2B4C1DEC63190096C3D8 = {
 			isa = PBXGroup;
 			children = (
+				97571EC81F39FDA300F22016 /* GoogleService-Info.plist */,
 				CE3B2B571DEC631A0096C3D8 /* SpiritPets */,
 				CE3B2B6C1DEC631A0096C3D8 /* SpiritPetsTests */,
 				CE3B2B771DEC631A0096C3D8 /* SpiritPetsUITests */,
 				CE3B2B811DEC631A0096C3D8 /* SpiritPets WatchKit App */,
 				CE3B2B901DEC631A0096C3D8 /* SpiritPets WatchKit Extension */,
 				CE3B2B561DEC631A0096C3D8 /* Products */,
+				58CB8C3755C85EE5DDBED789 /* Pods */,
+				FB4F340C6E9FEF43713D9446 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -400,6 +455,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FB4F340C6E9FEF43713D9446 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADD9D0C1EFFB60A405ED0D97 /* Pods_SpiritPets.framework */,
+				E72186A4B9CF9EB568D9C189 /* Pods_SpiritPets_WatchKit_App.framework */,
+				5B4D7F467989A0E03AC71688 /* Pods_SpiritPets_WatchKit_Extension.framework */,
+				6EB2454BEF5F7D959AC3BD6D /* Pods_SpiritPetsTests.framework */,
+				4AFF1622A4FB6FB766559BD0 /* Pods_SpiritPetsUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -407,10 +474,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE3B2BA81DEC631A0096C3D8 /* Build configuration list for PBXNativeTarget "SpiritPets" */;
 			buildPhases = (
+				C6F225683E12B623EEFCDB98 /* [CP] Check Pods Manifest.lock */,
 				CE3B2B511DEC631A0096C3D8 /* Sources */,
 				CE3B2B521DEC631A0096C3D8 /* Frameworks */,
 				CE3B2B531DEC631A0096C3D8 /* Resources */,
 				CE3B2BA71DEC631A0096C3D8 /* Embed Watch Content */,
+				15A176017ED3B9501347005E /* [CP] Embed Pods Frameworks */,
+				2CFDB8F641B4F0721503E665 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -426,9 +496,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE3B2BAB1DEC631A0096C3D8 /* Build configuration list for PBXNativeTarget "SpiritPetsTests" */;
 			buildPhases = (
+				D204590DDCF1C447274174FD /* [CP] Check Pods Manifest.lock */,
 				CE3B2B651DEC631A0096C3D8 /* Sources */,
 				CE3B2B661DEC631A0096C3D8 /* Frameworks */,
 				CE3B2B671DEC631A0096C3D8 /* Resources */,
+				000479FA8BB8104D49BC7FE7 /* [CP] Embed Pods Frameworks */,
+				A01995B7CAF5D6441B259ADA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -444,9 +517,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE3B2BAE1DEC631A0096C3D8 /* Build configuration list for PBXNativeTarget "SpiritPetsUITests" */;
 			buildPhases = (
+				E065251230C9CD4A6B9FF114 /* [CP] Check Pods Manifest.lock */,
 				CE3B2B701DEC631A0096C3D8 /* Sources */,
 				CE3B2B711DEC631A0096C3D8 /* Frameworks */,
 				CE3B2B721DEC631A0096C3D8 /* Resources */,
+				9627A609E3BBC07B283B574F /* [CP] Embed Pods Frameworks */,
+				DE71D87D2D021E8A96675438 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -462,8 +538,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE3B2BA41DEC631A0096C3D8 /* Build configuration list for PBXNativeTarget "SpiritPets WatchKit App" */;
 			buildPhases = (
+				C723649F3CBB29020B6CC39A /* [CP] Check Pods Manifest.lock */,
 				CE3B2B7B1DEC631A0096C3D8 /* Resources */,
 				CE3B2BA31DEC631A0096C3D8 /* Embed App Extensions */,
+				049BD2EF9CC719EE710949DE /* Frameworks */,
+				B5E478CE482EA7102E4C8C3E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -479,9 +558,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE3B2BA01DEC631A0096C3D8 /* Build configuration list for PBXNativeTarget "SpiritPets WatchKit Extension" */;
 			buildPhases = (
+				63456664CF6F2717A470678E /* [CP] Check Pods Manifest.lock */,
 				CE3B2B881DEC631A0096C3D8 /* Sources */,
 				CE3B2B891DEC631A0096C3D8 /* Frameworks */,
 				CE3B2B8A1DEC631A0096C3D8 /* Resources */,
+				9A5FFE1F022089213FD85DF4 /* [CP] Embed Pods Frameworks */,
+				7BC325170DF0F37897D81335 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -560,6 +642,7 @@
 			files = (
 				CE3B2B631DEC631A0096C3D8 /* LaunchScreen.storyboard in Resources */,
 				B50C215B1DF0738300779435 /* Main.storyboard in Resources */,
+				97571EC91F39FDA300F22016 /* GoogleService-Info.plist in Resources */,
 				CE6237331DF19B020021FD86 /* PetsAttributes.json in Resources */,
 				CE3B2B601DEC631A0096C3D8 /* Assets.xcassets in Resources */,
 			);
@@ -585,6 +668,7 @@
 			files = (
 				CE3B2B861DEC631A0096C3D8 /* Assets.xcassets in Resources */,
 				CE3B2B841DEC631A0096C3D8 /* Interface.storyboard in Resources */,
+				97571ECA1F39FDA300F22016 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -598,6 +682,239 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		000479FA8BB8104D49BC7FE7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpiritPetsTests/Pods-SpiritPetsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		15A176017ED3B9501347005E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SpiritPets/Pods-SpiritPets-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpiritPets/Pods-SpiritPets-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2CFDB8F641B4F0721503E665 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpiritPets/Pods-SpiritPets-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63456664CF6F2717A470678E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpiritPets WatchKit Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7BC325170DF0F37897D81335 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpiritPets WatchKit Extension/Pods-SpiritPets WatchKit Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9627A609E3BBC07B283B574F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpiritPetsUITests/Pods-SpiritPetsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A5FFE1F022089213FD85DF4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpiritPets WatchKit Extension/Pods-SpiritPets WatchKit Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A01995B7CAF5D6441B259ADA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpiritPetsTests/Pods-SpiritPetsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5E478CE482EA7102E4C8C3E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpiritPets WatchKit App/Pods-SpiritPets WatchKit App-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6F225683E12B623EEFCDB98 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpiritPets-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C723649F3CBB29020B6CC39A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpiritPets WatchKit App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D204590DDCF1C447274174FD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpiritPetsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE71D87D2D021E8A96675438 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SpiritPetsUITests/Pods-SpiritPetsUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E065251230C9CD4A6B9FF114 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SpiritPetsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE3B2B511DEC631A0096C3D8 /* Sources */ = {
@@ -810,6 +1127,7 @@
 		};
 		CE3B2BA11DEC631A0096C3D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DC0C4043912982B2FDE01AD1 /* Pods-SpiritPets WatchKit Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				DEVELOPMENT_TEAM = CWK5G6U242;
@@ -827,6 +1145,7 @@
 		};
 		CE3B2BA21DEC631A0096C3D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D9DB50CFCBC22ED2A84AFAC8 /* Pods-SpiritPets WatchKit Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				DEVELOPMENT_TEAM = CWK5G6U242;
@@ -844,6 +1163,7 @@
 		};
 		CE3B2BA51DEC631A0096C3D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 996144906BC5E18BE324807D /* Pods-SpiritPets WatchKit App.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -862,6 +1182,7 @@
 		};
 		CE3B2BA61DEC631A0096C3D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AFA31E0A8032EF5D1F77334 /* Pods-SpiritPets WatchKit App.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -880,6 +1201,7 @@
 		};
 		CE3B2BA91DEC631A0096C3D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B69A7DFC6F88D39BF78AC02C /* Pods-SpiritPets.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CWK5G6U242;
@@ -894,6 +1216,7 @@
 		};
 		CE3B2BAA1DEC631A0096C3D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45E201F9F396D906DBB51F0D /* Pods-SpiritPets.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CWK5G6U242;
@@ -908,6 +1231,7 @@
 		};
 		CE3B2BAC1DEC631A0096C3D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DB16FF45609D257C268C1A9 /* Pods-SpiritPetsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -923,6 +1247,7 @@
 		};
 		CE3B2BAD1DEC631A0096C3D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7100FA4558FD28A10651857B /* Pods-SpiritPetsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -938,6 +1263,7 @@
 		};
 		CE3B2BAF1DEC631A0096C3D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5231237B1986955662691B43 /* Pods-SpiritPetsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = CWK5G6U242;
@@ -952,6 +1278,7 @@
 		};
 		CE3B2BB01DEC631A0096C3D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16F94A27D3E2AA2469A48D52 /* Pods-SpiritPetsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = CWK5G6U242;
