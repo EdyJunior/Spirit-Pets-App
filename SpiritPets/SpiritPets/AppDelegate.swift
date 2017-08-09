@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol SaveStatusDelegate {
     
@@ -39,6 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         multipeerManager = MultipeerManager()//apenas inclua essa linha antes do return nesse metodo.
+        
+        FirebaseApp.configure() //configure firebase
+        
         return true
     }
     
