@@ -7,6 +7,8 @@ target 'SpiritPets' do
 
   # Pods for SpiritPets
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
 
   target 'SpiritPetsTests' do
     inherit! :search_paths

@@ -15,6 +15,7 @@
 		97370C8A1E00126F00B53DDC /* MPFindOpponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97370C891E00126F00B53DDC /* MPFindOpponentViewController.swift */; };
 		97370C8D1E00177800B53DDC /* BattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97370C8C1E00177800B53DDC /* BattleViewController.swift */; };
 		97370C8F1E0017B700B53DDC /* BattleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97370C8E1E0017B700B53DDC /* BattleScene.swift */; };
+		9740BD391F3B375400D4C66F /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9740BD381F3B375400D4C66F /* FirebaseHelper.swift */; };
 		97571EC91F39FDA300F22016 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97571EC81F39FDA300F22016 /* GoogleService-Info.plist */; };
 		97571ECA1F39FDA300F22016 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97571EC81F39FDA300F22016 /* GoogleService-Info.plist */; };
 		977812281DFF37150071D273 /* MultipeerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977812271DFF37150071D273 /* MultipeerManager.swift */; };
@@ -140,6 +141,7 @@
 		97370C891E00126F00B53DDC /* MPFindOpponentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPFindOpponentViewController.swift; sourceTree = "<group>"; };
 		97370C8C1E00177800B53DDC /* BattleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleViewController.swift; sourceTree = "<group>"; };
 		97370C8E1E0017B700B53DDC /* BattleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleScene.swift; sourceTree = "<group>"; };
+		9740BD381F3B375400D4C66F /* FirebaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		97571EC81F39FDA300F22016 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		977812271DFF37150071D273 /* MultipeerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipeerManager.swift; sourceTree = "<group>"; };
 		979A618B1DEDA59200F8604B /* PetSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PetSelectionViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			children = (
 				97370C8C1E00177800B53DDC /* BattleViewController.swift */,
 				97370C8E1E0017B700B53DDC /* BattleScene.swift */,
+				9740BD381F3B375400D4C66F /* FirebaseHelper.swift */,
 			);
 			name = Battle;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 					CE3B2B7C1DEC631A0096C3D8 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = CWK5G6U242;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					CE3B2B8B1DEC631A0096C3D8 = {
@@ -706,11 +710,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SpiritPets/Pods-SpiritPets-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -725,9 +733,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SpiritPets/Pods-SpiritPets-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -923,6 +934,7 @@
 			files = (
 				970FEA3E1DEF009900F86DDF /* MiniGame01Scene.swift in Sources */,
 				97370C8A1E00126F00B53DDC /* MPFindOpponentViewController.swift in Sources */,
+				9740BD391F3B375400D4C66F /* FirebaseHelper.swift in Sources */,
 				B50C21491DF06E1600779435 /* SmallEnemy.swift in Sources */,
 				B50C21471DF06E0500779435 /* Bullet.swift in Sources */,
 				B50C21501DF06E6800779435 /* FriendlyBullet.swift in Sources */,
@@ -1167,13 +1179,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = CWK5G6U242;
 				IBSC_MODULE = SpiritPets_WatchKit_Extension;
 				INFOPLIST_FILE = "SpiritPets WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPets.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.1;
@@ -1186,9 +1201,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = CWK5G6U242;
 				IBSC_MODULE = SpiritPets_WatchKit_Extension;
 				INFOPLIST_FILE = "SpiritPets WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Edvaldo-Junior.SpiritPets.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
